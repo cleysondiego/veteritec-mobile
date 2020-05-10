@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Veteritec</string>
+
+    <!--  Login Page  -->
+    <string name="etLogin">Digite o seu email</string>
+    <string name="etPassword">Digite a sua senha</string>
+    <string name="btn_login">Entrar</string>
+</resources>
