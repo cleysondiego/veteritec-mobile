@@ -21,7 +21,6 @@
     <string name="etFarmacoDosage">Ex: 7.8</string>
     <string name="etFarmacoConcentration">Ex 1.6</string>
 
-    <string name="btnBack">Voltar</string>
     <string name="btnResult">Calcular</string>
 
     <!-- Spinner de Fármaco -->
