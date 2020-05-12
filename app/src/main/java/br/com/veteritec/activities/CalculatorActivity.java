@@ -16,7 +16,7 @@ public class CalculatorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calculator);
 
-        dosage = findViewById(R.id.spDosage);
+        dosage = findViewById(R.id.spFarmacoDosage);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.dosage_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         dosage.setAdapter(adapter);
