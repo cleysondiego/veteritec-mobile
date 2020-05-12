@@ -1,8 +1,19 @@
 <resources>
     <string name="app_name">Veteritec</string>
 
-    <!--  Login Page  -->
+    <!-- Login Page -->
     <string name="etLogin">Digite o seu email</string>
     <string name="etPassword">Digite a sua senha</string>
     <string name="btn_login">Entrar</string>
+
+    <!-- Calculator Page -->
+    <string name="txtCalculatorTitle">Calculadora de Doses</string>
+    <string name="txtAnimalWeight">Peso do animal</string>
+    <string name="txtMeasure">Kg</string>
+    <string name="txtDosage">Dose de fármaco</string>
+    <!-- Spinner de Fármaco -->
+    <string-array name="dosage_array">
+        <item>MG</item>
+        <item>MCG</item>
+    </string-array>
 </resources>

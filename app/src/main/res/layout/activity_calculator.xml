@@ -6,4 +6,83 @@
     android:layout_height="match_parent"
     tools:context=".activities.CalculatorActivity">
 
+    <TextView
+        android:id="@+id/txtCalculatorTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/txtCalculatorTitle"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/etAnimalWeight"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:importantForAutofill="no"
+        android:inputType="numberDecimal"
+        android:labelFor="@id/txtAnimalWeight"
+        app:layout_constraintBaseline_toBaselineOf="@id/txtAnimalWeight"
+        app:layout_constraintEnd_toStartOf="@+id/txtMeasure"
+        app:layout_constraintStart_toEndOf="@+id/txtAnimalWeight" />
+
+    <TextView
+        android:id="@+id/txtAnimalWeight"
+        android:layout_width="0dp"
+        android:layout_height="17dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="80dp"
+        android:text="@string/txtAnimalWeight"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtCalculatorTitle" />
+
+    <TextView
+        android:id="@+id/txtMeasure"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="@string/txtMeasure"
+        app:layout_constraintBaseline_toBaselineOf="@id/etAnimalWeight"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/txtDosage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="56dp"
+        android:text="@string/txtDosage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtAnimalWeight" />
+
+    <EditText
+        android:id="@+id/etDosage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        app:layout_constraintBaseline_toBaselineOf="@id/txtDosage"
+        app:layout_constraintStart_toEndOf="@+id/txtDosage" />
+
+    <Spinner
+        android:id="@+id/spDosage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/etDosage"
+        app:layout_constraintTop_toTopOf="@+id/txtDosage" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
