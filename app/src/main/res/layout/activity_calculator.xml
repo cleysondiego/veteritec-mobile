@@ -150,13 +150,13 @@
         android:text="@string/txtResult"
         android:textAlignment="center"
         android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/btnResult"
+        app:layout_constraintBottom_toTopOf="@+id/btnCalculate"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etFarmacoConcentration" />
 
     <Button
-        android:id="@+id/btnResult"
+        android:id="@+id/btnCalculate"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"

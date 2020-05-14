@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -41,6 +42,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         if (isValidFields()) {
             doLogin();
+        } else {
+            Toast.makeText(this, "Erro no email/senha. Por favor, verifique os dados digitados e tente novamente!", Toast.LENGTH_SHORT).show();
         }
     }
 

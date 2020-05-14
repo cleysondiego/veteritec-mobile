@@ -23,9 +23,17 @@
 
     <string name="btnResult">Calcular</string>
 
-    <!-- Spinner de Fármaco -->
+    <!-- Spinner Fármaco -->
     <string-array name="dosage_array">
         <item>MG</item>
         <item>MCG</item>
+    </string-array>
+
+    <!-- Spinner Concentration -->
+    <string-array name="concentration_array">
+        <item>G</item>
+        <item>MG</item>
+        <item>MCG</item>
+        <item>%</item>
     </string-array>
 </resources>
