@@ -59,7 +59,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private void doLogin() {
         final FirebaseAuth mAuth = FirebaseAuth.getInstance();
-        Log.d("VETERITEC", etLogin.getText().toString() + " pass: " + etPassword.getText().toString());
         mAuth.signInWithEmailAndPassword(etLogin.getText().toString(), etPassword.getText().toString()).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -72,7 +71,5 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 }
             }
         });
-
-        // TODO: Call api to login user. if success, call nextAtivity method. Else, show message error.
     }
 }

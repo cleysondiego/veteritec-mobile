@@ -11,6 +11,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DecimalFormat;
+
 import br.com.veteritec.R;
 import br.com.veteritec.utils.DosageCalculator;
 
@@ -62,9 +64,12 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 
     private void calculateDosage() {
         double result = calculate();
+        DecimalFormat resultFormat = new DecimalFormat("0.0000");
+
+        System.out.println("RESULTADO: " + resultFormat.format(result));
 
         if (result != VALIDATION_FAIL && result != INVALID_OPERATORS) {
-            txtResult.setText(String.valueOf(result));
+            txtResult.setText(resultFormat.format(result));
         } else {
             Toast.makeText(this, "Erro com as opções, por favor selecione apenas as opções disponiveis!", Toast.LENGTH_SHORT).show();
         }
