@@ -1,8 +1,39 @@
 <resources>
     <string name="app_name">Veteritec</string>
 
-    <!--  Login Page  -->
+    <!-- Login Page -->
     <string name="etLogin">Digite o seu email</string>
     <string name="etPassword">Digite a sua senha</string>
+
     <string name="btn_login">Entrar</string>
+
+    <string name="imgLogo">Image logo of VeteriTec</string>
+
+    <!-- Calculator Page -->
+    <string name="txtCalculatorTitle">Calculadora de Doses</string>
+    <string name="txtAnimalWeight">Peso do animal</string>
+    <string name="txtMeasure">Kg</string>
+    <string name="txtFarmacoDosage">Dose de fármaco</string>
+    <string name="txtFarmacoConcentration">Concentração de fármaco</string>
+    <string name="txtResult">0</string>
+
+    <string name="etAnimalWeight">Ex: 17.4</string>
+    <string name="etFarmacoDosage">Ex: 7.8</string>
+    <string name="etFarmacoConcentration">Ex 1.6</string>
+
+    <string name="btnResult">Calcular</string>
+
+    <!-- Spinner Fármaco -->
+    <string-array name="dosage_array">
+        <item>MG</item>
+        <item>MCG</item>
+    </string-array>
+
+    <!-- Spinner Concentration -->
+    <string-array name="concentration_array">
+        <item>G</item>
+        <item>MG</item>
+        <item>MCG</item>
+        <item>%</item>
+    </string-array>
 </resources>

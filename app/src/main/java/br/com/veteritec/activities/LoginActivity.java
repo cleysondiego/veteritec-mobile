@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -41,6 +42,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         if (isValidFields()) {
             doLogin();
+        } else {
+            Toast.makeText(this, "Erro no email/senha. Por favor, verifique os dados digitados e tente novamente!", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -56,7 +59,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private void doLogin() {
         final FirebaseAuth mAuth = FirebaseAuth.getInstance();
-        Log.d("VETERITEC", etLogin.getText().toString() + " pass: " + etPassword.getText().toString());
         mAuth.signInWithEmailAndPassword(etLogin.getText().toString(), etPassword.getText().toString()).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -69,7 +71,5 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 }
             }
         });
-
-        // TODO: Call api to login user. if success, call nextAtivity method. Else, show message error.
     }
 }
