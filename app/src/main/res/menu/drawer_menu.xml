@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <item android:title="@string/txtTools">
+        <menu>
+            <item
+                android:id="@+id/nav_calculator"
+                android:icon="@drawable/ic_menu_calculator"
+                android:title="@string/txtCalculator" />
+        </menu>
+    </item>
+
+    <item android:title="@string/txtVaccine">
+        <menu>
+            <item
+                android:id="@+id/nav_add_vaccine"
+                android:icon="@drawable/ic_menu_vaccine"
+                android:title="@string/txtAdd"></item>
+            <item
+                android:id="@+id/nav_query_vaccine"
+                android:icon="@drawable/ic_menu_vaccine"
+                android:title="@string/txtQuery"></item>
+        </menu>
+    </item>
+
+    <item android:title="@string/txtAccount">
+        <menu>
+            <item
+                android:id="@+id/nav_logout"
+                android:icon="@drawable/ic_menu_logout"
+                android:title="@string/txtLogout" />
+        </menu>
+    </item>
+</menu>

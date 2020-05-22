@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Veteritec</string>
+    <string name="app_name">VeteriTec Mobile</string>
 
     <!-- Login Page -->
     <string name="etLogin">Digite o seu email</string>
@@ -36,4 +36,28 @@
         <item>MCG</item>
         <item>%</item>
     </string-array>
+
+    <!-- Drawer Menu -->
+    <string name="txtTools">Ferramentas</string>
+    <string name="txtCalculator">Calculadora</string>
+    <string name="txtVaccine">Vacina</string>
+    <string name="txtAdd">Adicionar</string>
+    <string name="txtQuery">Consultar</string>
+    <string name="txtAccount">Conta</string>
+    <string name="txtLogout">Sair</string>
+
+    <!-- Navigation Header -->
+    <string name="navigation_drawer_open">Abrir</string>
+    <string name="navigation_drawer_close">Fechar</string>
+
+    <!-- Add Vaccine Page-->
+    <string name="txtAddVaccine">Adicionar Vacinação</string>
+    <string name="txtVeterinary">Veterinário</string>
+    <string name="txtDate">Data</string>
+    <string name="txtClient">Cliente</string>
+    <string name="txtHour">Hora</string>
+    <string name="txtDescription">Descrição</string>
+    <string name="edtDescription">Ex: O animal será vacinado contra raiva.</string>
+
+    <string name="btnSave">Salvar</string>
 </resources>
