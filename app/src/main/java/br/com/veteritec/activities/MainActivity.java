@@ -10,7 +10,6 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -47,25 +46,24 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new CalculatorFragment()).commit();
-            navigationView.setCheckedItem(R.id.nav_calculator);
-        }
+//        if (savedInstanceState == null) {
+//            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new CalculatorFragment()).commit();
+//            navigationView.setCheckedItem(R.id.nav_calculator);
+//        }
     }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.nav_calculator:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new CalculatorFragment()).commit();
                 drawer.closeDrawer(GravityCompat.START);
+                Intent intent = new Intent(this, CalculatorActivity.class);
+                startActivity(intent);
                 break;
             case R.id.nav_add_vaccine:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AddVaccineFragment()).commit();
                 drawer.closeDrawer(GravityCompat.START);
                 break;
             case R.id.nav_query_vaccine:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new QueryVaccineFragment()).commit();
                 drawer.closeDrawer(GravityCompat.START);
                 break;
             case R.id.nav_logout:
