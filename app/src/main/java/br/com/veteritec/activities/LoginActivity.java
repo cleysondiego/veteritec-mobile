@@ -15,7 +15,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 import br.com.veteritec.R;
 
@@ -40,10 +39,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View v) {
-        if (isValidFields()) {
-            doLogin();
-        } else {
-            Toast.makeText(this, "Erro no email/senha. Por favor, verifique os dados digitados e tente novamente!", Toast.LENGTH_SHORT).show();
+        boolean isEmailValid = validateField(etLogin);
+        if (isEmailValid) {
+            boolean isPasswordValid = validateField(etPassword);
+            if (isPasswordValid) {
+                doLogin();
+            }
         }
     }
 
@@ -53,8 +54,17 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         finish();
     }
 
-    private boolean isValidFields() {
-        return !etLogin.toString().isEmpty() || etLogin.toString().length() < 5 || !etPassword.toString().isEmpty() || etPassword.toString().length() < 5;
+    private boolean validateField(EditText field) {
+        if (field.getText().toString().isEmpty()) {
+            field.setError("Esse campo não pode ser vazio");
+            field.requestFocus();
+            return false;
+        } else if (field.getText().toString().length() < 5) {
+            field.setError("O campo deve conter mais que 5 caracteres.");
+            field.requestFocus();
+            return false;
+        }
+        return true;
     }
 
     private void doLogin() {
@@ -65,6 +75,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 if (task.isSuccessful()) {
                     nextActivity();
                 } else {
+//                    try {
+//
+//                    } catch (FirebaseException)
+//                    String errorCode = task.getException().getMessage();
                     Log.w("VETERITEC", "signInWithEmail:failure", task.getException());
                 }
             }
