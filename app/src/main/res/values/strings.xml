@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">VeteriTec Mobile</string>
+    <string name="app_name">Veteritec</string>
 
     <!-- Login Page -->
     <string name="etLogin">Digite o seu email</string>

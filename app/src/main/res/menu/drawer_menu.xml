@@ -4,18 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
+    <item
+        android:id="@+id/nav_night_mode"
+        android:icon="@drawable/ic_menu_night_mode"
+        android:title="@string/txtSwitch"
+        app:actionLayout="@layout/switch_item"
+        app:showAsAction="always" />
+
     <item android:title="@string/txtTools">
         <menu>
             <item
                 android:id="@+id/nav_calculator"
                 android:icon="@drawable/ic_menu_calculator"
                 android:title="@string/txtCalculator" />
-            <item
-                android:id="@+id/nav_night_mode"
-                android:icon="@drawable/ic_menu_night_mode"
-                android:title="@string/txtSwitch"
-                app:actionLayout="@layout/switch_item"
-                app:showAsAction="always" />
         </menu>
     </item>
 

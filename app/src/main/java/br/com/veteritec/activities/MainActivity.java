@@ -31,6 +31,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+//        FirebaseApp.initializeApp(this);
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+
+        if (currentUser == null) {
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+            finish();
+        }
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -45,15 +55,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new CalculatorFragment()).commit();
             navigationView.setCheckedItem(R.id.nav_calculator);
-        }
-
-        FirebaseApp.initializeApp(this);
-        mAuth = FirebaseAuth.getInstance();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-
-        if (currentUser == null) {
-            Intent intent = new Intent(this, LoginActivity.class);
-            startActivityForResult(intent, 1);
         }
     }
 
@@ -77,6 +78,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.nav_logout:
                 Toast.makeText(this, "Deslogar", Toast.LENGTH_SHORT).show();
+                FirebaseAuth.getInstance().signOut();
+                recreate();
                 break;
         }
         return true;

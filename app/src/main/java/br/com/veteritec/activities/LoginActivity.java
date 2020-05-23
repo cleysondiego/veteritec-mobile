@@ -48,8 +48,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     public void nextActivity() {
-        Intent intent = new Intent();
-        setResult(RESULT_OK, intent);
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
         finish();
     }
 
@@ -63,11 +63,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    Log.d("VETERITEC", "signInWithEmail:success");
-                    FirebaseUser user = mAuth.getCurrentUser();
                     nextActivity();
                 } else {
-                    Log.w("VETERITE", "signInWithEmail:failure", task.getException());
+                    Log.w("VETERITEC", "signInWithEmail:failure", task.getException());
                 }
             }
         });
