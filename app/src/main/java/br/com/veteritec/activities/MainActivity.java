@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
 
         Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle(R.string.main_menu);
         setSupportActionBar(toolbar);
 
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -56,21 +57,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.nav_calculator:
-                drawer.closeDrawer(GravityCompat.START);
                 Intent intent = new Intent(this, CalculatorActivity.class);
                 startActivity(intent);
                 break;
             case R.id.nav_add_vaccine:
-                drawer.closeDrawer(GravityCompat.START);
+                Intent addVaccine = new Intent(this, AddVaccineActivity.class);
+                startActivity(addVaccine);
                 break;
             case R.id.nav_query_vaccine:
-                drawer.closeDrawer(GravityCompat.START);
                 break;
             case R.id.nav_logout:
                 FirebaseAuth.getInstance().signOut();
                 recreate();
                 break;
         }
+        drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 
