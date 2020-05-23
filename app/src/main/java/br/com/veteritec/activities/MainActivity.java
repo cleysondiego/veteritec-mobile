@@ -12,6 +12,8 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Switch;
+import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.FirebaseApp;
@@ -60,16 +62,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         switch (item.getItemId()) {
             case R.id.nav_calculator:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new CalculatorFragment()).commit();
+                drawer.closeDrawer(GravityCompat.START);
+                break;
+            case R.id.nav_night_mode:
+                Toast.makeText(this, "Modo Noturno", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_add_vaccine:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AddVaccineFragment()).commit();
+                drawer.closeDrawer(GravityCompat.START);
                 break;
             case R.id.nav_query_vaccine:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new QueryVaccineFragment()).commit();
+                drawer.closeDrawer(GravityCompat.START);
+                break;
+            case R.id.nav_logout:
+                Toast.makeText(this, "Deslogar", Toast.LENGTH_SHORT).show();
                 break;
         }
-
-        drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 

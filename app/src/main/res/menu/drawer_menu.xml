@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
@@ -9,6 +10,12 @@
                 android:id="@+id/nav_calculator"
                 android:icon="@drawable/ic_menu_calculator"
                 android:title="@string/txtCalculator" />
+            <item
+                android:id="@+id/nav_night_mode"
+                android:icon="@drawable/ic_menu_night_mode"
+                android:title="@string/txtSwitch"
+                app:actionLayout="@layout/switch_item"
+                app:showAsAction="always" />
         </menu>
     </item>
 
@@ -16,11 +23,11 @@
         <menu>
             <item
                 android:id="@+id/nav_add_vaccine"
-                android:icon="@drawable/ic_menu_vaccine"
+                android:icon="@drawable/ic_menu_add_vaccine"
                 android:title="@string/txtAdd"></item>
             <item
                 android:id="@+id/nav_query_vaccine"
-                android:icon="@drawable/ic_menu_vaccine"
+                android:icon="@drawable/ic_menu_query_vaccine"
                 android:title="@string/txtQuery"></item>
         </menu>
     </item>

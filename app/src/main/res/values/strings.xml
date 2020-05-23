@@ -40,6 +40,7 @@
     <!-- Drawer Menu -->
     <string name="txtTools">Ferramentas</string>
     <string name="txtCalculator">Calculadora</string>
+    <string name="txtSwitch">Modo Noturno</string>
     <string name="txtVaccine">Vacina</string>
     <string name="txtAdd">Adicionar</string>
     <string name="txtQuery">Consultar</string>
