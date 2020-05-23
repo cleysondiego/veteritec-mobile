@@ -5,9 +5,13 @@
     <string name="etLogin">Digite o seu email</string>
     <string name="etPassword">Digite a sua senha</string>
 
-    <string name="btn_login">Entrar</string>
+    <string name="btnLogin">Entrar</string>
 
     <string name="imgLogo">Image logo of VeteriTec</string>
+
+    <string name="errorWrongEmail">Email inválido.</string>
+    <string name="errorWrongPassword">Senha incorreta.</string>
+    <string name="errorUserNotExists">Usuário não encontrado.</string>
 
     <!-- Calculator Page -->
     <string name="txtCalculatorTitle">Calculadora de Doses</string>
@@ -40,7 +44,6 @@
     <!-- Drawer Menu -->
     <string name="txtTools">Ferramentas</string>
     <string name="txtCalculator">Calculadora</string>
-    <string name="txtSwitch">Modo Noturno</string>
     <string name="txtVaccine">Vacina</string>
     <string name="txtAdd">Adicionar</string>
     <string name="txtQuery">Consultar</string>

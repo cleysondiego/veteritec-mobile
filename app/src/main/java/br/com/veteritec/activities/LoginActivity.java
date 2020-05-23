@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -75,11 +74,21 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 if (task.isSuccessful()) {
                     nextActivity();
                 } else {
-//                    try {
-//
-//                    } catch (FirebaseException)
-//                    String errorCode = task.getException().getMessage();
-                    Log.w("VETERITEC", "signInWithEmail:failure", task.getException());
+                    try {
+                        Exception exception = task.getException();
+                        if (exception.getMessage().contains("The email address is badly formatted.")) {
+                            etLogin.setError(getString(R.string.errorWrongEmail));
+                            etLogin.requestFocus();
+                        } else if (exception.getMessage().contains("The password is invalid or the user does not have a password")) {
+                            etPassword.setError(getString(R.string.errorWrongPassword));
+                            etPassword.requestFocus();
+                        } else if (exception.getMessage().contains("There is no user record corresponding to this identifier. The user may have been deleted.")) {
+                            etLogin.setError(getString(R.string.errorUserNotExists));
+                            etLogin.requestFocus();
+                        }
+                    } catch (Exception e) {
+                        Toast.makeText(getApplicationContext(), "Erro desconhecido. Tente novamente em instantes!", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });

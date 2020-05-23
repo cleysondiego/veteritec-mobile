@@ -10,13 +10,9 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.Switch;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -31,7 +27,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        FirebaseApp.initializeApp(this);
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
 
@@ -65,9 +60,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new CalculatorFragment()).commit();
                 drawer.closeDrawer(GravityCompat.START);
                 break;
-            case R.id.nav_night_mode:
-                Toast.makeText(this, "Modo Noturno", Toast.LENGTH_SHORT).show();
-                break;
             case R.id.nav_add_vaccine:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AddVaccineFragment()).commit();
                 drawer.closeDrawer(GravityCompat.START);
@@ -77,7 +69,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 drawer.closeDrawer(GravityCompat.START);
                 break;
             case R.id.nav_logout:
-                Toast.makeText(this, "Deslogar", Toast.LENGTH_SHORT).show();
                 FirebaseAuth.getInstance().signOut();
                 recreate();
                 break;
