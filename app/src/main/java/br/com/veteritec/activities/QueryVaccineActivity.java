@@ -1,7 +1,6 @@
 package br.com.veteritec.activities;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -14,39 +13,28 @@ import android.view.MenuItem;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 import br.com.veteritec.R;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    private FirebaseAuth mAuth;
+public class QueryVaccineActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        mAuth = FirebaseAuth.getInstance();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-
-        if (currentUser == null) {
-            Intent intent = new Intent(this, LoginActivity.class);
-            startActivity(intent);
-            finish();
-        }
+        setContentView(R.layout.activity_query_vaccine);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle(R.string.main_menu);
+        toolbar.setTitle(R.string.txtQueryVaccineTitle);
         setSupportActionBar(toolbar);
 
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
-
-        drawer = findViewById(R.id.drawer_menu);
+        drawer = findViewById(R.id.drawer_query_vaccine);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
     }
 
     @Override
@@ -54,19 +42,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         switch (item.getItemId()) {
             case R.id.nav_calculator:
                 Intent calculator = new Intent(this, CalculatorActivity.class);
-                startActivityForResult(calculator, 1);
+                startActivity(calculator);
+                finish();
                 break;
             case R.id.nav_add_vaccine:
                 Intent addVaccine = new Intent(this, AddVaccineActivity.class);
-                startActivityForResult(addVaccine, 1);
+                startActivity(addVaccine);
+                finish();
                 break;
             case R.id.nav_query_vaccine:
-                Intent queryVaccine = new Intent(this, QueryVaccineActivity.class);
-                startActivityForResult(queryVaccine, 1);
                 break;
             case R.id.nav_logout:
                 FirebaseAuth.getInstance().signOut();
-                recreate();
+                setResult(RESULT_OK);
+                finish();
                 break;
         }
         drawer.closeDrawer(GravityCompat.START);
@@ -79,17 +68,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             drawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
-        }
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == 1) {
-            if (resultCode == RESULT_OK) {
-                recreate();
-            }
         }
     }
 }
