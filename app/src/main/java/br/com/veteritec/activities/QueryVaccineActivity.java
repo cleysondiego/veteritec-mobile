@@ -54,7 +54,6 @@ public class QueryVaccineActivity extends AppCompatActivity implements Navigatio
                 break;
             case R.id.nav_logout:
                 FirebaseAuth.getInstance().signOut();
-                setResult(RESULT_OK);
                 finish();
                 break;
         }

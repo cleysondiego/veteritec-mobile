@@ -50,19 +50,33 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+
+        if (currentUser == null) {
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+            finish();
+        }
+    }
+
+    @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.nav_calculator:
                 Intent calculator = new Intent(this, CalculatorActivity.class);
-                startActivityForResult(calculator, 1);
+                startActivity(calculator);
                 break;
             case R.id.nav_add_vaccine:
                 Intent addVaccine = new Intent(this, AddVaccineActivity.class);
-                startActivityForResult(addVaccine, 1);
+                startActivity(addVaccine);
                 break;
             case R.id.nav_query_vaccine:
                 Intent queryVaccine = new Intent(this, QueryVaccineActivity.class);
-                startActivityForResult(queryVaccine, 1);
+                startActivity(queryVaccine);
                 break;
             case R.id.nav_logout:
                 FirebaseAuth.getInstance().signOut();
@@ -79,17 +93,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             drawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
-        }
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == 1) {
-            if (resultCode == RESULT_OK) {
-                recreate();
-            }
         }
     }
 }

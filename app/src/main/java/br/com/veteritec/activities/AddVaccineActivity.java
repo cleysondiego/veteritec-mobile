@@ -27,7 +27,7 @@ import java.util.Calendar;
 
 import br.com.veteritec.R;
 
-public class AddVaccineActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class AddVaccineActivity extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawer;
 
     EditText edtDate;
@@ -61,20 +61,16 @@ public class AddVaccineActivity extends AppCompatActivity implements NavigationV
 
         btnTime = findViewById(R.id.btnTime);
         btnDate = findViewById(R.id.btnDate);
+    }
 
-        btnDate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showDateDialog(edtDate);
-            }
-        });
-
-        btnTime.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showTimeDialog(edtTime);
-            }
-        });
+    @Override
+    public void onClick(View v) {
+        int id = v.getId();
+        if (id == R.id.btnDate) {
+            showDateDialog(edtDate);
+        } else if (id == R.id.btnTime) {
+            showTimeDialog(edtTime);
+        }
     }
 
     private void showTimeDialog(final EditText edtTime) {
@@ -128,7 +124,6 @@ public class AddVaccineActivity extends AppCompatActivity implements NavigationV
                 break;
             case R.id.nav_logout:
                 FirebaseAuth.getInstance().signOut();
-                setResult(RESULT_OK);
                 finish();
                 break;
         }

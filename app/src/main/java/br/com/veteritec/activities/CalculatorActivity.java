@@ -98,7 +98,6 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
                 break;
             case R.id.nav_logout:
                 FirebaseAuth.getInstance().signOut();
-                setResult(RESULT_OK);
                 finish();
                 break;
         }
