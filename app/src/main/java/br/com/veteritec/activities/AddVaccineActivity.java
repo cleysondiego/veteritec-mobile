@@ -24,6 +24,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Locale;
 
 import br.com.veteritec.R;
 
@@ -81,7 +82,7 @@ public class AddVaccineActivity extends AppCompatActivity implements View.OnClic
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                 calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
                 calendar.set(Calendar.MINUTE, minute);
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm");
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm", Locale.getDefault());
 
                 edtTime.setText(simpleDateFormat.format(calendar.getTime()));
             }
@@ -98,7 +99,7 @@ public class AddVaccineActivity extends AppCompatActivity implements View.OnClic
                 calendar.set(Calendar.YEAR, year);
                 calendar.set(Calendar.MONTH, month);
                 calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yy");
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yy", Locale.getDefault());
 
                 edtDate.setText(simpleDateFormat.format(calendar.getTime()));
             }
