@@ -1,13 +1,18 @@
 <resources>
-    <string name="app_name">Veteritec</string>
+    <string name="app_name">Veteritec</string>"
+    <string name="main_menu">Menu Principal</string>
 
     <!-- Login Page -->
     <string name="etLogin">Digite o seu email</string>
     <string name="etPassword">Digite a sua senha</string>
 
-    <string name="btn_login">Entrar</string>
+    <string name="btnLogin">Entrar</string>
 
     <string name="imgLogo">Image logo of VeteriTec</string>
+
+    <string name="errorWrongEmail">Email inválido.</string>
+    <string name="errorWrongPassword">Senha incorreta.</string>
+    <string name="errorUserNotExists">Usuário não encontrado.</string>
 
     <!-- Calculator Page -->
     <string name="txtCalculatorTitle">Calculadora de Doses</string>
@@ -36,4 +41,34 @@
         <item>MCG</item>
         <item>%</item>
     </string-array>
+
+    <!-- Drawer Menu -->
+    <string name="txtTools">Ferramentas</string>
+    <string name="txtCalculator">Calculadora</string>
+    <string name="txtVaccine">Vacina</string>
+    <string name="txtAdd">Adicionar</string>
+    <string name="txtQuery">Consultar</string>
+    <string name="txtAccount">Conta</string>
+    <string name="txtLogout">Sair</string>
+
+    <!-- Navigation Header -->
+    <string name="navigation_drawer_open">Abrir</string>
+    <string name="navigation_drawer_close">Fechar</string>
+
+    <!-- Add Vaccine Page-->
+    <string name="txtAddVaccineTitle">Adicionar Vacinação</string>
+    <string name="txtVeterinary">Veterinário</string>
+    <string name="txtDate">Data</string>
+    <string name="edtDate">00/00/0000</string>
+    <string name="txtClient">Cliente</string>
+    <string name="txtHour">Hora</string>
+    <string name="edtHour">00:00</string>
+    <string name="txtDescription">Descrição</string>
+    <string name="edtDescription">Ex: O animal será vacinado contra raiva.</string>
+
+    <string name="btnSave">Salvar</string>
+
+    <!-- Query Vaccine Page -->
+    <string name="txtQueryVaccineTitle">Procurar Vacinação</string>
+    <string name="edtClient">Ex: João da Silva</string>
 </resources>

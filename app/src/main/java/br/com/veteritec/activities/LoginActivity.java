@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,7 +14,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 import br.com.veteritec.R;
 
@@ -40,21 +38,32 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View v) {
-        if (isValidFields()) {
-            doLogin();
-        } else {
-            Toast.makeText(this, "Erro no email/senha. Por favor, verifique os dados digitados e tente novamente!", Toast.LENGTH_SHORT).show();
+        boolean isEmailValid = validateField(etLogin);
+        if (isEmailValid) {
+            boolean isPasswordValid = validateField(etPassword);
+            if (isPasswordValid) {
+                doLogin();
+            }
         }
     }
 
     public void nextActivity() {
-        Intent intent = new Intent();
-        setResult(RESULT_OK, intent);
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
         finish();
     }
 
-    private boolean isValidFields() {
-        return !etLogin.toString().isEmpty() || etLogin.toString().length() < 5 || !etPassword.toString().isEmpty() || etPassword.toString().length() < 5;
+    private boolean validateField(EditText field) {
+        if (field.getText().toString().isEmpty()) {
+            field.setError("Esse campo não pode ser vazio");
+            field.requestFocus();
+            return false;
+        } else if (field.getText().toString().length() < 5) {
+            field.setError("O campo deve conter mais que 5 caracteres.");
+            field.requestFocus();
+            return false;
+        }
+        return true;
     }
 
     private void doLogin() {
@@ -63,11 +72,23 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    Log.d("VETERITEC", "signInWithEmail:success");
-                    FirebaseUser user = mAuth.getCurrentUser();
                     nextActivity();
                 } else {
-                    Log.w("VETERITE", "signInWithEmail:failure", task.getException());
+                    try {
+                        Exception exception = task.getException();
+                        if (exception.getMessage().contains("The email address is badly formatted.")) {
+                            etLogin.setError(getString(R.string.errorWrongEmail));
+                            etLogin.requestFocus();
+                        } else if (exception.getMessage().contains("The password is invalid or the user does not have a password")) {
+                            etPassword.setError(getString(R.string.errorWrongPassword));
+                            etPassword.requestFocus();
+                        } else if (exception.getMessage().contains("There is no user record corresponding to this identifier. The user may have been deleted.")) {
+                            etLogin.setError(getString(R.string.errorUserNotExists));
+                            etLogin.requestFocus();
+                        }
+                    } catch (Exception e) {
+                        Toast.makeText(getApplicationContext(), "Erro desconhecido. Tente novamente em instantes!", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });

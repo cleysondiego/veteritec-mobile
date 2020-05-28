@@ -2,6 +2,7 @@ package br.com.veteritec.utils;
 
 public class DosageCalculator {
     private double INVALID_OPERATORS = -2;
+
     public double calculate(double animalWeight, double dosage, double concentration, String dosageUnit, String concentrationUnit) {
 //        animalWeight = KG
 //        dose = MG e MCG

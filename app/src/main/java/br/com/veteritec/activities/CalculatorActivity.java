@@ -1,8 +1,15 @@
 package br.com.veteritec.activities;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -11,12 +18,15 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+
 import java.text.DecimalFormat;
 
 import br.com.veteritec.R;
 import br.com.veteritec.utils.DosageCalculator;
 
-public class CalculatorActivity extends AppCompatActivity implements View.OnClickListener {
+public class CalculatorActivity extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
     private Spinner dosageSpinner;
     private Spinner concentrationSpinner;
 
@@ -28,6 +38,8 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 
     private Button btnCalculate;
 
+    private DrawerLayout drawer;
+
     private double VALIDATION_FAIL = -1;
     private double INVALID_OPERATORS = -2;
 
@@ -35,6 +47,18 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calculator);
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle(R.string.txtCalculatorTitle);
+        setSupportActionBar(toolbar);
+
+        drawer = findViewById(R.id.drawer_calculator);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
 
         etAnimalWeight = findViewById(R.id.etAnimalWeight);
         etDosage = findViewById(R.id.etDosage);
@@ -55,6 +79,39 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
         ArrayAdapter<CharSequence> concentrationArrayAdapter = ArrayAdapter.createFromResource(this, R.array.concentration_array, android.R.layout.simple_spinner_item);
         concentrationArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         concentrationSpinner.setAdapter(concentrationArrayAdapter);
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.nav_calculator:
+                break;
+            case R.id.nav_add_vaccine:
+                Intent addVaccine = new Intent(this, AddVaccineActivity.class);
+                startActivity(addVaccine);
+                finish();
+                break;
+            case R.id.nav_query_vaccine:
+                Intent queryVaccine = new Intent(this, QueryVaccineActivity.class);
+                startActivity(queryVaccine);
+                finish();
+                break;
+            case R.id.nav_logout:
+                FirebaseAuth.getInstance().signOut();
+                finish();
+                break;
+        }
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
     }
 
     @Override
