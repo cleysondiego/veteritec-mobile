@@ -46,15 +46,27 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginEnd="8dp"
                 android:autofillHints="@string/edtClient"
                 android:ems="10"
                 android:hint="@string/edtClient"
                 android:inputType="textPersonName"
                 android:textSize="18sp"
                 app:layout_constraintBaseline_toBaselineOf="@id/txtClient"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/btnSearch"
                 app:layout_constraintStart_toEndOf="@+id/txtClient" />
+
+            <Button
+                android:id="@+id/btnSearch"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/ic_query_vaccine_search"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/edtClient"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TableLayout
                 android:layout_width="match_parent"
