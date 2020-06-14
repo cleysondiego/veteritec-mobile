@@ -86,6 +86,16 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
         switch (item.getItemId()) {
             case R.id.nav_calculator:
                 break;
+            case R.id.nav_add_client:
+                Intent addClient = new Intent(this, AddClientActivity.class);
+                startActivity(addClient);
+                break;
+            case R.id.nav_query_client:
+                Toast.makeText(this, "Não disponível nesta versão!", Toast.LENGTH_SHORT).show();
+                /*Intent queryClient = new Intent(this, QueryClientActivity.class);
+                startActivity(queryClient);*/
+                finish();
+                break;
             case R.id.nav_add_vaccine:
                 Intent addVaccine = new Intent(this, AddVaccineActivity.class);
                 startActivity(addVaccine);

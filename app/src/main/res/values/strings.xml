@@ -3,38 +3,44 @@
     <string name="main_menu">Menu Principal</string>
 
     <!-- Login Page -->
-    <string name="etLogin">Digite o seu email</string>
-    <string name="etPassword">Digite a sua senha</string>
+    <string name="txtLoginClinic">Escolha sua clínica:</string>
+    <string name="edtLoginLogin">Digite o seu email</string>
+    <string name="edtLoginPassword">Digite a sua senha</string>
 
-    <string name="btnLogin">Entrar</string>
+    <string name="btnLoginLogin">Entrar</string>
 
-    <string name="imgLogo">Image logo of VeteriTec</string>
+    <string name="imgLoginLogo">Image logo of VeteriTec</string>
 
-    <string name="errorWrongEmail">Email inválido.</string>
-    <string name="errorWrongPassword">Senha incorreta.</string>
-    <string name="errorUserNotExists">Usuário não encontrado.</string>
+    <string name="errorLoginWrongEmail">Email inválido.</string>
+    <string name="errorLoginWrongPassword">Senha incorreta.</string>
+    <string name="errorLoginUserNotExists">Usuário não encontrado.</string>
+
+    <!-- Clinics Spinner -->
+    <string-array name="clinic_array">
+        <item>Bicho da Mata</item>
+    </string-array>
 
     <!-- Calculator Page -->
     <string name="txtCalculatorTitle">Calculadora de Doses</string>
-    <string name="txtAnimalWeight">Peso do animal</string>
-    <string name="txtMeasure">Kg</string>
-    <string name="txtFarmacoDosage">Dose de fármaco</string>
-    <string name="txtFarmacoConcentration">Concentração de fármaco</string>
-    <string name="txtResult">0</string>
+    <string name="txtCalculatorAnimalWeight">Peso do animal</string>
+    <string name="txtCalculatorMeasure">Kg</string>
+    <string name="txtCalculatorFarmacoDosage">Dose de fármaco</string>
+    <string name="txtCalculatorFarmacoConcentration">Concentração de fármaco</string>
+    <string name="txtCalculatorResult">0</string>
 
-    <string name="etAnimalWeight">Ex: 17.4</string>
-    <string name="etFarmacoDosage">Ex: 7.8</string>
-    <string name="etFarmacoConcentration">Ex 1.6</string>
+    <string name="edtCalculatorAnimalWeight">Ex: 17.4</string>
+    <string name="edtCalculatorFarmacoDosage">Ex: 7.8</string>
+    <string name="edtCalculatorFarmacoConcentration">Ex 1.6</string>
 
-    <string name="btnResult">Calcular</string>
+    <string name="btnCalculatorResult">Calcular</string>
 
-    <!-- Spinner Fármaco -->
+    <!-- Fármaco Spinner -->
     <string-array name="dosage_array">
         <item>MG</item>
         <item>MCG</item>
     </string-array>
 
-    <!-- Spinner Concentration -->
+    <!-- Concentration Spinner -->
     <string-array name="concentration_array">
         <item>G</item>
         <item>MG</item>
@@ -43,13 +49,14 @@
     </string-array>
 
     <!-- Drawer Menu -->
-    <string name="txtTools">Ferramentas</string>
-    <string name="txtCalculator">Calculadora</string>
-    <string name="txtVaccine">Vacina</string>
-    <string name="txtAdd">Adicionar</string>
-    <string name="txtQuery">Consultar</string>
-    <string name="txtAccount">Conta</string>
-    <string name="txtLogout">Sair</string>
+    <string name="txtDrawerMenuTools">Ferramentas</string>
+    <string name="txtDrawerMenuCalculator">Calculadora</string>
+    <string name="txtDrawerMenuClient">Cliente</string>
+    <string name="txtDrawerMenuVaccine">Vacina</string>
+    <string name="txtDrawerMenuAdd">Adicionar</string>
+    <string name="txtDrawerMenuQuery">Consultar</string>
+    <string name="txtDrawerMenuAccount">Conta</string>
+    <string name="txtDrawerMenuLogout">Desconectar</string>
 
     <!-- Navigation Header -->
     <string name="navigation_drawer_open">Abrir</string>
@@ -57,18 +64,59 @@
 
     <!-- Add Vaccine Page-->
     <string name="txtAddVaccineTitle">Adicionar Vacinação</string>
-    <string name="txtVeterinary">Veterinário</string>
-    <string name="txtDate">Data</string>
-    <string name="edtDate">00/00/0000</string>
-    <string name="txtClient">Cliente</string>
-    <string name="txtHour">Hora</string>
-    <string name="edtHour">00:00</string>
-    <string name="txtDescription">Descrição</string>
-    <string name="edtDescription">Ex: O animal será vacinado contra raiva.</string>
+    <string name="txtAddVaccineVeterinary">Veterinário</string>
+    <string name="txtAddVaccineDate">Data</string>
+    <string name="txtAddVaccineClient">Cliente</string>
+    <string name="txtAddVaccineHour">Hora</string>
+    <string name="txtAddVaccineAnimal">Animal</string>
+    <string name="txtAddVaccineDescription">Descrição</string>
+    <string name="edtAddVaccineDate">00/00/0000</string>
+    <string name="edtAddVaccineHour">00:00</string>
+    <string name="edtAddVaccineDescription">Ex: O animal será vacinado contra raiva.</string>
 
-    <string name="btnSave">Salvar</string>
+    <!-- Veterinary Spinner -->
+    <string-array name="veterinary_array">
+        <item>Cleyson Diego da Silva</item>
+        <item>Igor Tricarico Marques</item>
+    </string-array>
+
+    <!-- Client Spinner -->
+    <string-array name="client_array">
+        <item>Cleyson Diego da Silva</item>
+        <item>Igor Tricarico Marques</item>
+    </string-array>
+
+    <!-- Animal Spinner -->
+    <string-array name="animal_array">
+        <item>Bilu</item>
+        <item>Antedeguemon</item>
+        <item>Cabo a criatividade</item>
+    </string-array>
+
+    <string name="btnAddVaccineSave">Salvar</string>
 
     <!-- Query Vaccine Page -->
     <string name="txtQueryVaccineTitle">Procurar Vacinação</string>
-    <string name="edtClient">Ex: João da Silva</string>
+    <string name="edtQueryVaccineClient">Ex: João da Silva</string>
+
+    <!-- Add Client Page -->
+    <string name="txtAddClientTitle">Adicionar Cliente</string>
+    <string name="txtAddClientName">Nome Completo</string>
+    <string name="txtAddClientCPF">CPF</string>
+    <string name="txtAddClientCEP">CEP</string>
+    <string name="txtAddClientStreet">Rua</string>
+    <string name="txtAddClientNumber">Número</string>
+    <string name="txtAddClientNeighborhood">Bairro</string>
+    <string name="txtAddClientTelephone">Telefone (Opcional)</string>
+    <string name="txtAddClientCellphone">Celular</string>
+    <string name="txtAddClientEmail">E-mail</string>
+    <string name="edtAddClientName">Ex: José da Silva</string>
+    <string name="edtAddClientCPF">Ex: 154.468.451-57</string>
+    <string name="edtAddClientCEP">Ex: 18.584.684-1</string>
+    <string name="edtAddClientStreet">Ex: Rua das Orquídeas</string>
+    <string name="edtAddClientNumber">Ex: 502</string>
+    <string name="edtAddClientNeighborhood">Ex: Campo Bonito</string>
+    <string name="edtAddClientTelephone">Ex: (19)3845-5792</string>
+    <string name="edtAddClientCellphone">Ex: (19)99426-6248</string>
+    <string name="edtAddClientEmail">Ex: jose.silva@uol.com.br</string>
 </resources>

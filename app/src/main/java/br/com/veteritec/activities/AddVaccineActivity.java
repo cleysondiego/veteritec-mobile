@@ -20,6 +20,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -111,6 +112,16 @@ public class AddVaccineActivity extends AppCompatActivity implements View.OnClic
                 Intent calculator = new Intent(this, CalculatorActivity.class);
                 startActivity(calculator);
                 finish();
+                break;
+            case R.id.nav_add_client:
+                Intent addClient = new Intent(this, AddClientActivity.class);
+                startActivity(addClient);
+                finish();
+                break;
+            case R.id.nav_query_client:
+                Toast.makeText(this, "Não disponível nesta versão!", Toast.LENGTH_SHORT).show();
+                /*Intent queryClient = new Intent(this, QueryClientActivity.class);
+                startActivity(queryClient);*/
                 break;
             case R.id.nav_add_vaccine:
                 break;

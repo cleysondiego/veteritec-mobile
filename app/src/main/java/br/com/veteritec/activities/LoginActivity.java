@@ -77,13 +77,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     try {
                         Exception exception = task.getException();
                         if (exception.getMessage().contains("The email address is badly formatted.")) {
-                            etLogin.setError(getString(R.string.errorWrongEmail));
+                            etLogin.setError(getString(R.string.errorLoginWrongEmail));
                             etLogin.requestFocus();
                         } else if (exception.getMessage().contains("The password is invalid or the user does not have a password")) {
-                            etPassword.setError(getString(R.string.errorWrongPassword));
+                            etPassword.setError(getString(R.string.errorLoginWrongPassword));
                             etPassword.requestFocus();
                         } else if (exception.getMessage().contains("There is no user record corresponding to this identifier. The user may have been deleted.")) {
-                            etLogin.setError(getString(R.string.errorUserNotExists));
+                            etLogin.setError(getString(R.string.errorLoginUserNotExists));
                             etLogin.requestFocus();
                         }
                     } catch (Exception e) {

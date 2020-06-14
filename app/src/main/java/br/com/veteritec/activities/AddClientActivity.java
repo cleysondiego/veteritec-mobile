@@ -10,35 +10,23 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 import br.com.veteritec.R;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    private FirebaseAuth mAuth;
+public class AddClientActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        mAuth = FirebaseAuth.getInstance();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-
-        if (currentUser == null) {
-            Intent intent = new Intent(this, LoginActivity.class);
-            startActivity(intent);
-            finish();
-        }
+        setContentView(R.layout.activity_add_client);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle(R.string.main_menu);
+        toolbar.setTitle(R.string.txtAddClientTitle);
         setSupportActionBar(toolbar);
 
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -51,29 +39,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-
-        mAuth = FirebaseAuth.getInstance();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-
-        if (currentUser == null) {
-            Intent intent = new Intent(this, LoginActivity.class);
-            startActivity(intent);
-            finish();
-        }
-    }
-
-    @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.nav_calculator:
                 Intent calculator = new Intent(this, CalculatorActivity.class);
                 startActivity(calculator);
+                finish();
                 break;
             case R.id.nav_add_client:
-                Intent addClient = new Intent(this, AddClientActivity.class);
-                startActivity(addClient);
                 break;
             case R.id.nav_query_client:
                 Toast.makeText(this, "Não disponível nesta versão!", Toast.LENGTH_SHORT).show();
@@ -83,14 +56,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_add_vaccine:
                 Intent addVaccine = new Intent(this, AddVaccineActivity.class);
                 startActivity(addVaccine);
+                finish();
                 break;
             case R.id.nav_query_vaccine:
                 Intent queryVaccine = new Intent(this, QueryVaccineActivity.class);
                 startActivity(queryVaccine);
+                finish();
                 break;
             case R.id.nav_logout:
                 FirebaseAuth.getInstance().signOut();
-                recreate();
+                finish();
                 break;
         }
         drawer.closeDrawer(GravityCompat.START);

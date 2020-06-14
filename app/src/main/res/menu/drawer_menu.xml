@@ -1,36 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <item android:title="@string/txtTools">
+    <item android:title="@string/txtDrawerMenuTools">
         <menu>
             <item
                 android:id="@+id/nav_calculator"
                 android:icon="@drawable/ic_menu_calculator"
-                android:title="@string/txtCalculator" />
+                android:title="@string/txtDrawerMenuCalculator"></item>
         </menu>
     </item>
 
-    <item android:title="@string/txtVaccine">
+    <item android:title="@string/txtDrawerMenuClient">
+        <menu>
+            <item
+                android:id="@+id/nav_add_client"
+                android:icon="@drawable/ic_menu_add_vaccine"
+                android:title="@string/txtDrawerMenuAdd"></item>
+            <item
+                android:id="@+id/nav_query_client"
+                android:icon="@drawable/ic_menu_query_vaccine"
+                android:title="@string/txtDrawerMenuQuery"></item>
+        </menu>
+    </item>
+
+    <item android:title="@string/txtDrawerMenuVaccine">
         <menu>
             <item
                 android:id="@+id/nav_add_vaccine"
                 android:icon="@drawable/ic_menu_add_vaccine"
-                android:title="@string/txtAdd"></item>
+                android:title="@string/txtDrawerMenuAdd"></item>
             <item
                 android:id="@+id/nav_query_vaccine"
                 android:icon="@drawable/ic_menu_query_vaccine"
-                android:title="@string/txtQuery"></item>
+                android:title="@string/txtDrawerMenuQuery"></item>
         </menu>
     </item>
 
-    <item android:title="@string/txtAccount">
+    <item android:title="@string/txtDrawerMenuAccount">
         <menu>
             <item
                 android:id="@+id/nav_logout"
                 android:icon="@drawable/ic_menu_logout"
-                android:title="@string/txtLogout" />
+                android:title="@string/txtDrawerMenuLogout" />
         </menu>
     </item>
 </menu>
