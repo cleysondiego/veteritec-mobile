@@ -24,7 +24,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
-                android:contentDescription="@string/imgLogo"
+                android:contentDescription="@string/imgLoginLogo"
                 android:scaleType="centerInside"
                 app:layout_constraintBottom_toTopOf="@+id/etLogin"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -32,6 +32,24 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/veteritec_logo" />
+
+            <TextView
+                android:id="@+id/txtClinic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/txtLoginClinic"
+                android:textSize="18sp" />
+
+            <Spinner
+                android:id="@+id/spnClinic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:entries="@array/clinic_array" />
 
             <EditText
                 android:id="@+id/etLogin"
@@ -41,9 +59,9 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
-                android:autofillHints="@string/etLogin"
+                android:autofillHints="@string/edtLoginLogin"
                 android:ems="10"
-                android:hint="@string/etLogin"
+                android:hint="@string/edtLoginLogin"
                 android:inputType="textEmailAddress"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toTopOf="@id/etPassword"
@@ -59,9 +77,9 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
-                android:autofillHints="@string/etPassword"
+                android:autofillHints="@string/edtLoginPassword"
                 android:ems="10"
-                android:hint="@string/etPassword"
+                android:hint="@string/edtLoginPassword"
                 android:inputType="textPassword"
                 android:onClick="onClick"
                 android:textSize="18sp"
@@ -78,7 +96,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
-                android:text="@string/btnLogin"
+                android:text="@string/btnLoginLogin"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
