@@ -52,6 +52,7 @@
     <string name="txtDrawerMenuTools">Ferramentas</string>
     <string name="txtDrawerMenuCalculator">Calculadora</string>
     <string name="txtDrawerMenuClient">Cliente</string>
+    <string name="txtDrawerMenuAnimal">Animal</string>
     <string name="txtDrawerMenuVaccine">Vacina</string>
     <string name="txtDrawerMenuAdd">Adicionar</string>
     <string name="txtDrawerMenuQuery">Consultar</string>
@@ -123,4 +124,21 @@
     <!-- Query Client Page -->
     <string name="txtQueryClientTitle">Procurar Cliente</string>
     <string name="edtQueryClientClient">Ex: João da Silva</string>
+
+    <!-- Add Animal Page -->
+    <string name="txtAddAnimalTitle">Adicionar Animal</string>
+    <string name="txtAddAnimalName">Nome</string>
+    <string name="txtAddAnimalBirthDate">Data de Nascimento</string>
+    <string name="txtAddAnimalSpecies">Espécie</string>
+    <string name="txtAddAnimalRace">Raça</string>
+    <string name="txtAddAnimalSize">Porte</string>
+    <string name="txtAddAnimalWeight">Peso</string>
+    <string name="txtAddAnimalObservations">Observações</string>
+    <string name="edtAddAnimalName">Ex: Pimposo</string>
+    <string name="edtAddAnimalBirthDate">Ex: 00/00/0000</string>
+    <string name="edtAddAnimalSpecies">Ex: Cachorro</string>
+    <string name="edtAddAnimalRace">Ex: Weimaraner</string>
+    <string name="edtAddAnimalSize">Ex: Grande</string>
+    <string name="edtAddAnimalWeight">Ex: 30kg</string>
+    <string name="edtAddAnimalObservations">Ex: O cachorro está vacinado contra todas as efermidades comuns.</string>
 </resources>

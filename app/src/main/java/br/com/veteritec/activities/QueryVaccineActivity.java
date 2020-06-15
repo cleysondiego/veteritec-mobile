@@ -54,6 +54,16 @@ public class QueryVaccineActivity extends AppCompatActivity implements Navigatio
                 Intent queryClient = new Intent(this, QueryClientActivity.class);
                 startActivity(queryClient);
                 break;
+            case R.id.nav_add_animal:
+                Intent addAnimal = new Intent(this, AddAnimalActivity.class);
+                startActivity(addAnimal);
+                finish();
+                break;
+            case R.id.nav_query_animal:
+                /*Intent queryAnimal = new Intent(this, QueryAnimalActivity.class);
+                startActivity(queryAnimal);
+                finish();*/
+                break;
             case R.id.nav_add_vaccine:
                 Intent addVaccine = new Intent(this, AddVaccineActivity.class);
                 startActivity(addVaccine);

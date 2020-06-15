@@ -121,6 +121,16 @@ public class AddVaccineActivity extends AppCompatActivity implements View.OnClic
                 Intent queryClient = new Intent(this, QueryClientActivity.class);
                 startActivity(queryClient);
                 break;
+            case R.id.nav_add_animal:
+                Intent addAnimal = new Intent(this, AddAnimalActivity.class);
+                startActivity(addAnimal);
+                finish();
+                break;
+            case R.id.nav_query_animal:
+                /*Intent queryAnimal = new Intent(this, QueryAnimalActivity.class);
+                startActivity(queryAnimal);
+                finish();*/
+                break;
             case R.id.nav_add_vaccine:
                 break;
             case R.id.nav_query_vaccine:
