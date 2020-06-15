@@ -91,9 +91,8 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
                 startActivity(addClient);
                 break;
             case R.id.nav_query_client:
-                Toast.makeText(this, "Não disponível nesta versão!", Toast.LENGTH_SHORT).show();
-                /*Intent queryClient = new Intent(this, QueryClientActivity.class);
-                startActivity(queryClient);*/
+                Intent queryClient = new Intent(this, QueryClientActivity.class);
+                startActivity(queryClient);
                 finish();
                 break;
             case R.id.nav_add_vaccine:

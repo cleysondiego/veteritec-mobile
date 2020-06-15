@@ -62,7 +62,7 @@
     <string name="navigation_drawer_open">Abrir</string>
     <string name="navigation_drawer_close">Fechar</string>
 
-    <!-- Add Vaccine Page-->
+    <!-- Add Vaccine Page -->
     <string name="txtAddVaccineTitle">Adicionar Vacinação</string>
     <string name="txtAddVaccineVeterinary">Veterinário</string>
     <string name="txtAddVaccineDate">Data</string>
@@ -119,4 +119,8 @@
     <string name="edtAddClientTelephone">Ex: (19)3845-5792</string>
     <string name="edtAddClientCellphone">Ex: (19)99426-6248</string>
     <string name="edtAddClientEmail">Ex: jose.silva@uol.com.br</string>
+
+    <!-- Query Client Page -->
+    <string name="txtQueryClientTitle">Procurar Cliente</string>
+    <string name="edtQueryClientClient">Ex: João da Silva</string>
 </resources>

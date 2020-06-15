@@ -16,16 +16,16 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import br.com.veteritec.R;
 
-public class QueryVaccineActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class QueryClientActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_query_vaccine);
+        setContentView(R.layout.activity_query_client);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle(R.string.txtQueryVaccineTitle);
+        toolbar.setTitle(R.string.txtQueryClientTitle);
         setSupportActionBar(toolbar);
 
         drawer = findViewById(R.id.drawer_query_vaccine);
@@ -51,8 +51,6 @@ public class QueryVaccineActivity extends AppCompatActivity implements Navigatio
                 finish();
                 break;
             case R.id.nav_query_client:
-                Intent queryClient = new Intent(this, QueryClientActivity.class);
-                startActivity(queryClient);
                 break;
             case R.id.nav_add_vaccine:
                 Intent addVaccine = new Intent(this, AddVaccineActivity.class);
@@ -60,6 +58,9 @@ public class QueryVaccineActivity extends AppCompatActivity implements Navigatio
                 finish();
                 break;
             case R.id.nav_query_vaccine:
+                Intent queryVaccine = new Intent(this, QueryVaccineActivity.class);
+                startActivity(queryVaccine);
+                finish();
                 break;
             case R.id.nav_logout:
                 FirebaseAuth.getInstance().signOut();

@@ -10,7 +10,6 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -49,9 +48,8 @@ public class AddClientActivity extends AppCompatActivity implements NavigationVi
             case R.id.nav_add_client:
                 break;
             case R.id.nav_query_client:
-                Toast.makeText(this, "Não disponível nesta versão!", Toast.LENGTH_SHORT).show();
-                /*Intent queryClient = new Intent(this, QueryClientActivity.class);
-                startActivity(queryClient);*/
+                Intent queryClient = new Intent(this, QueryClientActivity.class);
+                startActivity(queryClient);
                 break;
             case R.id.nav_add_vaccine:
                 Intent addVaccine = new Intent(this, AddVaccineActivity.class);
