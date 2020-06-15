@@ -166,7 +166,7 @@
                     android:autofillHints="@string/edtAddAnimalSize"
                     android:ems="10"
                     android:hint="@string/edtAddAnimalSize"
-                    android:inputType="numberDecimal" />
+                    android:inputType="text" />
 
                 <TextView
                     android:id="@+id/txtAnimalWeight"
@@ -188,7 +188,7 @@
                     android:autofillHints="@string/edtAddAnimalWeight"
                     android:ems="10"
                     android:hint="@string/edtAddAnimalWeight"
-                    android:inputType="phone" />
+                    android:inputType="text" />
 
                 <TextView
                     android:id="@+id/txtAnimalObservation"
@@ -210,7 +210,7 @@
                     android:autofillHints="@string/edtAddAnimalObservations"
                     android:ems="10"
                     android:hint="@string/edtAddAnimalObservations"
-                    android:inputType="phone" />
+                    android:inputType="textMultiLine" />
 
             </LinearLayout>
         </ScrollView>
