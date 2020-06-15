@@ -12,13 +12,10 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.google.android.material.navigation.NavigationView;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 import br.com.veteritec.R;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    private FirebaseAuth mAuth;
     private DrawerLayout drawer;
 
     @Override
@@ -26,14 +23,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mAuth = FirebaseAuth.getInstance();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-
-        if (currentUser == null) {
-            Intent intent = new Intent(this, LoginActivity.class);
-            startActivity(intent);
-            finish();
-        }
+//        if (currentUser == null) {
+//            Intent intent = new Intent(this, LoginActivity.class);
+//            startActivity(intent);
+//            finish();
+//        }
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(R.string.main_menu);
@@ -52,14 +46,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void onResume() {
         super.onResume();
 
-        mAuth = FirebaseAuth.getInstance();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-
-        if (currentUser == null) {
-            Intent intent = new Intent(this, LoginActivity.class);
-            startActivity(intent);
-            finish();
-        }
+//        if (currentUser == null) {
+//            Intent intent = new Intent(this, LoginActivity.class);
+//            startActivity(intent);
+//            finish();
+//        }
     }
 
     @Override
@@ -94,7 +85,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(queryVaccine);
                 break;
             case R.id.nav_logout:
-                FirebaseAuth.getInstance().signOut();
                 recreate();
                 break;
         }

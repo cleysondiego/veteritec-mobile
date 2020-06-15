@@ -4,10 +4,6 @@ public class DosageCalculator {
     private double INVALID_OPERATORS = -2;
 
     public double calculate(double animalWeight, double dosage, double concentration, String dosageUnit, String concentrationUnit) {
-//        animalWeight = KG
-//        dose = MG e MCG
-//        concentração = G, MG, MCG e %
-//        retorno é sempre em ML
 
         if (dosageUnit.equals("MG") && concentrationUnit.equals("G")) {
             return (animalWeight * dosage) / (1000 / concentration);
