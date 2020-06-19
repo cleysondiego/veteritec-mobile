@@ -17,7 +17,7 @@ public class ApiRequest {
     private static final String DELETE = "DELETE";
 
     public static final String CONTENT_TYPE = "Content-Type";
-    public static final String BASE_URL = "https://veteritec.herokuapp.com/";
+    public static final String BASE_URL = "https://veteritec.herokuapp.com";
 
     public interface OnResponse {
         void onResponse(int statusCode, byte[] response);
