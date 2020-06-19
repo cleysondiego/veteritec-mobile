@@ -81,10 +81,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Intent addAnimal = new Intent(this, AddAnimalActivity.class);
                 startActivity(addAnimal);
                 break;
-            case R.id.nav_query_animal:
-                /*Intent queryAnimal = new Intent(this, QueryAnimalActivity.class);
-                startActivity(queryAnimal);*/
-                break;
             case R.id.nav_add_vaccine:
                 Intent addVaccine = new Intent(this, AddVaccineActivity.class);
                 startActivity(addVaccine);
