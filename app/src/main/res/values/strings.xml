@@ -15,11 +15,6 @@
     <string name="errorLoginWrongPassword">Senha incorreta.</string>
     <string name="errorLoginUserNotExists">Usuário não encontrado.</string>
 
-    <!-- Clinics Spinner -->
-    <string-array name="clinic_array">
-        <item>Bicho da Mata</item>
-    </string-array>
-
     <!-- Calculator Page -->
     <string name="txtCalculatorTitle">Calculadora de Doses</string>
     <string name="txtCalculatorAnimalWeight">Peso do animal</string>

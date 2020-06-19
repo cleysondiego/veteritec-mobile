@@ -2,24 +2,47 @@ package br.com.veteritec.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import br.com.veteritec.R;
+import br.com.veteritec.clinics.ClinicResponseStructure;
+import br.com.veteritec.clinics.ClinicUseCase;
+import br.com.veteritec.usecases.ThreadExecutor;
+import br.com.veteritec.utils.ApiRequest;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
+    private Context context;
+
+    Spinner spnClinics;
 
     EditText etLogin;
     EditText etPassword;
 
+    private ClinicResponseStructure clinicResponseStructure;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_login);
+
+        context = getApplicationContext();
+
+        clinicResponseStructure = new ClinicResponseStructure();
+
+        spnClinics = findViewById(R.id.spnClinics);
+
+        getClinics();
 
         etLogin = findViewById(R.id.etLogin);
         etPassword = findViewById(R.id.etPassword);
@@ -57,6 +80,36 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             return false;
         }
         return true;
+    }
+
+    private void getClinics() {
+        ApiRequest apiRequest = new ApiRequest();
+        ClinicUseCase clinicUseCase = new ClinicUseCase(ThreadExecutor.getInstance(), apiRequest);
+        clinicUseCase.setCallback(new ClinicUseCase.OnGetClinicCallback() {
+            @Override
+            public void onSuccess(ClinicResponseStructure clinicsStructure) {
+                clinicResponseStructure = clinicsStructure;
+                populateClinicSpinner(clinicResponseStructure.getClinics());
+            }
+
+            @Override
+            public void onFailure(int statusCode) {
+                Toast.makeText(context, "Erro ao obter a lista de clínicas cadastradas.", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        clinicUseCase.execute();
+    }
+
+    private void populateClinicSpinner(List<ClinicResponseStructure.Clinic> clinicList) {
+        List<String> name = new ArrayList<>();
+
+        for (ClinicResponseStructure.Clinic clinic : clinicList) {
+            name.add(clinic.getName());
+        }
+
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, name);
+        spnClinics.setAdapter(arrayAdapter);
     }
 
     private void doLogin() {}
