@@ -55,6 +55,8 @@
     <string name="txtDrawerMenuAnimal">Animal</string>
     <string name="txtDrawerMenuVaccine">Vacina</string>
     <string name="txtDrawerMenuAdd">Adicionar</string>
+    <string name="txtDrawerMenuAddClient">Adicionar Cliente</string>
+    <string name="txtDrawerMenuAddAnimal">Adicionar Animal</string>
     <string name="txtDrawerMenuQuery">Consultar</string>
     <string name="txtDrawerMenuAccount">Conta</string>
     <string name="txtDrawerMenuLogout">Desconectar</string>

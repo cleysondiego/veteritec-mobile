@@ -82,11 +82,6 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
                 break;
             case R.id.nav_add_animal:
                 break;
-            case R.id.nav_query_animal:
-                /*Intent queryClient = new Intent(this, QueryAnimalActivity.class);
-                startActivity(queryClient);
-                finish();*/
-                break;
             case R.id.nav_add_vaccine:
                 Intent addVaccine = new Intent(this, AddVaccineActivity.class);
                 startActivity(addVaccine);

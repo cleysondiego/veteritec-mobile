@@ -18,22 +18,13 @@
             <item
                 android:id="@+id/nav_add_client"
                 android:icon="@drawable/ic_menu_add"
-                android:title="@string/txtDrawerMenuAdd"></item>
-            <item
-                android:id="@+id/nav_query_client"
-                android:icon="@drawable/ic_menu_query"
-                android:title="@string/txtDrawerMenuQuery"></item>
-        </menu>
-    </item>
-
-    <item android:title="@string/txtDrawerMenuAnimal">
-        <menu>
+                android:title="@string/txtDrawerMenuAddClient"></item>
             <item
                 android:id="@+id/nav_add_animal"
                 android:icon="@drawable/ic_menu_add"
-                android:title="@string/txtDrawerMenuAdd"></item>
+                android:title="@string/txtDrawerMenuAddAnimal"></item>
             <item
-                android:id="@+id/nav_query_animal"
+                android:id="@+id/nav_query_client"
                 android:icon="@drawable/ic_menu_query"
                 android:title="@string/txtDrawerMenuQuery"></item>
         </menu>
