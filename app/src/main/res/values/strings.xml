@@ -15,8 +15,11 @@
     <string name="cdMainMenuHealing">Esta imagem representa o gerenciamento de vacinas do aplicativo.</string>
 
     <!-- Login Page -->
+    <string name="txtLoginTitle">Sistema Gerenciador de Clínicas Veterinárias</string>
     <string name="txtLoginClinic">Escolha sua clínica:</string>
-    <string name="edtLoginLogin">Digite o seu email</string>
+    <string name="txtLoginEmail">E-mail:</string>
+    <string name="txtLoginPassword">Senha:</string>
+    <string name="edtLoginEmail">Digite o seu email</string>
     <string name="edtLoginPassword">Digite a sua senha</string>
     <string name="cdLoginLogo">Esta imagem representa o logotipo do aplicativo.</string>
     <string name="btnLoginLogin">Entrar</string>
