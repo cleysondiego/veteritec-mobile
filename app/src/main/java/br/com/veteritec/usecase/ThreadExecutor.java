@@ -1,4 +1,4 @@
-package br.com.veteritec.usecases;
+package br.com.veteritec.usecase;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

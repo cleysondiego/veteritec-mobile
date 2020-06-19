@@ -1,4 +1,4 @@
-package br.com.veteritec.usecases;
+package br.com.veteritec.usecase;
 
 public abstract class UseCaseAbstract implements UseCase {
     private Executor executor;
