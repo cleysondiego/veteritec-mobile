@@ -18,7 +18,7 @@ import java.util.List;
 import br.com.veteritec.R;
 import br.com.veteritec.clinics.ClinicResponseStructure;
 import br.com.veteritec.clinics.ClinicUseCase;
-import br.com.veteritec.usecases.ThreadExecutor;
+import br.com.veteritec.usecase.ThreadExecutor;
 import br.com.veteritec.utils.ApiRequest;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {

@@ -8,8 +8,8 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 
-import br.com.veteritec.usecases.Executor;
-import br.com.veteritec.usecases.UseCaseAbstract;
+import br.com.veteritec.usecase.Executor;
+import br.com.veteritec.usecase.UseCaseAbstract;
 import br.com.veteritec.utils.ApiRequest;
 
 public class ClinicUseCase extends UseCaseAbstract {
