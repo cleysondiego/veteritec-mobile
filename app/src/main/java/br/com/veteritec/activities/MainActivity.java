@@ -7,6 +7,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -14,20 +15,31 @@ import android.view.MenuItem;
 import com.google.android.material.navigation.NavigationView;
 
 import br.com.veteritec.R;
+import br.com.veteritec.utils.SharedPreferencesUtils;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+    private Context context;
     private DrawerLayout drawer;
+
+    private boolean isLogged = false;
+    private String userName = "";
+    private String userToken = "";
+    private String userClinicId = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        if (currentUser == null) {
-//            Intent intent = new Intent(this, LoginActivity.class);
-//            startActivity(intent);
-//            finish();
-//        }
+        context = getApplicationContext();
+
+        getUserDataFromSharedPreferences(context);
+
+        if (!isLogged || userToken.equals("")) {
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+            finish();
+        }
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(R.string.main_menu);
@@ -46,11 +58,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void onResume() {
         super.onResume();
 
-//        if (currentUser == null) {
-//            Intent intent = new Intent(this, LoginActivity.class);
-//            startActivity(intent);
-//            finish();
-//        }
+        if (!isLogged || userToken.equals("")) {
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+            finish();
+        }
     }
 
     @Override
@@ -95,5 +107,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else {
             super.onBackPressed();
         }
+    }
+
+    private void getUserDataFromSharedPreferences(Context context) {
+        SharedPreferencesUtils sharedPreferencesUtils = new SharedPreferencesUtils();
+        isLogged = sharedPreferencesUtils.isLogged(context);
+        userName = sharedPreferencesUtils.getUserName(context);
+        userToken = sharedPreferencesUtils.getUserToken(context);
+        userClinicId = sharedPreferencesUtils.getUserClinicId(context);
     }
 }
