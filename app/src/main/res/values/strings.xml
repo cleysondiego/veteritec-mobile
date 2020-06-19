@@ -5,24 +5,21 @@
     <!-- Main Menu Page -->
     <string name="txtMainMenuTitle">Sistema Gerenciador de Clínicas Veterinárias</string>
     <string name="txtMainMenuTools">Funcionalidades do aplicativo:</string>
-    <string name="cdMainMenuLogo">Esta imagem representa o logotipo do aplicativo.</string>
-    <string name="cdMainMenuCalculator">Esta imagem representa a calculadora do aplicativo.</string>
-    <string name="cdMainMenuClient">Esta imagem representa o gerenciamento de clientes do aplicativo.</string>
-    <string name="cdMainMenuHealing">Esta imagem representa o gerenciamento de vacinas do aplicativo.</string>
     <string name="txtMainMenuCalculator">Calculadora de Doses</string>
     <string name="txtMainMenuClient">Gerenciamento de Clientes</string>
     <string name="txtMainMenuHealing">Gerenciamento de Vacinas</string>
     <string name="txtMainMenuCredits">Desenvolvido por:\n- Alan de Jesus Elias de Souza;\n- Cleyson Diego da Silva;\n- Igor Tricarico Marques;\n- Mauricio Tomesani Furlan.</string>
+    <string name="cdMainMenuLogo">Esta imagem representa o logotipo do aplicativo.</string>
+    <string name="cdMainMenuCalculator">Esta imagem representa a calculadora do aplicativo.</string>
+    <string name="cdMainMenuClient">Esta imagem representa o gerenciamento de clientes do aplicativo.</string>
+    <string name="cdMainMenuHealing">Esta imagem representa o gerenciamento de vacinas do aplicativo.</string>
 
     <!-- Login Page -->
     <string name="txtLoginClinic">Escolha sua clínica:</string>
     <string name="edtLoginLogin">Digite o seu email</string>
     <string name="edtLoginPassword">Digite a sua senha</string>
-
+    <string name="cdLoginLogo">Esta imagem representa o logotipo do aplicativo.</string>
     <string name="btnLoginLogin">Entrar</string>
-
-    <string name="imgLoginLogo">Image logo of VeteriTec</string>
-
     <string name="errorLoginWrongEmail">Email inválido.</string>
     <string name="errorLoginWrongPassword">Senha incorreta.</string>
     <string name="errorLoginUserNotExists">Usuário não encontrado.</string>
@@ -39,11 +36,9 @@
     <string name="txtCalculatorFarmacoDosage">Dose de fármaco</string>
     <string name="txtCalculatorFarmacoConcentration">Concentração de fármaco</string>
     <string name="txtCalculatorResult">0</string>
-
     <string name="edtCalculatorAnimalWeight">Ex: 17.4</string>
     <string name="edtCalculatorFarmacoDosage">Ex: 7.8</string>
     <string name="edtCalculatorFarmacoConcentration">Ex 1.6</string>
-
     <string name="btnCalculatorResult">Calcular</string>
 
     <!-- Fármaco Spinner -->
@@ -88,6 +83,7 @@
     <string name="edtAddVaccineDate">00/00/0000</string>
     <string name="edtAddVaccineHour">00:00</string>
     <string name="edtAddVaccineDescription">Ex: O animal será vacinado contra raiva.</string>
+    <string name="btnAddVaccineSave">Salvar</string>
 
     <!-- Veterinary Spinner -->
     <string-array name="veterinary_array">
@@ -104,11 +100,9 @@
     <!-- Animal Spinner -->
     <string-array name="animal_array">
         <item>Bilu</item>
-        <item>Antedeguemon</item>
-        <item>Cabo a criatividade</item>
+        <item>Charmosa</item>
+        <item>Xuxu</item>
     </string-array>
-
-    <string name="btnAddVaccineSave">Salvar</string>
 
     <!-- Query Vaccine Page -->
     <string name="txtQueryVaccineTitle">Procurar Vacinação</string>
@@ -126,13 +120,13 @@
     <string name="txtAddClientCellphone">Celular</string>
     <string name="txtAddClientEmail">E-mail</string>
     <string name="edtAddClientName">Ex: José da Silva</string>
-    <string name="edtAddClientCPF">Ex: 154.468.451-57</string>
-    <string name="edtAddClientCEP">Ex: 18.584.684-1</string>
+    <string name="edtAddClientCPF">Ex: 154.468.451–57</string>
+    <string name="edtAddClientCEP">Ex: 18.584.684–1</string>
     <string name="edtAddClientStreet">Ex: Rua das Orquídeas</string>
     <string name="edtAddClientNumber">Ex: 502</string>
     <string name="edtAddClientNeighborhood">Ex: Campo Bonito</string>
-    <string name="edtAddClientTelephone">Ex: (19)3845-5792</string>
-    <string name="edtAddClientCellphone">Ex: (19)99426-6248</string>
+    <string name="edtAddClientTelephone">Ex: (19)3845–5792</string>
+    <string name="edtAddClientCellphone">Ex: (19)99426–6248</string>
     <string name="edtAddClientEmail">Ex: jose.silva@uol.com.br</string>
 
     <!-- Query Client Page -->
