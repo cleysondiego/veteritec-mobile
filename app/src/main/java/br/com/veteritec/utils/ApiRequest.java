@@ -12,12 +12,14 @@ import java.util.List;
 import javax.net.ssl.HttpsURLConnection;
 
 public class ApiRequest {
+    public static final String BASE_URL = "https://veteritec.herokuapp.com";
+
     private static final String GET = "GET";
     private static final String POST = "POST";
     private static final String DELETE = "DELETE";
 
     public static final String CONTENT_TYPE = "Content-Type";
-    public static final String BASE_URL = "https://veteritec.herokuapp.com";
+    public static final String CLINIC_ID = "clinicid";
 
     public interface OnResponse {
         void onResponse(int statusCode, byte[] response);

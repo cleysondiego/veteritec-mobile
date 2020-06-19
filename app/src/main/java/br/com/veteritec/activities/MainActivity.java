@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(queryVaccine);
                 break;
             case R.id.nav_logout:
-                recreate();
+                logoffUser(context);
                 break;
         }
         drawer.closeDrawer(GravityCompat.START);
@@ -115,5 +115,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         userName = sharedPreferencesUtils.getUserName(context);
         userToken = sharedPreferencesUtils.getUserToken(context);
         userClinicId = sharedPreferencesUtils.getUserClinicId(context);
+    }
+
+    private void logoffUser(Context context) {
+        SharedPreferencesUtils sharedPreferencesUtils = new SharedPreferencesUtils();
+        sharedPreferencesUtils.setLogoff(context);
+        recreate();
     }
 }

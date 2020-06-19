@@ -18,6 +18,8 @@ import java.util.List;
 import br.com.veteritec.R;
 import br.com.veteritec.clinics.ClinicResponseStructure;
 import br.com.veteritec.clinics.ClinicUseCase;
+import br.com.veteritec.login.LoginRequestStructure;
+import br.com.veteritec.login.LoginUseCase;
 import br.com.veteritec.usecase.ThreadExecutor;
 import br.com.veteritec.utils.ApiRequest;
 
@@ -63,12 +65,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
-    public void nextActivity() {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-        finish();
-    }
-
     private boolean validateField(EditText field) {
         if (field.getText().toString().isEmpty()) {
             field.setError("Esse campo não pode ser vazio");
@@ -112,5 +108,46 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         spnClinics.setAdapter(arrayAdapter);
     }
 
-    private void doLogin() {}
+    private void doLogin() {
+        LoginRequestStructure loginRequestStructure = new LoginRequestStructure();
+
+        loginRequestStructure.setEmail(etLogin.getText().toString());
+        loginRequestStructure.setPassword(etPassword.getText().toString());
+
+        ApiRequest apiRequest = new ApiRequest();
+
+        String clinicId = "";
+
+        for(ClinicResponseStructure.Clinic clinic : clinicResponseStructure.getClinics()) {
+            if (clinic.getName().equals(spnClinics.getSelectedItem().toString())) {
+                clinicId = clinic.getId();
+            }
+        }
+
+        LoginUseCase loginUseCase = new LoginUseCase(ThreadExecutor.getInstance(), context, apiRequest, loginRequestStructure, clinicId);
+        loginUseCase.setCallback(new LoginUseCase.OnLoginCallback() {
+            @Override
+            public void onSuccess() {
+                Toast.makeText(context, "Logado com sucesso!", Toast.LENGTH_SHORT).show();
+                goToMainActivity();
+            }
+
+            @Override
+            public void onFailure(int statusCode) {
+                if (statusCode == 400) {
+                    Toast.makeText(context, "Usuário e/ou senha incorretos!", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(context, "Ocorreu um erro durante o login, verifique os dados etente novamente!" + statusCode, Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        loginUseCase.execute();
+    }
+
+    public void goToMainActivity() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
 }
