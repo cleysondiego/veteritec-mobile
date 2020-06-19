@@ -30,9 +30,9 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
     private Spinner dosageSpinner;
     private Spinner concentrationSpinner;
 
-    private EditText etAnimalWeight;
-    private EditText etDosage;
-    private EditText etFarmacoConcentration;
+    private EditText edtAnimalWeight;
+    private EditText edtDosage;
+    private EditText edtFarmacoConcentration;
 
     private TextView txtResult;
 
@@ -60,9 +60,9 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        etAnimalWeight = findViewById(R.id.etAnimalWeight);
-        etDosage = findViewById(R.id.etDosage);
-        etFarmacoConcentration = findViewById(R.id.etFarmacoConcentration);
+        edtAnimalWeight = findViewById(R.id.edtAnimalWeight);
+        edtDosage = findViewById(R.id.edtDosage);
+        edtFarmacoConcentration = findViewById(R.id.edtFarmacoConcentration);
 
         txtResult = findViewById(R.id.txtResult);
 
@@ -70,12 +70,12 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 
         btnCalculate.setOnClickListener(this);
 
-        dosageSpinner = findViewById(R.id.spFarmacoDosage);
+        dosageSpinner = findViewById(R.id.spnFarmacoDosage);
         ArrayAdapter<CharSequence> dosageArrayAdapter = ArrayAdapter.createFromResource(this, R.array.dosage_array, android.R.layout.simple_spinner_item);
         dosageArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         dosageSpinner.setAdapter(dosageArrayAdapter);
 
-        concentrationSpinner = findViewById(R.id.spFarmacoConcentration);
+        concentrationSpinner = findViewById(R.id.spnFarmacoConcentration);
         ArrayAdapter<CharSequence> concentrationArrayAdapter = ArrayAdapter.createFromResource(this, R.array.concentration_array, android.R.layout.simple_spinner_item);
         concentrationArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         concentrationSpinner.setAdapter(concentrationArrayAdapter);
@@ -147,13 +147,13 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
     }
 
     private double calculate() {
-        double animalWeight = 0;
-        double dosage = 0;
-        double concentration = 0;
+        double animalWeight;
+        double dosage;
+        double concentration;
         try {
-            animalWeight = Double.parseDouble(etAnimalWeight.getText().toString());
-            dosage = Double.parseDouble(etDosage.getText().toString());
-            concentration = Double.parseDouble(etFarmacoConcentration.getText().toString());
+            animalWeight = Double.parseDouble(edtAnimalWeight.getText().toString());
+            dosage = Double.parseDouble(edtDosage.getText().toString());
+            concentration = Double.parseDouble(edtFarmacoConcentration.getText().toString());
         } catch (NumberFormatException exception) {
             Toast.makeText(this, "Erro na validação dos dados digitados, por favor verifique-os e tente novamente!", Toast.LENGTH_SHORT).show();
             return VALIDATION_FAIL;

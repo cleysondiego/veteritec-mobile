@@ -45,7 +45,7 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        drawer = findViewById(R.id.drawer_menu);
+        drawer = findViewById(R.id.drawer_add_animal);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();

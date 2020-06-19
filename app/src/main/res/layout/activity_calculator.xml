@@ -29,12 +29,12 @@
             android:layout_height="match_parent">
 
             <EditText
-                android:id="@+id/etAnimalWeight"
-                android:layout_width="0dp"
+                android:id="@+id/edtAnimalWeight"
+                android:layout_width="0sp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16sp"
+                android:layout_marginTop="16sp"
+                android:layout_marginEnd="16sp"
                 android:autofillHints="@string/edtCalculatorAnimalWeight"
                 android:ems="10"
                 android:hint="@string/edtCalculatorAnimalWeight"
@@ -48,11 +48,11 @@
 
             <TextView
                 android:id="@+id/txtAnimalWeight"
-                android:layout_width="0dp"
+                android:layout_width="0sp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16sp"
+                android:layout_marginTop="16sp"
+                android:layout_marginEnd="16sp"
                 android:text="@string/txtCalculatorAnimalWeight"
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -63,112 +63,112 @@
                 android:id="@+id/txtMeasure"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
+                android:layout_marginEnd="16sp"
                 android:text="@string/txtCalculatorMeasure"
                 android:textSize="24sp"
-                app:layout_constraintBottom_toBottomOf="@+id/etAnimalWeight"
+                app:layout_constraintBottom_toBottomOf="@+id/edtAnimalWeight"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/etAnimalWeight" />
+                app:layout_constraintTop_toTopOf="@+id/edtAnimalWeight" />
 
             <TextView
                 android:id="@+id/txtFarmacoDosage"
-                android:layout_width="0dp"
+                android:layout_width="0sp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16sp"
+                android:layout_marginTop="16sp"
+                android:layout_marginEnd="16sp"
                 android:text="@string/txtCalculatorFarmacoDosage"
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/etAnimalWeight" />
+                app:layout_constraintTop_toBottomOf="@+id/edtAnimalWeight" />
 
             <EditText
-                android:id="@+id/etDosage"
-                android:layout_width="0dp"
+                android:id="@+id/edtDosage"
+                android:layout_width="0sp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16sp"
+                android:layout_marginTop="16sp"
+                android:layout_marginEnd="16sp"
                 android:autofillHints="@string/edtCalculatorFarmacoDosage"
                 android:ems="10"
                 android:hint="@string/edtCalculatorFarmacoDosage"
                 android:inputType="numberDecimal"
                 android:textSize="18sp"
-                app:layout_constraintEnd_toStartOf="@+id/spFarmacoDosage"
+                app:layout_constraintEnd_toStartOf="@+id/spnFarmacoDosage"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtFarmacoDosage" />
 
             <Spinner
-                android:id="@+id/spFarmacoDosage"
+                android:id="@+id/spnFarmacoDosage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                app:layout_constraintBottom_toBottomOf="@+id/etDosage"
+                android:layout_marginEnd="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/edtDosage"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/etDosage" />
+                app:layout_constraintTop_toTopOf="@+id/edtDosage" />
 
             <TextView
                 android:id="@+id/txtFarmacoConcentration"
-                android:layout_width="0dp"
+                android:layout_width="0sp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16sp"
+                android:layout_marginTop="16sp"
+                android:layout_marginEnd="16sp"
                 android:text="@string/txtCalculatorFarmacoConcentration"
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/etDosage" />
+                app:layout_constraintTop_toBottomOf="@+id/edtDosage" />
 
             <EditText
-                android:id="@+id/etFarmacoConcentration"
-                android:layout_width="0dp"
+                android:id="@+id/edtFarmacoConcentration"
+                android:layout_width="0sp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16sp"
+                android:layout_marginTop="16sp"
+                android:layout_marginEnd="16sp"
                 android:autofillHints="@string/edtCalculatorFarmacoConcentration"
                 android:ems="10"
                 android:hint="@string/edtCalculatorFarmacoConcentration"
                 android:inputType="numberDecimal"
                 android:textSize="18sp"
-                app:layout_constraintEnd_toStartOf="@+id/spFarmacoConcentration"
+                app:layout_constraintEnd_toStartOf="@+id/spnFarmacoConcentration"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtFarmacoConcentration" />
 
             <Spinner
-                android:id="@+id/spFarmacoConcentration"
+                android:id="@+id/spnFarmacoConcentration"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                app:layout_constraintBottom_toBottomOf="@+id/etFarmacoConcentration"
+                android:layout_marginEnd="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/edtFarmacoConcentration"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/etFarmacoConcentration" />
+                app:layout_constraintTop_toTopOf="@+id/edtFarmacoConcentration" />
 
             <TextView
                 android:id="@+id/txtResult"
-                android:layout_width="0dp"
+                android:layout_width="0sp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="32dp"
+                android:layout_marginStart="16sp"
+                android:layout_marginTop="32sp"
+                android:layout_marginEnd="16sp"
+                android:layout_marginBottom="32sp"
                 android:text="@string/txtCalculatorResult"
                 android:textAlignment="center"
                 android:textSize="24sp"
                 app:layout_constraintBottom_toTopOf="@+id/btnCalculate"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/etFarmacoConcentration" />
+                app:layout_constraintTop_toBottomOf="@+id/edtFarmacoConcentration" />
 
             <Button
                 android:id="@+id/btnCalculate"
-                android:layout_width="0dp"
+                android:layout_width="0sp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="16dp"
+                android:layout_marginStart="16sp"
+                android:layout_marginEnd="16sp"
+                android:layout_marginBottom="16sp"
                 android:text="@string/btnCalculatorResult"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
