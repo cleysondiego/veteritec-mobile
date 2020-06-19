@@ -68,11 +68,12 @@
                 app:layout_constraintStart_toEndOf="@+id/edtClient"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TableLayout
-                android:layout_width="match_parent"
+            <ListView
+                android:id="@+id/lvVaccine"
+                android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
                 app:layout_constraintBottom_toBottomOf="parent"

@@ -28,7 +28,7 @@ public class QueryClientActivity extends AppCompatActivity implements Navigation
         toolbar.setTitle(R.string.txtQueryClientTitle);
         setSupportActionBar(toolbar);
 
-        drawer = findViewById(R.id.drawer_query_vaccine);
+        drawer = findViewById(R.id.drawer_query_client);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();

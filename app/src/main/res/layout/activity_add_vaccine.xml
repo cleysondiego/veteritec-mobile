@@ -28,9 +28,9 @@
 
         <ScrollView
             android:id="@+id/addVaccine_form"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginBottom="8dp"
+            android:layout_width="0sp"
+            android:layout_height="0sp"
+            android:layout_marginBottom="4sp"
             app:layout_constraintBottom_toTopOf="@+id/btnSave"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -45,9 +45,9 @@
                     android:id="@+id/txtVeterinary"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16sp"
+                    android:layout_marginTop="16sp"
+                    android:layout_marginEnd="16sp"
                     android:text="@string/txtAddVaccineVeterinary"
                     android:textSize="24sp" />
 
@@ -55,18 +55,18 @@
                     android:id="@+id/spnVeterinary"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16sp"
+                    android:layout_marginTop="16sp"
+                    android:layout_marginEnd="16sp"
                     android:entries="@array/veterinary_array" />
 
                 <TextView
                     android:id="@+id/txtClient"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16sp"
+                    android:layout_marginTop="16sp"
+                    android:layout_marginEnd="16sp"
                     android:text="@string/txtAddVaccineClient"
                     android:textSize="24sp" />
 
@@ -74,18 +74,18 @@
                     android:id="@+id/spnClient"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16sp"
+                    android:layout_marginTop="16sp"
+                    android:layout_marginEnd="16sp"
                     android:entries="@array/client_array" />
 
                 <TextView
                     android:id="@+id/txtAnimal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16sp"
+                    android:layout_marginTop="16sp"
+                    android:layout_marginEnd="16sp"
                     android:text="@string/txtAddVaccineAnimal"
                     android:textSize="24sp" />
 
@@ -93,9 +93,9 @@
                     android:id="@+id/spnAnimal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16sp"
+                    android:layout_marginTop="16sp"
+                    android:layout_marginEnd="16sp"
                     android:entries="@array/animal_array" />
 
                 <LinearLayout
@@ -107,9 +107,9 @@
                         android:id="@+id/txtDate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="16sp"
+                        android:layout_marginTop="16sp"
+                        android:layout_marginEnd="8sp"
                         android:layout_weight="1"
                         android:text="@string/txtAddVaccineDate"
                         android:textAlignment="center"
@@ -119,9 +119,9 @@
                         android:id="@+id/txtTime"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginEnd="16dp"
+                        android:layout_marginStart="8sp"
+                        android:layout_marginTop="16sp"
+                        android:layout_marginEnd="16sp"
                         android:layout_weight="1"
                         android:text="@string/txtAddVaccineHour"
                         android:textAlignment="center"
@@ -138,8 +138,8 @@
                         android:id="@+id/edtDate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
+                        android:layout_marginStart="16sp"
+                        android:layout_marginTop="16sp"
                         android:layout_weight="1"
                         android:autofillHints="@string/edtAddVaccineDate"
                         android:ems="10"
@@ -149,11 +149,11 @@
 
                     <Button
                         android:id="@+id/btnDate"
-                        android:layout_width="36dp"
-                        android:layout_height="36dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginEnd="8dp"
+                        android:layout_width="36sp"
+                        android:layout_height="36sp"
+                        android:layout_marginStart="8sp"
+                        android:layout_marginTop="16sp"
+                        android:layout_marginEnd="8sp"
                         android:layout_weight="0"
                         android:background="@drawable/ic_add_date" />
 
@@ -161,8 +161,8 @@
                         android:id="@+id/edtTime"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="16dp"
+                        android:layout_marginStart="8sp"
+                        android:layout_marginTop="16sp"
                         android:layout_weight="1"
                         android:autofillHints="@string/edtAddVaccineHour"
                         android:ems="10"
@@ -172,11 +172,11 @@
 
                     <Button
                         android:id="@+id/btnTime"
-                        android:layout_width="36dp"
-                        android:layout_height="36dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginEnd="16dp"
+                        android:layout_width="36sp"
+                        android:layout_height="36sp"
+                        android:layout_marginStart="8sp"
+                        android:layout_marginTop="16sp"
+                        android:layout_marginEnd="16sp"
                         android:layout_weight="0"
                         android:background="@drawable/ic_add_time" />
                 </LinearLayout>
@@ -185,9 +185,9 @@
                     android:id="@+id/txtTools"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16sp"
+                    android:layout_marginTop="16sp"
+                    android:layout_marginEnd="16sp"
                     android:text="@string/txtAddVaccineDescription"
                     android:textSize="24sp" />
 
@@ -195,9 +195,9 @@
                     android:id="@+id/edtDescription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16sp"
+                    android:layout_marginTop="16sp"
+                    android:layout_marginEnd="16sp"
                     android:autofillHints="@string/edtAddVaccineDescription"
                     android:ems="10"
                     android:gravity="start"
@@ -210,11 +210,11 @@
 
         <Button
             android:id="@+id/btnSave"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
+            android:layout_width="64sp"
+            android:layout_height="64sp"
+            android:layout_marginTop="4sp"
+            android:layout_marginEnd="16sp"
+            android:layout_marginBottom="16sp"
             android:background="@drawable/ic_save_24"
             android:gravity="start"
             android:textSize="18sp"
