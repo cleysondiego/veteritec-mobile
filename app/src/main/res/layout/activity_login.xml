@@ -24,7 +24,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
-                android:contentDescription="@string/imgLoginLogo"
+                android:contentDescription="@string/cdLoginLogo"
                 android:scaleType="centerInside"
                 app:layout_constraintBottom_toTopOf="@+id/etLogin"
                 app:layout_constraintEnd_toEndOf="parent"
