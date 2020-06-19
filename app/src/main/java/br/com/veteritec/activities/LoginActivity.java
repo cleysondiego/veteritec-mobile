@@ -46,8 +46,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         getClinics();
 
-        etLogin = findViewById(R.id.etLogin);
-        etPassword = findViewById(R.id.etPassword);
+        etLogin = findViewById(R.id.edtEmail);
+        etPassword = findViewById(R.id.edtPassword);
 
         Button btnLogin = findViewById(R.id.btnLogin);
 
