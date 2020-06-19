@@ -8,7 +8,7 @@
         <menu>
             <item
                 android:id="@+id/nav_calculator"
-                android:icon="@drawable/ic_menu_calculator_24"
+                android:icon="@drawable/ic_calculator_24"
                 android:title="@string/txtDrawerMenuCalculator"></item>
         </menu>
     </item>
@@ -17,15 +17,15 @@
         <menu>
             <item
                 android:id="@+id/nav_add_client"
-                android:icon="@drawable/ic_menu_add"
+                android:icon="@drawable/ic_add"
                 android:title="@string/txtDrawerMenuAddClient"></item>
             <item
                 android:id="@+id/nav_add_animal"
-                android:icon="@drawable/ic_menu_add"
+                android:icon="@drawable/ic_add"
                 android:title="@string/txtDrawerMenuAddAnimal"></item>
             <item
                 android:id="@+id/nav_query_client"
-                android:icon="@drawable/ic_menu_query"
+                android:icon="@drawable/ic_query"
                 android:title="@string/txtDrawerMenuQuery"></item>
         </menu>
     </item>
@@ -34,11 +34,11 @@
         <menu>
             <item
                 android:id="@+id/nav_add_vaccine"
-                android:icon="@drawable/ic_menu_add"
+                android:icon="@drawable/ic_add"
                 android:title="@string/txtDrawerMenuAdd"></item>
             <item
                 android:id="@+id/nav_query_vaccine"
-                android:icon="@drawable/ic_menu_query"
+                android:icon="@drawable/ic_query"
                 android:title="@string/txtDrawerMenuQuery"></item>
         </menu>
     </item>
@@ -47,7 +47,7 @@
         <menu>
             <item
                 android:id="@+id/nav_logout"
-                android:icon="@drawable/ic_menu_logout"
+                android:icon="@drawable/ic_logoff_24"
                 android:title="@string/txtDrawerMenuLogout" />
         </menu>
     </item>
