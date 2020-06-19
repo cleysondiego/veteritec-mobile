@@ -21,18 +21,11 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TimePicker;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.HashMap;
 import java.util.Locale;
-import java.util.Map;
 
 import br.com.veteritec.R;
 
@@ -50,14 +43,11 @@ public class AddVaccineActivity extends AppCompatActivity implements View.OnClic
     Button btnDate;
     Button btnSave;
 
-    private FirebaseFirestore firebaseFirestore;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_vaccine);
 
-        firebaseFirestore = FirebaseFirestore.getInstance();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(R.string.txtAddVaccineTitle);
@@ -134,7 +124,6 @@ public class AddVaccineActivity extends AppCompatActivity implements View.OnClic
                 finish();
                 break;
             case R.id.nav_logout:
-                FirebaseAuth.getInstance().signOut();
                 finish();
                 break;
         }
@@ -185,36 +174,5 @@ public class AddVaccineActivity extends AppCompatActivity implements View.OnClic
         new DatePickerDialog(AddVaccineActivity.this, dateSetListener, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
     }
 
-    private void saveVaccine() {
-        String veterinary = ""; // spnVeterinary.getSelectedItem().toString();
-        String client = ""; // spnClient.getSelectedItem().toString();
-
-        String edtDate = this.edtDate.getText().toString();
-        String edtTime = this.edtTime.getText().toString();
-        String edtDescription = this.edtDescription.getText().toString();
-
-        Map<String, String> newVaccine = new HashMap<>();
-        newVaccine.put("veterinary", veterinary);
-        newVaccine.put("client", client);
-        newVaccine.put("date", edtDate);
-        newVaccine.put("time", edtTime);
-        newVaccine.put("description", edtDescription);
-
-        firebaseFirestore
-                .collection("customer")
-                .document("bichodamata")
-                .collection("vaccines")
-                .add(newVaccine)
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-            @Override
-            public void onSuccess(DocumentReference documentReference) {
-                Log.d("VETERITEC", "Documento adicionado com sucesso: " + documentReference.getPath());
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Log.w("VETERITEC", "Campo falhou com a excessão: " + e);
-            }
-        });
-    }
+    private void saveVaccine() {}
 }

@@ -19,7 +19,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
-import com.google.firebase.auth.FirebaseAuth;
 
 import java.text.DecimalFormat;
 
@@ -111,7 +110,6 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
                 finish();
                 break;
             case R.id.nav_logout:
-                FirebaseAuth.getInstance().signOut();
                 finish();
                 break;
         }

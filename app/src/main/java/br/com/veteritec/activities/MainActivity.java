@@ -7,29 +7,35 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.google.android.material.navigation.NavigationView;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 import br.com.veteritec.R;
+import br.com.veteritec.utils.SharedPreferencesUtils;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    private FirebaseAuth mAuth;
+    private Context context;
     private DrawerLayout drawer;
+
+    private boolean isLogged = false;
+    private String userName = "";
+    private String userToken = "";
+    private String userClinicId = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mAuth = FirebaseAuth.getInstance();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
+        context = getApplicationContext();
 
-        if (currentUser == null) {
+        getUserDataFromSharedPreferences(context);
+
+        if (!isLogged || userToken.equals("")) {
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
             finish();
@@ -52,10 +58,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void onResume() {
         super.onResume();
 
-        mAuth = FirebaseAuth.getInstance();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-
-        if (currentUser == null) {
+        if (!isLogged || userToken.equals("")) {
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
             finish();
@@ -90,8 +93,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(queryVaccine);
                 break;
             case R.id.nav_logout:
-                FirebaseAuth.getInstance().signOut();
-                recreate();
+                logoffUser(context);
                 break;
         }
         drawer.closeDrawer(GravityCompat.START);
@@ -105,5 +107,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else {
             super.onBackPressed();
         }
+    }
+
+    private void getUserDataFromSharedPreferences(Context context) {
+        SharedPreferencesUtils sharedPreferencesUtils = new SharedPreferencesUtils();
+        isLogged = sharedPreferencesUtils.isLogged(context);
+        userName = sharedPreferencesUtils.getUserName(context);
+        userToken = sharedPreferencesUtils.getUserToken(context);
+        userClinicId = sharedPreferencesUtils.getUserClinicId(context);
+    }
+
+    private void logoffUser(Context context) {
+        SharedPreferencesUtils sharedPreferencesUtils = new SharedPreferencesUtils();
+        sharedPreferencesUtils.setLogoff(context);
+        recreate();
     }
 }

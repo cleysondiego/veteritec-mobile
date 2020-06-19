@@ -18,7 +18,6 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
-import com.google.firebase.auth.FirebaseAuth;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -94,7 +93,6 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
                 finish();
                 break;
             case R.id.nav_logout:
-                FirebaseAuth.getInstance().signOut();
                 finish();
                 break;
         }
