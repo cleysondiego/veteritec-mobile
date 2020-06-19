@@ -24,9 +24,142 @@
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             app:titleTextColor="#FFFFFF" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imgLogo"
+                android:layout_width="match_parent"
+                android:layout_height="200sp"
+                android:layout_marginStart="16sp"
+                android:layout_marginTop="16sp"
+                android:layout_marginEnd="16sp"
+                android:layout_marginBottom="8sp"
+                android:contentDescription="@string/cdMainMenuLogo"
+                app:srcCompat="@drawable/veteritec_logo" />
+
+            <TextView
+                android:id="@+id/txtTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16sp"
+                android:layout_marginTop="8sp"
+                android:layout_marginEnd="16sp"
+                android:layout_marginBottom="8sp"
+                android:layout_weight="1"
+                android:text="@string/txtMainMenuTitle"
+                android:textAlignment="center"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/txtTools"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16sp"
+                android:layout_marginTop="8sp"
+                android:layout_marginEnd="16sp"
+                android:layout_marginBottom="8sp"
+                android:text="@string/txtMainMenuTools"
+                android:textSize="24sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imgCalculator"
+                    android:layout_width="96sp"
+                    android:layout_height="96sp"
+                    android:layout_marginStart="16sp"
+                    android:layout_marginTop="8sp"
+                    android:layout_marginEnd="16sp"
+                    android:layout_marginBottom="8sp"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/cdMainMenuCalculator"
+                    app:srcCompat="@drawable/ic_menu_calculator_24" />
+
+                <ImageView
+                    android:id="@+id/imgClient"
+                    android:layout_width="96sp"
+                    android:layout_height="96sp"
+                    android:layout_marginStart="16sp"
+                    android:layout_marginTop="8sp"
+                    android:layout_marginEnd="16sp"
+                    android:layout_marginBottom="8sp"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/cdMainMenuClient"
+                    app:srcCompat="@drawable/ic_client_24" />
+
+                <ImageView
+                    android:id="@+id/imgClient3"
+                    android:layout_width="96sp"
+                    android:layout_height="96sp"
+                    android:layout_marginStart="16sp"
+                    android:layout_marginTop="8sp"
+                    android:layout_marginEnd="16sp"
+                    android:layout_marginBottom="8sp"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/cdMainMenuHealing"
+                    app:srcCompat="@drawable/ic_healing_24" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txtCalculator"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16sp"
+                    android:layout_marginTop="8sp"
+                    android:layout_marginEnd="16sp"
+                    android:layout_marginBottom="8sp"
+                    android:layout_weight="1"
+                    android:text="@string/txtMainMenuCalculator"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:id="@+id/txtClient"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16sp"
+                    android:layout_marginTop="8sp"
+                    android:layout_marginEnd="16sp"
+                    android:layout_marginBottom="8sp"
+                    android:layout_weight="1"
+                    android:text="@string/txtMainMenuClient"
+                    android:textAlignment="center" />
+
+                <TextView
+                    android:id="@+id/txtHealing"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16sp"
+                    android:layout_marginTop="8sp"
+                    android:layout_marginEnd="16sp"
+                    android:layout_marginBottom="8sp"
+                    android:layout_weight="1"
+                    android:text="@string/txtMainMenuHealing"
+                    android:textAlignment="center" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/txtCredits"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16sp"
+                android:layout_marginTop="8sp"
+                android:layout_marginEnd="16sp"
+                android:layout_marginBottom="8sp"
+                android:layout_weight="1"
+                android:gravity="bottom"
+                android:text="@string/txtMainMenuCredits" />
+        </LinearLayout>
 
     </LinearLayout>
 

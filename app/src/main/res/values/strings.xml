@@ -2,6 +2,18 @@
     <string name="app_name">Veteritec</string>"
     <string name="main_menu">Menu Principal</string>
 
+    <!-- Main Menu Page -->
+    <string name="txtMainMenuTitle">Sistema Gerenciador de Clínicas Veterinárias</string>
+    <string name="txtMainMenuTools">Funcionalidades do aplicativo:</string>
+    <string name="cdMainMenuLogo">Esta imagem representa o logotipo do aplicativo.</string>
+    <string name="cdMainMenuCalculator">Esta imagem representa a calculadora do aplicativo.</string>
+    <string name="cdMainMenuClient">Esta imagem representa o gerenciamento de clientes do aplicativo.</string>
+    <string name="cdMainMenuHealing">Esta imagem representa o gerenciamento de vacinas do aplicativo.</string>
+    <string name="txtMainMenuCalculator">Calculadora de Doses</string>
+    <string name="txtMainMenuClient">Gerenciamento de Clientes</string>
+    <string name="txtMainMenuHealing">Gerenciamento de Vacinas</string>
+    <string name="txtMainMenuCredits">Desenvolvido por:\n- Alan de Jesus Elias de Souza;\n- Cleyson Diego da Silva;\n- Igor Tricarico Marques;\n- Mauricio Tomesani Furlan.</string>
+
     <!-- Login Page -->
     <string name="txtLoginClinic">Escolha sua clínica:</string>
     <string name="edtLoginLogin">Digite o seu email</string>
