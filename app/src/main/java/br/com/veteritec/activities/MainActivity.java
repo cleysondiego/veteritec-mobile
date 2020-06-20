@@ -77,7 +77,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(addClient);
                 break;
             case R.id.nav_query_client:
-                Intent queryClient = new Intent(this, QueryClientActivity.class);
+                Intent queryClient = new Intent(this, QueryActivity.class);
+                queryClient.putExtra("Client", 1);
                 startActivity(queryClient);
                 break;
             case R.id.nav_add_animal:
@@ -89,7 +90,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(addVaccine);
                 break;
             case R.id.nav_query_vaccine:
-                Intent queryVaccine = new Intent(this, QueryVaccineActivity.class);
+                Intent queryVaccine = new Intent(this, QueryActivity.class);
+                queryVaccine.putExtra("Vaccine", 2);
                 startActivity(queryVaccine);
                 break;
             case R.id.nav_logout:

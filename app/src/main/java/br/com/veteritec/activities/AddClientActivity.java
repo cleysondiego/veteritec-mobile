@@ -47,8 +47,10 @@ public class AddClientActivity extends AppCompatActivity implements NavigationVi
             case R.id.nav_add_client:
                 break;
             case R.id.nav_query_client:
-                Intent queryClient = new Intent(this, QueryClientActivity.class);
+                Intent queryClient = new Intent(this, QueryActivity.class);
+                queryClient.putExtra("Client", 1);
                 startActivity(queryClient);
+                finish();
                 break;
             case R.id.nav_add_animal:
                 Intent addAnimal = new Intent(this, AddAnimalActivity.class);
@@ -61,7 +63,8 @@ public class AddClientActivity extends AppCompatActivity implements NavigationVi
                 finish();
                 break;
             case R.id.nav_query_vaccine:
-                Intent queryVaccine = new Intent(this, QueryVaccineActivity.class);
+                Intent queryVaccine = new Intent(this, QueryActivity.class);
+                queryVaccine.putExtra("Vaccine", 2);
                 startActivity(queryVaccine);
                 finish();
                 break;
