@@ -19,6 +19,7 @@
     <string name="txtLoginClinic">Escolha sua clínica:</string>
     <string name="txtLoginEmail">E-mail:</string>
     <string name="txtLoginPassword">Senha:</string>
+    <string name="txtLoginLoading">Carregando</string>
     <string name="edtLoginEmail">Digite o seu email</string>
     <string name="edtLoginPassword">Digite a sua senha</string>
     <string name="cdLoginLogo">Esta imagem representa o logotipo do aplicativo.</string>
