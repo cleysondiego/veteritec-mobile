@@ -4,10 +4,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ClinicResponseStructure {
+public class ClinicResponseStructure implements Serializable {
     private List<Clinic> clinics = new ArrayList<>();
 
     public List<Clinic> getClinics() {
@@ -28,7 +29,7 @@ public class ClinicResponseStructure {
         return this;
     }
 
-    public static class Clinic {
+    public static class Clinic implements Serializable {
         private String id;
         private String name;
 
