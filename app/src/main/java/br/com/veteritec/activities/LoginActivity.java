@@ -22,6 +22,7 @@ import br.com.veteritec.login.LoginRequestStructure;
 import br.com.veteritec.login.LoginUseCase;
 import br.com.veteritec.usecase.ThreadExecutor;
 import br.com.veteritec.utils.ApiRequest;
+import br.com.veteritec.utils.LoadingDialog;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     private Context context;
@@ -115,7 +116,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void doLogin() {
+        final LoadingDialog loadingDialog = new LoadingDialog(LoginActivity.this);
         LoginRequestStructure loginRequestStructure = new LoginRequestStructure();
+
+        loadingDialog.startLoadingDialog();
 
         loginRequestStructure.setEmail(etLogin.getText().toString());
         loginRequestStructure.setPassword(etPassword.getText().toString());
@@ -134,16 +138,18 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         loginUseCase.setCallback(new LoginUseCase.OnLoginCallback() {
             @Override
             public void onSuccess() {
+                loadingDialog.dismissLoadingDialog();
                 Toast.makeText(context, "Logado com sucesso!", Toast.LENGTH_SHORT).show();
                 goToMainActivity();
             }
 
             @Override
             public void onFailure(int statusCode) {
+                loadingDialog.dismissLoadingDialog();
                 if (statusCode == 400) {
                     Toast.makeText(context, "Usuário e/ou senha incorretos!", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(context, "Ocorreu um erro durante o login, verifique os dados etente novamente!" + statusCode, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Ocorreu um erro durante o login, verifique os dados e tente novamente!" + statusCode, Toast.LENGTH_SHORT).show();
                 }
             }
         });
