@@ -35,7 +35,7 @@ public class SplashActivity extends AppCompatActivity {
         intent.putExtra("CLINIC_STRUCTURE", clinicResponseStructure);
         startActivity(intent);
 
-        this.finish();
+        finish();
     }
 
     private void getClinics() {
