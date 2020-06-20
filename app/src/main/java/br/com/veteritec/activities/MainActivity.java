@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import com.google.android.material.navigation.NavigationView;
 
 import br.com.veteritec.R;
+import br.com.veteritec.clinics.ClinicResponseStructure;
 import br.com.veteritec.utils.SharedPreferencesUtils;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -26,10 +27,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private String userToken = "";
     private String userClinicId = "";
 
+    private ClinicResponseStructure clinicResponseStructure;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        clinicResponseStructure = (ClinicResponseStructure) getIntent().getSerializableExtra("CLINIC_STRUCTURE");
 
         context = getApplicationContext();
 
@@ -37,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         if (!isLogged || userToken.equals("")) {
             Intent intent = new Intent(this, LoginActivity.class);
+            intent.putExtra("CLINIC_STRUCTURE", clinicResponseStructure);
             startActivity(intent);
             finish();
         }
@@ -60,6 +66,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         if (!isLogged || userToken.equals("")) {
             Intent intent = new Intent(this, LoginActivity.class);
+            intent.putExtra("CLINIC_STRUCTURE", clinicResponseStructure);
             startActivity(intent);
             finish();
         }
