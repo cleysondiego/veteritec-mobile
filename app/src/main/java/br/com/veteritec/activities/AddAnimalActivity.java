@@ -76,7 +76,8 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
                 finish();
                 break;
             case R.id.nav_query_client:
-                Intent queryClient = new Intent(this, QueryClientActivity.class);
+                Intent queryClient = new Intent(this, QueryActivity.class);
+                queryClient.putExtra("Client", 1);
                 startActivity(queryClient);
                 finish();
                 break;
@@ -88,7 +89,8 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
                 finish();
                 break;
             case R.id.nav_query_vaccine:
-                Intent queryVaccine = new Intent(this, QueryVaccineActivity.class);
+                Intent queryVaccine = new Intent(this, QueryActivity.class);
+                queryVaccine.putExtra("Vaccine", 2);
                 startActivity(queryVaccine);
                 finish();
                 break;
