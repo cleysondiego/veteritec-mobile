@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -59,7 +60,15 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
     }
 
     public void onClick(View v) {
-        showDateDialog(edtAnimalBirthDate);
+        if (v.getId() == R.id.btnDate) {
+            showDateDialog(edtAnimalBirthDate);
+        } else if (v.getId() == R.id.btnSave) {
+            Toast.makeText(this, "Informações salvas!", Toast.LENGTH_SHORT).show();
+        } else if (v.getId() == R.id.btnEdit) {
+            Toast.makeText(this, "Edição habilitada!", Toast.LENGTH_SHORT).show();
+        } else if (v.getId() == R.id.btnDelete) {
+            Toast.makeText(this, "Informações deletadas!", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
@@ -119,7 +128,7 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
                 calendar.set(Calendar.YEAR, year);
                 calendar.set(Calendar.MONTH, month);
                 calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yy", Locale.getDefault());
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
 
                 edtAnimalBirthDate.setText(simpleDateFormat.format(calendar.getTime()));
             }

@@ -134,6 +134,7 @@
 
     <!-- Add Animal Page -->
     <string name="txtAddAnimalTitle">Adicionar Animal</string>
+    <string name="txtAddAnimalOwner">Dono</string>
     <string name="txtAddAnimalName">Nome</string>
     <string name="txtAddAnimalBirthDate">Data de Nascimento</string>
     <string name="txtAddAnimalSpecies">Espécie</string>
