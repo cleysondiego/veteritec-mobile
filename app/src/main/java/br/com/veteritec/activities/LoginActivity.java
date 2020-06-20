@@ -44,7 +44,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         spnClinics = findViewById(R.id.spnClinics);
 
-        getClinics();
+        clinicResponseStructure = (ClinicResponseStructure) getIntent().getSerializableExtra("CLINIC_STRUCTURE");
+
+        if (clinicResponseStructure == null) {
+            getClinics();
+        } else {
+            populateClinicSpinner(clinicResponseStructure.getClinics());
+        }
 
         etLogin = findViewById(R.id.edtEmail);
         etPassword = findViewById(R.id.edtPassword);
