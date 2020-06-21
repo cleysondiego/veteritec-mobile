@@ -42,6 +42,24 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/txtAnimalOwner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16sp"
+                    android:layout_marginTop="16sp"
+                    android:layout_marginEnd="16sp"
+                    android:text="@string/txtAddAnimalOwner"
+                    android:textSize="24sp" />
+
+                <Spinner
+                    android:id="@+id/spnOwner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16sp"
+                    android:layout_marginTop="16sp"
+                    android:layout_marginEnd="16sp" />
+
+                <TextView
                     android:id="@+id/txtAnimalName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -226,9 +244,36 @@
             android:layout_marginEnd="16sp"
             android:layout_marginBottom="16sp"
             android:background="@drawable/ic_save_24"
+            android:onClick="onClick"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/addAnimal_form" />
+
+        <Button
+            android:id="@+id/btnEdit"
+            android:layout_width="64sp"
+            android:layout_height="64sp"
+            android:layout_gravity="end"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/ic_edit_24"
+            android:onClick="onClick"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@+id/btnSave"
+            app:layout_constraintEnd_toStartOf="@id/btnSave"
+            app:layout_constraintTop_toTopOf="@+id/btnSave" />
+
+        <Button
+            android:id="@+id/btnDelete"
+            android:layout_width="64sp"
+            android:layout_height="64sp"
+            android:layout_gravity="end"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/ic_delete_24"
+            android:onClick="onClick"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@+id/btnEdit"
+            app:layout_constraintEnd_toStartOf="@+id/btnEdit"
+            app:layout_constraintTop_toTopOf="@+id/btnEdit" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
