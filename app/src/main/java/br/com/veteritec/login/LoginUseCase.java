@@ -50,7 +50,7 @@ public class LoginUseCase extends UseCaseAbstract {
 
             String requestParams = loginRequestStructure.getStructureString();
 
-            apiRequest.post(ApiRequest.BASE_URL + "/sessions", headers, requestParams, new ApiRequest.OnResponse() {
+            apiRequest.post(ApiRequest.URL_SESSIONS, headers, requestParams, new ApiRequest.OnResponse() {
                 @Override
                 public void onResponse(int statusCode, final byte[] response) {
                     new Handler(Looper.getMainLooper()).post(new Runnable() {
