@@ -13,18 +13,18 @@
         </menu>
     </item>
 
-    <item android:title="@string/txtDrawerMenuClient">
+    <item android:title="@string/txtDrawerMenuCustomer">
         <menu>
             <item
-                android:id="@+id/nav_add_client"
+                android:id="@+id/nav_add_customer"
                 android:icon="@drawable/ic_add"
-                android:title="@string/txtDrawerMenuAddClient"></item>
+                android:title="@string/txtDrawerMenuAddCustomer"></item>
             <item
                 android:id="@+id/nav_add_animal"
                 android:icon="@drawable/ic_add"
                 android:title="@string/txtDrawerMenuAddAnimal"></item>
             <item
-                android:id="@+id/nav_query_client"
+                android:id="@+id/nav_query_customer"
                 android:icon="@drawable/ic_query"
                 android:title="@string/txtDrawerMenuQuery"></item>
         </menu>

@@ -50,23 +50,23 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        edtAnimalBirthDate = findViewById(R.id.edtAnimalBirthDate);
+        edtAnimalBirthDate = findViewById(R.id.edtAddAnimalBirthDate);
 
         edtAnimalBirthDate.setInputType(InputType.TYPE_NULL);
 
-        btnDate = findViewById(R.id.btnDate);
+        btnDate = findViewById(R.id.btnAddAnimalDate);
 
         btnDate.setOnClickListener(this);
     }
 
     public void onClick(View v) {
-        if (v.getId() == R.id.btnDate) {
+        if (v.getId() == R.id.btnAddAnimalDate) {
             showDateDialog(edtAnimalBirthDate);
-        } else if (v.getId() == R.id.btnSave) {
+        } else if (v.getId() == R.id.btnAddVaccineSave) {
             Toast.makeText(this, "Informações salvas!", Toast.LENGTH_SHORT).show();
-        } else if (v.getId() == R.id.btnEdit) {
+        } else if (v.getId() == R.id.btnAddAnimalEdit) {
             Toast.makeText(this, "Edição habilitada!", Toast.LENGTH_SHORT).show();
-        } else if (v.getId() == R.id.btnDelete) {
+        } else if (v.getId() == R.id.btnAddAnimalDelete) {
             Toast.makeText(this, "Informações deletadas!", Toast.LENGTH_SHORT).show();
         }
     }
@@ -79,15 +79,15 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
                 startActivity(calculator);
                 finish();
                 break;
-            case R.id.nav_add_client:
-                Intent addClient = new Intent(this, AddClientActivity.class);
-                startActivity(addClient);
+            case R.id.nav_add_customer:
+                Intent addCustomer = new Intent(this, AddCustomerActivity.class);
+                startActivity(addCustomer);
                 finish();
                 break;
-            case R.id.nav_query_client:
-                Intent queryClient = new Intent(this, QueryActivity.class);
-                queryClient.putExtra("Client", 1);
-                startActivity(queryClient);
+            case R.id.nav_query_customer:
+                Intent queryCustomer = new Intent(this, QueryActivity.class);
+                queryCustomer.putExtra("Customer", 1);
+                startActivity(queryCustomer);
                 finish();
                 break;
             case R.id.nav_add_animal:

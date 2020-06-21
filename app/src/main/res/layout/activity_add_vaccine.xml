@@ -31,7 +31,7 @@
             android:layout_width="0sp"
             android:layout_height="0sp"
             android:layout_marginBottom="4sp"
-            app:layout_constraintBottom_toTopOf="@+id/btnSave"
+            app:layout_constraintBottom_toTopOf="@+id/btnAddVaccineSave"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar">
@@ -42,7 +42,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/txtVeterinary"
+                    android:id="@+id/txtAddVaccineVeterinary"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16sp"
@@ -52,7 +52,7 @@
                     android:textSize="24sp" />
 
                 <Spinner
-                    android:id="@+id/spnVeterinary"
+                    android:id="@+id/spnAddVaccineVeterinary"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16sp"
@@ -61,26 +61,26 @@
                     android:entries="@array/veterinary_array" />
 
                 <TextView
-                    android:id="@+id/txtClient"
+                    android:id="@+id/txtAddVaccineClient"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16sp"
                     android:layout_marginTop="16sp"
                     android:layout_marginEnd="16sp"
-                    android:text="@string/txtAddVaccineClient"
+                    android:text="@string/txtAddVaccineCustomer"
                     android:textSize="24sp" />
 
                 <Spinner
-                    android:id="@+id/spnClient"
+                    android:id="@+id/spnAddVaccineClient"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16sp"
                     android:layout_marginTop="16sp"
                     android:layout_marginEnd="16sp"
-                    android:entries="@array/client_array" />
+                    android:entries="@array/customer_array" />
 
                 <TextView
-                    android:id="@+id/txtAnimal"
+                    android:id="@+id/txtAddVaccineAnimal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16sp"
@@ -90,7 +90,7 @@
                     android:textSize="24sp" />
 
                 <Spinner
-                    android:id="@+id/spnAnimal"
+                    android:id="@+id/spnAddVaccineAnimal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16sp"
@@ -104,7 +104,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/txtDate"
+                        android:id="@+id/txtAddVaccineDate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16sp"
@@ -116,7 +116,7 @@
                         android:textSize="24sp" />
 
                     <TextView
-                        android:id="@+id/txtTime"
+                        android:id="@+id/txtAddVaccineTime"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8sp"
@@ -135,7 +135,7 @@
                     android:orientation="horizontal">
 
                     <EditText
-                        android:id="@+id/edtDate"
+                        android:id="@+id/edtAddVaccineDate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16sp"
@@ -148,7 +148,7 @@
                         android:textSize="18sp" />
 
                     <Button
-                        android:id="@+id/btnDate"
+                        android:id="@+id/btnAddVaccineDate"
                         android:layout_width="36sp"
                         android:layout_height="36sp"
                         android:layout_marginStart="8sp"
@@ -158,7 +158,7 @@
                         android:background="@drawable/ic_add_date" />
 
                     <EditText
-                        android:id="@+id/edtTime"
+                        android:id="@+id/edtAddVaccineTime"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8sp"
@@ -171,7 +171,7 @@
                         android:textSize="18sp" />
 
                     <Button
-                        android:id="@+id/btnTime"
+                        android:id="@+id/btnAddVaccineTime"
                         android:layout_width="36sp"
                         android:layout_height="36sp"
                         android:layout_marginStart="8sp"
@@ -182,7 +182,7 @@
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/txtTools"
+                    android:id="@+id/txtAddVaccineTools"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16sp"
@@ -192,7 +192,7 @@
                     android:textSize="24sp" />
 
                 <EditText
-                    android:id="@+id/edtDescription"
+                    android:id="@+id/edtAddVaccineDescription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16sp"
@@ -209,18 +209,45 @@
         </ScrollView>
 
         <Button
-            android:id="@+id/btnSave"
+            android:id="@+id/btnAddVaccineSave"
             android:layout_width="64sp"
             android:layout_height="64sp"
-            android:layout_marginTop="4sp"
-            android:layout_marginEnd="16sp"
-            android:layout_marginBottom="16sp"
+            android:layout_gravity="end"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
             android:background="@drawable/ic_save_24"
-            android:gravity="start"
-            android:textSize="18sp"
+            android:onClick="onClick"
+            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/addVaccine_form" />
+
+        <Button
+            android:id="@+id/btnAddVaccineEdit"
+            android:layout_width="64sp"
+            android:layout_height="64sp"
+            android:layout_gravity="end"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/ic_edit_24"
+            android:onClick="onClick"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@+id/btnAddVaccineSave"
+            app:layout_constraintEnd_toStartOf="@+id/btnAddVaccineSave"
+            app:layout_constraintTop_toTopOf="@+id/btnAddVaccineSave" />
+
+        <Button
+            android:id="@+id/btnAddVaccineDelete"
+            android:layout_width="64sp"
+            android:layout_height="64sp"
+            android:layout_gravity="end"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/ic_delete_24"
+            android:onClick="onClick"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@+id/btnAddVaccineEdit"
+            app:layout_constraintEnd_toStartOf="@+id/btnAddVaccineEdit"
+            app:layout_constraintTop_toTopOf="@+id/btnAddVaccineEdit" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

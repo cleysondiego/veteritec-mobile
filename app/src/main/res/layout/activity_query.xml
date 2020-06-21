@@ -29,32 +29,32 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/txtClient"
+                android:id="@+id/txtCustomer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="8dp"
-                android:text="@string/txtDrawerMenuClient"
+                android:text="@string/txtQueryCustomer"
                 android:textSize="24sp"
-                app:layout_constraintEnd_toStartOf="@+id/edtClient"
+                app:layout_constraintEnd_toStartOf="@+id/edtCustomer"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                android:id="@+id/edtClient"
+                android:id="@+id/edtCustomer"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
-                android:autofillHints="@string/edtQueryVaccineClient"
+                android:autofillHints="@string/edtQueryCustomer"
                 android:ems="10"
-                android:hint="@string/edtQueryVaccineClient"
+                android:hint="@string/edtQueryCustomer"
                 android:inputType="textPersonName"
                 android:textSize="18sp"
-                app:layout_constraintBaseline_toBaselineOf="@id/txtClient"
+                app:layout_constraintBaseline_toBaselineOf="@id/txtCustomer"
                 app:layout_constraintEnd_toStartOf="@+id/btnSearch"
-                app:layout_constraintStart_toEndOf="@+id/txtClient" />
+                app:layout_constraintStart_toEndOf="@+id/txtCustomer" />
 
             <Button
                 android:id="@+id/btnSearch"
@@ -65,7 +65,7 @@
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/ic_query_search"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/edtClient"
+                app:layout_constraintStart_toEndOf="@+id/edtCustomer"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ListView
@@ -79,7 +79,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/edtClient" />
+                app:layout_constraintTop_toBottomOf="@+id/edtCustomer" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
