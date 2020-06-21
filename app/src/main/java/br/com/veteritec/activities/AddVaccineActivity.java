@@ -61,19 +61,19 @@ public class AddVaccineActivity extends AppCompatActivity implements View.OnClic
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        spnVeterinary = findViewById(R.id.spnVeterinary);
-        spnClient = findViewById(R.id.spnClient);
+        spnVeterinary = findViewById(R.id.spnAddVaccineVeterinary);
+        spnClient = findViewById(R.id.spnAddVaccineClient);
 
-        edtDate = findViewById(R.id.edtDate);
-        edtTime = findViewById(R.id.edtTime);
-        edtDescription = findViewById(R.id.edtDescription);
+        edtDate = findViewById(R.id.edtAddVaccineDate);
+        edtTime = findViewById(R.id.edtAddVaccineTime);
+        edtDescription = findViewById(R.id.edtAddVaccineDescription);
 
         edtDate.setInputType(InputType.TYPE_NULL);
         edtTime.setInputType(InputType.TYPE_NULL);
 
-        btnTime = findViewById(R.id.btnTime);
-        btnDate = findViewById(R.id.btnDate);
-        btnSave = findViewById(R.id.btnSave);
+        btnTime = findViewById(R.id.btnAddVaccineTime);
+        btnDate = findViewById(R.id.btnAddVaccineDate);
+        btnSave = findViewById(R.id.btnAddVaccineSave);
 
         btnTime.setOnClickListener(this);
         btnDate.setOnClickListener(this);
@@ -83,11 +83,11 @@ public class AddVaccineActivity extends AppCompatActivity implements View.OnClic
     @Override
     public void onClick(View v) {
         int id = v.getId();
-        if (id == R.id.btnDate) {
+        if (id == R.id.btnAddVaccineDate) {
             showDateDialog(edtDate);
-        } else if (id == R.id.btnTime) {
+        } else if (id == R.id.btnAddVaccineTime) {
             showTimeDialog(edtTime);
-        } else if (id == R.id.btnSave) {
+        } else if (id == R.id.btnAddVaccineSave) {
 
             saveVaccine();
             Log.e("VETERITEC", "CHAMOU O SAVE VACINE");
@@ -102,15 +102,15 @@ public class AddVaccineActivity extends AppCompatActivity implements View.OnClic
                 startActivity(calculator);
                 finish();
                 break;
-            case R.id.nav_add_client:
-                Intent addClient = new Intent(this, AddClientActivity.class);
-                startActivity(addClient);
+            case R.id.nav_add_customer:
+                Intent addCustomer = new Intent(this, AddCustomerActivity.class);
+                startActivity(addCustomer);
                 finish();
                 break;
-            case R.id.nav_query_client:
-                Intent queryClient = new Intent(this, QueryActivity.class);
-                queryClient.putExtra("Client", 1);
-                startActivity(queryClient);
+            case R.id.nav_query_customer:
+                Intent queryCustomer = new Intent(this, QueryActivity.class);
+                queryCustomer.putExtra("Customer", 1);
+                startActivity(queryCustomer);
                 finish();
                 break;
             case R.id.nav_add_animal:
@@ -168,7 +168,7 @@ public class AddVaccineActivity extends AppCompatActivity implements View.OnClic
                 calendar.set(Calendar.YEAR, year);
                 calendar.set(Calendar.MONTH, month);
                 calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yy", Locale.getDefault());
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
 
                 edtDate.setText(simpleDateFormat.format(calendar.getTime()));
             }

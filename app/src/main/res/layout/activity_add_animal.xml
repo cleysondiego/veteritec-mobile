@@ -31,7 +31,7 @@
             android:layout_width="0sp"
             android:layout_height="0sp"
             android:layout_marginBottom="4sp"
-            app:layout_constraintBottom_toTopOf="@+id/btnSave"
+            app:layout_constraintBottom_toTopOf="@+id/btnAddAnimalSave"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar">
@@ -42,7 +42,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/txtAnimalOwner"
+                    android:id="@+id/txtAddAnimalOwner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16sp"
@@ -52,7 +52,7 @@
                     android:textSize="24sp" />
 
                 <Spinner
-                    android:id="@+id/spnOwner"
+                    android:id="@+id/spnAddAnimalOwner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16sp"
@@ -60,7 +60,7 @@
                     android:layout_marginEnd="16sp" />
 
                 <TextView
-                    android:id="@+id/txtAnimalName"
+                    android:id="@+id/txtAddAnimalName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16sp"
@@ -70,7 +70,7 @@
                     android:textSize="24sp" />
 
                 <EditText
-                    android:id="@+id/edtAnimalName"
+                    android:id="@+id/edtAddAnimalName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16sp"
@@ -82,7 +82,7 @@
                     android:inputType="textPersonName" />
 
                 <TextView
-                    android:id="@+id/txtAnimalBirthDate"
+                    android:id="@+id/txtAddAnimalBirthDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16sp"
@@ -97,7 +97,7 @@
                     android:orientation="horizontal">
 
                     <EditText
-                        android:id="@+id/edtAnimalBirthDate"
+                        android:id="@+id/edtAddAnimalBirthDate"
                         android:layout_width="0sp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16sp"
@@ -111,7 +111,7 @@
                         android:inputType="date" />
 
                     <Button
-                        android:id="@+id/btnDate"
+                        android:id="@+id/btnAddAnimalDate"
                         android:layout_width="36sp"
                         android:layout_height="36sp"
                         android:layout_marginTop="16sp"
@@ -121,7 +121,7 @@
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/txtAnimalSpecies"
+                    android:id="@+id/txtAddAnimalSpecies"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16sp"
@@ -131,7 +131,7 @@
                     android:textSize="24sp" />
 
                 <EditText
-                    android:id="@+id/edtAnimalSpecies"
+                    android:id="@+id/edtAddAnimalSpecies"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16sp"
@@ -143,7 +143,7 @@
                     android:inputType="text" />
 
                 <TextView
-                    android:id="@+id/txtAnimalRace"
+                    android:id="@+id/txtAddAnimalRace"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16sp"
@@ -153,7 +153,7 @@
                     android:textSize="24sp" />
 
                 <EditText
-                    android:id="@+id/edtAnimalRace"
+                    android:id="@+id/edtAddAnimalRace"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16sp"
@@ -165,7 +165,7 @@
                     android:inputType="text" />
 
                 <TextView
-                    android:id="@+id/txtAnimalSize"
+                    android:id="@+id/txtAddAnimalSize"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16sp"
@@ -175,7 +175,7 @@
                     android:textSize="24sp" />
 
                 <EditText
-                    android:id="@+id/edtAnimalSize"
+                    android:id="@+id/edtAddAnimalSize"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16sp"
@@ -188,7 +188,7 @@
                     tools:ignore="TextFields" />
 
                 <TextView
-                    android:id="@+id/txtAnimalWeight"
+                    android:id="@+id/txtAddAnimalWeight"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16sp"
@@ -198,7 +198,7 @@
                     android:textSize="24sp" />
 
                 <EditText
-                    android:id="@+id/edtAnimalWeight"
+                    android:id="@+id/edtAddAnimalWeight"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16sp"
@@ -211,7 +211,7 @@
                     tools:ignore="TextFields" />
 
                 <TextView
-                    android:id="@+id/txtAnimalObservation"
+                    android:id="@+id/txtAddAnimalObservation"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16sp"
@@ -221,7 +221,7 @@
                     android:textSize="24sp" />
 
                 <EditText
-                    android:id="@+id/edtAnimalObservation"
+                    android:id="@+id/edtAddAnimalObservation"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16sp"
@@ -236,7 +236,7 @@
         </ScrollView>
 
         <Button
-            android:id="@+id/btnSave"
+            android:id="@+id/btnAddAnimalSave"
             android:layout_width="64sp"
             android:layout_height="64sp"
             android:layout_gravity="end"
@@ -250,7 +250,7 @@
             app:layout_constraintTop_toBottomOf="@+id/addAnimal_form" />
 
         <Button
-            android:id="@+id/btnEdit"
+            android:id="@+id/btnAddAnimalEdit"
             android:layout_width="64sp"
             android:layout_height="64sp"
             android:layout_gravity="end"
@@ -258,12 +258,12 @@
             android:background="@drawable/ic_edit_24"
             android:onClick="onClick"
             android:visibility="invisible"
-            app:layout_constraintBottom_toBottomOf="@+id/btnSave"
-            app:layout_constraintEnd_toStartOf="@id/btnSave"
-            app:layout_constraintTop_toTopOf="@+id/btnSave" />
+            app:layout_constraintBottom_toBottomOf="@+id/btnAddAnimalSave"
+            app:layout_constraintEnd_toStartOf="@id/btnAddAnimalSave"
+            app:layout_constraintTop_toTopOf="@+id/btnAddAnimalSave" />
 
         <Button
-            android:id="@+id/btnDelete"
+            android:id="@+id/btnAddAnimalDelete"
             android:layout_width="64sp"
             android:layout_height="64sp"
             android:layout_gravity="end"
@@ -271,9 +271,9 @@
             android:background="@drawable/ic_delete_24"
             android:onClick="onClick"
             android:visibility="invisible"
-            app:layout_constraintBottom_toBottomOf="@+id/btnEdit"
-            app:layout_constraintEnd_toStartOf="@+id/btnEdit"
-            app:layout_constraintTop_toTopOf="@+id/btnEdit" />
+            app:layout_constraintBottom_toBottomOf="@+id/btnAddAnimalEdit"
+            app:layout_constraintEnd_toStartOf="@+id/btnAddAnimalEdit"
+            app:layout_constraintTop_toTopOf="@+id/btnAddAnimalEdit" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

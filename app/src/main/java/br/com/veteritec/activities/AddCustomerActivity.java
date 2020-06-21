@@ -25,7 +25,7 @@ import br.com.veteritec.usecase.ThreadExecutor;
 import br.com.veteritec.utils.ApiRequest;
 import br.com.veteritec.utils.SharedPreferencesUtils;
 
-public class AddClientActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
+public class AddCustomerActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
     private Context context;
     private DrawerLayout drawer;
 
@@ -47,33 +47,33 @@ public class AddClientActivity extends AppCompatActivity implements NavigationVi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_client);
+        setContentView(R.layout.activity_add_customer);
 
         context = getApplicationContext();
 
         getUserDataFromSharedPreferences();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle(R.string.txtAddClientTitle);
+        toolbar.setTitle(R.string.txtAddCustomerTitle);
         setSupportActionBar(toolbar);
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        drawer = findViewById(R.id.drawer_add_client);
+        drawer = findViewById(R.id.drawer_add_customer);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        edtCustomerName = findViewById(R.id.edtClientName);
-        edtCustomerCpf = findViewById(R.id.edtClientCPF);
-        edtCustomerCep = findViewById(R.id.edtClientCEP);
-        edtCustomerNeighborhood = findViewById(R.id.edtClientNeighborhood);
-        edtCustomerStreet = findViewById(R.id.edtClientStreet);
-        edtCustomerNumber = findViewById(R.id.edtClientNumber);
-        edtCustomerTelephone = findViewById(R.id.edtClientTelephone);
-        edtCustomerCellPhone = findViewById(R.id.edtClientCellphone);
-        edtCustomerEmail = findViewById(R.id.edtClientEmail);
+        edtCustomerName = findViewById(R.id.edtAddCustomerName);
+        edtCustomerCpf = findViewById(R.id.edtAddCustomerCPF);
+        edtCustomerCep = findViewById(R.id.edtAddCustomerCEP);
+        edtCustomerNeighborhood = findViewById(R.id.edtAddCustomerNeighborhood);
+        edtCustomerStreet = findViewById(R.id.edtAddCustomerStreet);
+        edtCustomerNumber = findViewById(R.id.edtAddCustomerNumber);
+        edtCustomerTelephone = findViewById(R.id.edtAddCustomerTelephone);
+        edtCustomerCellPhone = findViewById(R.id.edtAddCustomerCellphone);
+        edtCustomerEmail = findViewById(R.id.edtAddCustomerEmail);
 
         btnSave = findViewById(R.id.btnAddCustomerSave);
         btnSave.setOnClickListener(this);
@@ -87,12 +87,12 @@ public class AddClientActivity extends AppCompatActivity implements NavigationVi
                 startActivity(calculator);
                 finish();
                 break;
-            case R.id.nav_add_client:
+            case R.id.nav_add_customer:
                 break;
-            case R.id.nav_query_client:
-                Intent queryClient = new Intent(this, QueryActivity.class);
-                queryClient.putExtra("Client", 1);
-                startActivity(queryClient);
+            case R.id.nav_query_customer:
+                Intent queryCustomer = new Intent(this, QueryActivity.class);
+                queryCustomer.putExtra("Customer", 1);
+                startActivity(queryCustomer);
                 finish();
                 break;
             case R.id.nav_add_animal:

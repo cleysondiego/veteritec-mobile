@@ -6,12 +6,12 @@
     <string name="txtMainMenuTitle">Sistema Gerenciador de Clínicas Veterinárias</string>
     <string name="txtMainMenuTools">Funcionalidades do aplicativo:</string>
     <string name="txtMainMenuCalculator">Calculadora de Doses</string>
-    <string name="txtMainMenuClient">Gerenciamento de Clientes</string>
+    <string name="txtMainMenuCustomer">Gerenciamento de Clientes</string>
     <string name="txtMainMenuHealing">Gerenciamento de Vacinas</string>
     <string name="txtMainMenuCredits">Desenvolvido por:\n- Alan de Jesus Elias de Souza;\n- Cleyson Diego da Silva;\n- Igor Tricarico Marques;\n- Mauricio Tomesani Furlan.</string>
     <string name="cdMainMenuLogo">Esta imagem representa o logotipo do aplicativo.</string>
     <string name="cdMainMenuCalculator">Esta imagem representa a calculadora do aplicativo.</string>
-    <string name="cdMainMenuClient">Esta imagem representa o gerenciamento de clientes do aplicativo.</string>
+    <string name="cdMainMenuCustomer">Esta imagem representa o gerenciamento de clientes do aplicativo.</string>
     <string name="cdMainMenuHealing">Esta imagem representa o gerenciamento de vacinas do aplicativo.</string>
 
     <!-- Login Page -->
@@ -57,11 +57,11 @@
     <!-- Drawer Menu -->
     <string name="txtDrawerMenuTools">Ferramentas</string>
     <string name="txtDrawerMenuCalculator">Calculadora</string>
-    <string name="txtDrawerMenuClient">Cliente</string>
+    <string name="txtDrawerMenuCustomer">Cliente</string>
     <string name="txtDrawerMenuAnimal">Animal</string>
     <string name="txtDrawerMenuVaccine">Vacina</string>
     <string name="txtDrawerMenuAdd">Adicionar</string>
-    <string name="txtDrawerMenuAddClient">Adicionar Cliente</string>
+    <string name="txtDrawerMenuAddCustomer">Adicionar Cliente</string>
     <string name="txtDrawerMenuAddAnimal">Adicionar Animal</string>
     <string name="txtDrawerMenuQuery">Consultar</string>
     <string name="txtDrawerMenuAccount">Conta</string>
@@ -75,7 +75,7 @@
     <string name="txtAddVaccineTitle">Adicionar Vacinação</string>
     <string name="txtAddVaccineVeterinary">Veterinário</string>
     <string name="txtAddVaccineDate">Data</string>
-    <string name="txtAddVaccineClient">Cliente</string>
+    <string name="txtAddVaccineCustomer">Cliente</string>
     <string name="txtAddVaccineHour">Hora</string>
     <string name="txtAddVaccineAnimal">Animal</string>
     <string name="txtAddVaccineDescription">Descrição</string>
@@ -90,8 +90,8 @@
         <item>Igor Tricarico Marques</item>
     </string-array>
 
-    <!-- Client Spinner -->
-    <string-array name="client_array">
+    <!-- Customer Spinner -->
+    <string-array name="customer_array">
         <item>Cleyson Diego da Silva</item>
         <item>Igor Tricarico Marques</item>
     </string-array>
@@ -103,34 +103,32 @@
         <item>Xuxu</item>
     </string-array>
 
-    <!-- Query Vaccine Page -->
+    <!-- Query Page -->
+    <string name="txtQueryCustomerTitle">Procurar Cliente</string>
     <string name="txtQueryVaccineTitle">Procurar Vacinação</string>
-    <string name="edtQueryVaccineClient">Ex: João da Silva</string>
+    <string name="txtQueryCustomer">Cliente</string>
+    <string name="edtQueryCustomer">Ex: João da Silva</string>
 
-    <!-- Add Client Page -->
-    <string name="txtAddClientTitle">Adicionar Cliente</string>
-    <string name="txtAddClientName">Nome Completo</string>
-    <string name="txtAddClientCPF">CPF</string>
-    <string name="txtAddClientCEP">CEP</string>
-    <string name="txtAddClientStreet">Rua</string>
-    <string name="txtAddClientNumber">Número</string>
-    <string name="txtAddClientNeighborhood">Bairro</string>
-    <string name="txtAddClientTelephone">Telefone (Opcional)</string>
-    <string name="txtAddClientCellphone">Celular</string>
-    <string name="txtAddClientEmail">E-mail</string>
-    <string name="edtAddClientName">Ex: José da Silva</string>
-    <string name="edtAddClientCPF">Ex: 154.468.451–57</string>
-    <string name="edtAddClientCEP">Ex: 18.584.684–1</string>
-    <string name="edtAddClientStreet">Ex: Rua das Orquídeas</string>
-    <string name="edtAddClientNumber">Ex: 502</string>
-    <string name="edtAddClientNeighborhood">Ex: Campo Bonito</string>
-    <string name="edtAddClientTelephone">Ex: (19)3845–5792</string>
-    <string name="edtAddClientCellphone">Ex: (19)99426–6248</string>
-    <string name="edtAddClientEmail">Ex: jose.silva@uol.com.br</string>
-
-    <!-- Query Client Page -->
-    <string name="txtQueryClientTitle">Procurar Cliente</string>
-    <string name="edtQueryClientClient">Ex: João da Silva</string>
+    <!-- Add Customer Page -->
+    <string name="txtAddCustomerTitle">Adicionar Cliente</string>
+    <string name="txtAddCustomerName">Nome Completo</string>
+    <string name="txtAddCustomerCPF">CPF</string>
+    <string name="txtAddCustomerCEP">CEP</string>
+    <string name="txtAddCustomerStreet">Rua</string>
+    <string name="txtAddCustomerNumber">Número</string>
+    <string name="txtAddCustomerNeighborhood">Bairro</string>
+    <string name="txtAddCustomerTelephone">Telefone (Opcional)</string>
+    <string name="txtAddCustomerCellphone">Celular</string>
+    <string name="txtAddCustomerEmail">E-mail</string>
+    <string name="edtAddCustomerName">Ex: José da Silva</string>
+    <string name="edtAddCustomerCPF">Ex: 154.468.451–57</string>
+    <string name="edtAddCustomerCEP">Ex: 18.584.684–1</string>
+    <string name="edtAddCustomerStreet">Ex: Rua das Orquídeas</string>
+    <string name="edtAddCustomerNumber">Ex: 502</string>
+    <string name="edtAddCustomerNeighborhood">Ex: Campo Bonito</string>
+    <string name="edtAddCustomerTelephone">Ex: (19)3845–5792</string>
+    <string name="edtAddCustomerCellphone">Ex: (19)99426–6248</string>
+    <string name="edtAddCustomerEmail">Ex: jose.silva@uol.com.br</string>
 
     <!-- Add Animal Page -->
     <string name="txtAddAnimalTitle">Adicionar Animal</string>

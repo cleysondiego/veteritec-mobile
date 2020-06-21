@@ -79,14 +79,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Intent calculator = new Intent(this, CalculatorActivity.class);
                 startActivity(calculator);
                 break;
-            case R.id.nav_add_client:
-                Intent addClient = new Intent(this, AddClientActivity.class);
-                startActivity(addClient);
+            case R.id.nav_add_customer:
+                Intent addCustomer = new Intent(this, AddCustomerActivity.class);
+                startActivity(addCustomer);
                 break;
-            case R.id.nav_query_client:
-                Intent queryClient = new Intent(this, QueryActivity.class);
-                queryClient.putExtra("Client", 1);
-                startActivity(queryClient);
+            case R.id.nav_query_customer:
+                Intent queryCustomer = new Intent(this, QueryActivity.class);
+                queryCustomer.putExtra("Customer", 1);
+                startActivity(queryCustomer);
                 break;
             case R.id.nav_add_animal:
                 Intent addAnimal = new Intent(this, AddAnimalActivity.class);
