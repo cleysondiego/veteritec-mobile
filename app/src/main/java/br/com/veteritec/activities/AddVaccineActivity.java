@@ -9,6 +9,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
@@ -28,9 +29,11 @@ import java.util.Calendar;
 import java.util.Locale;
 
 import br.com.veteritec.R;
+import br.com.veteritec.utils.NavigationDrawer;
 
 public class AddVaccineActivity extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawer;
+    private Context context;
 
     Spinner spnVeterinary;
     Spinner spnClient;
@@ -48,6 +51,7 @@ public class AddVaccineActivity extends AppCompatActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_vaccine);
 
+        context = getApplicationContext();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(R.string.txtAddVaccineTitle);
@@ -96,48 +100,16 @@ public class AddVaccineActivity extends AppCompatActivity implements View.OnClic
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.nav_calculator:
-                Intent calculator = new Intent(this, CalculatorActivity.class);
-                startActivity(calculator);
-                finish();
-                break;
-            case R.id.nav_add_customer:
-                Intent addCustomer = new Intent(this, AddCustomerActivity.class);
-                addCustomer.putExtra("Query", 0);
-                startActivity(addCustomer);
-                finish();
-                break;
-            case R.id.nav_query_customer:
-                Intent queryCustomer = new Intent(this, QueryActivity.class);
-                queryCustomer.putExtra("Choose", 0);
-                startActivity(queryCustomer);
-                finish();
-                break;
-            case R.id.nav_add_animal:
-                Intent addAnimal = new Intent(this, AddAnimalActivity.class);
-                startActivity(addAnimal);
-                finish();
-                break;
-            case R.id.nav_query_animal:
-                Intent queryAnimal = new Intent(this, QueryActivity.class);
-                queryAnimal.putExtra("Choose", 1);
-                startActivity(queryAnimal);
-                finish();
-                break;
-            case R.id.nav_add_vaccine:
-                break;
-            case R.id.nav_query_vaccine:
-                Intent queryVaccine = new Intent(this, QueryActivity.class);
-                queryVaccine.putExtra("Choose", 2);
-                startActivity(queryVaccine);
-                finish();
-                break;
-            case R.id.nav_logout:
-                finish();
-                break;
+        NavigationDrawer navigationDrawer = new NavigationDrawer();
+        Intent screen = navigationDrawer.choosedItem(drawer, context, item);
+
+        if(screen != null) {
+            startActivity(screen);
+            finish();
+        }else{
+            finish();
         }
-        drawer.closeDrawer(GravityCompat.START);
+
         return true;
     }
 

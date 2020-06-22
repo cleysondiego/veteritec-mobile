@@ -1,6 +1,7 @@
 package br.com.veteritec.activities;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -16,6 +17,7 @@ import com.google.android.material.navigation.NavigationView;
 
 import br.com.veteritec.R;
 import br.com.veteritec.clinics.ClinicResponseStructure;
+import br.com.veteritec.utils.NavigationDrawer;
 import br.com.veteritec.utils.SharedPreferencesUtils;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -23,8 +25,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private DrawerLayout drawer;
 
     private boolean isLogged = false;
+    @SuppressWarnings("unused")
     private String userName = "";
     private String userToken = "";
+    @SuppressWarnings("unused")
     private String userClinicId = "";
 
     private ClinicResponseStructure clinicResponseStructure;
@@ -74,45 +78,30 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.nav_calculator:
-                Intent calculator = new Intent(this, CalculatorActivity.class);
-                startActivity(calculator);
-                break;
-            case R.id.nav_add_customer:
-                Intent addCustomer = new Intent(this, AddCustomerActivity.class);
-                addCustomer.putExtra("Query", 0);
-                startActivity(addCustomer);
-                break;
-            case R.id.nav_query_customer:
-                Intent queryCustomer = new Intent(this, QueryActivity.class);
-                queryCustomer.putExtra("Choose", 0);
-                startActivity(queryCustomer);
-                break;
-            case R.id.nav_add_animal:
-                Intent addAnimal = new Intent(this, AddAnimalActivity.class);
-                startActivity(addAnimal);
-                break;
-            case R.id.nav_query_animal:
-                Intent queryAnimal = new Intent(this, QueryActivity.class);
-                queryAnimal.putExtra("Choose", 1);
-                startActivity(queryAnimal);
-                break;
-            case R.id.nav_add_vaccine:
-                Intent addVaccine = new Intent(this, AddVaccineActivity.class);
-                startActivity(addVaccine);
-                break;
-            case R.id.nav_query_vaccine:
-                Intent queryVaccine = new Intent(this, QueryActivity.class);
-                queryVaccine.putExtra("Choose", 2);
-                startActivity(queryVaccine);
-                break;
-            case R.id.nav_logout:
-                logoffUser(context);
-                break;
+        NavigationDrawer navigationDrawer = new NavigationDrawer();
+        Intent screen = navigationDrawer.choosedItem(drawer, context, item);
+
+        if(screen != null) {
+            startActivityForResult(screen, 0);
+        }else{
+            recreate();
         }
-        drawer.closeDrawer(GravityCompat.START);
+
         return true;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        SharedPreferencesUtils sharedPreferencesUtils = new SharedPreferencesUtils();
+        isLogged = sharedPreferencesUtils.isLogged(context);
+
+        if (requestCode == 0 && !isLogged || userToken.equals("")) {
+            Intent intent = new Intent(this, LoginActivity.class);
+            intent.putExtra("CLINIC_STRUCTURE", clinicResponseStructure);
+            startActivity(intent);
+            finish();
+        }
     }
 
     @Override
@@ -130,11 +119,5 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         userName = sharedPreferencesUtils.getUserName(context);
         userToken = sharedPreferencesUtils.getUserToken(context);
         userClinicId = sharedPreferencesUtils.getUserClinicId(context);
-    }
-
-    private void logoffUser(Context context) {
-        SharedPreferencesUtils sharedPreferencesUtils = new SharedPreferencesUtils();
-        sharedPreferencesUtils.setLogoff(context);
-        recreate();
     }
 }
