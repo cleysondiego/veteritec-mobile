@@ -66,10 +66,12 @@ public class QueryActivity extends AppCompatActivity implements NavigationView.O
 
         getUserDataFromSharedPreferences(context);
 
-        key = getIntent().getExtras().getInt("Customer", 0);
-        if (key == 1) {
+        key = getIntent().getExtras().getInt("Choose", 0);
+        if (key == 0) {
             toolbar.setTitle(R.string.txtQueryCustomerTitle);
             getCustomers();
+        } else if (key == 1) {
+            toolbar.setTitle(R.string.txtQueryAnimalTitle);
         } else {
             toolbar.setTitle(R.string.txtQueryVaccineTitle);
         }
@@ -103,13 +105,19 @@ public class QueryActivity extends AppCompatActivity implements NavigationView.O
                 break;
             case R.id.nav_query_customer:
                 Intent queryCustomer = new Intent(this, QueryActivity.class);
-                queryCustomer.putExtra("Customer", 1);
+                queryCustomer.putExtra("Choose", 0);
                 startActivity(queryCustomer);
                 finish();
                 break;
             case R.id.nav_add_animal:
                 Intent addAnimal = new Intent(this, AddAnimalActivity.class);
                 startActivity(addAnimal);
+                finish();
+                break;
+            case R.id.nav_query_animal:
+                Intent queryAnimal = new Intent(this, QueryActivity.class);
+                queryAnimal.putExtra("Choose", 1);
+                startActivity(queryAnimal);
                 finish();
                 break;
             case R.id.nav_add_vaccine:
@@ -119,7 +127,7 @@ public class QueryActivity extends AppCompatActivity implements NavigationView.O
                 break;
             case R.id.nav_query_vaccine:
                 Intent queryVaccine = new Intent(this, QueryActivity.class);
-                queryVaccine.putExtra("Vaccine", 2);
+                queryVaccine.putExtra("Choose", 2);
                 startActivity(queryVaccine);
                 finish();
                 break;

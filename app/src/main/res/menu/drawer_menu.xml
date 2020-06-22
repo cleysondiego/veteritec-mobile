@@ -9,7 +9,7 @@
             <item
                 android:id="@+id/nav_calculator"
                 android:icon="@drawable/ic_calculator_24"
-                android:title="@string/txtDrawerMenuCalculator"></item>
+                android:title="@string/txtDrawerMenuCalculator" />
         </menu>
     </item>
 
@@ -18,15 +18,24 @@
             <item
                 android:id="@+id/nav_add_customer"
                 android:icon="@drawable/ic_add"
-                android:title="@string/txtDrawerMenuAddCustomer"></item>
-            <item
-                android:id="@+id/nav_add_animal"
-                android:icon="@drawable/ic_add"
-                android:title="@string/txtDrawerMenuAddAnimal"></item>
+                android:title="@string/txtDrawerMenuAdd" />
             <item
                 android:id="@+id/nav_query_customer"
                 android:icon="@drawable/ic_query"
-                android:title="@string/txtDrawerMenuQuery"></item>
+                android:title="@string/txtDrawerMenuQuery" />
+        </menu>
+    </item>
+
+    <item android:title="@string/txtDrawerMenuAnimal">
+        <menu>
+            <item
+                android:id="@+id/nav_add_animal"
+                android:icon="@drawable/ic_add"
+                android:title="@string/txtDrawerMenuAdd" />
+            <item
+                android:id="@+id/nav_query_animal"
+                android:icon="@drawable/ic_query"
+                android:title="@string/txtDrawerMenuQuery" />
         </menu>
     </item>
 
@@ -35,11 +44,11 @@
             <item
                 android:id="@+id/nav_add_vaccine"
                 android:icon="@drawable/ic_add"
-                android:title="@string/txtDrawerMenuAdd"></item>
+                android:title="@string/txtDrawerMenuAdd" />
             <item
                 android:id="@+id/nav_query_vaccine"
                 android:icon="@drawable/ic_query"
-                android:title="@string/txtDrawerMenuQuery"></item>
+                android:title="@string/txtDrawerMenuQuery" />
         </menu>
     </item>
 
