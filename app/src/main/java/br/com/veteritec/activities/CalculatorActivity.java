@@ -87,6 +87,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
                 break;
             case R.id.nav_add_customer:
                 Intent addCustomer = new Intent(this, AddCustomerActivity.class);
+                addCustomer.putExtra("Query", 0);
                 startActivity(addCustomer);
                 finish();
                 break;

@@ -81,6 +81,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.nav_add_customer:
                 Intent addCustomer = new Intent(this, AddCustomerActivity.class);
+                addCustomer.putExtra("Query", 0);
                 startActivity(addCustomer);
                 break;
             case R.id.nav_query_customer:
