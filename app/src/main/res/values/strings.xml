@@ -110,7 +110,8 @@
     <string name="edtQueryCustomer">Ex: João da Silva</string>
 
     <!-- Add Customer Page -->
-    <string name="txtAddCustomerTitle">Adicionar Cliente</string>
+    <string name="txtAddCustomerAddTitle">Adicionar Cliente</string>
+    <string name="txtAddCustomerEditTitle">Editar Cliente</string>
     <string name="txtAddCustomerName">Nome Completo</string>
     <string name="txtAddCustomerCPF">CPF</string>
     <string name="txtAddCustomerCEP">CEP</string>
@@ -122,7 +123,7 @@
     <string name="txtAddCustomerEmail">E-mail</string>
     <string name="edtAddCustomerName">Ex: José da Silva</string>
     <string name="edtAddCustomerCPF">Ex: 154.468.451–57</string>
-    <string name="edtAddCustomerCEP">Ex: 18.584.684–1</string>
+    <string name="edtAddCustomerCEP">Ex: 13354-685</string>
     <string name="edtAddCustomerStreet">Ex: Rua das Orquídeas</string>
     <string name="edtAddCustomerNumber">Ex: 502</string>
     <string name="edtAddCustomerNeighborhood">Ex: Campo Bonito</string>

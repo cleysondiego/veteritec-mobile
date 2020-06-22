@@ -97,6 +97,7 @@ public class QueryActivity extends AppCompatActivity implements NavigationView.O
                 break;
             case R.id.nav_add_customer:
                 Intent addCustomer = new Intent(this, AddCustomerActivity.class);
+                addCustomer.putExtra("Query", 0);
                 startActivity(addCustomer);
                 finish();
                 break;
@@ -205,6 +206,7 @@ public class QueryActivity extends AppCompatActivity implements NavigationView.O
 
         Intent intent = new Intent(this, AddCustomerActivity.class);
         intent.putExtra("CUSTOMER_OBJECT", customer);
+        intent.putExtra("Query", 1);
         startActivity(intent);
     }
 }

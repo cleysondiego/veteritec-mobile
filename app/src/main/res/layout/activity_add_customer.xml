@@ -83,7 +83,7 @@
                     android:autofillHints="@string/edtAddCustomerCPF"
                     android:ems="10"
                     android:hint="@string/edtAddCustomerCPF"
-                    android:inputType="text" />
+                    android:inputType="number" />
 
                 <TextView
                     android:id="@+id/txtAddCustomerCEP"
@@ -105,7 +105,7 @@
                     android:autofillHints="@string/edtAddCustomerCEP"
                     android:ems="10"
                     android:hint="@string/edtAddCustomerCEP"
-                    android:inputType="text" />
+                    android:inputType="number" />
 
                 <TextView
                     android:id="@+id/txtAddCustomerNeighborhood"
@@ -194,7 +194,7 @@
                     android:autofillHints="@string/edtAddCustomerTelephone"
                     android:ems="10"
                     android:hint="@string/edtAddCustomerTelephone"
-                    android:inputType="phone" />
+                    android:inputType="number" />
 
                 <TextView
                     android:id="@+id/txtAddCustomerCellphone"
@@ -216,7 +216,7 @@
                     android:autofillHints="@string/edtAddCustomerCellphone"
                     android:ems="10"
                     android:hint="@string/edtAddCustomerCellphone"
-                    android:inputType="phone" />
+                    android:inputType="number" />
 
                 <TextView
                     android:id="@+id/txtAddCustomerEmail"
