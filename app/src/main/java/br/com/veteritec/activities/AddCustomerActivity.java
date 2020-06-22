@@ -121,13 +121,19 @@ public class AddCustomerActivity extends AppCompatActivity implements Navigation
                 break;
             case R.id.nav_query_customer:
                 Intent queryCustomer = new Intent(this, QueryActivity.class);
-                queryCustomer.putExtra("Customer", 1);
+                queryCustomer.putExtra("Choose", 0);
                 startActivity(queryCustomer);
                 finish();
                 break;
             case R.id.nav_add_animal:
                 Intent addAnimal = new Intent(this, AddAnimalActivity.class);
                 startActivity(addAnimal);
+                finish();
+                break;
+            case R.id.nav_query_animal:
+                Intent queryAnimal = new Intent(this, QueryActivity.class);
+                queryAnimal.putExtra("Choose", 1);
+                startActivity(queryAnimal);
                 finish();
                 break;
             case R.id.nav_add_vaccine:
@@ -137,7 +143,7 @@ public class AddCustomerActivity extends AppCompatActivity implements Navigation
                 break;
             case R.id.nav_query_vaccine:
                 Intent queryVaccine = new Intent(this, QueryActivity.class);
-                queryVaccine.putExtra("Vaccine", 2);
+                queryVaccine.putExtra("Choose", 2);
                 startActivity(queryVaccine);
                 finish();
                 break;

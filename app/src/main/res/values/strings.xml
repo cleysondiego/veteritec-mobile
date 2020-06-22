@@ -7,11 +7,13 @@
     <string name="txtMainMenuTools">Funcionalidades do aplicativo:</string>
     <string name="txtMainMenuCalculator">Calculadora de Doses</string>
     <string name="txtMainMenuCustomer">Gerenciamento de Clientes</string>
+    <string name="txtMainMenuAnimal">Gerenciamento de Animais</string>
     <string name="txtMainMenuHealing">Gerenciamento de Vacinas</string>
     <string name="txtMainMenuCredits">Desenvolvido por:\n- Alan de Jesus Elias de Souza;\n- Cleyson Diego da Silva;\n- Igor Tricarico Marques;\n- Mauricio Tomesani Furlan.</string>
     <string name="cdMainMenuLogo">Esta imagem representa o logotipo do aplicativo.</string>
     <string name="cdMainMenuCalculator">Esta imagem representa a calculadora do aplicativo.</string>
     <string name="cdMainMenuCustomer">Esta imagem representa o gerenciamento de clientes do aplicativo.</string>
+    <string name="cdMainMenuAnimal">Esta imagem representa o gerenciamento de animais do aplicativo.</string>
     <string name="cdMainMenuHealing">Esta imagem representa o gerenciamento de vacinas do aplicativo.</string>
 
     <!-- Login Page -->
@@ -56,13 +58,11 @@
 
     <!-- Drawer Menu -->
     <string name="txtDrawerMenuTools">Ferramentas</string>
-    <string name="txtDrawerMenuCalculator">Calculadora</string>
+    <string name="txtDrawerMenuCalculator">Calculadora de Doses</string>
     <string name="txtDrawerMenuCustomer">Cliente</string>
     <string name="txtDrawerMenuAnimal">Animal</string>
     <string name="txtDrawerMenuVaccine">Vacina</string>
     <string name="txtDrawerMenuAdd">Adicionar</string>
-    <string name="txtDrawerMenuAddCustomer">Adicionar Cliente</string>
-    <string name="txtDrawerMenuAddAnimal">Adicionar Animal</string>
     <string name="txtDrawerMenuQuery">Consultar</string>
     <string name="txtDrawerMenuAccount">Conta</string>
     <string name="txtDrawerMenuLogout">Desconectar</string>
@@ -105,6 +105,7 @@
 
     <!-- Query Page -->
     <string name="txtQueryCustomerTitle">Procurar Cliente</string>
+    <string name="txtQueryAnimalTitle">Procurar Animal</string>
     <string name="txtQueryVaccineTitle">Procurar Vacinação</string>
     <string name="txtQueryCustomer">Cliente</string>
     <string name="edtQueryCustomer">Ex: João da Silva</string>

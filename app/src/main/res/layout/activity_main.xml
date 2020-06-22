@@ -54,7 +54,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/txtAddVaccineTools"
+                android:id="@+id/txtTools"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16sp"
@@ -62,41 +62,32 @@
                 android:layout_marginEnd="16sp"
                 android:layout_marginBottom="8sp"
                 android:text="@string/txtMainMenuTools"
+                android:textAlignment="viewStart"
                 android:textSize="24sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:orientation="horizontal">
 
                 <ImageView
                     android:id="@+id/imgCalculator"
-                    android:layout_width="96sp"
-                    android:layout_height="96sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_marginStart="16sp"
                     android:layout_marginTop="8sp"
                     android:layout_marginEnd="16sp"
                     android:layout_marginBottom="8sp"
                     android:layout_weight="1"
                     android:contentDescription="@string/cdMainMenuCalculator"
-                    app:srcCompat="@drawable/ic_calculator_24" />
+                    app:srcCompat="@drawable/ic_calculator_24"
+                    tools:ignore="NestedWeights" />
 
                 <ImageView
-                    android:id="@+id/imgClient"
-                    android:layout_width="96sp"
-                    android:layout_height="96sp"
-                    android:layout_marginStart="16sp"
-                    android:layout_marginTop="8sp"
-                    android:layout_marginEnd="16sp"
-                    android:layout_marginBottom="8sp"
-                    android:layout_weight="1"
-                    android:contentDescription="@string/cdMainMenuCustomer"
-                    app:srcCompat="@drawable/ic_client_24" />
-
-                <ImageView
-                    android:id="@+id/imgClient3"
-                    android:layout_width="96sp"
-                    android:layout_height="96sp"
+                    android:id="@+id/imgHealing"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_marginStart="16sp"
                     android:layout_marginTop="8sp"
                     android:layout_marginEnd="16sp"
@@ -121,19 +112,9 @@
                     android:layout_marginBottom="8sp"
                     android:layout_weight="1"
                     android:text="@string/txtMainMenuCalculator"
-                    android:textAlignment="center" />
-
-                <TextView
-                    android:id="@+id/txtAddVaccineClient"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16sp"
-                    android:layout_marginTop="8sp"
-                    android:layout_marginEnd="16sp"
-                    android:layout_marginBottom="8sp"
-                    android:layout_weight="1"
-                    android:text="@string/txtMainMenuCustomer"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textSize="18sp"
+                    tools:ignore="NestedWeights" />
 
                 <TextView
                     android:id="@+id/txtHealing"
@@ -145,7 +126,74 @@
                     android:layout_marginBottom="8sp"
                     android:layout_weight="1"
                     android:text="@string/txtMainMenuHealing"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imgCustomer"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16sp"
+                    android:layout_marginTop="8sp"
+                    android:layout_marginEnd="16sp"
+                    android:layout_marginBottom="8sp"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/cdMainMenuCustomer"
+                    app:srcCompat="@drawable/ic_customer_24"
+                    tools:ignore="NestedWeights" />
+
+                <ImageView
+                    android:id="@+id/imgAnimal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16sp"
+                    android:layout_marginTop="8sp"
+                    android:layout_marginEnd="16sp"
+                    android:layout_marginBottom="8sp"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/cdMainMenuAnimal"
+                    app:srcCompat="@drawable/ic_pets_24" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txtCustomer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16sp"
+                    android:layout_marginTop="8sp"
+                    android:layout_marginEnd="16sp"
+                    android:layout_marginBottom="8sp"
+                    android:layout_weight="1"
+                    android:text="@string/txtMainMenuCustomer"
+                    android:textAlignment="center"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/txtAnimal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16sp"
+                    android:layout_marginTop="8sp"
+                    android:layout_marginEnd="16sp"
+                    android:layout_marginBottom="8sp"
+                    android:layout_weight="1"
+                    android:text="@string/txtMainMenuAnimal"
+                    android:textAlignment="center"
+                    android:textSize="18sp" />
+
             </LinearLayout>
 
             <TextView
@@ -168,6 +216,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        android:visibility="visible"
         app:menu="@menu/drawer_menu" />
 
 </androidx.drawerlayout.widget.DrawerLayout>
