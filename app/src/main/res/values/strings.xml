@@ -65,6 +65,7 @@
     <string name="txtDrawerMenuAdd">Adicionar</string>
     <string name="txtDrawerMenuQuery">Consultar</string>
     <string name="txtDrawerMenuAccount">Conta</string>
+    <string name="txtDrawerMenuAddEmployee">Adicionar Funcionário</string>
     <string name="txtDrawerMenuLogout">Desconectar</string>
 
     <!-- Navigation Header -->
@@ -124,7 +125,7 @@
     <string name="txtAddCustomerEmail">E-mail</string>
     <string name="edtAddCustomerName">Ex: José da Silva</string>
     <string name="edtAddCustomerCPF">Ex: 154.468.451–57</string>
-    <string name="edtAddCustomerCEP">Ex: 13354-685</string>
+    <string name="edtAddCustomerCEP">Ex: 13354–685</string>
     <string name="edtAddCustomerStreet">Ex: Rua das Orquídeas</string>
     <string name="edtAddCustomerNumber">Ex: 502</string>
     <string name="edtAddCustomerNeighborhood">Ex: Campo Bonito</string>
@@ -149,4 +150,15 @@
     <string name="edtAddAnimalSize">Ex: Grande</string>
     <string name="edtAddAnimalWeight">Ex: 30kg</string>
     <string name="edtAddAnimalObservations">Ex: O cachorro está vacinado contra todas as efermidades comuns.</string>
+
+    <!-- Add Employee Page -->
+    <string name="txtAddEmployeeTitle">Adicionar Funcionário</string>
+    <string name="txtAddEmployeeName">Nome Completo</string>
+    <string name="txtAddEmployeeEmail">E-mail</string>
+    <string name="txtAddEmployeePassword">Senha</string>
+    <string name="txtAddEmployeeConfirmPassword">Confirmação de Senha</string>
+    <string name="edtAddEmployeeName">Ex: Pedro Albuquerque</string>
+    <string name="edtAddEmployeeEmail">Ex: pedro.albuquerque@bol.com.br</string>
+    <string name="edtAddEmployeePassword">Digite sua senha</string>
+    <string name="edtAddEmployeeConfirmPassword">Confirme sua senha</string>
 </resources>
