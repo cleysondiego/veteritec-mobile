@@ -10,6 +10,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -60,6 +62,23 @@ public class QueryActivity extends AppCompatActivity implements NavigationView.O
         getCustomersResponseStructure = new GetCustomersResponseStructure();
 
         edtSearch = findViewById(R.id.edtCustomer);
+        edtSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                filter(s.toString());
+            }
+        });
+
         btnSearch = findViewById(R.id.btnSearch);
         lvResult = findViewById(R.id.lvResult);
 
@@ -90,15 +109,42 @@ public class QueryActivity extends AppCompatActivity implements NavigationView.O
         navigationView.setNavigationItemSelectedListener(this);
     }
 
+    private void filter(String filter) {
+        List<String> filteredName = new ArrayList<>();
+
+        if (key == 0) {
+            for (GetCustomersResponseStructure.Customer customer : getCustomersResponseStructure.getCustomersList()) {
+                if (customer.getName().toLowerCase().contains(filter.toLowerCase())) {
+                    filteredName.add(customer.getName());
+                }
+            }
+        } else if (key == 1) {
+            for (GetCustomersResponseStructure.Customer customer : getCustomersResponseStructure.getCustomersList()) {
+                if (customer.getName().toLowerCase().contains(filter.toLowerCase())) {
+                    filteredName.add(customer.getName());
+                }
+            }
+        } else {
+            for (GetCustomersResponseStructure.Customer customer : getCustomersResponseStructure.getCustomersList()) {
+                if (customer.getName().toLowerCase().contains(filter.toLowerCase())) {
+                    filteredName.add(customer.getName());
+                }
+            }
+        }
+
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, filteredName);
+        lvResult.setAdapter(arrayAdapter);
+    }
+
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         NavigationDrawer navigationDrawer = new NavigationDrawer();
         Intent screen = navigationDrawer.choosedItem(drawer, context, item);
 
-        if(screen != null) {
+        if (screen != null) {
             startActivity(screen);
             finish();
-        }else{
+        } else {
             finish();
         }
 
