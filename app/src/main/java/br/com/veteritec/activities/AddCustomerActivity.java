@@ -63,7 +63,6 @@ public class AddCustomerActivity extends AppCompatActivity implements Navigation
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-
         edtCustomerName = findViewById(R.id.edtAddCustomerName);
         edtCustomerCpf = findViewById(R.id.edtAddCustomerCPF);
         edtCustomerCep = findViewById(R.id.edtAddCustomerCEP);
