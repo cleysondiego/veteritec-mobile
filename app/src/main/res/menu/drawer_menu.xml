@@ -55,6 +55,10 @@
     <item android:title="@string/txtDrawerMenuAccount">
         <menu>
             <item
+                android:id="@+id/nav_add_employee"
+                android:icon="@drawable/ic_customer_24"
+                android:title="@string/txtDrawerMenuAddEmployee" />
+            <item
                 android:id="@+id/nav_logout"
                 android:icon="@drawable/ic_logoff_24"
                 android:title="@string/txtDrawerMenuLogout" />

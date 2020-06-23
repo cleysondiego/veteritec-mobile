@@ -194,7 +194,8 @@
                     android:autofillHints="@string/edtAddCustomerTelephone"
                     android:ems="10"
                     android:hint="@string/edtAddCustomerTelephone"
-                    android:inputType="number" />
+                    android:inputType="number"
+                    tools:ignore="TextFields" />
 
                 <TextView
                     android:id="@+id/txtAddCustomerCellphone"
@@ -216,7 +217,8 @@
                     android:autofillHints="@string/edtAddCustomerCellphone"
                     android:ems="10"
                     android:hint="@string/edtAddCustomerCellphone"
-                    android:inputType="number" />
+                    android:inputType="number"
+                    tools:ignore="TextFields" />
 
                 <TextView
                     android:id="@+id/txtAddCustomerEmail"
