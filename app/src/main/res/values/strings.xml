@@ -1,5 +1,6 @@
 <resources>
-    <string name="app_name">Veteritec</string>"
+    <string name="app_name" translatable="false">Veteritec</string>
+    <string name="translate_dialog_title">Escolha o Idioma</string>
     <string name="main_menu">Menu Principal</string>
 
     <!-- Main Menu Page -->
@@ -19,27 +20,26 @@
     <!-- Login Page -->
     <string name="txtLoginTitle">Sistema Gerenciador de Clínicas Veterinárias</string>
     <string name="txtLoginClinic">Escolha sua clínica:</string>
-    <string name="txtLoginEmail">E-mail:</string>
     <string name="txtLoginPassword">Senha:</string>
     <string name="txtLoginLoading">Carregando</string>
-    <string name="edtLoginEmail">Digite o seu email</string>
+    <string name="edtLoginEmail">Digite o seu e-mail</string>
     <string name="edtLoginPassword">Digite a sua senha</string>
     <string name="cdLoginLogo">Esta imagem representa o logotipo do aplicativo.</string>
     <string name="btnLoginLogin">Entrar</string>
-    <string name="errorLoginWrongEmail">Email inválido.</string>
+    <string name="errorLoginWrongEmail">E-mail inválido.</string>
     <string name="errorLoginWrongPassword">Senha incorreta.</string>
     <string name="errorLoginUserNotExists">Usuário não encontrado.</string>
 
     <!-- Calculator Page -->
     <string name="txtCalculatorTitle">Calculadora de Doses</string>
     <string name="txtCalculatorAnimalWeight">Peso do animal</string>
-    <string name="txtCalculatorMeasure">Kg</string>
+    <string name="txtCalculatorMeasure" translatable="false">Kg</string>
     <string name="txtCalculatorFarmacoDosage">Dose de fármaco</string>
     <string name="txtCalculatorFarmacoConcentration">Concentração de fármaco</string>
-    <string name="txtCalculatorResult">0</string>
-    <string name="edtCalculatorAnimalWeight">Ex: 17.4</string>
-    <string name="edtCalculatorFarmacoDosage">Ex: 7.8</string>
-    <string name="edtCalculatorFarmacoConcentration">Ex 1.6</string>
+    <string name="txtCalculatorResult" translatable="false">0</string>
+    <string name="edtCalculatorAnimalWeight" translatable="false">Ex: 17.4</string>
+    <string name="edtCalculatorFarmacoDosage" translatable="false">Ex: 7.8</string>
+    <string name="edtCalculatorFarmacoConcentration" translatable="false">Ex 1.6</string>
     <string name="btnCalculatorResult">Calcular</string>
 
     <!-- Fármaco Spinner -->
@@ -59,6 +59,7 @@
     <!-- Drawer Menu -->
     <string name="txtDrawerMenuTools">Ferramentas</string>
     <string name="txtDrawerMenuCalculator">Calculadora de Doses</string>
+    <string name="txtDrawerMenuLanguage">Alterar Idioma</string>
     <string name="txtDrawerMenuCustomer">Cliente</string>
     <string name="txtDrawerMenuAnimal">Animal</string>
     <string name="txtDrawerMenuVaccine">Vacina</string>
@@ -80,8 +81,8 @@
     <string name="txtAddVaccineHour">Hora</string>
     <string name="txtAddVaccineAnimal">Animal</string>
     <string name="txtAddVaccineDescription">Descrição</string>
-    <string name="edtAddVaccineDate">00/00/0000</string>
-    <string name="edtAddVaccineHour">00:00</string>
+    <string name="edtAddVaccineDate" translatable="false">00/00/0000</string>
+    <string name="edtAddVaccineHour" translatable="false">00:00</string>
     <string name="edtAddVaccineDescription">Ex: O animal será vacinado contra raiva.</string>
     <string name="btnAddVaccineSave">Salvar</string>
 
@@ -115,22 +116,22 @@
     <string name="txtAddCustomerAddTitle">Adicionar Cliente</string>
     <string name="txtAddCustomerEditTitle">Editar Cliente</string>
     <string name="txtAddCustomerName">Nome Completo</string>
-    <string name="txtAddCustomerCPF">CPF</string>
+    <string name="txtAddCustomerCPF" translatable="false">CPF</string>
     <string name="txtAddCustomerCEP">CEP</string>
     <string name="txtAddCustomerStreet">Rua</string>
     <string name="txtAddCustomerNumber">Número</string>
     <string name="txtAddCustomerNeighborhood">Bairro</string>
     <string name="txtAddCustomerTelephone">Telefone (Opcional)</string>
     <string name="txtAddCustomerCellphone">Celular</string>
-    <string name="txtAddCustomerEmail">E-mail</string>
+    <string name="txtAddCustomerEmail" translatable="false">E-mail</string>
     <string name="edtAddCustomerName">Ex: José da Silva</string>
-    <string name="edtAddCustomerCPF">Ex: 154.468.451–57</string>
-    <string name="edtAddCustomerCEP">Ex: 13354–685</string>
+    <string name="edtAddCustomerCPF" translatable="false">Ex: 154.468.451–57</string>
+    <string name="edtAddCustomerCEP" translatable="false">Ex: 13354–685</string>
     <string name="edtAddCustomerStreet">Ex: Rua das Orquídeas</string>
-    <string name="edtAddCustomerNumber">Ex: 502</string>
+    <string name="edtAddCustomerNumber" translatable="false">Ex: 502</string>
     <string name="edtAddCustomerNeighborhood">Ex: Campo Bonito</string>
-    <string name="edtAddCustomerTelephone">Ex: (19)3845–5792</string>
-    <string name="edtAddCustomerCellphone">Ex: (19)99426–6248</string>
+    <string name="edtAddCustomerTelephone" translatable="false">Ex: (19)3845–5792</string>
+    <string name="edtAddCustomerCellphone" translatable="false">Ex: (19)99426–6248</string>
     <string name="edtAddCustomerEmail">Ex: jose.silva@uol.com.br</string>
 
     <!-- Add Animal Page -->
@@ -143,22 +144,26 @@
     <string name="txtAddAnimalSize">Porte</string>
     <string name="txtAddAnimalWeight">Peso</string>
     <string name="txtAddAnimalObservations">Observações</string>
-    <string name="edtAddAnimalName">Ex: Pimposo</string>
-    <string name="edtAddAnimalBirthDate">Ex: 00/00/0000</string>
+    <string name="edtAddAnimalName" translatable="false">Ex: Pimposo</string>
+    <string name="edtAddAnimalBirthDate" translatable="false">Ex: 00/00/0000</string>
     <string name="edtAddAnimalSpecies">Ex: Cachorro</string>
-    <string name="edtAddAnimalRace">Ex: Weimaraner</string>
+    <string name="edtAddAnimalRace" translatable="false">Ex: Weimaraner</string>
     <string name="edtAddAnimalSize">Ex: Grande</string>
-    <string name="edtAddAnimalWeight">Ex: 30kg</string>
+    <string name="edtAddAnimalWeight" translatable="false">Ex: 30kg</string>
     <string name="edtAddAnimalObservations">Ex: O cachorro está vacinado contra todas as efermidades comuns.</string>
 
     <!-- Add Employee Page -->
     <string name="txtAddEmployeeTitle">Adicionar Funcionário</string>
     <string name="txtAddEmployeeName">Nome Completo</string>
-    <string name="txtAddEmployeeEmail">E-mail</string>
+    <string name="txtAddEmployeeEmail" translatable="false">E-mail</string>
     <string name="txtAddEmployeePassword">Senha</string>
     <string name="txtAddEmployeeConfirmPassword">Confirmação de Senha</string>
     <string name="edtAddEmployeeName">Ex: Pedro Albuquerque</string>
     <string name="edtAddEmployeeEmail">Ex: pedro.albuquerque@bol.com.br</string>
     <string name="edtAddEmployeePassword">Digite sua senha</string>
     <string name="edtAddEmployeeConfirmPassword">Confirme sua senha</string>
+    <string name="txtLoginEmail" translatable="false">E-mail:</string>
+
+    <!-- Translate Page -->
+    <string name="txtTranslateTitle">Escolha o Idioma</string>
 </resources>

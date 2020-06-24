@@ -10,10 +10,14 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.google.android.material.navigation.NavigationView;
+
+import java.util.Locale;
 
 import br.com.veteritec.R;
 import br.com.veteritec.clinics.ClinicResponseStructure;
@@ -35,6 +39,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        SharedPreferences language = getSharedPreferences("Language", MODE_PRIVATE);
+
+        Locale locale = new Locale(language.getString("ChoosedLang", "pt"));
+        Locale.setDefault(locale);
+
+        Configuration config = new Configuration(getResources().getConfiguration());
+        config.setLocale(locale);
+
+        getResources().updateConfiguration(config, getResources().getDisplayMetrics());
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -52,14 +66,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
 
         Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle(R.string.main_menu);
+        toolbar.setTitle(getResources().getString(R.string.main_menu));
         setSupportActionBar(toolbar);
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
         drawer = findViewById(R.id.drawer_menu);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, 0, 0);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
     }
@@ -81,9 +95,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         NavigationDrawer navigationDrawer = new NavigationDrawer();
         Intent screen = navigationDrawer.choosedItem(drawer, context, item);
 
-        if(screen != null) {
+        if (screen != null) {
             startActivityForResult(screen, 0);
-        }else{
+        } else {
             recreate();
         }
 
@@ -101,6 +115,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             intent.putExtra("CLINIC_STRUCTURE", clinicResponseStructure);
             startActivity(intent);
             finish();
+        } else {
+            recreate();
         }
     }
 

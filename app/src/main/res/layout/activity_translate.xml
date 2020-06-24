@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_translate"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".activities.TranslateActivity"
+    tools:openDrawer="start">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            android:elevation="4sp"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:titleTextColor="#FFFFFF" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imgBR"
+                android:layout_width="0dp"
+                android:layout_height="128sp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:onClick="onClick"
+                app:layout_constraintEnd_toStartOf="@+id/imgUS"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/br_flag" />
+
+            <ImageView
+                android:id="@+id/imgUS"
+                android:layout_width="0dp"
+                android:layout_height="128sp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:onClick="onClick"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imgBR"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/us_flag" />
+
+            <ImageView
+                android:id="@+id/imgES"
+                android:layout_width="0dp"
+                android:layout_height="128sp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:onClick="onClick"
+                app:layout_constraintEnd_toStartOf="@+id/imgFR"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imgBR"
+                app:srcCompat="@drawable/es_flag" />
+
+            <ImageView
+                android:id="@+id/imgFR"
+                android:layout_width="0dp"
+                android:layout_height="128sp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:onClick="onClick"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imgES"
+                app:layout_constraintTop_toBottomOf="@+id/imgUS"
+                app:srcCompat="@drawable/fr_flag" />
+
+            <ImageView
+                android:id="@+id/imgHI"
+                android:layout_width="0dp"
+                android:layout_height="128sp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:onClick="onClick"
+                app:layout_constraintEnd_toStartOf="@+id/imgRU"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imgES"
+                app:srcCompat="@drawable/hi_flag" />
+
+            <ImageView
+                android:id="@+id/imgRU"
+                android:layout_width="0dp"
+                android:layout_height="128sp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:onClick="onClick"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imgHI"
+                app:layout_constraintTop_toBottomOf="@+id/imgFR"
+                app:srcCompat="@drawable/ru_flag" />
+
+            <ImageView
+                android:id="@+id/imgZH"
+                android:layout_width="0dp"
+                android:layout_height="128sp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:onClick="onClick"
+                app:layout_constraintEnd_toStartOf="@+id/imgJA"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imgHI"
+                app:srcCompat="@drawable/zh_flag" />
+
+            <ImageView
+                android:id="@+id/imgJA"
+                android:layout_width="0dp"
+                android:layout_height="128sp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:onClick="onClick"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imgZH"
+                app:layout_constraintTop_toBottomOf="@+id/imgRU"
+                app:srcCompat="@drawable/ja_flag" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:visibility="visible"
+        app:menu="@menu/drawer_menu" />
+
+</androidx.drawerlayout.widget.DrawerLayout>

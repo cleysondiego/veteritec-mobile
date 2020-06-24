@@ -9,6 +9,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -25,6 +27,7 @@ import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 
 import br.com.veteritec.R;
@@ -59,6 +62,16 @@ public class QueryActivity extends AppCompatActivity implements NavigationView.O
 
         context = getApplicationContext();
 
+        SharedPreferences language = getSharedPreferences("Language", MODE_PRIVATE);
+
+        Locale locale = new Locale(language.getString("ChoosedLang", "pt"));
+        Locale.setDefault(locale);
+
+        Configuration config = new Configuration(getResources().getConfiguration());
+        config.setLocale(locale);
+
+        getResources().updateConfiguration(config, getResources().getDisplayMetrics());
+
         getCustomersResponseStructure = new GetCustomersResponseStructure();
 
         edtSearch = findViewById(R.id.edtCustomer);
@@ -88,12 +101,12 @@ public class QueryActivity extends AppCompatActivity implements NavigationView.O
 
         key = getIntent().getExtras().getInt("Choose", 0);
         if (key == 0) {
-            toolbar.setTitle(R.string.txtQueryCustomerTitle);
+            toolbar.setTitle(getResources().getString(R.string.txtQueryCustomerTitle));
             getCustomers();
         } else if (key == 1) {
-            toolbar.setTitle(R.string.txtQueryAnimalTitle);
+            toolbar.setTitle(getResources().getString(R.string.txtQueryAnimalTitle));
         } else {
-            toolbar.setTitle(R.string.txtQueryVaccineTitle);
+            toolbar.setTitle(getResources().getString(R.string.txtQueryVaccineTitle));
         }
 
         lvResult.setOnItemClickListener(this);
@@ -101,7 +114,7 @@ public class QueryActivity extends AppCompatActivity implements NavigationView.O
         setSupportActionBar(toolbar);
 
         drawer = findViewById(R.id.drawer_query);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, 0, 0);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
