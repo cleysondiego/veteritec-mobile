@@ -91,4 +91,21 @@
     <string name="edtAddEmployeePassword">Escribe tu contraseña</string>
     <string name="edtAddEmployeeConfirmPassword">Confirmar la contraseña</string>
     <string name="txtTranslateTitle">Elige tu idioma</string>
+    <string name="txtCalculatorMeasure" translatable="false">Kg</string>
+    <string name="edtCalculatorAnimalWeight">Ej: 17,4</string>
+    <string name="edtCalculatorFarmacoDosage">Ej: 7.8</string>
+    <string name="edtCalculatorFarmacoConcentration">Ex 1.6</string>
+    <string name="txtAddCustomerCPF">CPF</string>
+    <string name="txtAddCustomerEmail">Email</string>
+    <string name="edtAddCustomerCPF">Ej: 154,468,451–57</string>
+    <string name="edtAddCustomerCEP">Ej: 13354–685</string>
+    <string name="edtAddCustomerNumber">Ej .: 502</string>
+    <string name="edtAddCustomerTelephone">Ej: (19) 3845–5792</string>
+    <string name="edtAddCustomerCellphone">Ej: (19) 99426–6248</string>
+    <string name="edtAddAnimalName">Ej: Pimposo</string>
+    <string name="edtAddAnimalBirthDate">Ej: 00/00/0000</string>
+    <string name="edtAddAnimalRace">Ej: Weimaraner</string>
+    <string name="edtAddAnimalWeight">Ej: 30kg</string>
+    <string name="txtAddEmployeeEmail">Email</string>
+    <string name="txtLoginEmail">Email:</string>
 </resources>

@@ -91,4 +91,21 @@
     <string name="translate_dialog_title">Choose your Language</string>
     <string name="txtDrawerMenuLanguage">Change Language</string>
     <string name="txtTranslateTitle">Choose the Language</string>
+    <string name="txtCalculatorMeasure" translatable="false">Kg</string>
+    <string name="edtCalculatorAnimalWeight">Ex: 17.4</string>
+    <string name="edtCalculatorFarmacoDosage">Ex: 7.8</string>
+    <string name="edtCalculatorFarmacoConcentration">Ex 1.6</string>
+    <string name="txtAddCustomerCPF">CPF</string>
+    <string name="txtAddCustomerEmail">Email</string>
+    <string name="edtAddCustomerCPF">Ex: 154,468,451–57</string>
+    <string name="edtAddCustomerCEP">Ex: 13354–685</string>
+    <string name="edtAddCustomerNumber">Ex: 502</string>
+    <string name="edtAddCustomerTelephone">Ex: (19) 3845–5792</string>
+    <string name="edtAddCustomerCellphone">Ex: (19) 99426–6248</string>
+    <string name="edtAddAnimalName">Ex: Pimposo</string>
+    <string name="edtAddAnimalBirthDate">Ex: 00/00/0000</string>
+    <string name="edtAddAnimalRace">Ex: Weimaraner</string>
+    <string name="edtAddAnimalWeight">Ex: 30kg</string>
+    <string name="txtAddEmployeeEmail">Email</string>
+    <string name="txtLoginEmail">Email:</string>
 </resources>
