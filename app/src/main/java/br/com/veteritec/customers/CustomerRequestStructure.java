@@ -3,7 +3,7 @@ package br.com.veteritec.customers;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 
-public class CreateCustomerRequestStructure {
+public class CustomerRequestStructure {
     @SerializedName("cpf")
     private String cpf;
 
