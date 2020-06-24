@@ -21,8 +21,8 @@ import com.google.android.material.navigation.NavigationView;
 import java.util.Objects;
 
 import br.com.veteritec.R;
-import br.com.veteritec.clinics.ClinicResponseStructure;
-import br.com.veteritec.customers.CreateCustomerRequestStructure;
+import br.com.veteritec.customers.ChangeCustomerUseCase;
+import br.com.veteritec.customers.CustomerRequestStructure;
 import br.com.veteritec.customers.CreateCustomerUseCase;
 import br.com.veteritec.customers.DeleteCustomerUseCase;
 import br.com.veteritec.customers.GetCustomersResponseStructure;
@@ -36,6 +36,7 @@ public class AddCustomerActivity extends AppCompatActivity implements Navigation
     private Context context;
     private DrawerLayout drawer;
     private int edition = 0;
+    private boolean editable = false;
 
     private EditText edtCustomerName;
     private EditText edtCustomerCpf;
@@ -100,6 +101,7 @@ public class AddCustomerActivity extends AppCompatActivity implements Navigation
                 toolbar.setTitle(R.string.txtAddCustomerEditTitle);
 
                 setEdition();
+                editable = true;
 
                 btnEdit.setVisibility(View.VISIBLE);
                 btnDelete.setVisibility(View.VISIBLE);
@@ -133,10 +135,10 @@ public class AddCustomerActivity extends AppCompatActivity implements Navigation
         NavigationDrawer navigationDrawer = new NavigationDrawer();
         Intent screen = navigationDrawer.choosedItem(drawer, context, item);
 
-        if(screen != null) {
+        if (screen != null) {
             startActivity(screen);
             finish();
-        }else{
+        } else {
             finish();
         }
 
@@ -154,13 +156,18 @@ public class AddCustomerActivity extends AppCompatActivity implements Navigation
 
     @Override
     public void onClick(View v) {
-        switch(v.getId()) {
+        switch (v.getId()) {
             case R.id.btnAddCustomerSave:
                 if (validateFields()) {
-                    createCustomer();
+                    if (!editable) {
+                        createCustomer();
+                    } else {
+                        changeCustomer();
+                    }
                 } else {
                     Toast.makeText(context, "Por favor, verifique os dados digitados e tente novamente", Toast.LENGTH_LONG).show();
                 }
+                break;
             case R.id.btnAddCustomerEdit:
                 if (edition == 0) {
                     setEdition();
@@ -169,8 +176,10 @@ public class AddCustomerActivity extends AppCompatActivity implements Navigation
                     setEdition();
                     Toast.makeText(context, "Edição habilitada!", Toast.LENGTH_SHORT).show();
                 }
+                break;
             case R.id.btnAddCustomerDelete:
                 deleteCustomer();
+                break;
             default:
                 break;
         }
@@ -229,19 +238,10 @@ public class AddCustomerActivity extends AppCompatActivity implements Navigation
     }
 
     private void createCustomer() {
-        CreateCustomerRequestStructure createCustomerRequestStructure = new CreateCustomerRequestStructure();
-        createCustomerRequestStructure.setName(edtCustomerName.getText().toString());
-        createCustomerRequestStructure.setCpf(edtCustomerCpf.getText().toString());
-        createCustomerRequestStructure.setNeighborhood(edtCustomerNeighborhood.getText().toString());
-        createCustomerRequestStructure.setZipCode(edtCustomerCep.getText().toString());
-        createCustomerRequestStructure.setStreet(edtCustomerStreet.getText().toString());
-        createCustomerRequestStructure.setNumber(edtCustomerNumber.getText().toString());
-        createCustomerRequestStructure.setPhoneNumber(edtCustomerTelephone.getText().toString());
-        createCustomerRequestStructure.setCellNumber(edtCustomerCellPhone.getText().toString());
-        createCustomerRequestStructure.setEmail(edtCustomerEmail.getText().toString());
+        CustomerRequestStructure customerRequestStructure = createCustomerRequestStructure();
 
         ApiRequest apiRequest = new ApiRequest();
-        CreateCustomerUseCase createCustomerUseCase = new CreateCustomerUseCase(ThreadExecutor.getInstance(), apiRequest, createCustomerRequestStructure, userClinicId, userToken);
+        CreateCustomerUseCase createCustomerUseCase = new CreateCustomerUseCase(ThreadExecutor.getInstance(), apiRequest, customerRequestStructure, userClinicId, userToken);
         createCustomerUseCase.setCallback(new CreateCustomerUseCase.OnCreateCustomer() {
             @Override
             public void onSuccess() {
@@ -280,5 +280,42 @@ public class AddCustomerActivity extends AppCompatActivity implements Navigation
         });
 
         deleteCustomerUseCase.execute();
+    }
+
+    private CustomerRequestStructure createCustomerRequestStructure() {
+        CustomerRequestStructure customerRequestStructure = new CustomerRequestStructure();
+        customerRequestStructure.setName(edtCustomerName.getText().toString());
+        customerRequestStructure.setCpf(edtCustomerCpf.getText().toString());
+        customerRequestStructure.setNeighborhood(edtCustomerNeighborhood.getText().toString());
+        customerRequestStructure.setZipCode(edtCustomerCep.getText().toString());
+        customerRequestStructure.setStreet(edtCustomerStreet.getText().toString());
+        customerRequestStructure.setNumber(edtCustomerNumber.getText().toString());
+        customerRequestStructure.setPhoneNumber(edtCustomerTelephone.getText().toString());
+        customerRequestStructure.setCellNumber(edtCustomerCellPhone.getText().toString());
+        customerRequestStructure.setEmail(edtCustomerEmail.getText().toString());
+
+        return customerRequestStructure;
+    }
+
+    private void changeCustomer() {
+        CustomerRequestStructure customerRequestStructure = createCustomerRequestStructure();
+
+        ApiRequest apiRequest = new ApiRequest();
+
+        ChangeCustomerUseCase changeCustomerUseCase = new ChangeCustomerUseCase(ThreadExecutor.getInstance(), apiRequest, customerRequestStructure, userClinicId, userToken);
+        changeCustomerUseCase.setCallback(new ChangeCustomerUseCase.OnChangeCustomer() {
+            @Override
+            public void onSuccess() {
+                Toast.makeText(context, "Cliente editado com sucesso!", Toast.LENGTH_LONG).show();
+                finish();
+            }
+
+            @Override
+            public void onFailure(int statusCode) {
+                Toast.makeText(context, "Não foi possível editar o cliente nesse momento, por favor, tente novamente!", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        changeCustomerUseCase.execute();
     }
 }

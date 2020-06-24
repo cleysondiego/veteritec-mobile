@@ -9,21 +9,21 @@ import br.com.veteritec.usecase.Executor;
 import br.com.veteritec.usecase.UseCaseAbstract;
 import br.com.veteritec.utils.ApiRequest;
 
-public class CreateCustomerUseCase extends UseCaseAbstract {
-    public interface OnCreateCustomer {
+public class ChangeCustomerUseCase extends UseCaseAbstract {
+    public interface OnChangeCustomer {
         void onSuccess();
 
         void onFailure(int statusCode);
     }
 
-    private CreateCustomerUseCase.OnCreateCustomer callback;
+    private ChangeCustomerUseCase.OnChangeCustomer callback;
 
     private ApiRequest apiRequest;
     private CustomerRequestStructure customerRequestStructure;
     private String clinicId;
     private String token;
 
-    public CreateCustomerUseCase(Executor executor,
+    public ChangeCustomerUseCase(Executor executor,
                                  ApiRequest apiRequest,
                                  CustomerRequestStructure customerRequestStructure,
                                  String clinicId,
@@ -46,7 +46,7 @@ public class CreateCustomerUseCase extends UseCaseAbstract {
 
             String requestParams = customerRequestStructure.getStructureString();
 
-            apiRequest.post(ApiRequest.URL_CUSTOMERS, headers, requestParams, new ApiRequest.OnResponse() {
+            apiRequest.put(ApiRequest.URL_CUSTOMERS, headers, requestParams, new ApiRequest.OnResponse() {
                 @Override
                 public void onResponse(int statusCode, byte[] response) {
                     new Handler(Looper.getMainLooper()).post(new Runnable() {
@@ -72,7 +72,7 @@ public class CreateCustomerUseCase extends UseCaseAbstract {
         }
     }
 
-    public void setCallback(CreateCustomerUseCase.OnCreateCustomer callback) {
+    public void setCallback(ChangeCustomerUseCase.OnChangeCustomer callback) {
         this.callback = callback;
     }
 }

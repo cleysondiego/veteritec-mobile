@@ -20,6 +20,7 @@ public class ApiRequest {
 
     private static final String GET = "GET";
     private static final String POST = "POST";
+    private static final String PUT = "PUT";
     private static final String DELETE = "DELETE";
 
     public static final String CONTENT_TYPE = "Content-Type";
@@ -38,6 +39,10 @@ public class ApiRequest {
 
     public void post(String url, HashMap<String, String> headers, String requestParams, OnResponse callback) {
         request(POST, url, headers, requestParams, callback);
+    }
+
+    public void put(String url, HashMap<String, String> headers, String requestParams, OnResponse callback) {
+        request(PUT, url, headers, requestParams, callback);
     }
 
     public void delete(String url, HashMap<String, String> headers, String requestParams, OnResponse callback) {
@@ -62,7 +67,7 @@ public class ApiRequest {
                 connection.connect();
             }
 
-            if (requestMethod.equals(POST)) {
+            if (requestMethod.equals(POST) || requestMethod.equals(PUT)) {
                 DataOutputStream outputStream = new DataOutputStream(connection.getOutputStream());
                 outputStream.writeBytes(requestParams != null ? requestParams : "");
                 outputStream.flush();
