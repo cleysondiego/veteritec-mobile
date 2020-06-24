@@ -21,8 +21,11 @@ import com.google.android.material.navigation.NavigationView;
 import java.util.Objects;
 
 import br.com.veteritec.R;
+import br.com.veteritec.clinics.ClinicResponseStructure;
 import br.com.veteritec.customers.CreateCustomerRequestStructure;
 import br.com.veteritec.customers.CreateCustomerUseCase;
+import br.com.veteritec.customers.DeleteCustomerUseCase;
+import br.com.veteritec.customers.GetCustomersResponseStructure;
 import br.com.veteritec.usecase.ThreadExecutor;
 import br.com.veteritec.utils.ApiRequest;
 import br.com.veteritec.utils.MaskUtils;
@@ -50,6 +53,8 @@ public class AddCustomerActivity extends AppCompatActivity implements Navigation
 
     private String userToken;
     private String userClinicId;
+
+    private GetCustomersResponseStructure.Customer customer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +88,8 @@ public class AddCustomerActivity extends AppCompatActivity implements Navigation
         btnDelete = findViewById(R.id.btnAddCustomerDelete);
 
         btnSave.setOnClickListener(this);
+        btnEdit.setOnClickListener(this);
+        btnDelete.setOnClickListener(this);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
 
@@ -96,6 +103,18 @@ public class AddCustomerActivity extends AppCompatActivity implements Navigation
 
                 btnEdit.setVisibility(View.VISIBLE);
                 btnDelete.setVisibility(View.VISIBLE);
+                customer = (GetCustomersResponseStructure.Customer) getIntent().getSerializableExtra("CUSTOMER_OBJECT");
+                if (customer != null) {
+                    edtCustomerName.setText(customer.getName());
+                    edtCustomerCpf.setText(customer.getCpf());
+                    edtCustomerCep.setText(customer.getZipCode());
+                    edtCustomerNeighborhood.setText(customer.getNeighborhood());
+                    edtCustomerStreet.setText(customer.getStreet());
+                    edtCustomerNumber.setText(customer.getNumber());
+                    edtCustomerTelephone.setText(customer.getPhoneNumber());
+                    edtCustomerCellPhone.setText(customer.getCellPhoneNumber());
+                    edtCustomerEmail.setText(customer.getEmail());
+                }
             }
             setSupportActionBar(toolbar);
         } catch (Exception e) {
@@ -135,23 +154,25 @@ public class AddCustomerActivity extends AppCompatActivity implements Navigation
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.btnAddCustomerSave) {
-            if (validateFields()) {
-                createCustomer();
-            } else {
-                Toast.makeText(context, "Por favor, verifique os dados digitados e tente novamente", Toast.LENGTH_LONG).show();
-            }
-        } else if (v.getId() == R.id.btnAddCustomerEdit) {
-            if (edition == 0) {
-                setEdition();
-                Toast.makeText(context, "Edição desabilitada!", Toast.LENGTH_SHORT).show();
-            }
-            else {
-                setEdition();
-                Toast.makeText(context, "Edição habilitada!", Toast.LENGTH_SHORT).show();
-            }
-        } else {
-            Toast.makeText(context, "Cliente excluído com sucesso!", Toast.LENGTH_SHORT).show();
+        switch(v.getId()) {
+            case R.id.btnAddCustomerSave:
+                if (validateFields()) {
+                    createCustomer();
+                } else {
+                    Toast.makeText(context, "Por favor, verifique os dados digitados e tente novamente", Toast.LENGTH_LONG).show();
+                }
+            case R.id.btnAddCustomerEdit:
+                if (edition == 0) {
+                    setEdition();
+                    Toast.makeText(context, "Edição desabilitada!", Toast.LENGTH_SHORT).show();
+                } else {
+                    setEdition();
+                    Toast.makeText(context, "Edição habilitada!", Toast.LENGTH_SHORT).show();
+                }
+            case R.id.btnAddCustomerDelete:
+                deleteCustomer();
+            default:
+                break;
         }
     }
 
@@ -240,5 +261,24 @@ public class AddCustomerActivity extends AppCompatActivity implements Navigation
         SharedPreferencesUtils sharedPreferencesUtils = new SharedPreferencesUtils();
         userToken = sharedPreferencesUtils.getUserToken(context);
         userClinicId = sharedPreferencesUtils.getUserClinicId(context);
+    }
+
+    private void deleteCustomer() {
+        ApiRequest apiRequest = new ApiRequest();
+        DeleteCustomerUseCase deleteCustomerUseCase = new DeleteCustomerUseCase(ThreadExecutor.getInstance(), apiRequest, customer.getId(), userClinicId, userToken);
+        deleteCustomerUseCase.setCallback(new DeleteCustomerUseCase.OnDeleteCustomerCallback() {
+            @Override
+            public void onSuccess() {
+                Toast.makeText(context, "Cliente deletado com sucesso!", Toast.LENGTH_LONG).show();
+                finish();
+            }
+
+            @Override
+            public void onFailure(int statusCode) {
+                Toast.makeText(context, "Não foi possível deletar o cliente nesse momento, por favor, tente novamente!", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        deleteCustomerUseCase.execute();
     }
 }

@@ -109,31 +109,15 @@ public class QueryActivity extends AppCompatActivity implements NavigationView.O
         navigationView.setNavigationItemSelectedListener(this);
     }
 
-    private void filter(String filter) {
-        List<String> filteredName = new ArrayList<>();
+    @Override
+    public void onResume() {
+        super.onResume();
 
         if (key == 0) {
-            for (GetCustomersResponseStructure.Customer customer : getCustomersResponseStructure.getCustomersList()) {
-                if (customer.getName().toLowerCase().contains(filter.toLowerCase())) {
-                    filteredName.add(customer.getName());
-                }
-            }
+            getCustomers();
         } else if (key == 1) {
-            for (GetCustomersResponseStructure.Customer customer : getCustomersResponseStructure.getCustomersList()) {
-                if (customer.getName().toLowerCase().contains(filter.toLowerCase())) {
-                    filteredName.add(customer.getName());
-                }
-            }
         } else {
-            for (GetCustomersResponseStructure.Customer customer : getCustomersResponseStructure.getCustomersList()) {
-                if (customer.getName().toLowerCase().contains(filter.toLowerCase())) {
-                    filteredName.add(customer.getName());
-                }
-            }
         }
-
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, filteredName);
-        lvResult.setAdapter(arrayAdapter);
     }
 
     @Override
@@ -228,5 +212,32 @@ public class QueryActivity extends AppCompatActivity implements NavigationView.O
         intent.putExtra("CUSTOMER_OBJECT", customer);
         intent.putExtra("Query", 1);
         startActivity(intent);
+    }
+
+    private void filter(String filter) {
+        List<String> filteredName = new ArrayList<>();
+
+        if (key == 0) {
+            for (GetCustomersResponseStructure.Customer customer : getCustomersResponseStructure.getCustomersList()) {
+                if (customer.getName().toLowerCase().contains(filter.toLowerCase())) {
+                    filteredName.add(customer.getName());
+                }
+            }
+        } else if (key == 1) {
+            for (GetCustomersResponseStructure.Customer customer : getCustomersResponseStructure.getCustomersList()) {
+                if (customer.getName().toLowerCase().contains(filter.toLowerCase())) {
+                    filteredName.add(customer.getName());
+                }
+            }
+        } else {
+            for (GetCustomersResponseStructure.Customer customer : getCustomersResponseStructure.getCustomersList()) {
+                if (customer.getName().toLowerCase().contains(filter.toLowerCase())) {
+                    filteredName.add(customer.getName());
+                }
+            }
+        }
+
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, filteredName);
+        lvResult.setAdapter(arrayAdapter);
     }
 }
