@@ -108,4 +108,20 @@
     <string name="edtAddAnimalWeight">Пример: 30 кг</string>
     <string name="txtAddEmployeeEmail">Эл. адрес</string>
     <string name="txtLoginEmail">Эл. адрес:</string>
+    <string name="txtTranslateBR">Бразильский португальский</string>
+    <string name="txtTranslateUS">Американский английский</string>
+    <string name="txtTranslateES">испанский</string>
+    <string name="txtTranslateFR">французский язык</string>
+    <string name="txtTranslateHI">хинди</string>
+    <string name="txtTranslateRU">русский</string>
+    <string name="txtTranslateZH">Упрощенный китайский</string>
+    <string name="txtTranslateJA">японский язык</string>
+    <string name="cdTranslateBR">Это изображение представляет флаг Бразилии</string>
+    <string name="cdTranslateUS">Это изображение представляет флаг США</string>
+    <string name="cdTranslateES">Это изображение представляет флаг Испании</string>
+    <string name="cdTranslateFR">Это изображение представляет флаг Франции</string>
+    <string name="cdTranslateHI">Это изображение представляет флаг Индии</string>
+    <string name="cdTranslateRU">Это изображение представляет флаг России</string>
+    <string name="cdTranslateZH">Это изображение представляет флаг Китая</string>
+    <string name="cdTranslateJA">Это изображение представляет флаг Японии</string>
 </resources>

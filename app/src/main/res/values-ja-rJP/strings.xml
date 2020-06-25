@@ -108,4 +108,20 @@
     <string name="edtAddAnimalWeight">例：30kg</string>
     <string name="txtAddEmployeeEmail">Eメール</string>
     <string name="txtLoginEmail">Eメール：</string>
+    <string name="txtTranslateBR">ブラジルポルトガル語</string>
+    <string name="txtTranslateUS">アメリカ英語</string>
+    <string name="txtTranslateES">スペイン語</string>
+    <string name="txtTranslateFR">フランス語</string>
+    <string name="txtTranslateHI">ヒンディー語</string>
+    <string name="txtTranslateRU">ロシア</string>
+    <string name="txtTranslateZH">簡体字中国語</string>
+    <string name="txtTranslateJA">日本人</string>
+    <string name="cdTranslateBR">この画像はブラジルの旗を表しています</string>
+    <string name="cdTranslateUS">この画像は米国の旗を表しています</string>
+    <string name="cdTranslateES">この画像はスペインの旗を表しています</string>
+    <string name="cdTranslateFR">この画像はフランスの旗を表しています</string>
+    <string name="cdTranslateHI">この画像はインドの旗を表しています</string>
+    <string name="cdTranslateRU">この画像はロシアの旗を表しています</string>
+    <string name="cdTranslateZH">この画像は中国の旗を表しています</string>
+    <string name="cdTranslateJA">この画像は日本の国旗を表しています</string>
 </resources>

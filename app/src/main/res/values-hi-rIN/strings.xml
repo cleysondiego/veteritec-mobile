@@ -108,4 +108,20 @@
     <string name="edtAddAnimalWeight">Ex: 30 किग्रा</string>
     <string name="txtAddEmployeeEmail">ईमेल</string>
     <string name="txtLoginEmail">ईमेल:</string>
+    <string name="txtTranslateBR">ब्राजिलियन पुर्तगाली</string>
+    <string name="txtTranslateUS">अमेरिकी अंग्रेजी</string>
+    <string name="txtTranslateES">स्पेनिश</string>
+    <string name="txtTranslateFR">फ्रेंच</string>
+    <string name="txtTranslateHI">हिन्दी</string>
+    <string name="txtTranslateRU">रूसी</string>
+    <string name="txtTranslateZH">सरलीकृत चीनी</string>
+    <string name="txtTranslateJA">जापानी</string>
+    <string name="cdTranslateBR">यह छवि ब्राज़ील के ध्वज का प्रतिनिधित्व करती है</string>
+    <string name="cdTranslateUS">यह छवि संयुक्त राज्य अमेरिका के ध्वज का प्रतिनिधित्व करती है</string>
+    <string name="cdTranslateES">यह छवि स्पेन के ध्वज का प्रतिनिधित्व करती है</string>
+    <string name="cdTranslateFR">यह छवि फ्रांस के ध्वज का प्रतिनिधित्व करती है</string>
+    <string name="cdTranslateHI">यह छवि भारत के ध्वज का प्रतिनिधित्व करती है</string>
+    <string name="cdTranslateRU">यह छवि रूस के ध्वज का प्रतिनिधित्व करती है</string>
+    <string name="cdTranslateZH">यह छवि चीन के ध्वज का प्रतिनिधित्व करती है</string>
+    <string name="cdTranslateJA">यह छवि जापान के ध्वज का प्रतिनिधित्व करती है</string>
 </resources>

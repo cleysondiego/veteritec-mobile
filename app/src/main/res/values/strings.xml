@@ -166,4 +166,21 @@
 
     <!-- Translate Page -->
     <string name="txtTranslateTitle">Escolha o Idioma</string>
+    <string name="txtTranslateBR">Português Brasileiro</string>
+    <string name="txtTranslateUS">Inglês Americano</string>
+    <string name="txtTranslateES">Espanhol</string>
+    <string name="txtTranslateFR">Francês</string>
+    <string name="txtTranslateHI">Hindi</string>
+    <string name="txtTranslateRU">Russo</string>
+    <string name="txtTranslateZH">Chinês Simplificado</string>
+    <string name="txtTranslateJA">Japonês</string>
+    <string name="cdTranslateBR">Esta imagem representa a bandeira do Brasil</string>
+    <string name="cdTranslateUS">Esta imagem representa a bandeira dos Estados Unidos</string>
+    <string name="cdTranslateES">Esta imagem representa a bandeira da Espanha</string>
+    <string name="cdTranslateFR">Esta imagem representa a bandeira da França</string>
+    <string name="cdTranslateHI">Esta imagem representa a bandeira da Índia</string>
+    <string name="cdTranslateRU">Esta imagem representa a bandeira da Rússia</string>
+    <string name="cdTranslateZH">Esta imagem representa a bandeira da China</string>
+    <string name="cdTranslateJA">Esta imagem representa a bandeira do Japão</string>
+
 </resources>

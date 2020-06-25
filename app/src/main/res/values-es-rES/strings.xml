@@ -108,4 +108,20 @@
     <string name="edtAddAnimalWeight">Ej: 30kg</string>
     <string name="txtAddEmployeeEmail">Email</string>
     <string name="txtLoginEmail">Email:</string>
+    <string name="txtTranslateBR">Portugués Brasileño</string>
+    <string name="txtTranslateUS">Inglés Americano</string>
+    <string name="txtTranslateES">Español</string>
+    <string name="txtTranslateFR">Francés</string>
+    <string name="txtTranslateHI">Hindi</string>
+    <string name="txtTranslateRU">Ruso</string>
+    <string name="txtTranslateZH">Chino Simplificado</string>
+    <string name="txtTranslateJA">Japonés</string>
+    <string name="cdTranslateBR">Esta imagen representa la bandera de Brasil</string>
+    <string name="cdTranslateUS">Esta imagen representa la bandera de los Estados Unidos.</string>
+    <string name="cdTranslateES">Esta imagen representa la bandera de España.</string>
+    <string name="cdTranslateFR">Esta imagen representa la bandera de Francia</string>
+    <string name="cdTranslateHI">Esta imagen representa la bandera de la India</string>
+    <string name="cdTranslateRU">Esta imagen representa la bandera de Rusia</string>
+    <string name="cdTranslateZH">Esta imagen representa la bandera de China</string>
+    <string name="cdTranslateJA">Esta imagen representa la bandera de Japón</string>
 </resources>
