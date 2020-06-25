@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.MenuItem;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -15,8 +14,9 @@ import br.com.veteritec.activities.AddEmployeeActivity;
 import br.com.veteritec.activities.AddVaccineActivity;
 import br.com.veteritec.activities.CalculatorActivity;
 import br.com.veteritec.activities.QueryActivity;
+import br.com.veteritec.activities.TranslateActivity;
 
-public class NavigationDrawer extends AppCompatActivity {
+public class NavigationDrawer {
     private Intent intent;
 
     public Intent choosedItem(DrawerLayout drawer, Context context, MenuItem item) {
@@ -24,6 +24,9 @@ public class NavigationDrawer extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.nav_calculator:
                 intent = new Intent(context, CalculatorActivity.class);
+                break;
+            case R.id.nav_translate:
+                intent = new Intent(context, TranslateActivity.class);
                 break;
             case R.id.nav_add_customer:
                 intent = new Intent(context, AddCustomerActivity.class);

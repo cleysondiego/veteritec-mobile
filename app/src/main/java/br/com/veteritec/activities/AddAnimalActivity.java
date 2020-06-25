@@ -3,6 +3,8 @@ package br.com.veteritec.activities;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.MenuItem;
@@ -44,15 +46,25 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
 
         context = getApplicationContext();
 
+        SharedPreferences language = getSharedPreferences("Language", MODE_PRIVATE);
+
+        Locale locale = new Locale(language.getString("ChoosedLang", "pt"));
+        Locale.setDefault(locale);
+
+        Configuration config = new Configuration(getResources().getConfiguration());
+        config.setLocale(locale);
+
+        getResources().updateConfiguration(config, getResources().getDisplayMetrics());
+
         Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle(R.string.txtAddAnimalTitle);
+        toolbar.setTitle(getResources().getString(R.string.txtAddAnimalTitle));
         setSupportActionBar(toolbar);
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
         drawer = findViewById(R.id.drawer_add_animal);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, 0, 0);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 

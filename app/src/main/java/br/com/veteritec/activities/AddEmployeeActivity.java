@@ -9,6 +9,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,6 +18,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
+
+import java.util.Locale;
 
 import br.com.veteritec.R;
 import br.com.veteritec.utils.NavigationDrawer;
@@ -40,6 +44,16 @@ public class AddEmployeeActivity extends AppCompatActivity implements Navigation
 
         context = getApplicationContext();
 
+        SharedPreferences language = getSharedPreferences("Language", MODE_PRIVATE);
+
+        Locale locale = new Locale(language.getString("ChoosedLang", "pt"));
+        Locale.setDefault(locale);
+
+        Configuration config = new Configuration(getResources().getConfiguration());
+        config.setLocale(locale);
+
+        getResources().updateConfiguration(config, getResources().getDisplayMetrics());
+
         getUserDataFromSharedPreferences();
 
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -51,11 +65,11 @@ public class AddEmployeeActivity extends AppCompatActivity implements Navigation
         edtEmployeeConfirmPassword = findViewById(R.id.edtAddEmployeeConfirmPassword);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle(R.string.txtAddEmployeeTitle);
+        toolbar.setTitle(getResources().getString(R.string.txtAddEmployeeTitle));
         setSupportActionBar(toolbar);
 
         drawer = findViewById(R.id.drawer_add_employee);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, 0, 0);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
     }

@@ -9,6 +9,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,6 +24,7 @@ import android.widget.Toast;
 import com.google.android.material.navigation.NavigationView;
 
 import java.text.DecimalFormat;
+import java.util.Locale;
 
 import br.com.veteritec.R;
 import br.com.veteritec.utils.DosageCalculator;
@@ -53,12 +56,22 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 
         context = getApplicationContext();
 
+        SharedPreferences language = getSharedPreferences("Language", MODE_PRIVATE);
+
+        Locale locale = new Locale(language.getString("ChoosedLang", "pt"));
+        Locale.setDefault(locale);
+
+        Configuration config = new Configuration(getResources().getConfiguration());
+        config.setLocale(locale);
+
+        getResources().updateConfiguration(config, getResources().getDisplayMetrics());
+
         Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle(R.string.txtCalculatorTitle);
+        toolbar.setTitle(getResources().getString(R.string.txtCalculatorTitle));
         setSupportActionBar(toolbar);
 
         drawer = findViewById(R.id.drawer_calculator);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, 0, 0);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 

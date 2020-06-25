@@ -2,6 +2,8 @@ package br.com.veteritec.activities;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,6 +20,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
 
+import java.util.Locale;
 import java.util.Objects;
 
 import br.com.veteritec.R;
@@ -64,6 +67,16 @@ public class AddCustomerActivity extends AppCompatActivity implements Navigation
 
         context = getApplicationContext();
 
+        SharedPreferences language = getSharedPreferences("Language", MODE_PRIVATE);
+
+        Locale locale = new Locale(language.getString("ChoosedLang", "pt"));
+        Locale.setDefault(locale);
+
+        Configuration config = new Configuration(getResources().getConfiguration());
+        config.setLocale(locale);
+
+        getResources().updateConfiguration(config, getResources().getDisplayMetrics());
+
         getUserDataFromSharedPreferences();
 
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -96,9 +109,9 @@ public class AddCustomerActivity extends AppCompatActivity implements Navigation
 
         try {
             if (Objects.requireNonNull(getIntent().getExtras()).getInt("Query", 0) == 0) {
-                toolbar.setTitle(R.string.txtAddCustomerAddTitle);
+                toolbar.setTitle(getResources().getString(R.string.txtAddCustomerAddTitle));
             } else {
-                toolbar.setTitle(R.string.txtAddCustomerEditTitle);
+                toolbar.setTitle(getResources().getString(R.string.txtAddCustomerEditTitle));
 
                 setEdition();
                 editable = true;
@@ -125,7 +138,7 @@ public class AddCustomerActivity extends AppCompatActivity implements Navigation
         }
 
         drawer = findViewById(R.id.drawer_add_customer);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, 0, 0);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
     }

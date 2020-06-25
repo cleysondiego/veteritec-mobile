@@ -1,5 +1,6 @@
 <resources>
-    <string name="app_name">Veteritec</string>"
+    <string name="app_name" translatable="false">Veteritec</string>
+    <string name="translate_dialog_title">Escolha o Idioma</string>
     <string name="main_menu">Menu Principal</string>
 
     <!-- Main Menu Page -->
@@ -19,14 +20,13 @@
     <!-- Login Page -->
     <string name="txtLoginTitle">Sistema Gerenciador de Clínicas Veterinárias</string>
     <string name="txtLoginClinic">Escolha sua clínica:</string>
-    <string name="txtLoginEmail">E-mail:</string>
     <string name="txtLoginPassword">Senha:</string>
     <string name="txtLoginLoading">Carregando</string>
-    <string name="edtLoginEmail">Digite o seu email</string>
+    <string name="edtLoginEmail">Digite o seu e-mail</string>
     <string name="edtLoginPassword">Digite a sua senha</string>
     <string name="cdLoginLogo">Esta imagem representa o logotipo do aplicativo.</string>
     <string name="btnLoginLogin">Entrar</string>
-    <string name="errorLoginWrongEmail">Email inválido.</string>
+    <string name="errorLoginWrongEmail">E-mail inválido.</string>
     <string name="errorLoginWrongPassword">Senha incorreta.</string>
     <string name="errorLoginUserNotExists">Usuário não encontrado.</string>
 
@@ -36,7 +36,7 @@
     <string name="txtCalculatorMeasure">Kg</string>
     <string name="txtCalculatorFarmacoDosage">Dose de fármaco</string>
     <string name="txtCalculatorFarmacoConcentration">Concentração de fármaco</string>
-    <string name="txtCalculatorResult">0</string>
+    <string name="txtCalculatorResult" translatable="false">0</string>
     <string name="edtCalculatorAnimalWeight">Ex: 17.4</string>
     <string name="edtCalculatorFarmacoDosage">Ex: 7.8</string>
     <string name="edtCalculatorFarmacoConcentration">Ex 1.6</string>
@@ -59,6 +59,7 @@
     <!-- Drawer Menu -->
     <string name="txtDrawerMenuTools">Ferramentas</string>
     <string name="txtDrawerMenuCalculator">Calculadora de Doses</string>
+    <string name="txtDrawerMenuLanguage">Alterar Idioma</string>
     <string name="txtDrawerMenuCustomer">Cliente</string>
     <string name="txtDrawerMenuAnimal">Animal</string>
     <string name="txtDrawerMenuVaccine">Vacina</string>
@@ -80,8 +81,8 @@
     <string name="txtAddVaccineHour">Hora</string>
     <string name="txtAddVaccineAnimal">Animal</string>
     <string name="txtAddVaccineDescription">Descrição</string>
-    <string name="edtAddVaccineDate">00/00/0000</string>
-    <string name="edtAddVaccineHour">00:00</string>
+    <string name="edtAddVaccineDate" translatable="false">00/00/0000</string>
+    <string name="edtAddVaccineHour" translatable="false">00:00</string>
     <string name="edtAddVaccineDescription">Ex: O animal será vacinado contra raiva.</string>
     <string name="btnAddVaccineSave">Salvar</string>
 
@@ -161,4 +162,25 @@
     <string name="edtAddEmployeeEmail">Ex: pedro.albuquerque@bol.com.br</string>
     <string name="edtAddEmployeePassword">Digite sua senha</string>
     <string name="edtAddEmployeeConfirmPassword">Confirme sua senha</string>
+    <string name="txtLoginEmail">E-mail:</string>
+
+    <!-- Translate Page -->
+    <string name="txtTranslateTitle">Escolha o Idioma</string>
+    <string name="txtTranslateBR">Português Brasileiro</string>
+    <string name="txtTranslateUS">Inglês Americano</string>
+    <string name="txtTranslateES">Espanhol</string>
+    <string name="txtTranslateFR">Francês</string>
+    <string name="txtTranslateHI">Hindi</string>
+    <string name="txtTranslateRU">Russo</string>
+    <string name="txtTranslateZH">Chinês Simplificado</string>
+    <string name="txtTranslateJA">Japonês</string>
+    <string name="cdTranslateBR">Esta imagem representa a bandeira do Brasil</string>
+    <string name="cdTranslateUS">Esta imagem representa a bandeira dos Estados Unidos</string>
+    <string name="cdTranslateES">Esta imagem representa a bandeira da Espanha</string>
+    <string name="cdTranslateFR">Esta imagem representa a bandeira da França</string>
+    <string name="cdTranslateHI">Esta imagem representa a bandeira da Índia</string>
+    <string name="cdTranslateRU">Esta imagem representa a bandeira da Rússia</string>
+    <string name="cdTranslateZH">Esta imagem representa a bandeira da China</string>
+    <string name="cdTranslateJA">Esta imagem representa a bandeira do Japão</string>
+
 </resources>
