@@ -135,7 +135,8 @@
     <string name="edtAddCustomerEmail">Ex: jose.silva@uol.com.br</string>
 
     <!-- Add Animal Page -->
-    <string name="txtAddAnimalTitle">Adicionar Animal</string>
+    <string name="txtAddAnimalAddTitle">Adicionar Animal</string>
+    <string name="txtAddAnimalEditTitle">Editar Animal</string>
     <string name="txtAddAnimalOwner">Dono</string>
     <string name="txtAddAnimalName">Nome</string>
     <string name="txtAddAnimalBirthDate">Data de Nascimento</string>
