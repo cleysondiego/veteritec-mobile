@@ -38,6 +38,7 @@ public class NavigationDrawer {
                 break;
             case R.id.nav_add_animal:
                 intent = new Intent(context, AddAnimalActivity.class);
+                intent.putExtra("Query", 0);
                 break;
             case R.id.nav_query_animal:
                 intent = new Intent(context, QueryActivity.class);
