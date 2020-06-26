@@ -38,6 +38,8 @@ import br.com.veteritec.usecase.ThreadExecutor;
 import br.com.veteritec.utils.ApiRequest;
 import br.com.veteritec.utils.NavigationDrawer;
 import br.com.veteritec.utils.SharedPreferencesUtils;
+import br.com.veteritec.vaccines.GetVaccinesResponseStructure;
+import br.com.veteritec.vaccines.GetVaccinesUseCase;
 
 public class QueryActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, AdapterView.OnItemClickListener {
     private Context context;
@@ -49,6 +51,7 @@ public class QueryActivity extends AppCompatActivity implements NavigationView.O
 
     private GetCustomersResponseStructure getCustomersResponseStructure;
     private GetPetsResponseStructure getPetsResponseStructure;
+    private GetVaccinesResponseStructure getVaccinesResponseStructure;
 
     private EditText edtSearch;
     private ListView lvResult;
@@ -74,6 +77,7 @@ public class QueryActivity extends AppCompatActivity implements NavigationView.O
 
         getCustomersResponseStructure = new GetCustomersResponseStructure();
         getPetsResponseStructure = new GetPetsResponseStructure();
+        getVaccinesResponseStructure = new GetVaccinesResponseStructure();
 
         edtSearch = findViewById(R.id.edtCustomer);
         edtSearch.addTextChangedListener(new TextWatcher() {
@@ -106,6 +110,7 @@ public class QueryActivity extends AppCompatActivity implements NavigationView.O
             getPets();
         } else if (key == 2) {
             toolbar.setTitle(getResources().getString(R.string.txtQueryVaccineTitle));
+            getVaccines();
         } else {
             Toast.makeText(context, "Ocorreu um erro! Tente Novamente!", Toast.LENGTH_SHORT).show();
             finish();
@@ -133,7 +138,7 @@ public class QueryActivity extends AppCompatActivity implements NavigationView.O
         } else if (key == 1) {
             getPets();
         } else if (key == 2) {
-            //TODO getVaccines();
+            getVaccines();
         } else {
             Toast.makeText(context, "Ocorreu um erro! Tente Novamente!", Toast.LENGTH_SHORT).show();
             finish();
@@ -244,10 +249,10 @@ public class QueryActivity extends AppCompatActivity implements NavigationView.O
                     filteredName.add(pet.getName());
                 }
             }
-        } else {
-            for (GetCustomersResponseStructure.Customer customer : getCustomersResponseStructure.getCustomersList()) {
-                if (customer.getName().toLowerCase().contains(filter.toLowerCase())) {
-                    filteredName.add(customer.getName());
+        } else if (key == 2) {
+            for (GetVaccinesResponseStructure.Vaccine vaccine : getVaccinesResponseStructure.getVaccineList()) {
+                if (vaccine.getDisplayName().toLowerCase().contains(filter.toLowerCase())) {
+                    filteredName.add(vaccine.getDisplayName());
                 }
             }
         }
@@ -304,5 +309,36 @@ public class QueryActivity extends AppCompatActivity implements NavigationView.O
         intent.putExtra("PET_OBJECT", pet);
         intent.putExtra("Query", 1);
         startActivity(intent);
+    }
+
+    public void getVaccines() {
+        ApiRequest apiRequest = new ApiRequest();
+
+        GetVaccinesUseCase getVaccinesUseCase = new GetVaccinesUseCase(ThreadExecutor.getInstance(), apiRequest, userClinicId, userToken);
+        getVaccinesUseCase.setCallback(new GetVaccinesUseCase.OnGetVaccinesCallback() {
+            @Override
+            public void onSuccess(GetVaccinesResponseStructure vaccinesResponseStructure) {
+                getVaccinesResponseStructure = vaccinesResponseStructure;
+                populateVaccinesListView(getVaccinesResponseStructure.getVaccineList());
+            }
+
+            @Override
+            public void onFailure(int statusCode) {
+                Toast.makeText(context, "Erro ao obter a lista de Vacinas, por favor, tente novamente!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        getVaccinesUseCase.execute();
+    }
+
+    public void populateVaccinesListView(List<GetVaccinesResponseStructure.Vaccine> vaccineList) {
+        List<String> name = new ArrayList<>();
+
+        for (GetVaccinesResponseStructure.Vaccine vaccine : vaccineList) {
+            name.add(vaccine.getDisplayName());
+        }
+
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, name);
+        lvResult.setAdapter(arrayAdapter);
     }
 }

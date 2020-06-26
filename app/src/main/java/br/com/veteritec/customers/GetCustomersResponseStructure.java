@@ -14,11 +14,12 @@ public class GetCustomersResponseStructure {
     public List<Customer> getCustomersList() {
         return customersList;
     }
+
     public GetCustomersResponseStructure fromJson(JSONObject jsonObject) {
         try {
             JSONArray jsonArray = jsonObject.getJSONArray("customers");
 
-            for (int i = 0; i< jsonArray.length(); i++) {
+            for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject object = jsonArray.getJSONObject(i);
                 customersList.add(new Customer().fromJson(object));
             }
@@ -98,7 +99,7 @@ public class GetCustomersResponseStructure {
                 this.cellPhoneNumber = jsonObject.getString("cellNumber");
                 this.email = jsonObject.getString("email");
                 this.clinicId = jsonObject.getString("clinic");
-            }catch (JSONException e) {
+            } catch (JSONException e) {
                 e.printStackTrace();
             }
             return this;
