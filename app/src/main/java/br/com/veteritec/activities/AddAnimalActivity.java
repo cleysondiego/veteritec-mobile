@@ -35,6 +35,8 @@ import java.util.Objects;
 import br.com.veteritec.R;
 import br.com.veteritec.customers.GetCustomersResponseStructure;
 import br.com.veteritec.customers.GetCustomersUseCase;
+import br.com.veteritec.pets.ChangePetRequestStructure;
+import br.com.veteritec.pets.ChangePetUseCase;
 import br.com.veteritec.pets.CreatePetRequestStructure;
 import br.com.veteritec.pets.CreatePetUseCase;
 import br.com.veteritec.pets.GetPetsResponseStructure;
@@ -148,6 +150,8 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
             case R.id.btnAddAnimalDate:
                 if (!editable) {
                     showDateDialog(edtAnimalBirthDate);
+                } else {
+                    changePet();
                 }
                 break;
             case R.id.btnAddAnimalSave:
@@ -341,5 +345,43 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
     }
 
     private void changePet() {
+        ChangePetRequestStructure changePetRequestStructure = new ChangePetRequestStructure();
+
+        changePetRequestStructure.setId(pet.getId());
+        changePetRequestStructure.setName(edtAnimalName.getText().toString());
+        changePetRequestStructure.setBirth(edtAnimalBirthDate.getText().toString());
+        changePetRequestStructure.setSpecies(edtAnimalSpecies.getText().toString());
+        changePetRequestStructure.setBreed(edtAnimalRace.getText().toString());
+        changePetRequestStructure.setSize(edtAnimalSize.getText().toString());
+        changePetRequestStructure.setWeight(edtAnimalWeight.getText().toString());
+        changePetRequestStructure.setComments(edtAnimalObservation.getText().toString());
+
+        String customerId = "";
+
+        for (GetCustomersResponseStructure.Customer customer : getCustomersResponseStructure.getCustomersList()) {
+            if (customer.getName().equals(spnAnimalOwner.getSelectedItem().toString())) {
+                customerId = customer.getId();
+                break;
+            }
+        }
+
+        changePetRequestStructure.setCustomer(customerId);
+
+        ApiRequest apiRequest = new ApiRequest();
+        ChangePetUseCase changePetUseCase = new ChangePetUseCase(ThreadExecutor.getInstance(), apiRequest, changePetRequestStructure, userClinicId, userToken);
+        changePetUseCase.setCallback(new ChangePetUseCase.OnChangePet() {
+            @Override
+            public void onSuccess() {
+                Toast.makeText(context, "Pet editado com sucesso!", Toast.LENGTH_LONG).show();
+                finish();
+            }
+
+            @Override
+            public void onFailure(int statusCode) {
+                Toast.makeText(context, "Não foi possível editar o pet nesse momento, por favor, tente novamente!", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        changePetUseCase.execute();
     }
 }
