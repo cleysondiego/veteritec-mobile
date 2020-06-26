@@ -17,6 +17,7 @@ public class ApiRequest {
     public static final String URL_CLINICS = BASE_URL + "/clinics";
     public static final String URL_SESSIONS = BASE_URL + "/sessions";
     public static final String URL_CUSTOMERS = BASE_URL + "/customers";
+    public static final String URL_PETS = BASE_URL + "/pets";
 
     private static final String GET = "GET";
     private static final String POST = "POST";

@@ -34,6 +34,8 @@ import br.com.veteritec.R;
 import br.com.veteritec.clinics.ClinicResponseStructure;
 import br.com.veteritec.customers.GetCustomersResponseStructure;
 import br.com.veteritec.customers.GetCustomersUseCase;
+import br.com.veteritec.pets.GetPetsResponseStructure;
+import br.com.veteritec.pets.GetPetsUseCase;
 import br.com.veteritec.usecase.ThreadExecutor;
 import br.com.veteritec.utils.ApiRequest;
 import br.com.veteritec.utils.NavigationDrawer;
@@ -48,6 +50,7 @@ public class QueryActivity extends AppCompatActivity implements NavigationView.O
     private String userClinicId = "";
 
     private GetCustomersResponseStructure getCustomersResponseStructure;
+    private GetPetsResponseStructure getPetsResponseStructure;
 
     private EditText edtSearch;
     private Button btnSearch;
@@ -73,6 +76,7 @@ public class QueryActivity extends AppCompatActivity implements NavigationView.O
         getResources().updateConfiguration(config, getResources().getDisplayMetrics());
 
         getCustomersResponseStructure = new GetCustomersResponseStructure();
+        getPetsResponseStructure = new GetPetsResponseStructure();
 
         edtSearch = findViewById(R.id.edtCustomer);
         edtSearch.addTextChangedListener(new TextWatcher() {
@@ -105,6 +109,7 @@ public class QueryActivity extends AppCompatActivity implements NavigationView.O
             getCustomers();
         } else if (key == 1) {
             toolbar.setTitle(getResources().getString(R.string.txtQueryAnimalTitle));
+            getPets();
         } else {
             toolbar.setTitle(getResources().getString(R.string.txtQueryVaccineTitle));
         }
@@ -129,6 +134,7 @@ public class QueryActivity extends AppCompatActivity implements NavigationView.O
         if (key == 0) {
             getCustomers();
         } else if (key == 1) {
+            getPets();
         } else {
         }
     }
@@ -168,7 +174,11 @@ public class QueryActivity extends AppCompatActivity implements NavigationView.O
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        goToCustomerActivity(parent, position);
+        if (key == 0) {
+            goToCustomerActivity(parent, position);
+        } else if (key == 1) {
+            goToPetsActivity(parent, position);
+        }
     }
 
     private void getUserDataFromSharedPreferences(Context context) {
@@ -185,7 +195,7 @@ public class QueryActivity extends AppCompatActivity implements NavigationView.O
             @Override
             public void onSuccess(GetCustomersResponseStructure customersResponseStructure) {
                 getCustomersResponseStructure = customersResponseStructure;
-                populateListView(getCustomersResponseStructure.getCustomersList());
+                populateCustomerListView(getCustomersResponseStructure.getCustomersList());
             }
 
             @Override
@@ -197,7 +207,7 @@ public class QueryActivity extends AppCompatActivity implements NavigationView.O
         getCustomersUseCase.execute();
     }
 
-    public void populateListView(List<GetCustomersResponseStructure.Customer> customerList) {
+    public void populateCustomerListView(List<GetCustomersResponseStructure.Customer> customerList) {
         List<String> name = new ArrayList<>();
 
         for (GetCustomersResponseStructure.Customer customer : customerList) {
@@ -237,9 +247,9 @@ public class QueryActivity extends AppCompatActivity implements NavigationView.O
                 }
             }
         } else if (key == 1) {
-            for (GetCustomersResponseStructure.Customer customer : getCustomersResponseStructure.getCustomersList()) {
-                if (customer.getName().toLowerCase().contains(filter.toLowerCase())) {
-                    filteredName.add(customer.getName());
+            for (GetPetsResponseStructure.Pet pet : getPetsResponseStructure.getPets()) {
+                if (pet.getName().toLowerCase().contains(filter.toLowerCase())) {
+                    filteredName.add(pet.getName());
                 }
             }
         } else {
@@ -252,5 +262,55 @@ public class QueryActivity extends AppCompatActivity implements NavigationView.O
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, filteredName);
         lvResult.setAdapter(arrayAdapter);
+    }
+
+    private void getPets() {
+        ApiRequest apiRequest = new ApiRequest();
+
+        GetPetsUseCase getPetsUseCase = new GetPetsUseCase(ThreadExecutor.getInstance(), apiRequest, userClinicId, userToken);
+        getPetsUseCase.setCallback(new GetPetsUseCase.OnGetPetsCallback() {
+            @Override
+            public void onSuccess(GetPetsResponseStructure petsResponseStructure) {
+                getPetsResponseStructure = petsResponseStructure;
+                populatePetsListView(getPetsResponseStructure.getPets());
+            }
+
+            @Override
+            public void onFailure(int statusCode) {
+                Toast.makeText(context, "Erro ao obter a lista de Pets, por favor, tente novamente!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        getPetsUseCase.execute();
+    }
+
+    public void populatePetsListView(List<GetPetsResponseStructure.Pet> petList) {
+        List<String> name = new ArrayList<>();
+
+        for (GetPetsResponseStructure.Pet pet : petList) {
+            name.add(pet.getName());
+        }
+
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, name);
+        lvResult.setAdapter(arrayAdapter);
+    }
+
+    public void goToPetsActivity(AdapterView<?> parent, int position) {
+        String petName = parent.getItemAtPosition(position).toString();
+
+        List<GetPetsResponseStructure.Pet> petList = getPetsResponseStructure.getPets();
+
+        GetPetsResponseStructure.Pet pet = new GetPetsResponseStructure.Pet();
+
+        for (GetPetsResponseStructure.Pet pets : petList) {
+            if (pets.getName().equals(petName)) {
+                pet = pets;
+            }
+        }
+
+        Intent intent = new Intent(this, AddAnimalActivity.class);
+        intent.putExtra("PET_OBJECT", pet);
+        intent.putExtra("Query", 1);
+        startActivity(intent);
     }
 }

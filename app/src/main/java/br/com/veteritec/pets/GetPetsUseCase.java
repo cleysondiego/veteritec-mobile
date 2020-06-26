@@ -1,4 +1,4 @@
-package br.com.veteritec.clinics;
+package br.com.veteritec.pets;
 
 import android.os.Handler;
 import android.os.Looper;
@@ -12,23 +12,28 @@ import br.com.veteritec.usecase.Executor;
 import br.com.veteritec.usecase.UseCaseAbstract;
 import br.com.veteritec.utils.ApiRequest;
 
-public class ClinicUseCase extends UseCaseAbstract {
-
-    public interface OnGetClinicCallback {
-        void onSuccess(ClinicResponseStructure clinicResponseStructure);
+public class GetPetsUseCase extends UseCaseAbstract {
+    public interface OnGetPetsCallback {
+        void onSuccess(GetPetsResponseStructure getPetsResponseStructure);
 
         void onFailure(int statusCode);
     }
 
-    private ClinicUseCase.OnGetClinicCallback callback;
+    private GetPetsUseCase.OnGetPetsCallback callback;
 
     private ApiRequest apiRequest;
+    private String clinicId;
+    private String token;
 
-    public ClinicUseCase(Executor executor,
-                         ApiRequest apiRequest) {
+    public GetPetsUseCase(Executor executor,
+                          ApiRequest apiRequest,
+                          String clinicId,
+                          String token) {
         super(executor);
 
         this.apiRequest = apiRequest;
+        this.clinicId = clinicId;
+        this.token = token;
     }
 
     @Override
@@ -36,15 +41,18 @@ public class ClinicUseCase extends UseCaseAbstract {
         try {
             HashMap<String, String> headers = new HashMap<>();
 
-            apiRequest.get(ApiRequest.URL_CLINICS, headers, null, new ApiRequest.OnResponse() {
+            headers.put(ApiRequest.AUTHORIZATION, "Bearer " + token);
+            headers.put(ApiRequest.CLINIC_ID, clinicId);
+
+            apiRequest.get(ApiRequest.URL_PETS, headers, null, new ApiRequest.OnResponse() {
                 @Override
                 public void onResponse(int statusCode, final byte[] response) {
                     new Handler(Looper.getMainLooper()).post(new Runnable() {
                         @Override
                         public void run() {
                             try {
-                                ClinicResponseStructure clinicResponseStructure = new ClinicResponseStructure().fromJson(new JSONObject(new String(response)));
-                                callback.onSuccess(clinicResponseStructure);
+                                GetPetsResponseStructure getPetsResponseStructure = new GetPetsResponseStructure().fromJson(new JSONObject(new String(response)));
+                                callback.onSuccess(getPetsResponseStructure);
                             } catch (JSONException ignored) {
                                 callback.onFailure(101);
                             }
@@ -67,7 +75,7 @@ public class ClinicUseCase extends UseCaseAbstract {
         }
     }
 
-    public void setCallback(ClinicUseCase.OnGetClinicCallback callback) {
+    public void setCallback(GetPetsUseCase.OnGetPetsCallback callback) {
         this.callback = callback;
     }
 }

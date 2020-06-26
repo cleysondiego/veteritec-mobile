@@ -26,18 +26,25 @@ import com.google.android.material.navigation.NavigationView;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
+import java.util.Objects;
 
 import br.com.veteritec.R;
+import br.com.veteritec.customers.GetCustomersResponseStructure;
+import br.com.veteritec.pets.GetPetsResponseStructure;
 import br.com.veteritec.utils.NavigationDrawer;
 
 public class AddAnimalActivity extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
     private Context context;
+    private int edition = 0;
+    private boolean editable = false;
 
     private DrawerLayout drawer;
 
     EditText edtAnimalBirthDate;
 
     Button btnDate;
+
+    private GetPetsResponseStructure.Pet pet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,8 +64,36 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
         getResources().updateConfiguration(config, getResources().getDisplayMetrics());
 
         Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle(getResources().getString(R.string.txtAddAnimalTitle));
-        setSupportActionBar(toolbar);
+
+        try {
+            if (Objects.requireNonNull(getIntent().getExtras()).getInt("Query", 0) == 0) {
+                toolbar.setTitle(getResources().getString(R.string.txtAddAnimalAddTitle));
+            } else {
+                toolbar.setTitle(getResources().getString(R.string.txtAddAnimalEditTitle));
+
+                setEdition();
+                editable = true;
+
+//                btnEdit.setVisibility(View.VISIBLE);
+//                btnDelete.setVisibility(View.VISIBLE);
+//                pet = (GetPetsResponseStructure.Pet) getIntent().getSerializableExtra("PET_OBJECT");
+//                if (pet != null) {
+//                    edtCustomerName.setText(customer.getName());
+//                    edtCustomerCpf.setText(customer.getCpf());
+//                    edtCustomerCep.setText(customer.getZipCode());
+//                    edtCustomerNeighborhood.setText(customer.getNeighborhood());
+//                    edtCustomerStreet.setText(customer.getStreet());
+//                    edtCustomerNumber.setText(customer.getNumber());
+//                    edtCustomerTelephone.setText(customer.getPhoneNumber());
+//                    edtCustomerCellPhone.setText(customer.getCellPhoneNumber());
+//                    edtCustomerEmail.setText(customer.getEmail());
+//                }
+            }
+            setSupportActionBar(toolbar);
+        } catch (Exception e) {
+            Toast.makeText(context, "Houve um erro ao abrir a tela! Tente novamente!", Toast.LENGTH_SHORT).show();
+            finish();
+        }
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -129,4 +164,32 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
 
         new DatePickerDialog(AddAnimalActivity.this, dateSetListener, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
     }
+
+//    private void setEdition() {
+//        if (edition == 0) {
+//            edtCustomerName.setEnabled(false);
+//            edtCustomerCpf.setEnabled(false);
+//            edtCustomerCep.setEnabled(false);
+//            edtCustomerNeighborhood.setEnabled(false);
+//            edtCustomerStreet.setEnabled(false);
+//            edtCustomerNumber.setEnabled(false);
+//            edtCustomerTelephone.setEnabled(false);
+//            edtCustomerCellPhone.setEnabled(false);
+//            edtCustomerEmail.setEnabled(false);
+//
+//            edition = 1;
+//        } else {
+//            edtCustomerName.setEnabled(true);
+//            edtCustomerCpf.setEnabled(true);
+//            edtCustomerCep.setEnabled(true);
+//            edtCustomerNeighborhood.setEnabled(true);
+//            edtCustomerStreet.setEnabled(true);
+//            edtCustomerNumber.setEnabled(true);
+//            edtCustomerTelephone.setEnabled(true);
+//            edtCustomerCellPhone.setEnabled(true);
+//            edtCustomerEmail.setEnabled(true);
+//
+//            edition = 0;
+//        }
+//    }
 }
