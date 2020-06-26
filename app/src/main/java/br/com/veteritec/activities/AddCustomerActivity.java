@@ -133,7 +133,7 @@ public class AddCustomerActivity extends AppCompatActivity implements Navigation
             }
             setSupportActionBar(toolbar);
         } catch (Exception e) {
-            Toast.makeText(context, "Houve um erro ao abrir a tela! Tente novamente!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, R.string.toastAddCustomerQueryCustomersError, Toast.LENGTH_SHORT).show();
             finish();
         }
 
@@ -178,16 +178,16 @@ public class AddCustomerActivity extends AppCompatActivity implements Navigation
                         changeCustomer();
                     }
                 } else {
-                    Toast.makeText(context, "Por favor, verifique os dados digitados e tente novamente", Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, R.string.toastAddCustomerFieldsCheck, Toast.LENGTH_LONG).show();
                 }
                 break;
             case R.id.btnAddCustomerEdit:
                 if (edition == 0) {
                     setEdition();
-                    Toast.makeText(context, "Edição desabilitada!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, R.string.toastAddCustomerDisabledEdition, Toast.LENGTH_SHORT).show();
                 } else {
                     setEdition();
-                    Toast.makeText(context, "Edição habilitada!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, R.string.toastAddCustomerEnabledEdition, Toast.LENGTH_SHORT).show();
                 }
                 break;
             case R.id.btnAddCustomerDelete:
@@ -258,13 +258,13 @@ public class AddCustomerActivity extends AppCompatActivity implements Navigation
         createCustomerUseCase.setCallback(new CreateCustomerUseCase.OnCreateCustomer() {
             @Override
             public void onSuccess() {
-                Toast.makeText(context, "Cliente adicionado com sucesso!", Toast.LENGTH_LONG).show();
+                Toast.makeText(context, R.string.toastAddCustomerFailureAddedCustomer, Toast.LENGTH_LONG).show();
                 finish();
             }
 
             @Override
             public void onFailure(int statusCode) {
-                Toast.makeText(context, "Não foi possível adicionar o cliente nesse momento, por favor, tente novamente!", Toast.LENGTH_LONG).show();
+                Toast.makeText(context, R.string.toastAddCustomerFailureAddedCustomer, Toast.LENGTH_LONG).show();
             }
         });
         createCustomerUseCase.execute();
@@ -282,13 +282,13 @@ public class AddCustomerActivity extends AppCompatActivity implements Navigation
         deleteCustomerUseCase.setCallback(new DeleteCustomerUseCase.OnDeleteCustomerCallback() {
             @Override
             public void onSuccess() {
-                Toast.makeText(context, "Cliente deletado com sucesso!", Toast.LENGTH_LONG).show();
+                Toast.makeText(context, R.string.toastAddCustomerSuccesfullyDeletedCustomer, Toast.LENGTH_LONG).show();
                 finish();
             }
 
             @Override
             public void onFailure(int statusCode) {
-                Toast.makeText(context, "Não foi possível deletar o cliente nesse momento, por favor, tente novamente!", Toast.LENGTH_LONG).show();
+                Toast.makeText(context, R.string.toastAddCustomerFailureDeletedCustomer, Toast.LENGTH_LONG).show();
             }
         });
 
@@ -319,13 +319,13 @@ public class AddCustomerActivity extends AppCompatActivity implements Navigation
         changeCustomerUseCase.setCallback(new ChangeCustomerUseCase.OnChangeCustomer() {
             @Override
             public void onSuccess() {
-                Toast.makeText(context, "Cliente editado com sucesso!", Toast.LENGTH_LONG).show();
+                Toast.makeText(context, R.string.toastAddCustomerSuccesfullyEditedCustomer, Toast.LENGTH_LONG).show();
                 finish();
             }
 
             @Override
             public void onFailure(int statusCode) {
-                Toast.makeText(context, "Não foi possível editar o cliente nesse momento, por favor, tente novamente!", Toast.LENGTH_LONG).show();
+                Toast.makeText(context, R.string.toastAddCustomerFailureEditedCustomer, Toast.LENGTH_LONG).show();
             }
         });
 

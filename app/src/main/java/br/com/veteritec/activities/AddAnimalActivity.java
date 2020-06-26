@@ -131,7 +131,7 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
             }
             setSupportActionBar(toolbar);
         } catch (Exception e) {
-            Toast.makeText(context, "Houve um erro ao abrir a tela! Tente novamente!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, R.string.toastAddAnimalError, Toast.LENGTH_SHORT).show();
             finish();
         }
 
@@ -165,10 +165,10 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
             case R.id.btnAddAnimalEdit:
                 if (edition == 0) {
                     setEdition();
-                    Toast.makeText(this, "Edição desabilitada!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, R.string.toastAddAnimalDisabledEdition, Toast.LENGTH_SHORT).show();
                 } else {
                     setEdition();
-                    Toast.makeText(this, "Edição habilitada!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, R.string.toastAddAnimalEnabledEdition, Toast.LENGTH_SHORT).show();
                 }
                 break;
             case R.id.btnAddAnimalDelete:
@@ -267,7 +267,7 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
 
             @Override
             public void onFailure(int statusCode) {
-                Toast.makeText(context, "Erro ao obter a lista de clientes cadastrados.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, R.string.toastAddAnimalQueryCustomersError, Toast.LENGTH_SHORT).show();
                 finish();
             }
         });
@@ -332,13 +332,13 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
         createPetUseCase.setCallback(new CreatePetUseCase.OnCreatePet() {
             @Override
             public void onSuccess() {
-                Toast.makeText(context, "Animal adicionado com sucesso!", Toast.LENGTH_LONG).show();
+                Toast.makeText(context, R.string.toastAddAnimalSuccesfullyAddedAnimal, Toast.LENGTH_LONG).show();
                 finish();
             }
 
             @Override
             public void onFailure(int statusCode) {
-                Toast.makeText(context, "Não foi possível adicionar o animal nesse momento, por favor, tente novamente!", Toast.LENGTH_LONG).show();
+                Toast.makeText(context, R.string.toastAddAnimalFailureAddedAnimal, Toast.LENGTH_LONG).show();
             }
         });
 
@@ -373,13 +373,13 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
         changePetUseCase.setCallback(new ChangePetUseCase.OnChangePet() {
             @Override
             public void onSuccess() {
-                Toast.makeText(context, "Pet editado com sucesso!", Toast.LENGTH_LONG).show();
+                Toast.makeText(context, R.string.toastAddAnimalSuccesfullyEditedAnimal, Toast.LENGTH_LONG).show();
                 finish();
             }
 
             @Override
             public void onFailure(int statusCode) {
-                Toast.makeText(context, "Não foi possível editar o pet nesse momento, por favor, tente novamente!", Toast.LENGTH_LONG).show();
+                Toast.makeText(context, R.string.toastAddAnimalFailureEditedAnimal, Toast.LENGTH_LONG).show();
             }
         });
 
@@ -392,13 +392,13 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
         deletePetUseCase.setCallback(new DeletePetUseCase.OnDeletePetCallback() {
             @Override
             public void onSuccess() {
-                Toast.makeText(context, "Animal deletado com sucesso!", Toast.LENGTH_LONG).show();
+                Toast.makeText(context, R.string.toastAddAnimalSuccesfullyDeletedAnimal, Toast.LENGTH_LONG).show();
                 finish();
             }
 
             @Override
             public void onFailure(int statusCode) {
-                Toast.makeText(context, "Não foi possível deletar o animal nesse momento, por favor, tente novamente!", Toast.LENGTH_LONG).show();
+                Toast.makeText(context, R.string.toastAddAnimalFailureDeletedAnimal, Toast.LENGTH_LONG).show();
             }
         });
 

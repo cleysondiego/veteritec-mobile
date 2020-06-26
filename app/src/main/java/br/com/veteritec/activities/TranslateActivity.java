@@ -15,6 +15,7 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -96,6 +97,7 @@ public class TranslateActivity extends AppCompatActivity implements View.OnClick
         data.putString("ChoosedLang", language);
         data.commit();
 
+        Toast.makeText(context, R.string.toastTranslateLanguageChange, Toast.LENGTH_SHORT).show();
         recreate();
     }
 
