@@ -97,7 +97,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
             @Override
             public void onFailure(int statusCode) {
-                Toast.makeText(context, "Erro ao obter a lista de clínicas cadastradas.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, R.string.toastLoginGetClinicsError, Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -139,7 +139,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void onSuccess() {
                 loadingDialog.dismissLoadingDialog();
-                Toast.makeText(context, "Logado com sucesso!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, R.string.toastLoginSuccesfullyLogin, Toast.LENGTH_SHORT).show();
                 goToMainActivity();
             }
 
@@ -147,9 +147,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             public void onFailure(int statusCode) {
                 loadingDialog.dismissLoadingDialog();
                 if (statusCode == 400) {
-                    Toast.makeText(context, "Usuário e/ou senha incorretos!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, R.string.toastLoginEmailPasswordCheck, Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(context, "Ocorreu um erro durante o login, verifique os dados e tente novamente!" + statusCode, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, R.string.toastLoginError + statusCode, Toast.LENGTH_SHORT).show();
                 }
             }
         });

@@ -20,6 +20,7 @@
     <!-- Login Page -->
     <string name="txtLoginTitle">Sistema Gerenciador de Clínicas Veterinárias</string>
     <string name="txtLoginClinic">Escolha sua clínica:</string>
+    <string name="txtLoginEmail">E-mail:</string>
     <string name="txtLoginPassword">Senha:</string>
     <string name="txtLoginLoading">Carregando</string>
     <string name="edtLoginEmail">Digite o seu e-mail</string>
@@ -29,6 +30,10 @@
     <string name="errorLoginWrongEmail">E-mail inválido.</string>
     <string name="errorLoginWrongPassword">Senha incorreta.</string>
     <string name="errorLoginUserNotExists">Usuário não encontrado.</string>
+    <string name="toastLoginError">Ocorreu um erro durante o login! Tente novamente!</string>
+    <string name="toastLoginGetClinicsError">Erro ao obter a lista de clínicas cadastradas! Tente novamente!</string>
+    <string name="toastLoginSuccesfullyLogin">Logado com sucesso!</string>
+    <string name="toastLoginEmailPasswordCheck">E-mail e/ou senha incorretos!</string>
 
     <!-- Calculator Page -->
     <string name="txtCalculatorTitle">Calculadora de Doses</string>
@@ -41,6 +46,8 @@
     <string name="edtCalculatorFarmacoDosage">Ex: 7.8</string>
     <string name="edtCalculatorFarmacoConcentration">Ex 1.6</string>
     <string name="btnCalculatorResult">Calcular</string>
+    <string name="toastCalculatorOptionsError">Erro com as opções! Certifique-se de que todos os campos estão preenchidos!</string>
+    <string name="toastCalculatorValidationsError">Erro na validação dos dados digitados! Utilize apenas números acima de zero e selecione todas as unidades de medida!</string>
 
     <!-- Fármaco Spinner -->
     <string-array name="dosage_array">
@@ -133,6 +140,17 @@
     <string name="edtAddCustomerTelephone">Ex: (19)3845–5792</string>
     <string name="edtAddCustomerCellphone">Ex: (19)99426–6248</string>
     <string name="edtAddCustomerEmail">Ex: jose.silva@uol.com.br</string>
+    <string name="toastAddCustomerError">Houve um erro ao abrir a tela! Tente novamente!</string>
+    <string name="toastAddCustomerFieldsCheck">Por favor, verifique os dados digitados e tente novamente!</string>
+    <string name="toastAddCustomerEnabledEdition">Edição habilitada!</string>
+    <string name="toastAddCustomerDisabledEdition">Edição desabilitada!</string>
+    <string name="toastAddCustomerQueryCustomersError">Erro ao obter a lista de clientes cadastrados! Tente novamente!</string>
+    <string name="toastAddCustomerSuccesfullyAddedCustomer">Cliente adicionado com sucesso!</string>
+    <string name="toastAddCustomerFailureAddedCustomer">Não foi possível adicionar o Cliente! Tente novamente!</string>
+    <string name="toastAddCustomerSuccesfullyEditedCustomer">Cliente editado com sucesso!</string>
+    <string name="toastAddCustomerFailureEditedCustomer">Não foi possível editar o Cliente! Tente novamente!</string>
+    <string name="toastAddCustomerSuccesfullyDeletedCustomer">Cliente deletado com sucesso!</string>
+    <string name="toastAddCustomerFailureDeletedCustomer">Não foi possível deletar o Cliente! Tente novamente!</string>
 
     <!-- Add Animal Page -->
     <string name="txtAddAnimalAddTitle">Adicionar Animal</string>
@@ -152,6 +170,16 @@
     <string name="edtAddAnimalSize">Ex: Grande</string>
     <string name="edtAddAnimalWeight">Ex: 30kg</string>
     <string name="edtAddAnimalObservations">Ex: O cachorro está vacinado contra todas as efermidades comuns.</string>
+    <string name="toastAddAnimalError">Houve um erro ao abrir a tela! Tente novamente!</string>
+    <string name="toastAddAnimalEnabledEdition">Edição habilitada!</string>
+    <string name="toastAddAnimalDisabledEdition">Edição desabilitada!</string>
+    <string name="toastAddAnimalQueryCustomersError">Erro ao obter a lista de clientes cadastrados! Tente novamente!</string>
+    <string name="toastAddAnimalSuccesfullyAddedAnimal">Animal adicionado com sucesso!</string>
+    <string name="toastAddAnimalFailureAddedAnimal">Não foi possível adicionar o animal! Tente novamente!</string>
+    <string name="toastAddAnimalSuccesfullyEditedAnimal">Animal editado com sucesso!</string>
+    <string name="toastAddAnimalFailureEditedAnimal">Não foi possível editar o animal! Tente novamente!</string>
+    <string name="toastAddAnimalSuccesfullyDeletedAnimal">Animal deletado com sucesso!</string>
+    <string name="toastAddAnimalFailureDeletedAnimal">Não foi possível deletar o animal! Tente novamente!</string>
 
     <!-- Add Employee Page -->
     <string name="txtAddEmployeeTitle">Adicionar Funcionário</string>
@@ -163,7 +191,8 @@
     <string name="edtAddEmployeeEmail">Ex: pedro.albuquerque@bol.com.br</string>
     <string name="edtAddEmployeePassword">Digite sua senha</string>
     <string name="edtAddEmployeeConfirmPassword">Confirme sua senha</string>
-    <string name="txtLoginEmail">E-mail:</string>
+    <string name="toastAddEmployeeFieldsCheck">Por favor, verifique os dados digitados e tente novamente!</string>
+    <string name="toastAddEmployeePasswordCheck">As senhas são diferentes!</string>
 
     <!-- Translate Page -->
     <string name="txtTranslateTitle">Escolha o Idioma</string>
@@ -175,6 +204,7 @@
     <string name="txtTranslateRU">Russo</string>
     <string name="txtTranslateZH">Chinês Simplificado</string>
     <string name="txtTranslateJA">Japonês</string>
+    <string name="toastTranslateLanguageChange">Idioma alterado com sucesso!</string>
     <string name="cdTranslateBR">Esta imagem representa a bandeira do Brasil</string>
     <string name="cdTranslateUS">Esta imagem representa a bandeira dos Estados Unidos</string>
     <string name="cdTranslateES">Esta imagem representa a bandeira da Espanha</string>
@@ -183,5 +213,7 @@
     <string name="cdTranslateRU">Esta imagem representa a bandeira da Rússia</string>
     <string name="cdTranslateZH">Esta imagem representa a bandeira da China</string>
     <string name="cdTranslateJA">Esta imagem representa a bandeira do Japão</string>
+    <string name="txtAddAnimalTitle">Adicionar Animal</string>
+    <string name="txtAddEmployeeLoginEmail">E-mail:</string>
 
 </resources>

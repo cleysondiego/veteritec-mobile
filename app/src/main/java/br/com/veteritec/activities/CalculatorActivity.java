@@ -137,7 +137,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
         if (result != VALIDATION_FAIL && result != INVALID_OPERATORS) {
             txtResult.setText(resultFormat.format(result));
         } else {
-            Toast.makeText(this, "Erro com as opções, por favor selecione apenas as opções disponiveis!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.toastCalculatorOptionsError, Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -150,7 +150,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
             dosage = Double.parseDouble(edtDosage.getText().toString());
             concentration = Double.parseDouble(edtFarmacoConcentration.getText().toString());
         } catch (NumberFormatException exception) {
-            Toast.makeText(this, "Erro na validação dos dados digitados, por favor verifique-os e tente novamente!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.toastCalculatorOptionsError, Toast.LENGTH_SHORT).show();
             return VALIDATION_FAIL;
         }
 
@@ -158,7 +158,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
         String concentrationUnit = concentrationSpinner.getSelectedItem().toString();
 
         if (!validateFields(animalWeight, dosage, concentration, dosageUnit, concentrationUnit)) {
-            Toast.makeText(this, "Erro na validação dos dados digitados, por favor digite apenas números!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.toastCalculatorValidationsError, Toast.LENGTH_SHORT).show();
             return VALIDATION_FAIL;
         }
 

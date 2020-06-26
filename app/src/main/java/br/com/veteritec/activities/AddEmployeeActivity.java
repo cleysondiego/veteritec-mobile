@@ -102,9 +102,8 @@ public class AddEmployeeActivity extends AppCompatActivity implements Navigation
     public void onClick(View v) {
         if (validateFields()) {
             createEmployee();
-            Toast.makeText(context, "Teste do botão", Toast.LENGTH_LONG).show();
         } else {
-            Toast.makeText(context, "Por favor, verifique os dados digitados e tente novamente", Toast.LENGTH_LONG).show();
+            Toast.makeText(context, R.string.toastAddEmployeeFieldsCheck, Toast.LENGTH_LONG).show();
         }
     }
 
@@ -133,7 +132,7 @@ public class AddEmployeeActivity extends AppCompatActivity implements Navigation
         if (editText.getText().toString().equals(editText1.getText().toString())) {
             return true;
         } else {
-            Toast.makeText(context, "As senhas não coincidem!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, R.string.toastAddEmployeePasswordCheck, Toast.LENGTH_SHORT).show();
             return false;
         }
     }
