@@ -1,4 +1,4 @@
-package br.com.veteritec.customers;
+package br.com.veteritec.vaccines;
 
 import android.os.Handler;
 import android.os.Looper;
@@ -12,23 +12,23 @@ import br.com.veteritec.usecase.Executor;
 import br.com.veteritec.usecase.UseCaseAbstract;
 import br.com.veteritec.utils.ApiRequest;
 
-public class GetCustomersUseCase extends UseCaseAbstract {
-    public interface OnGetCustomersCallback {
-        void onSuccess(GetCustomersResponseStructure getCustomersResponseStructure);
+public class GetVaccinesUseCase extends UseCaseAbstract {
+    public interface OnGetVaccinesCallback {
+        void onSuccess(GetVaccinesResponseStructure getVaccinesResponseStructure);
 
         void onFailure(int statusCode);
     }
 
-    private GetCustomersUseCase.OnGetCustomersCallback callback;
+    private GetVaccinesUseCase.OnGetVaccinesCallback callback;
 
     private ApiRequest apiRequest;
     private String clinicId;
     private String token;
 
-    public GetCustomersUseCase(Executor executor,
-                               ApiRequest apiRequest,
-                               String clinicId,
-                               String token) {
+    public GetVaccinesUseCase(Executor executor,
+                              ApiRequest apiRequest,
+                              String clinicId,
+                              String token) {
         super(executor);
 
         this.apiRequest = apiRequest;
@@ -43,16 +43,16 @@ public class GetCustomersUseCase extends UseCaseAbstract {
             headers.put(ApiRequest.CLINIC_ID, clinicId);
             headers.put(ApiRequest.AUTHORIZATION, "Bearer " + token);
 
-            apiRequest.get(ApiRequest.URL_CUSTOMERS, headers, null, new ApiRequest.OnResponse() {
+            apiRequest.get(ApiRequest.URL_VACCINES, headers, null, new ApiRequest.OnResponse() {
                 @Override
                 public void onResponse(int statusCode, final byte[] response) {
                     new Handler(Looper.getMainLooper()).post(new Runnable() {
                         @Override
                         public void run() {
                             try {
-                                GetCustomersResponseStructure getCustomersResponseStructure = new GetCustomersResponseStructure().fromJson(new JSONObject(new String(response)));
-                                callback.onSuccess(getCustomersResponseStructure);
-                            } catch (JSONException e) {
+                                GetVaccinesResponseStructure getVaccinesResponseStructure = new GetVaccinesResponseStructure().fromJson(new JSONObject(new String(response)));
+                                callback.onSuccess(getVaccinesResponseStructure);
+                            } catch (JSONException ignored) {
                                 callback.onFailure(101);
                             }
                         }
@@ -64,18 +64,18 @@ public class GetCustomersUseCase extends UseCaseAbstract {
                     new Handler(Looper.getMainLooper()).post(new Runnable() {
                         @Override
                         public void run() {
-                            onFailure(statusCode);
+                            callback.onFailure(statusCode);
                         }
                     });
                 }
             });
 
-        } catch (Exception e) {
+        } catch (Exception ignored) {
             callback.onFailure(100);
         }
     }
 
-    public void setCallback(GetCustomersUseCase.OnGetCustomersCallback callback) {
+    public void setCallback(GetVaccinesUseCase.OnGetVaccinesCallback callback) {
         this.callback = callback;
     }
 }
