@@ -1,12 +1,5 @@
 package br.com.veteritec.activities;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -18,10 +11,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -31,7 +30,6 @@ import java.util.Locale;
 import java.util.Objects;
 
 import br.com.veteritec.R;
-import br.com.veteritec.clinics.ClinicResponseStructure;
 import br.com.veteritec.customers.GetCustomersResponseStructure;
 import br.com.veteritec.customers.GetCustomersUseCase;
 import br.com.veteritec.pets.GetPetsResponseStructure;
@@ -41,7 +39,7 @@ import br.com.veteritec.utils.ApiRequest;
 import br.com.veteritec.utils.NavigationDrawer;
 import br.com.veteritec.utils.SharedPreferencesUtils;
 
-public class QueryActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener, AdapterView.OnItemClickListener {
+public class QueryActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, AdapterView.OnItemClickListener {
     private Context context;
     private DrawerLayout drawer;
     private int key;
@@ -53,7 +51,6 @@ public class QueryActivity extends AppCompatActivity implements NavigationView.O
     private GetPetsResponseStructure getPetsResponseStructure;
 
     private EditText edtSearch;
-    private Button btnSearch;
     private ListView lvResult;
 
     @Override
@@ -96,22 +93,22 @@ public class QueryActivity extends AppCompatActivity implements NavigationView.O
             }
         });
 
-        btnSearch = findViewById(R.id.btnSearch);
         lvResult = findViewById(R.id.lvResult);
-
-        btnSearch.setOnClickListener(this);
 
         getUserDataFromSharedPreferences(context);
 
-        key = getIntent().getExtras().getInt("Choose", 0);
+        key = Objects.requireNonNull(getIntent().getExtras()).getInt("Choose", 0);
         if (key == 0) {
             toolbar.setTitle(getResources().getString(R.string.txtQueryCustomerTitle));
             getCustomers();
         } else if (key == 1) {
             toolbar.setTitle(getResources().getString(R.string.txtQueryAnimalTitle));
             getPets();
-        } else {
+        } else if (key == 2) {
             toolbar.setTitle(getResources().getString(R.string.txtQueryVaccineTitle));
+        } else {
+            Toast.makeText(context, "Ocorreu um erro! Tente Novamente!", Toast.LENGTH_SHORT).show();
+            finish();
         }
 
         lvResult.setOnItemClickListener(this);
@@ -135,7 +132,11 @@ public class QueryActivity extends AppCompatActivity implements NavigationView.O
             getCustomers();
         } else if (key == 1) {
             getPets();
+        } else if (key == 2) {
+            //TODO getVaccines();
         } else {
+            Toast.makeText(context, "Ocorreu um erro! Tente Novamente!", Toast.LENGTH_SHORT).show();
+            finish();
         }
     }
 
@@ -160,15 +161,6 @@ public class QueryActivity extends AppCompatActivity implements NavigationView.O
             drawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
-        }
-    }
-
-    @Override
-    public void onClick(View v) {
-        if (key == 1) {
-            //TODO: FILTRAR LISTA DE CUSTOMERS
-        } else {
-            //TODO: FILTRAR LISTA DE PETS
         }
     }
 
