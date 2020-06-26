@@ -39,6 +39,7 @@ import br.com.veteritec.pets.ChangePetRequestStructure;
 import br.com.veteritec.pets.ChangePetUseCase;
 import br.com.veteritec.pets.CreatePetRequestStructure;
 import br.com.veteritec.pets.CreatePetUseCase;
+import br.com.veteritec.pets.DeletePetUseCase;
 import br.com.veteritec.pets.GetPetsResponseStructure;
 import br.com.veteritec.usecase.ThreadExecutor;
 import br.com.veteritec.utils.ApiRequest;
@@ -171,7 +172,7 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
                 }
                 break;
             case R.id.btnAddAnimalDelete:
-                Toast.makeText(this, "Informações deletadas!", Toast.LENGTH_SHORT).show();
+                deletePet();
             default:
                 break;
         }
@@ -383,5 +384,24 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
         });
 
         changePetUseCase.execute();
+    }
+
+    private void deletePet() {
+        ApiRequest apiRequest = new ApiRequest();
+        DeletePetUseCase deletePetUseCase = new DeletePetUseCase(ThreadExecutor.getInstance(), apiRequest, pet.getId(), userClinicId, userToken);
+        deletePetUseCase.setCallback(new DeletePetUseCase.OnDeletePetCallback() {
+            @Override
+            public void onSuccess() {
+                Toast.makeText(context, "Animal deletado com sucesso!", Toast.LENGTH_LONG).show();
+                finish();
+            }
+
+            @Override
+            public void onFailure(int statusCode) {
+                Toast.makeText(context, "Não foi possível deletar o animal nesse momento, por favor, tente novamente!", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        deletePetUseCase.execute();
     }
 }
