@@ -29,7 +29,6 @@ import java.util.Locale;
 import java.util.Objects;
 
 import br.com.veteritec.R;
-import br.com.veteritec.customers.GetCustomersResponseStructure;
 import br.com.veteritec.pets.GetPetsResponseStructure;
 import br.com.veteritec.utils.NavigationDrawer;
 
@@ -40,9 +39,18 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
 
     private DrawerLayout drawer;
 
+    EditText edtAnimalName;
     EditText edtAnimalBirthDate;
+    EditText edtAnimalSpecies;
+    EditText edtAnimalRace;
+    EditText edtAnimalSize;
+    EditText edtAnimalWeight;
+    EditText edtAnimalObservation;
 
     Button btnDate;
+    Button btnAnimalSave;
+    Button btnAnimalEdit;
+    Button btnAnimalDelete;
 
     private GetPetsResponseStructure.Pet pet;
 
@@ -63,6 +71,24 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
 
         getResources().updateConfiguration(config, getResources().getDisplayMetrics());
 
+        edtAnimalName = findViewById(R.id.edtAddAnimalName);
+        edtAnimalBirthDate = findViewById(R.id.edtAddAnimalBirthDate);
+        edtAnimalSpecies = findViewById(R.id.edtAddAnimalSpecies);
+        edtAnimalRace = findViewById(R.id.edtAddAnimalRace);
+        edtAnimalSize = findViewById(R.id.edtAddAnimalSize);
+        edtAnimalWeight = findViewById(R.id.edtAddAnimalWeight);
+        edtAnimalObservation = findViewById(R.id.edtAddAnimalObservation);
+
+        btnDate = findViewById(R.id.btnAddAnimalDate);
+        btnAnimalSave = findViewById(R.id.btnAddAnimalSave);
+        btnAnimalEdit = findViewById(R.id.btnAddAnimalEdit);
+        btnAnimalDelete = findViewById(R.id.btnAddAnimalDelete);
+
+        btnDate.setOnClickListener(this);
+        btnAnimalSave.setOnClickListener(this);
+        btnAnimalEdit.setOnClickListener(this);
+        btnAnimalDelete.setOnClickListener(this);
+
         Toolbar toolbar = findViewById(R.id.toolbar);
 
         try {
@@ -74,20 +100,18 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
                 setEdition();
                 editable = true;
 
-//                btnEdit.setVisibility(View.VISIBLE);
-//                btnDelete.setVisibility(View.VISIBLE);
-//                pet = (GetPetsResponseStructure.Pet) getIntent().getSerializableExtra("PET_OBJECT");
-//                if (pet != null) {
-//                    edtCustomerName.setText(customer.getName());
-//                    edtCustomerCpf.setText(customer.getCpf());
-//                    edtCustomerCep.setText(customer.getZipCode());
-//                    edtCustomerNeighborhood.setText(customer.getNeighborhood());
-//                    edtCustomerStreet.setText(customer.getStreet());
-//                    edtCustomerNumber.setText(customer.getNumber());
-//                    edtCustomerTelephone.setText(customer.getPhoneNumber());
-//                    edtCustomerCellPhone.setText(customer.getCellPhoneNumber());
-//                    edtCustomerEmail.setText(customer.getEmail());
-//                }
+                btnAnimalEdit.setVisibility(View.VISIBLE);
+                btnAnimalDelete.setVisibility(View.VISIBLE);
+                pet = (GetPetsResponseStructure.Pet) getIntent().getSerializableExtra("PET_OBJECT");
+                if (pet != null) {
+                    edtAnimalName.setText(pet.getName());
+                    edtAnimalBirthDate.setText(pet.getBirth());
+                    edtAnimalSpecies.setText(pet.getSpecies());
+                    edtAnimalRace.setText(pet.getBreed());
+//                    edtAnimalSize.setText();
+                    edtAnimalWeight.setText(pet.getWeight());
+                    edtAnimalObservation.setText(pet.getComments());
+                }
             }
             setSupportActionBar(toolbar);
         } catch (Exception e) {
@@ -103,24 +127,29 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        edtAnimalBirthDate = findViewById(R.id.edtAddAnimalBirthDate);
-
         edtAnimalBirthDate.setInputType(InputType.TYPE_NULL);
-
-        btnDate = findViewById(R.id.btnAddAnimalDate);
-
-        btnDate.setOnClickListener(this);
     }
 
     public void onClick(View v) {
-        if (v.getId() == R.id.btnAddAnimalDate) {
-            showDateDialog(edtAnimalBirthDate);
-        } else if (v.getId() == R.id.btnAddVaccineSave) {
-            Toast.makeText(this, "Informações salvas!", Toast.LENGTH_SHORT).show();
-        } else if (v.getId() == R.id.btnAddAnimalEdit) {
-            Toast.makeText(this, "Edição habilitada!", Toast.LENGTH_SHORT).show();
-        } else if (v.getId() == R.id.btnAddAnimalDelete) {
-            Toast.makeText(this, "Informações deletadas!", Toast.LENGTH_SHORT).show();
+        switch (v.getId()) {
+            case R.id.btnAddAnimalDate:
+                if (!editable) {
+                    showDateDialog(edtAnimalBirthDate);
+                }
+            case R.id.btnAddVaccineSave:
+                Toast.makeText(this, "Informações salvas!", Toast.LENGTH_SHORT).show();
+            case R.id.btnAddAnimalEdit:
+                if (edition == 0) {
+                    setEdition();
+                    Toast.makeText(this, "Edição desabilitada!", Toast.LENGTH_SHORT).show();
+                } else {
+                    setEdition();
+                    Toast.makeText(this, "Edição habilitada!", Toast.LENGTH_SHORT).show();
+                }
+            case R.id.btnAddAnimalDelete:
+                Toast.makeText(this, "Informações deletadas!", Toast.LENGTH_SHORT).show();
+            default:
+                break;
         }
     }
 
@@ -129,10 +158,10 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
         NavigationDrawer navigationDrawer = new NavigationDrawer();
         Intent screen = navigationDrawer.choosedItem(drawer, context, item);
 
-        if(screen != null) {
+        if (screen != null) {
             startActivity(screen);
             finish();
-        }else{
+        } else {
             finish();
         }
 
@@ -165,31 +194,27 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
         new DatePickerDialog(AddAnimalActivity.this, dateSetListener, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
     }
 
-//    private void setEdition() {
-//        if (edition == 0) {
-//            edtCustomerName.setEnabled(false);
-//            edtCustomerCpf.setEnabled(false);
-//            edtCustomerCep.setEnabled(false);
-//            edtCustomerNeighborhood.setEnabled(false);
-//            edtCustomerStreet.setEnabled(false);
-//            edtCustomerNumber.setEnabled(false);
-//            edtCustomerTelephone.setEnabled(false);
-//            edtCustomerCellPhone.setEnabled(false);
-//            edtCustomerEmail.setEnabled(false);
-//
-//            edition = 1;
-//        } else {
-//            edtCustomerName.setEnabled(true);
-//            edtCustomerCpf.setEnabled(true);
-//            edtCustomerCep.setEnabled(true);
-//            edtCustomerNeighborhood.setEnabled(true);
-//            edtCustomerStreet.setEnabled(true);
-//            edtCustomerNumber.setEnabled(true);
-//            edtCustomerTelephone.setEnabled(true);
-//            edtCustomerCellPhone.setEnabled(true);
-//            edtCustomerEmail.setEnabled(true);
-//
-//            edition = 0;
-//        }
-//    }
+    private void setEdition() {
+        if (edition == 0) {
+            edtAnimalName.setEnabled(false);
+            edtAnimalBirthDate.setEnabled(false);
+            edtAnimalSpecies.setEnabled(false);
+            edtAnimalRace.setEnabled(false);
+            edtAnimalSize.setEnabled(false);
+            edtAnimalWeight.setEnabled(false);
+            edtAnimalObservation.setEnabled(false);
+
+            edition = 1;
+        } else {
+            edtAnimalName.setEnabled(true);
+            edtAnimalBirthDate.setEnabled(true);
+            edtAnimalSpecies.setEnabled(true);
+            edtAnimalRace.setEnabled(true);
+            edtAnimalSize.setEnabled(true);
+            edtAnimalWeight.setEnabled(true);
+            edtAnimalObservation.setEnabled(true);
+
+            edition = 0;
+        }
+    }
 }
