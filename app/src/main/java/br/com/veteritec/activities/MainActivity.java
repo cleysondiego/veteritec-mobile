@@ -29,10 +29,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private DrawerLayout drawer;
 
     private boolean isLogged = false;
-    @SuppressWarnings("unused")
     private String userName = "";
     private String userToken = "";
-    @SuppressWarnings("unused")
     private String userClinicId = "";
 
     private ClinicResponseStructure clinicResponseStructure;
