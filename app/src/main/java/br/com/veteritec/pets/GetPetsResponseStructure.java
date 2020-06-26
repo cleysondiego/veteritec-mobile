@@ -35,6 +35,7 @@ public class GetPetsResponseStructure {
         private String birth;
         private String species;
         private String breed;
+        private String size;
         private String weight;
         private String comments;
         private String customer;
@@ -60,6 +61,10 @@ public class GetPetsResponseStructure {
             return breed;
         }
 
+        public String getSize() {
+            return size;
+        }
+
         public String getWeight() {
             return weight;
         }
@@ -83,6 +88,7 @@ public class GetPetsResponseStructure {
                 this.birth = jsonObject.getString("birth");
                 this.species = jsonObject.getString("species");
                 this.breed = jsonObject.getString("breed");
+                this.size = jsonObject.getString("size");
                 this.weight = jsonObject.getString("weight");
                 this.comments = jsonObject.getString("comments");
                 this.customer = jsonObject.getString("customer");
@@ -93,6 +99,4 @@ public class GetPetsResponseStructure {
             return this;
         }
     }
-
-
 }

@@ -9,9 +9,11 @@ import android.os.Bundle;
 import android.text.InputType;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -24,18 +26,30 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.android.material.navigation.NavigationView;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 
 import br.com.veteritec.R;
+import br.com.veteritec.customers.GetCustomersResponseStructure;
+import br.com.veteritec.customers.GetCustomersUseCase;
+import br.com.veteritec.pets.CreatePetRequestStructure;
+import br.com.veteritec.pets.CreatePetUseCase;
 import br.com.veteritec.pets.GetPetsResponseStructure;
+import br.com.veteritec.usecase.ThreadExecutor;
+import br.com.veteritec.utils.ApiRequest;
 import br.com.veteritec.utils.NavigationDrawer;
+import br.com.veteritec.utils.SharedPreferencesUtils;
 
 public class AddAnimalActivity extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
     private Context context;
     private int edition = 0;
     private boolean editable = false;
+
+    private String userToken = "";
+    private String userClinicId = "";
 
     private DrawerLayout drawer;
 
@@ -52,7 +66,10 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
     Button btnAnimalEdit;
     Button btnAnimalDelete;
 
+    Spinner spnAnimalOwner;
+
     private GetPetsResponseStructure.Pet pet;
+    private GetCustomersResponseStructure getCustomersResponseStructure;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +77,8 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
         setContentView(R.layout.activity_add_animal);
 
         context = getApplicationContext();
+
+        getUserDataFromSharedPreferences(context);
 
         SharedPreferences language = getSharedPreferences("Language", MODE_PRIVATE);
 
@@ -78,6 +97,10 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
         edtAnimalSize = findViewById(R.id.edtAddAnimalSize);
         edtAnimalWeight = findViewById(R.id.edtAddAnimalWeight);
         edtAnimalObservation = findViewById(R.id.edtAddAnimalObservation);
+
+        spnAnimalOwner = findViewById(R.id.spnAddAnimalOwner);
+
+        getCustomers();
 
         btnDate = findViewById(R.id.btnAddAnimalDate);
         btnAnimalSave = findViewById(R.id.btnAddAnimalSave);
@@ -102,16 +125,6 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
 
                 btnAnimalEdit.setVisibility(View.VISIBLE);
                 btnAnimalDelete.setVisibility(View.VISIBLE);
-                pet = (GetPetsResponseStructure.Pet) getIntent().getSerializableExtra("PET_OBJECT");
-                if (pet != null) {
-                    edtAnimalName.setText(pet.getName());
-                    edtAnimalBirthDate.setText(pet.getBirth());
-                    edtAnimalSpecies.setText(pet.getSpecies());
-                    edtAnimalRace.setText(pet.getBreed());
-//                    edtAnimalSize.setText();
-                    edtAnimalWeight.setText(pet.getWeight());
-                    edtAnimalObservation.setText(pet.getComments());
-                }
             }
             setSupportActionBar(toolbar);
         } catch (Exception e) {
@@ -136,8 +149,14 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
                 if (!editable) {
                     showDateDialog(edtAnimalBirthDate);
                 }
-            case R.id.btnAddVaccineSave:
-                Toast.makeText(this, "Informações salvas!", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.btnAddAnimalSave:
+                if (!editable) {
+                    createPet();
+                } else {
+                    changePet();
+                }
+                break;
             case R.id.btnAddAnimalEdit:
                 if (edition == 0) {
                     setEdition();
@@ -146,6 +165,7 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
                     setEdition();
                     Toast.makeText(this, "Edição habilitada!", Toast.LENGTH_SHORT).show();
                 }
+                break;
             case R.id.btnAddAnimalDelete:
                 Toast.makeText(this, "Informações deletadas!", Toast.LENGTH_SHORT).show();
             default:
@@ -203,6 +223,7 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
             edtAnimalSize.setEnabled(false);
             edtAnimalWeight.setEnabled(false);
             edtAnimalObservation.setEnabled(false);
+            spnAnimalOwner.setEnabled(false);
 
             edition = 1;
         } else {
@@ -213,8 +234,112 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
             edtAnimalSize.setEnabled(true);
             edtAnimalWeight.setEnabled(true);
             edtAnimalObservation.setEnabled(true);
+            spnAnimalOwner.setEnabled(true);
 
             edition = 0;
         }
+    }
+
+    private void getUserDataFromSharedPreferences(Context context) {
+        SharedPreferencesUtils sharedPreferencesUtils = new SharedPreferencesUtils();
+        userToken = sharedPreferencesUtils.getUserToken(context);
+        userClinicId = sharedPreferencesUtils.getUserClinicId(context);
+    }
+
+    private void getCustomers() {
+        ApiRequest apiRequest = new ApiRequest();
+        GetCustomersUseCase getCustomersUseCase = new GetCustomersUseCase(ThreadExecutor.getInstance(), apiRequest, userClinicId, userToken);
+        getCustomersUseCase.setCallback(new GetCustomersUseCase.OnGetCustomersCallback() {
+            @Override
+            public void onSuccess(GetCustomersResponseStructure customersResponseStructure) {
+                getCustomersResponseStructure = customersResponseStructure;
+                populateCustomersSpinner(getCustomersResponseStructure.getCustomersList());
+
+                if (editable) {
+                    setPetFields();
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode) {
+                Toast.makeText(context, "Erro ao obter a lista de clientes cadastrados.", Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        });
+
+        getCustomersUseCase.execute();
+    }
+
+    private void setPetFields() {
+        pet = (GetPetsResponseStructure.Pet) getIntent().getSerializableExtra("PET_OBJECT");
+        if (pet != null) {
+            edtAnimalName.setText(pet.getName());
+            edtAnimalBirthDate.setText(pet.getBirth());
+            edtAnimalSpecies.setText(pet.getSpecies());
+            edtAnimalRace.setText(pet.getBreed());
+            edtAnimalSize.setText(pet.getSize());
+            edtAnimalWeight.setText(pet.getWeight());
+            edtAnimalObservation.setText(pet.getComments());
+
+            List<GetCustomersResponseStructure.Customer> customerList = getCustomersResponseStructure.getCustomersList();
+            for (int i = 0; i < customerList.size(); i++) {
+                if (customerList.get(i).getId().equals(pet.getCustomer())) {
+                    spnAnimalOwner.setSelection(i, true);
+                }
+            }
+        }
+    }
+
+    private void populateCustomersSpinner(List<GetCustomersResponseStructure.Customer> customerList) {
+        List<String> name = new ArrayList<>();
+
+        for (GetCustomersResponseStructure.Customer customer : customerList) {
+            name.add(customer.getName());
+        }
+
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, name);
+        spnAnimalOwner.setAdapter(arrayAdapter);
+    }
+
+    private void createPet() {
+        CreatePetRequestStructure createPetRequestStructure = new CreatePetRequestStructure();
+        createPetRequestStructure.setName(edtAnimalName.getText().toString());
+        createPetRequestStructure.setBirth(edtAnimalBirthDate.getText().toString());
+        createPetRequestStructure.setSpecies(edtAnimalSpecies.getText().toString());
+        createPetRequestStructure.setBreed(edtAnimalRace.getText().toString());
+        createPetRequestStructure.setSize(edtAnimalSize.getText().toString());
+        createPetRequestStructure.setWeight(edtAnimalWeight.getText().toString());
+        createPetRequestStructure.setComments(edtAnimalObservation.getText().toString());
+
+        String customerId = "";
+
+        for (GetCustomersResponseStructure.Customer customer : getCustomersResponseStructure.getCustomersList()) {
+            if (customer.getName().equals(spnAnimalOwner.getSelectedItem().toString())) {
+                customerId = customer.getId();
+                break;
+            }
+        }
+
+        createPetRequestStructure.setCustomer(customerId);
+
+        ApiRequest apiRequest = new ApiRequest();
+        CreatePetUseCase createPetUseCase = new CreatePetUseCase(ThreadExecutor.getInstance(), apiRequest, createPetRequestStructure, userClinicId, userToken);
+        createPetUseCase.setCallback(new CreatePetUseCase.OnCreatePet() {
+            @Override
+            public void onSuccess() {
+                Toast.makeText(context, "Animal adicionado com sucesso!", Toast.LENGTH_LONG).show();
+                finish();
+            }
+
+            @Override
+            public void onFailure(int statusCode) {
+                Toast.makeText(context, "Não foi possível adicionar o animal nesse momento, por favor, tente novamente!", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        createPetUseCase.execute();
+    }
+
+    private void changePet() {
     }
 }
