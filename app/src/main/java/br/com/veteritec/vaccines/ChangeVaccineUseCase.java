@@ -1,4 +1,4 @@
-package br.com.veteritec.customers;
+package br.com.veteritec.vaccines;
 
 import android.os.Handler;
 import android.os.Looper;
@@ -9,29 +9,29 @@ import br.com.veteritec.usecase.Executor;
 import br.com.veteritec.usecase.UseCaseAbstract;
 import br.com.veteritec.utils.ApiRequest;
 
-public class ChangeCustomerUseCase extends UseCaseAbstract {
-    public interface OnChangeCustomer {
+public class ChangeVaccineUseCase extends UseCaseAbstract {
+    public interface OnChangeVaccine {
         void onSuccess();
 
         void onFailure(int statusCode);
     }
 
-    private ChangeCustomerUseCase.OnChangeCustomer callback;
+    private ChangeVaccineUseCase.OnChangeVaccine callback;
 
     private ApiRequest apiRequest;
-    private CustomerRequestStructure customerRequestStructure;
+    private ChangeVaccineRequestStructure changeVaccineRequestStructure;
     private String clinicId;
     private String token;
 
-    public ChangeCustomerUseCase(Executor executor,
-                                 ApiRequest apiRequest,
-                                 CustomerRequestStructure customerRequestStructure,
-                                 String clinicId,
-                                 String token) {
+    public ChangeVaccineUseCase(Executor executor,
+                                ApiRequest apiRequest,
+                                ChangeVaccineRequestStructure changeVaccineRequestStructure,
+                                String clinicId,
+                                String token) {
         super(executor);
 
         this.apiRequest = apiRequest;
-        this.customerRequestStructure = customerRequestStructure;
+        this.changeVaccineRequestStructure = changeVaccineRequestStructure;
         this.clinicId = clinicId;
         this.token = token;
     }
@@ -44,9 +44,9 @@ public class ChangeCustomerUseCase extends UseCaseAbstract {
             headers.put(ApiRequest.CLINIC_ID, clinicId);
             headers.put(ApiRequest.AUTHORIZATION, "Bearer " + token);
 
-            String requestParams = customerRequestStructure.getStructureString();
+            String requestParams = changeVaccineRequestStructure.getStructureString();
 
-            apiRequest.put(ApiRequest.URL_CUSTOMERS, headers, requestParams, new ApiRequest.OnResponse() {
+            apiRequest.put(ApiRequest.URL_VACCINES, headers, requestParams, new ApiRequest.OnResponse() {
                 @Override
                 public void onResponse(int statusCode, byte[] response) {
                     new Handler(Looper.getMainLooper()).post(new Runnable() {
@@ -72,7 +72,7 @@ public class ChangeCustomerUseCase extends UseCaseAbstract {
         }
     }
 
-    public void setCallback(ChangeCustomerUseCase.OnChangeCustomer callback) {
+    public void setCallback(ChangeVaccineUseCase.OnChangeVaccine callback) {
         this.callback = callback;
     }
 }

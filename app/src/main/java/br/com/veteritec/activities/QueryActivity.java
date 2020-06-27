@@ -175,6 +175,8 @@ public class QueryActivity extends AppCompatActivity implements NavigationView.O
             goToCustomerActivity(parent, position);
         } else if (key == 1) {
             goToPetsActivity(parent, position);
+        } else if (key == 2) {
+            goToVaccinesActivity(parent, position);
         }
     }
 
@@ -341,5 +343,24 @@ public class QueryActivity extends AppCompatActivity implements NavigationView.O
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, name);
         lvResult.setAdapter(arrayAdapter);
+    }
+
+    public void goToVaccinesActivity(AdapterView<?> parent, int position) {
+        String vaccineDisplayName = parent.getItemAtPosition(position).toString();
+
+        List<GetVaccinesResponseStructure.Vaccine> vaccineList = getVaccinesResponseStructure.getVaccineList();
+
+        GetVaccinesResponseStructure.Vaccine vaccine = new GetVaccinesResponseStructure.Vaccine();
+
+        for (GetVaccinesResponseStructure.Vaccine vaccines : vaccineList) {
+            if (vaccines.getDisplayName().equals(vaccineDisplayName)) {
+                vaccine = vaccines;
+            }
+        }
+
+        Intent intent = new Intent(this, AddVaccineActivity.class);
+        intent.putExtra("VACCINE_OBJECT", vaccine);
+        intent.putExtra("Query", 1);
+        startActivity(intent);
     }
 }
