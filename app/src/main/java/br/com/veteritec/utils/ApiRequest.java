@@ -5,6 +5,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -72,7 +73,12 @@ public class ApiRequest {
 
             if (requestMethod.equals(POST) || requestMethod.equals(PUT)) {
                 DataOutputStream outputStream = new DataOutputStream(connection.getOutputStream());
-                outputStream.writeBytes(requestParams != null ? requestParams : "");
+
+                if (requestParams != null) {
+                    byte[] utfRequestParams = requestParams.getBytes(StandardCharsets.UTF_8);
+                    outputStream.write(utfRequestParams, 0, utfRequestParams.length);
+                }
+
                 outputStream.flush();
                 outputStream.close();
             }

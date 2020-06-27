@@ -6,6 +6,7 @@
     <!-- Set Error Messages -->
     <string name="setErrorEmptyField">Este campo não pode ser vazio!</string>
     <string name="setErrorMinimumCharacters">O campo deve conter mais que 5 caracteres!</string>
+    <string name="setErrorZeroField">Este campo não pode ser zero!</string>
 
     <!-- Main Menu Page -->
     <string name="txtMainMenuTitle">Sistema Gerenciador de Clínicas Veterinárias</string>

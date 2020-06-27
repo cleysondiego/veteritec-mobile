@@ -112,10 +112,10 @@ public class AddEmployeeActivity extends AppCompatActivity implements Navigation
     }
 
     public boolean validateFields() {
-        return validateField(edtEmployeeName) ||
-                validateField(edtEmployeeEmail) ||
-                validateField(edtEmployeePassword) ||
-                validateField(edtEmployeeConfirmPassword) ||
+        return validateField(edtEmployeeName) &&
+                validateField(edtEmployeeEmail) &&
+                validateField(edtEmployeePassword) &&
+                validateField(edtEmployeeConfirmPassword) &&
                 validatePassword(edtEmployeePassword, edtEmployeeConfirmPassword);
     }
 

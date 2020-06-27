@@ -6,6 +6,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethod;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,10 +30,12 @@ import br.com.veteritec.utils.LoadingDialog;
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     private Context context;
 
-    Spinner spnClinics;
+    private Spinner spnClinics;
 
-    EditText etLogin;
-    EditText etPassword;
+    private EditText etLogin;
+    private EditText etPassword;
+
+    private Button btnLogin;
 
     private ClinicResponseStructure clinicResponseStructure;
 
@@ -56,18 +61,34 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         etLogin = findViewById(R.id.edtEmail);
         etPassword = findViewById(R.id.edtPassword);
 
-        Button btnLogin = findViewById(R.id.btnLogin);
+        btnLogin = findViewById(R.id.btnLogin);
 
         btnLogin.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        boolean isEmailValid = validateField(etLogin);
-        if (isEmailValid) {
-            boolean isPasswordValid = validateField(etPassword);
-            if (isPasswordValid) {
-                doLogin();
+        switch (v.getId()) {
+            case R.id.btnLogin:
+                boolean isEmailValid = validateField(etLogin);
+                if (isEmailValid) {
+                    boolean isPasswordValid = validateField(etPassword);
+                    if (isPasswordValid) {
+                        doLogin();
+                        closeKeyboard();
+                    }
+                }
+                break;
+        }
+    }
+
+    private void closeKeyboard() {
+        View view = this.getCurrentFocus();
+
+        if (view != null) {
+            InputMethodManager inputMethodManager = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+            if (inputMethodManager != null) {
+                inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
             }
         }
     }
@@ -98,6 +119,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void onFailure(int statusCode) {
                 Toast.makeText(context, getResources().getString(R.string.toastLoginGetClinicsError), Toast.LENGTH_SHORT).show();
+                btnLogin.setVisibility(View.INVISIBLE);
             }
         });
 
@@ -128,7 +150,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         String clinicId = "";
 
-        for(ClinicResponseStructure.Clinic clinic : clinicResponseStructure.getClinics()) {
+        for (ClinicResponseStructure.Clinic clinic : clinicResponseStructure.getClinics()) {
             if (clinic.getName().equals(spnClinics.getSelectedItem().toString())) {
                 clinicId = clinic.getId();
             }
