@@ -61,7 +61,7 @@ public class TranslateActivity extends AppCompatActivity implements View.OnClick
 
     @Override
     public void onClick(View v) {
-        String language = null;
+        String language;
 
         if (v.getId() == R.id.imgBR) {
             language = "pt";
@@ -95,9 +95,9 @@ public class TranslateActivity extends AppCompatActivity implements View.OnClick
 
         SharedPreferences.Editor data = getSharedPreferences("Language", MODE_PRIVATE).edit();
         data.putString("ChoosedLang", language);
-        data.commit();
+        data.apply();
 
-        Toast.makeText(context, R.string.toastTranslateLanguageChange, Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, getResources().getString(R.string.toastTranslateLanguageChange), Toast.LENGTH_SHORT).show();
         recreate();
     }
 

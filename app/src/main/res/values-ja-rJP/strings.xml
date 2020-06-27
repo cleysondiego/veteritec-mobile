@@ -157,4 +157,10 @@
     <string name="txtAddAnimalEditTitle">動物を編集</string>
     <string name="txtAddEmployeeLoginEmail">Eメール：</string>
     <string name="toastTranslateLanguageChange">言語が正常に変更されました！</string>
+    <string name="toastQueryError">画面を開くときにエラーが発生しました！ 再試行！</string>
+    <string name="toastQueryCustomersRequestError">クライアントのリストの取得中にエラーが発生しました！ 再試行！</string>
+    <string name="toastQueryPetsRequestError">動物のリストの取得中にエラーが発生しました！ 再試行！</string>
+    <string name="toastQueryVaccinesRequestError">ワクチンのリストの取得中にエラーが発生しました！ 再試行！</string>
+    <string name="setErrorEmptyField">このフィールドは空にできません！</string>
+    <string name="setErrorMinimumCharacters">フィールドには5文字以上を含める必要があります！</string>
 </resources>

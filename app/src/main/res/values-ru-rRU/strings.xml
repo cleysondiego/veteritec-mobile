@@ -157,4 +157,10 @@
     <string name="txtAddAnimalEditTitle">Редактировать животных</string>
     <string name="txtAddEmployeeLoginEmail">Эл. адрес:</string>
     <string name="toastTranslateLanguageChange">Язык успешно изменился!</string>
+    <string name="toastQueryError">При открытии экрана произошла ошибка! Попробуй еще раз!</string>
+    <string name="toastQueryCustomersRequestError">Ошибка при получении списка клиентов! Попробуй еще раз!</string>
+    <string name="toastQueryPetsRequestError">Ошибка при получении списка животных! Попробуй еще раз!</string>
+    <string name="toastQueryVaccinesRequestError">Ошибка при получении списка вакцин! Попробуй еще раз!</string>
+    <string name="setErrorEmptyField">Это поле не может быть пустым!</string>
+    <string name="setErrorMinimumCharacters">Поле должно содержать более 5 символов!</string>
 </resources>

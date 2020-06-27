@@ -157,4 +157,10 @@
     <string name="txtAddAnimalEditTitle">Editar animal</string>
     <string name="txtAddEmployeeLoginEmail">Email:</string>
     <string name="toastTranslateLanguageChange">¡El idioma cambió con éxito!</string>
+    <string name="toastQueryError">¡Hubo un error al abrir la pantalla! ¡Inténtalo de nuevo!</string>
+    <string name="toastQueryCustomersRequestError">¡Error al obtener la lista de Clientes! ¡Inténtalo de nuevo!</string>
+    <string name="toastQueryPetsRequestError">¡Error al obtener la lista de animales! ¡Inténtalo de nuevo!</string>
+    <string name="toastQueryVaccinesRequestError">¡Error al obtener la lista de vacunas! ¡Inténtalo de nuevo!</string>
+    <string name="setErrorEmptyField">¡Este campo no puede estar vacío!</string>
+    <string name="setErrorMinimumCharacters">¡El campo debe contener más de 5 caracteres!</string>
 </resources>

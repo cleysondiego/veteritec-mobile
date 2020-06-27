@@ -157,4 +157,10 @@
     <string name="txtAddAnimalEditTitle">编辑动物</string>
     <string name="txtAddEmployeeLoginEmail">电子邮件：</string>
     <string name="toastTranslateLanguageChange">语言更改成功！</string>
+    <string name="toastQueryError">打开屏幕时出错！ 再试一次！</string>
+    <string name="toastQueryCustomersRequestError">获取客户列表时出错！ 再试一次！</string>
+    <string name="toastQueryPetsRequestError">获取动物列表时出错！ 再试一次！</string>
+    <string name="toastQueryVaccinesRequestError">获取疫苗清单时出错！ 再试一次！</string>
+    <string name="setErrorEmptyField">该字段不能为空！</string>
+    <string name="setErrorMinimumCharacters">该字段必须包含5个以上的字符！</string>
 </resources>

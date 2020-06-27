@@ -133,7 +133,7 @@ public class AddCustomerActivity extends AppCompatActivity implements Navigation
             }
             setSupportActionBar(toolbar);
         } catch (Exception e) {
-            Toast.makeText(context, R.string.toastAddCustomerQueryCustomersError, Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, getResources().getString(R.string.toastAddCustomerQueryCustomersError), Toast.LENGTH_SHORT).show();
             finish();
         }
 
@@ -178,16 +178,16 @@ public class AddCustomerActivity extends AppCompatActivity implements Navigation
                         changeCustomer();
                     }
                 } else {
-                    Toast.makeText(context, R.string.toastAddCustomerFieldsCheck, Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, getResources().getString(R.string.toastAddCustomerFieldsCheck), Toast.LENGTH_LONG).show();
                 }
                 break;
             case R.id.btnAddCustomerEdit:
                 if (edition == 0) {
                     setEdition();
-                    Toast.makeText(context, R.string.toastAddCustomerDisabledEdition, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, getResources().getString(R.string.toastAddCustomerDisabledEdition), Toast.LENGTH_SHORT).show();
                 } else {
                     setEdition();
-                    Toast.makeText(context, R.string.toastAddCustomerEnabledEdition, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, getResources().getString(R.string.toastAddCustomerEnabledEdition), Toast.LENGTH_SHORT).show();
                 }
                 break;
             case R.id.btnAddCustomerDelete:
@@ -239,11 +239,11 @@ public class AddCustomerActivity extends AppCompatActivity implements Navigation
 
     public boolean validateField(EditText editText) {
         if (editText.getText().toString().isEmpty()) {
-            editText.setError("Esse campo não pode ser vazio");
+            editText.setError(getResources().getString(R.string.setErrorEmptyField));
             editText.requestFocus();
             return false;
         } else if (editText.getText().toString().length() < 5) {
-            editText.setError("O campo deve conter mais que 5 caracteres.");
+            editText.setError(getResources().getString(R.string.setErrorMinimumCharacters));
             editText.requestFocus();
             return false;
         }
@@ -258,13 +258,13 @@ public class AddCustomerActivity extends AppCompatActivity implements Navigation
         createCustomerUseCase.setCallback(new CreateCustomerUseCase.OnCreateCustomer() {
             @Override
             public void onSuccess() {
-                Toast.makeText(context, R.string.toastAddCustomerFailureAddedCustomer, Toast.LENGTH_LONG).show();
+                Toast.makeText(context, getResources().getString(R.string.toastAddCustomerFailureAddedCustomer), Toast.LENGTH_LONG).show();
                 finish();
             }
 
             @Override
             public void onFailure(int statusCode) {
-                Toast.makeText(context, R.string.toastAddCustomerFailureAddedCustomer, Toast.LENGTH_LONG).show();
+                Toast.makeText(context, getResources().getString(R.string.toastAddCustomerFailureAddedCustomer), Toast.LENGTH_LONG).show();
             }
         });
         createCustomerUseCase.execute();
@@ -282,13 +282,13 @@ public class AddCustomerActivity extends AppCompatActivity implements Navigation
         deleteCustomerUseCase.setCallback(new DeleteCustomerUseCase.OnDeleteCustomerCallback() {
             @Override
             public void onSuccess() {
-                Toast.makeText(context, R.string.toastAddCustomerSuccesfullyDeletedCustomer, Toast.LENGTH_LONG).show();
+                Toast.makeText(context, getResources().getString(R.string.toastAddCustomerSuccesfullyDeletedCustomer), Toast.LENGTH_LONG).show();
                 finish();
             }
 
             @Override
             public void onFailure(int statusCode) {
-                Toast.makeText(context, R.string.toastAddCustomerFailureDeletedCustomer, Toast.LENGTH_LONG).show();
+                Toast.makeText(context, getResources().getString(R.string.toastAddCustomerFailureDeletedCustomer), Toast.LENGTH_LONG).show();
             }
         });
 
@@ -319,13 +319,13 @@ public class AddCustomerActivity extends AppCompatActivity implements Navigation
         changeCustomerUseCase.setCallback(new ChangeCustomerUseCase.OnChangeCustomer() {
             @Override
             public void onSuccess() {
-                Toast.makeText(context, R.string.toastAddCustomerSuccesfullyEditedCustomer, Toast.LENGTH_LONG).show();
+                Toast.makeText(context, getResources().getString(R.string.toastAddCustomerSuccesfullyEditedCustomer), Toast.LENGTH_LONG).show();
                 finish();
             }
 
             @Override
             public void onFailure(int statusCode) {
-                Toast.makeText(context, R.string.toastAddCustomerFailureEditedCustomer, Toast.LENGTH_LONG).show();
+                Toast.makeText(context, getResources().getString(R.string.toastAddCustomerFailureEditedCustomer), Toast.LENGTH_LONG).show();
             }
         });
 
