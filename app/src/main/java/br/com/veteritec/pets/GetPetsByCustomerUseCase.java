@@ -1,4 +1,4 @@
-package br.com.veteritec.customers;
+package br.com.veteritec.pets;
 
 import android.os.Handler;
 import android.os.Looper;
@@ -12,46 +12,50 @@ import br.com.veteritec.usecase.Executor;
 import br.com.veteritec.usecase.UseCaseAbstract;
 import br.com.veteritec.utils.ApiRequest;
 
-public class GetCustomersUseCase extends UseCaseAbstract {
-    public interface OnGetCustomersCallback {
-        void onSuccess(GetCustomersResponseStructure getCustomersResponseStructure);
+public class GetPetsByCustomerUseCase extends UseCaseAbstract {
+    public interface OnGetPetsByCustomerCallback {
+        void onSuccess(GetPetsResponseStructure getPetsResponseStructure);
 
         void onFailure(int statusCode);
     }
 
-    private GetCustomersUseCase.OnGetCustomersCallback callback;
+    private GetPetsByCustomerUseCase.OnGetPetsByCustomerCallback callback;
 
     private ApiRequest apiRequest;
     private String clinicId;
     private String token;
+    private String customerId;
 
-    public GetCustomersUseCase(Executor executor,
-                               ApiRequest apiRequest,
-                               String clinicId,
-                               String token) {
+    public GetPetsByCustomerUseCase(Executor executor,
+                                    ApiRequest apiRequest,
+                                    String clinicId,
+                                    String token,
+                                    String customerId) {
         super(executor);
 
         this.apiRequest = apiRequest;
         this.clinicId = clinicId;
         this.token = token;
+        this.customerId = customerId;
     }
 
     @Override
     public void run() {
         try {
             HashMap<String, String> headers = new HashMap<>();
-            headers.put(ApiRequest.CLINIC_ID, clinicId);
-            headers.put(ApiRequest.AUTHORIZATION, "Bearer " + token);
 
-            apiRequest.get(ApiRequest.URL_CUSTOMERS, headers, null, new ApiRequest.OnResponse() {
+            headers.put(ApiRequest.AUTHORIZATION, "Bearer " + token);
+            headers.put(ApiRequest.CLINIC_ID, clinicId);
+
+            apiRequest.get(ApiRequest.URL_PETS + "/" + customerId, headers, null, new ApiRequest.OnResponse() {
                 @Override
                 public void onResponse(int statusCode, final byte[] response) {
                     new Handler(Looper.getMainLooper()).post(new Runnable() {
                         @Override
                         public void run() {
                             try {
-                                GetCustomersResponseStructure getCustomersResponseStructure = new GetCustomersResponseStructure().fromJson(new JSONObject(new String(response)));
-                                callback.onSuccess(getCustomersResponseStructure);
+                                GetPetsResponseStructure getPetsResponseStructure = new GetPetsResponseStructure().fromJson(new JSONObject(new String(response)));
+                                callback.onSuccess(getPetsResponseStructure);
                             } catch (JSONException ignored) {
                                 callback.onFailure(101);
                             }
@@ -64,18 +68,17 @@ public class GetCustomersUseCase extends UseCaseAbstract {
                     new Handler(Looper.getMainLooper()).post(new Runnable() {
                         @Override
                         public void run() {
-                            onFailure(statusCode);
+                            callback.onFailure(statusCode);
                         }
                     });
                 }
             });
-
-        } catch (Exception e) {
+        } catch (Exception ignored) {
             callback.onFailure(100);
         }
     }
 
-    public void setCallback(GetCustomersUseCase.OnGetCustomersCallback callback) {
+    public void setCallback(GetPetsByCustomerUseCase.OnGetPetsByCustomerCallback callback) {
         this.callback = callback;
     }
 }

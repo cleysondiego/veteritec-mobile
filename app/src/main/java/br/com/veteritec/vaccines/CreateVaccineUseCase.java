@@ -1,10 +1,7 @@
-package br.com.veteritec.customers;
+package br.com.veteritec.vaccines;
 
 import android.os.Handler;
 import android.os.Looper;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.HashMap;
 
@@ -12,26 +9,29 @@ import br.com.veteritec.usecase.Executor;
 import br.com.veteritec.usecase.UseCaseAbstract;
 import br.com.veteritec.utils.ApiRequest;
 
-public class GetCustomersUseCase extends UseCaseAbstract {
-    public interface OnGetCustomersCallback {
-        void onSuccess(GetCustomersResponseStructure getCustomersResponseStructure);
+public class CreateVaccineUseCase extends UseCaseAbstract {
+    public interface OnCreateVaccineCallback {
+        void onSuccess();
 
         void onFailure(int statusCode);
     }
 
-    private GetCustomersUseCase.OnGetCustomersCallback callback;
+    private CreateVaccineUseCase.OnCreateVaccineCallback callback;
 
     private ApiRequest apiRequest;
+    private CreateVaccineRequestStructure createVaccineRequestStructure;
     private String clinicId;
     private String token;
 
-    public GetCustomersUseCase(Executor executor,
-                               ApiRequest apiRequest,
-                               String clinicId,
-                               String token) {
+    public CreateVaccineUseCase(Executor executor,
+                                ApiRequest apiRequest,
+                                CreateVaccineRequestStructure createVaccineRequestStructure,
+                                String clinicId,
+                                String token) {
         super(executor);
 
         this.apiRequest = apiRequest;
+        this.createVaccineRequestStructure = createVaccineRequestStructure;
         this.clinicId = clinicId;
         this.token = token;
     }
@@ -40,21 +40,19 @@ public class GetCustomersUseCase extends UseCaseAbstract {
     public void run() {
         try {
             HashMap<String, String> headers = new HashMap<>();
+            headers.put(ApiRequest.CONTENT_TYPE, "application/json");
             headers.put(ApiRequest.CLINIC_ID, clinicId);
             headers.put(ApiRequest.AUTHORIZATION, "Bearer " + token);
 
-            apiRequest.get(ApiRequest.URL_CUSTOMERS, headers, null, new ApiRequest.OnResponse() {
+            String requestParams = createVaccineRequestStructure.getStructureString();
+
+            apiRequest.post(ApiRequest.URL_VACCINES, headers, requestParams, new ApiRequest.OnResponse() {
                 @Override
-                public void onResponse(int statusCode, final byte[] response) {
+                public void onResponse(int statusCode, byte[] response) {
                     new Handler(Looper.getMainLooper()).post(new Runnable() {
                         @Override
                         public void run() {
-                            try {
-                                GetCustomersResponseStructure getCustomersResponseStructure = new GetCustomersResponseStructure().fromJson(new JSONObject(new String(response)));
-                                callback.onSuccess(getCustomersResponseStructure);
-                            } catch (JSONException ignored) {
-                                callback.onFailure(101);
-                            }
+                            callback.onSuccess();
                         }
                     });
                 }
@@ -64,18 +62,17 @@ public class GetCustomersUseCase extends UseCaseAbstract {
                     new Handler(Looper.getMainLooper()).post(new Runnable() {
                         @Override
                         public void run() {
-                            onFailure(statusCode);
+                            callback.onFailure(statusCode);
                         }
                     });
                 }
             });
-
         } catch (Exception e) {
             callback.onFailure(100);
         }
     }
 
-    public void setCallback(GetCustomersUseCase.OnGetCustomersCallback callback) {
+    public void setCallback(CreateVaccineUseCase.OnCreateVaccineCallback callback) {
         this.callback = callback;
     }
 }

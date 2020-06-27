@@ -14,6 +14,7 @@ import javax.net.ssl.HttpsURLConnection;
 public class ApiRequest {
     public static final String BASE_URL = "https://veteritec.herokuapp.com";
 
+    public static final String URL_EMPLOYEES = BASE_URL + "/users";
     public static final String URL_CLINICS = BASE_URL + "/clinics";
     public static final String URL_SESSIONS = BASE_URL + "/sessions";
     public static final String URL_CUSTOMERS = BASE_URL + "/customers";
