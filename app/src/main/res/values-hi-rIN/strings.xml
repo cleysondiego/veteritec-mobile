@@ -151,7 +151,6 @@
     <string name="toastCalculatorValidationsError">टाइप किए गए डेटा को मान्य करने में त्रुटि! शून्य से ऊपर केवल संख्याओं का उपयोग करें और माप की सभी इकाइयों का चयन करें!</string>
     <string name="toastLoginEmailPasswordCheck">गलत ईमेल और / या पासवर्ड!</string>
     <string name="toastLoginError">लॉगिन के दौरान एक त्रुटि हुई! पुनः प्रयास करें!</string>
-    <string name="toastLoginGetClinicsError">पंजीकृत क्लीनिकों की सूची प्राप्त करने में त्रुटि! पुनः प्रयास करें!</string>
     <string name="toastLoginSuccesfullyLogin">सफलतापूर्वक लॉग इन किया!</string>
     <string name="txtAddAnimalAddTitle">पशु जोड़ें</string>
     <string name="txtAddAnimalEditTitle">पशु संपादित करें</string>
@@ -177,4 +176,5 @@
     <string name="toastAddVaccineFailureDelete">टीके को हटाना संभव नहीं था! पुनः प्रयास करें!</string>
     <string name="toastAddEmployeeSuccesfullyAdd">नया कर्मचारी सफलतापूर्वक जोड़ा गया!</string>
     <string name="toastAddEmployeeFailureAdd">नए कर्मचारी को जोड़ना संभव नहीं था! पुनः प्रयास करें!</string>
+    <string name="txtNoConnection">इंटरनेट कनेक्शन अनुपलब्ध!\nपुनः प्रयास करें!</string>
 </resources>

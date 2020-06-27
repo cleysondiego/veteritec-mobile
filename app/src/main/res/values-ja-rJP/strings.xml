@@ -151,7 +151,6 @@
     <string name="toastCalculatorValidationsError">型付きデータの検証中にエラーが発生しました！ゼロより大きい数値のみを使用し、すべての測定単位を選択してください！</string>
     <string name="toastLoginEmailPasswordCheck">メールアドレスやパスワードが間違っています！</string>
     <string name="toastLoginError">ログイン中にエラーが発生しました！再試行！</string>
-    <string name="toastLoginGetClinicsError">登録済みクリニックのリストの取得中にエラーが発生しました！再試行！</string>
     <string name="toastLoginSuccesfullyLogin">ログインに成功しました！</string>
     <string name="txtAddAnimalAddTitle">動物を追加</string>
     <string name="txtAddAnimalEditTitle">動物を編集</string>
@@ -177,4 +176,5 @@
     <string name="toastAddVaccineFailureDelete">ワクチンを削除することはできませんでした！ 再試行！</string>
     <string name="toastAddEmployeeSuccesfullyAdd">新しい従業員が追加されました！</string>
     <string name="toastAddEmployeeFailureAdd">新しい従業員を追加することはできませんでした！ 再試行！</string>
+    <string name="txtNoConnection">インターネットに接続できません！\n再試行！</string>
 </resources>

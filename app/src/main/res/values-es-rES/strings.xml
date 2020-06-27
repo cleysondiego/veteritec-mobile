@@ -151,7 +151,6 @@
     <string name="toastCalculatorValidationsError">¡Error al validar los datos escritos! ¡Use solo números por encima de cero y seleccione todas las unidades de medida!</string>
     <string name="toastLoginEmailPasswordCheck">Correo electrónico y / o contraseña incorrectos!</string>
     <string name="toastLoginError">¡Se produjo un error durante el inicio de sesión! ¡Inténtalo de nuevo!</string>
-    <string name="toastLoginGetClinicsError">¡Error al obtener la lista de clínicas registradas! ¡Inténtalo de nuevo!</string>
     <string name="toastLoginSuccesfullyLogin">¡Logueado exitosamente!</string>
     <string name="txtAddAnimalAddTitle">Añadir animal</string>
     <string name="txtAddAnimalEditTitle">Editar animal</string>
@@ -177,4 +176,5 @@
     <string name="toastAddVaccineFailureDelete">¡No fue posible eliminar la vacuna! ¡Inténtalo de nuevo!</string>
     <string name="toastAddEmployeeSuccesfullyAdd">¡Nuevo empleado agregado con éxito!</string>
     <string name="toastAddEmployeeFailureAdd">¡No fue posible agregar un nuevo empleado! ¡Inténtalo de nuevo!</string>
+    <string name="txtNoConnection">¡Conexión a internet no disponible!\n¡Inténtalo de nuevo!</string>
 </resources>
