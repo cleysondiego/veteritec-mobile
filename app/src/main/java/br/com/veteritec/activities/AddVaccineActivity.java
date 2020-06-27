@@ -144,6 +144,7 @@ public class AddVaccineActivity extends AppCompatActivity implements View.OnClic
                 break;
             case R.id.btnAddVaccineSave:
                 createVaccine();
+                break;
         }
     }
 
