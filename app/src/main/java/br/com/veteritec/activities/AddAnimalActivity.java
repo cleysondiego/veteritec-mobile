@@ -149,11 +149,7 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnAddAnimalDate:
-                if (!editable) {
-                    showDateDialog(edtAnimalBirthDate);
-                } else {
-                    changePet();
-                }
+                showDateDialog(edtAnimalBirthDate);
                 break;
             case R.id.btnAddAnimalSave:
                 if (!editable) {
@@ -173,6 +169,7 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
                 break;
             case R.id.btnAddAnimalDelete:
                 deletePet();
+                break;
             default:
                 break;
         }
@@ -229,6 +226,7 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
             edtAnimalWeight.setEnabled(false);
             edtAnimalObservation.setEnabled(false);
             spnAnimalOwner.setEnabled(false);
+            btnDate.setEnabled(false);
 
             edition = 1;
         } else {
@@ -240,6 +238,7 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
             edtAnimalWeight.setEnabled(true);
             edtAnimalObservation.setEnabled(true);
             spnAnimalOwner.setEnabled(true);
+            btnDate.setEnabled(true);
 
             edition = 0;
         }
