@@ -51,6 +51,7 @@ import br.com.veteritec.vaccines.ChangeVaccineRequestStructure;
 import br.com.veteritec.vaccines.ChangeVaccineUseCase;
 import br.com.veteritec.vaccines.CreateVaccineRequestStructure;
 import br.com.veteritec.vaccines.CreateVaccineUseCase;
+import br.com.veteritec.vaccines.DeleteVaccineUseCase;
 import br.com.veteritec.vaccines.GetVaccinesResponseStructure;
 
 public class AddVaccineActivity extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener, AdapterView.OnItemSelectedListener {
@@ -511,5 +512,22 @@ public class AddVaccineActivity extends AppCompatActivity implements View.OnClic
         changeVaccineUseCase.execute();
     }
 
-    private void deleteVaccine() {}
+    private void deleteVaccine() {
+        ApiRequest apiRequest = new ApiRequest();
+        DeleteVaccineUseCase deleteVaccineUseCase = new DeleteVaccineUseCase(ThreadExecutor.getInstance(), apiRequest, vaccine.getId(), userClinicId, userToken);
+        deleteVaccineUseCase.setCallback(new DeleteVaccineUseCase.OnDeleteVaccineCallback() {
+            @Override
+            public void onSuccess() {
+                Toast.makeText(context, "Vacina deletada com sucesso!", Toast.LENGTH_LONG).show();
+                finish();
+            }
+
+            @Override
+            public void onFailure(int statusCode) {
+                Toast.makeText(context, "Não foi possível deletar a Vacina! Tente novamente!", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        deleteVaccineUseCase.execute();
+    }
 }
