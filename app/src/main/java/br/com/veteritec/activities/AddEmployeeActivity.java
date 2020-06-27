@@ -22,6 +22,10 @@ import com.google.android.material.navigation.NavigationView;
 import java.util.Locale;
 
 import br.com.veteritec.R;
+import br.com.veteritec.employees.CreateEmployeeRequestStructure;
+import br.com.veteritec.employees.CreateEmployeeUseCase;
+import br.com.veteritec.usecase.ThreadExecutor;
+import br.com.veteritec.utils.ApiRequest;
 import br.com.veteritec.utils.NavigationDrawer;
 import br.com.veteritec.utils.SharedPreferencesUtils;
 
@@ -138,7 +142,28 @@ public class AddEmployeeActivity extends AppCompatActivity implements Navigation
     }
 
     private void createEmployee() {
+        CreateEmployeeRequestStructure createEmployeeRequestStructure = new CreateEmployeeRequestStructure();
+        createEmployeeRequestStructure.setName(edtEmployeeName.getText().toString());
+        createEmployeeRequestStructure.setEmail(edtEmployeeEmail.getText().toString());
+        createEmployeeRequestStructure.setPassword(edtEmployeePassword.getText().toString());
 
+        ApiRequest apiRequest = new ApiRequest();
+
+        CreateEmployeeUseCase createEmployeeUseCase = new CreateEmployeeUseCase(ThreadExecutor.getInstance(), apiRequest, createEmployeeRequestStructure, userClinicId);
+        createEmployeeUseCase.setCallback(new CreateEmployeeUseCase.OnCreateEmployeeCallback() {
+            @Override
+            public void onSuccess() {
+                Toast.makeText(context, "Novo funcionário adicionado com sucesso!", Toast.LENGTH_LONG).show();
+                finish();
+            }
+
+            @Override
+            public void onFailure(int statusCode) {
+                Toast.makeText(context, "Não foi possível adicionar um novo funcionário! Tente novamente!", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        createEmployeeUseCase.execute();
     }
 
     private void getUserDataFromSharedPreferences() {
