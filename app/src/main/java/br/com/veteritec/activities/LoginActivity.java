@@ -27,10 +27,12 @@ import br.com.veteritec.utils.LoadingDialog;
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     private Context context;
 
-    Spinner spnClinics;
+    private Spinner spnClinics;
 
-    EditText etLogin;
-    EditText etPassword;
+    private EditText etLogin;
+    private EditText etPassword;
+
+    private Button btnLogin;
 
     private ClinicResponseStructure clinicResponseStructure;
 
@@ -56,7 +58,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         etLogin = findViewById(R.id.edtEmail);
         etPassword = findViewById(R.id.edtPassword);
 
-        Button btnLogin = findViewById(R.id.btnLogin);
+        btnLogin = findViewById(R.id.btnLogin);
 
         btnLogin.setOnClickListener(this);
     }
@@ -98,6 +100,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void onFailure(int statusCode) {
                 Toast.makeText(context, getResources().getString(R.string.toastLoginGetClinicsError), Toast.LENGTH_SHORT).show();
+                btnLogin.setVisibility(View.INVISIBLE);
             }
         });
 
