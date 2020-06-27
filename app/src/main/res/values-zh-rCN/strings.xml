@@ -163,4 +163,18 @@
     <string name="toastQueryVaccinesRequestError">获取疫苗清单时出错！ 再试一次！</string>
     <string name="setErrorEmptyField">该字段不能为空！</string>
     <string name="setErrorMinimumCharacters">该字段必须包含5个以上的字符！</string>
+    <string name="txtAddVaccineAddTitle">增加疫苗接种</string>
+    <string name="txtAddVaccineEditTitle">编辑疫苗接种</string>
+    <string name="toastAddVaccineError">获取添加疫苗的输入时出错！ 再试一次！</string>
+    <string name="toastAddVaccineGetEmployeesFailure">获取兽医名单时出错！ 再试一次！</string>
+    <string name="toastAddVaccineGetCustomersFailure">获取客户列表时出错！ 再试一次！</string>
+    <string name="toastAddVaccineGetPetsFailure">获取动物列表时出错！ 再试一次！</string>
+    <string name="toastAddVaccineSuccesfullyAdd">新疫苗成功创建！</string>
+    <string name="toastAddVaccineFailureAdd">无法生产疫苗！ 再试一次！</string>
+    <string name="toastAddVaccineSuccesfullyEdit">疫苗编辑成功！</string>
+    <string name="toastAddVaccineFailureEdit">疫苗无法编辑！ 再试一次！</string>
+    <string name="toastAddVaccineSuccesfullyDelete">疫苗已成功删除！</string>
+    <string name="toastAddVaccineFailureDelete">无法删除疫苗！ 再试一次！</string>
+    <string name="toastAddEmployeeSuccesfullyAdd">新员工已成功添加！</string>
+    <string name="toastAddEmployeeFailureAdd">无法添加新员工！ 再试一次！</string>
 </resources>

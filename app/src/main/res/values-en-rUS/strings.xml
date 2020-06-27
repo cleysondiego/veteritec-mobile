@@ -163,4 +163,18 @@
     <string name="toastQueryVaccinesRequestError">Error getting the list of vaccines! Try again!</string>
     <string name="setErrorEmptyField">This field cannot be empty!</string>
     <string name="setErrorMinimumCharacters">The field must contain more than 5 characters!</string>
+    <string name="txtAddVaccineAddTitle">Add Vaccination</string>
+    <string name="txtAddVaccineEditTitle">Edit Vaccination</string>
+    <string name="toastAddVaccineError">Error getting the inputs to add vaccine! Try again!</string>
+    <string name="toastAddVaccineGetEmployeesFailure">Error getting the list of Veterinarians! Try again!</string>
+    <string name="toastAddVaccineGetCustomersFailure">Error getting the list of Clients! Try again!</string>
+    <string name="toastAddVaccineGetPetsFailure">Error getting the list of Animals! Try again!</string>
+    <string name="toastAddVaccineSuccesfullyAdd">New vaccine successfully created!</string>
+    <string name="toastAddVaccineFailureAdd">It was not possible to create the vaccine! Try again!</string>
+    <string name="toastAddVaccineSuccesfullyEdit">Vaccine edited successfully!</string>
+    <string name="toastAddVaccineFailureEdit">The vaccine could not be edited! Try again!</string>
+    <string name="toastAddVaccineSuccesfullyDelete">Vaccine successfully deleted!</string>
+    <string name="toastAddVaccineFailureDelete">It was not possible to delete the vaccine! Try again!</string>
+    <string name="toastAddEmployeeSuccesfullyAdd">New employee successfully added!</string>
+    <string name="toastAddEmployeeFailureAdd">It was not possible to add a new employee! Try again!</string>
 </resources>

@@ -153,13 +153,13 @@ public class AddEmployeeActivity extends AppCompatActivity implements Navigation
         createEmployeeUseCase.setCallback(new CreateEmployeeUseCase.OnCreateEmployeeCallback() {
             @Override
             public void onSuccess() {
-                Toast.makeText(context, "Novo funcionário adicionado com sucesso!", Toast.LENGTH_LONG).show();
+                Toast.makeText(context, getResources().getString(R.string.toastAddEmployeeSuccesfullyAdd), Toast.LENGTH_LONG).show();
                 finish();
             }
 
             @Override
             public void onFailure(int statusCode) {
-                Toast.makeText(context, "Não foi possível adicionar um novo funcionário! Tente novamente!", Toast.LENGTH_LONG).show();
+                Toast.makeText(context, getResources().getString(R.string.toastAddEmployeeFailureAdd), Toast.LENGTH_LONG).show();
             }
         });
 
