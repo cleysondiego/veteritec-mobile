@@ -163,4 +163,18 @@
     <string name="toastQueryVaccinesRequestError">टीकों की सूची प्राप्त करने में त्रुटि! पुनः प्रयास करें!</string>
     <string name="setErrorEmptyField">यह स्थान खाली नहीं रह सकता!</string>
     <string name="setErrorMinimumCharacters">फ़ील्ड में 5 से अधिक वर्ण होने चाहिए!</string>
+    <string name="txtAddVaccineAddTitle">टीकाकरण जोड़ें</string>
+    <string name="txtAddVaccineEditTitle">टीकाकरण संपादित करें</string>
+    <string name="toastAddVaccineError">वैक्सीन जोड़ने के लिए इनपुट प्राप्त करने में त्रुटि! पुनः प्रयास करें!</string>
+    <string name="toastAddVaccineGetEmployeesFailure">पशु चिकित्सकों की सूची प्राप्त करने में त्रुटि! पुनः प्रयास करें!</string>
+    <string name="toastAddVaccineGetCustomersFailure">ग्राहकों की सूची प्राप्त करने में त्रुटि! पुनः प्रयास करें!</string>
+    <string name="toastAddVaccineGetPetsFailure">जानवरों की सूची प्राप्त करने में त्रुटि! पुनः प्रयास करें!</string>
+    <string name="toastAddVaccineSuccesfullyAdd">नया टीका सफलतापूर्वक बनाया गया!</string>
+    <string name="toastAddVaccineFailureAdd">वैक्सीन बनाना संभव नहीं था! पुनः प्रयास करें!</string>
+    <string name="toastAddVaccineSuccesfullyEdit">टीका सफलतापूर्वक संपादित किया गया!</string>
+    <string name="toastAddVaccineFailureEdit">वैक्सीन को संपादित नहीं किया जा सका! पुनः प्रयास करें!</string>
+    <string name="toastAddVaccineSuccesfullyDelete">टीके को सफलतापूर्वक हटाया गया!</string>
+    <string name="toastAddVaccineFailureDelete">टीके को हटाना संभव नहीं था! पुनः प्रयास करें!</string>
+    <string name="toastAddEmployeeSuccesfullyAdd">नया कर्मचारी सफलतापूर्वक जोड़ा गया!</string>
+    <string name="toastAddEmployeeFailureAdd">नए कर्मचारी को जोड़ना संभव नहीं था! पुनः प्रयास करें!</string>
 </resources>

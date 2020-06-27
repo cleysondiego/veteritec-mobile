@@ -15,7 +15,6 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.InputType;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -144,7 +143,7 @@ public class AddVaccineActivity extends AppCompatActivity implements View.OnClic
             }
             setSupportActionBar(toolbar);
         } catch (Exception e) {
-            Toast.makeText(context, "Erro ao obter os insumos para adicionar vacina! Tente novamente!", Toast.LENGTH_LONG).show();
+            Toast.makeText(context, getResources().getString(R.string.toastAddVaccineError), Toast.LENGTH_LONG).show();
             finish();
         }
 
@@ -322,7 +321,7 @@ public class AddVaccineActivity extends AppCompatActivity implements View.OnClic
 
             @Override
             public void onFailure(int statusCode) {
-                Toast.makeText(context, "Erro ao obter a lista de Veterinários, por favor, tente novamente!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, getResources().getString(R.string.toastAddVaccineGetEmployeesFailure), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -353,7 +352,7 @@ public class AddVaccineActivity extends AppCompatActivity implements View.OnClic
 
             @Override
             public void onFailure(int statusCode) {
-                Toast.makeText(context, "Erro ao obter a lista de Clientes, por favor, tente novamente!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, getResources().getString(R.string.toastAddVaccineGetCustomersFailure), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -392,7 +391,7 @@ public class AddVaccineActivity extends AppCompatActivity implements View.OnClic
 
             @Override
             public void onFailure(int statusCode) {
-                Toast.makeText(context, "Erro ao obter a lista de Pets, por favor, tente novamente!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, getResources().getString(R.string.toastAddVaccineGetPetsFailure), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -452,13 +451,13 @@ public class AddVaccineActivity extends AppCompatActivity implements View.OnClic
         createVaccineUseCase.setCallback(new CreateVaccineUseCase.OnCreateVaccineCallback() {
             @Override
             public void onSuccess() {
-                Toast.makeText(context, "Nova vacina criada com sucesso!", Toast.LENGTH_LONG).show();
+                Toast.makeText(context, getResources().getString(R.string.toastAddVaccineSuccesfullyAdd), Toast.LENGTH_LONG).show();
                 finish();
             }
 
             @Override
             public void onFailure(int statusCode) {
-                Toast.makeText(context, "Não foi possível criar a vacina! Tente novamente!", Toast.LENGTH_LONG).show();
+                Toast.makeText(context, getResources().getString(R.string.toastAddVaccineFailureAdd), Toast.LENGTH_LONG).show();
             }
         });
 
@@ -499,13 +498,13 @@ public class AddVaccineActivity extends AppCompatActivity implements View.OnClic
         changeVaccineUseCase.setCallback(new ChangeVaccineUseCase.OnChangeVaccine() {
             @Override
             public void onSuccess() {
-                Toast.makeText(context, "Vacina editada com sucesso!", Toast.LENGTH_LONG).show();
+                Toast.makeText(context, getResources().getString(R.string.toastAddVaccineSuccesfullyEdit), Toast.LENGTH_LONG).show();
                 finish();
             }
 
             @Override
             public void onFailure(int statusCode) {
-                Toast.makeText(context, "Não foi possível editar a Vacina! Tente novamente!", Toast.LENGTH_LONG).show();
+                Toast.makeText(context, getResources().getString(R.string.toastAddVaccineFailureEdit), Toast.LENGTH_LONG).show();
             }
         });
 
@@ -518,13 +517,13 @@ public class AddVaccineActivity extends AppCompatActivity implements View.OnClic
         deleteVaccineUseCase.setCallback(new DeleteVaccineUseCase.OnDeleteVaccineCallback() {
             @Override
             public void onSuccess() {
-                Toast.makeText(context, "Vacina deletada com sucesso!", Toast.LENGTH_LONG).show();
+                Toast.makeText(context, getResources().getString(R.string.toastAddVaccineSuccesfullyDelete), Toast.LENGTH_LONG).show();
                 finish();
             }
 
             @Override
             public void onFailure(int statusCode) {
-                Toast.makeText(context, "Não foi possível deletar a Vacina! Tente novamente!", Toast.LENGTH_LONG).show();
+                Toast.makeText(context, getResources().getString(R.string.toastAddVaccineFailureDelete), Toast.LENGTH_LONG).show();
             }
         });
 

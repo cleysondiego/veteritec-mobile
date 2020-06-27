@@ -163,4 +163,18 @@
     <string name="toastQueryVaccinesRequestError">Ошибка при получении списка вакцин! Попробуй еще раз!</string>
     <string name="setErrorEmptyField">Это поле не может быть пустым!</string>
     <string name="setErrorMinimumCharacters">Поле должно содержать более 5 символов!</string>
+    <string name="txtAddVaccineAddTitle">Добавить вакцинацию</string>
+    <string name="txtAddVaccineEditTitle">Редактировать вакцинацию</string>
+    <string name="toastAddVaccineError">Ошибка при получении данных для добавления вакцины! Попробуй еще раз!</string>
+    <string name="toastAddVaccineGetEmployeesFailure">Ошибка при получении списка ветеринаров! Попробуй еще раз!</string>
+    <string name="toastAddVaccineGetCustomersFailure">Ошибка при получении списка клиентов! Попробуй еще раз!</string>
+    <string name="toastAddVaccineGetPetsFailure">Ошибка при получении списка животных! Попробуй еще раз!</string>
+    <string name="toastAddVaccineSuccesfullyAdd">Новая вакцина успешно создана!</string>
+    <string name="toastAddVaccineFailureAdd">Не удалось создать вакцину! Попробуй еще раз!</string>
+    <string name="toastAddVaccineSuccesfullyEdit">Вакцина отредактирована успешно!</string>
+    <string name="toastAddVaccineFailureEdit">Вакцина не может быть отредактирована! Попробуй еще раз!</string>
+    <string name="toastAddVaccineSuccesfullyDelete">Вакцина успешно удалена!</string>
+    <string name="toastAddVaccineFailureDelete">Не удалось удалить вакцину! Попробуй еще раз!</string>
+    <string name="toastAddEmployeeSuccesfullyAdd">Новый сотрудник успешно добавлен!</string>
+    <string name="toastAddEmployeeFailureAdd">Не было возможности добавить нового сотрудника! Попробуй еще раз!</string>
 </resources>
