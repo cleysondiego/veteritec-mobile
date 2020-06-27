@@ -134,6 +134,7 @@ public class AddVaccineActivity extends AppCompatActivity implements View.OnClic
 
                 btnEdit.setVisibility(View.VISIBLE);
                 btnDelete.setVisibility(View.VISIBLE);
+                spnAddVaccineClient.setEnabled(false);
                 vaccine = (GetVaccinesResponseStructure.Vaccine) getIntent().getSerializableExtra("VACCINE_OBJECT");
                 if (vaccine != null) {
                     edtDate.setText(vaccine.getDate());
@@ -191,6 +192,7 @@ public class AddVaccineActivity extends AppCompatActivity implements View.OnClic
                     setEdition();
                     Toast.makeText(context, R.string.toastAddCustomerDisabledEdition, Toast.LENGTH_SHORT).show();
                 } else {
+                    getPets();
                     setEdition();
                     Toast.makeText(context, R.string.toastAddCustomerEnabledEdition, Toast.LENGTH_SHORT).show();
                 }
@@ -254,7 +256,6 @@ public class AddVaccineActivity extends AppCompatActivity implements View.OnClic
             edtDescription.setEnabled(false);
             spnAddVaccinePet.setEnabled(false);
             spnAddVaccineVeterinary.setEnabled(false);
-            spnAddVaccineClient.setEnabled(false);
 
             edition = 1;
         } else {
@@ -263,7 +264,6 @@ public class AddVaccineActivity extends AppCompatActivity implements View.OnClic
             edtDescription.setEnabled(true);
             spnAddVaccinePet.setEnabled(true);
             spnAddVaccineVeterinary.setEnabled(true);
-            spnAddVaccineClient.setEnabled(true);
 
             edition = 0;
         }
