@@ -74,11 +74,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private boolean validateField(EditText field) {
         if (field.getText().toString().isEmpty()) {
-            field.setError("Esse campo não pode ser vazio");
+            field.setError(getResources().getString(R.string.setErrorEmptyField));
             field.requestFocus();
             return false;
         } else if (field.getText().toString().length() < 5) {
-            field.setError("O campo deve conter mais que 5 caracteres.");
+            field.setError(getResources().getString(R.string.setErrorMinimumCharacters));
             field.requestFocus();
             return false;
         }
@@ -97,7 +97,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
             @Override
             public void onFailure(int statusCode) {
-                Toast.makeText(context, R.string.toastLoginGetClinicsError, Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, getResources().getString(R.string.toastLoginGetClinicsError), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -139,7 +139,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void onSuccess() {
                 loadingDialog.dismissLoadingDialog();
-                Toast.makeText(context, R.string.toastLoginSuccesfullyLogin, Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, getResources().getString(R.string.toastLoginSuccesfullyLogin), Toast.LENGTH_SHORT).show();
                 goToMainActivity();
             }
 
@@ -147,9 +147,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             public void onFailure(int statusCode) {
                 loadingDialog.dismissLoadingDialog();
                 if (statusCode == 400) {
-                    Toast.makeText(context, R.string.toastLoginEmailPasswordCheck, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, getResources().getString(R.string.toastLoginEmailPasswordCheck), Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(context, R.string.toastLoginError + statusCode, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, getResources().getString(R.string.toastLoginError) + statusCode, Toast.LENGTH_SHORT).show();
                 }
             }
         });

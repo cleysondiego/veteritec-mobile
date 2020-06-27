@@ -157,4 +157,10 @@
     <string name="txtAddAnimalEditTitle">पशु संपादित करें</string>
     <string name="txtAddEmployeeLoginEmail">ईमेल:</string>
     <string name="toastTranslateLanguageChange">भाषा सफलतापूर्वक बदल गई!</string>
+    <string name="toastQueryError">स्क्रीन खोलने में कोई त्रुटि थी! पुनः प्रयास करें!</string>
+    <string name="toastQueryCustomersRequestError">ग्राहकों की सूची प्राप्त करने में त्रुटि! पुनः प्रयास करें!</string>
+    <string name="toastQueryPetsRequestError">जानवरों की सूची प्राप्त करने में त्रुटि! पुनः प्रयास करें!</string>
+    <string name="toastQueryVaccinesRequestError">टीकों की सूची प्राप्त करने में त्रुटि! पुनः प्रयास करें!</string>
+    <string name="setErrorEmptyField">यह स्थान खाली नहीं रह सकता!</string>
+    <string name="setErrorMinimumCharacters">फ़ील्ड में 5 से अधिक वर्ण होने चाहिए!</string>
 </resources>

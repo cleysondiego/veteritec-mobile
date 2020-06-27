@@ -103,7 +103,7 @@ public class AddEmployeeActivity extends AppCompatActivity implements Navigation
         if (validateFields()) {
             createEmployee();
         } else {
-            Toast.makeText(context, R.string.toastAddEmployeeFieldsCheck, Toast.LENGTH_LONG).show();
+            Toast.makeText(context, getResources().getString(R.string.toastAddEmployeeFieldsCheck), Toast.LENGTH_LONG).show();
         }
     }
 
@@ -117,11 +117,11 @@ public class AddEmployeeActivity extends AppCompatActivity implements Navigation
 
     public boolean validateField(EditText editText) {
         if (editText.getText().toString().isEmpty()) {
-            editText.setError("Esse campo não pode ser vazio");
+            editText.setError(getResources().getString(R.string.setErrorEmptyField));
             editText.requestFocus();
             return false;
         } else if (editText.getText().toString().length() < 5) {
-            editText.setError("O campo deve conter mais que 5 caracteres.");
+            editText.setError(getResources().getString(R.string.setErrorEmptyField));
             editText.requestFocus();
             return false;
         }
@@ -132,7 +132,7 @@ public class AddEmployeeActivity extends AppCompatActivity implements Navigation
         if (editText.getText().toString().equals(editText1.getText().toString())) {
             return true;
         } else {
-            Toast.makeText(context, R.string.toastAddEmployeePasswordCheck, Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, getResources().getString(R.string.toastAddEmployeePasswordCheck), Toast.LENGTH_SHORT).show();
             return false;
         }
     }

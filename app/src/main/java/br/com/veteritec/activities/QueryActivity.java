@@ -112,7 +112,7 @@ public class QueryActivity extends AppCompatActivity implements NavigationView.O
             toolbar.setTitle(getResources().getString(R.string.txtQueryVaccineTitle));
             getVaccines();
         } else {
-            Toast.makeText(context, "Ocorreu um erro! Tente Novamente!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, getResources().getString(R.string.toastQueryError), Toast.LENGTH_SHORT).show();
             finish();
         }
 
@@ -140,7 +140,7 @@ public class QueryActivity extends AppCompatActivity implements NavigationView.O
         } else if (key == 2) {
             getVaccines();
         } else {
-            Toast.makeText(context, "Ocorreu um erro! Tente Novamente!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, getResources().getString(R.string.toastQueryError), Toast.LENGTH_SHORT).show();
             finish();
         }
     }
@@ -197,8 +197,9 @@ public class QueryActivity extends AppCompatActivity implements NavigationView.O
 
             @Override
             public void onFailure(int statusCode) {
-                Toast.makeText(context, "Erro ao obter a lista de Clientes, por favor, tente novamente!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, getResources().getString(R.string.toastQueryCustomersRequestError), Toast.LENGTH_SHORT).show();
             }
+
         });
 
         getCustomersUseCase.execute();
@@ -274,7 +275,7 @@ public class QueryActivity extends AppCompatActivity implements NavigationView.O
 
             @Override
             public void onFailure(int statusCode) {
-                Toast.makeText(context, "Erro ao obter a lista de Pets, por favor, tente novamente!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, getResources().getString(R.string.toastQueryPetsRequestError), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -324,7 +325,7 @@ public class QueryActivity extends AppCompatActivity implements NavigationView.O
 
             @Override
             public void onFailure(int statusCode) {
-                Toast.makeText(context, "Erro ao obter a lista de Vacinas, por favor, tente novamente!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, getResources().getString(R.string.toastQueryVaccinesRequestError), Toast.LENGTH_SHORT).show();
             }
         });
 

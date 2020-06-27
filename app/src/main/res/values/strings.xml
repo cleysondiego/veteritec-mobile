@@ -3,6 +3,10 @@
     <string name="translate_dialog_title">Escolha o Idioma</string>
     <string name="main_menu">Menu Principal</string>
 
+    <!-- Set Error Messages -->
+    <string name="setErrorEmptyField">Este campo não pode ser vazio!</string>
+    <string name="setErrorMinimumCharacters">O campo deve conter mais que 5 caracteres!</string>
+
     <!-- Main Menu Page -->
     <string name="txtMainMenuTitle">Sistema Gerenciador de Clínicas Veterinárias</string>
     <string name="txtMainMenuTools">Funcionalidades do aplicativo:</string>
@@ -118,6 +122,10 @@
     <string name="txtQueryVaccineTitle">Procurar Vacinação</string>
     <string name="txtQueryCustomer">Cliente</string>
     <string name="edtQueryCustomer">Ex: João da Silva</string>
+    <string name="toastQueryError">Houve um erro ao abrir a tela! Tente novamente!</string>
+    <string name="toastQueryCustomersRequestError">Erro ao obter a lista de Clientes! Tente novamente!</string>
+    <string name="toastQueryPetsRequestError">Erro ao obter a lista de Animais! Tente novamente!</string>
+    <string name="toastQueryVaccinesRequestError">Erro ao obter a lista de Vacinas! Tente novamente!</string>
 
     <!-- Add Customer Page -->
     <string name="txtAddCustomerAddTitle">Adicionar Cliente</string>
