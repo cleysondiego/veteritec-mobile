@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -32,6 +33,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private Spinner spnClinics;
 
+    private TextView txtTitle;
+    private TextView txtClinic;
+    private TextView txtEmail;
+    private TextView txtPassword;
+    private TextView txtNoConnection;
+  
     private EditText etLogin;
     private EditText etPassword;
 
@@ -60,6 +67,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         etLogin = findViewById(R.id.edtEmail);
         etPassword = findViewById(R.id.edtPassword);
+
+        txtTitle = findViewById(R.id.txtTitle);
+        txtClinic = findViewById(R.id.txtClinic);
+        txtEmail = findViewById(R.id.txtEmail);
+        txtPassword = findViewById(R.id.txtPassword);
+        txtNoConnection = findViewById(R.id.txtNoConnection);
 
         btnLogin = findViewById(R.id.btnLogin);
 
@@ -118,8 +131,16 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
             @Override
             public void onFailure(int statusCode) {
-                Toast.makeText(context, getResources().getString(R.string.toastLoginGetClinicsError), Toast.LENGTH_SHORT).show();
+                txtTitle.setVisibility(View.INVISIBLE);
+                txtClinic.setVisibility(View.INVISIBLE);
+                txtEmail.setVisibility(View.INVISIBLE);
+                txtPassword.setVisibility(View.INVISIBLE);
+                spnClinics.setVisibility(View.INVISIBLE);
+                etLogin.setVisibility(View.INVISIBLE);
+                etPassword.setVisibility(View.INVISIBLE);
                 btnLogin.setVisibility(View.INVISIBLE);
+
+                txtNoConnection.setVisibility(View.VISIBLE);
             }
         });
 

@@ -151,7 +151,6 @@
     <string name="toastCalculatorValidationsError">Ошибка в проверке введенных данных! Используйте только цифры выше нуля и выберите все единицы измерения!</string>
     <string name="toastLoginEmailPasswordCheck">Неверный адрес электронной почты и / или пароль!</string>
     <string name="toastLoginError">Произошла ошибка при входе в систему! Попробуй еще раз!</string>
-    <string name="toastLoginGetClinicsError">Ошибка при получении списка зарегистрированных клиник! Попробуй еще раз!</string>
     <string name="toastLoginSuccesfullyLogin">Успешно авторизован!</string>
     <string name="txtAddAnimalAddTitle">Добавить животное</string>
     <string name="txtAddAnimalEditTitle">Редактировать животных</string>
@@ -177,4 +176,5 @@
     <string name="toastAddVaccineFailureDelete">Не удалось удалить вакцину! Попробуй еще раз!</string>
     <string name="toastAddEmployeeSuccesfullyAdd">Новый сотрудник успешно добавлен!</string>
     <string name="toastAddEmployeeFailureAdd">Не было возможности добавить нового сотрудника! Попробуй еще раз!</string>
+    <string name="txtNoConnection">Интернет недоступен!\nПопробуй еще раз!</string>
 </resources>

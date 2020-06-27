@@ -151,7 +151,6 @@
     <string name="toastCalculatorValidationsError">验证键入的数据时出错！仅使用零以上的数字并选择所有度量单位！</string>
     <string name="toastLoginEmailPasswordCheck">不正确的电子邮件和/或密码！</string>
     <string name="toastLoginError">登录期间发生错误！再试一次！</string>
-    <string name="toastLoginGetClinicsError">获取注册诊所列表时出错！再试一次！</string>
     <string name="toastLoginSuccesfullyLogin">已成功登录！</string>
     <string name="txtAddAnimalAddTitle">添加动物</string>
     <string name="txtAddAnimalEditTitle">编辑动物</string>
@@ -177,4 +176,5 @@
     <string name="toastAddVaccineFailureDelete">无法删除疫苗！ 再试一次！</string>
     <string name="toastAddEmployeeSuccesfullyAdd">新员工已成功添加！</string>
     <string name="toastAddEmployeeFailureAdd">无法添加新员工！ 再试一次！</string>
+    <string name="txtNoConnection">互联网连接不可用！\n再试一次！</string>
 </resources>

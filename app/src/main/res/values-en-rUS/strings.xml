@@ -151,7 +151,6 @@
     <string name="toastCalculatorValidationsError">Error in validating typed data! Use only numbers above zero and select all units of measurement!</string>
     <string name="toastLoginEmailPasswordCheck">Incorrect email and / or password!</string>
     <string name="toastLoginError">An error occurred during login! Try again!</string>
-    <string name="toastLoginGetClinicsError">Error getting list of registered clinics! Try again!</string>
     <string name="toastLoginSuccesfullyLogin">Successfully logged in!</string>
     <string name="txtAddAnimalAddTitle">Add Animal</string>
     <string name="txtAddAnimalEditTitle">Edit Animal</string>
@@ -177,4 +176,5 @@
     <string name="toastAddVaccineFailureDelete">It was not possible to delete the vaccine! Try again!</string>
     <string name="toastAddEmployeeSuccesfullyAdd">New employee successfully added!</string>
     <string name="toastAddEmployeeFailureAdd">It was not possible to add a new employee! Try again!</string>
+    <string name="txtNoConnection">Internet connection unavailable!\nTry again!</string>
 </resources>

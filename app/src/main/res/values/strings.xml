@@ -28,6 +28,7 @@
     <string name="txtLoginEmail">E-mail:</string>
     <string name="txtLoginPassword">Senha:</string>
     <string name="txtLoginLoading">Carregando</string>
+    <string name="txtNoConnection">Conexão com a internet indisponível!\nTente novamente!</string>
     <string name="edtLoginEmail">Digite o seu e-mail</string>
     <string name="edtLoginPassword">Digite a sua senha</string>
     <string name="cdLoginLogo">Esta imagem representa o logotipo do aplicativo.</string>
@@ -36,7 +37,6 @@
     <string name="errorLoginWrongPassword">Senha incorreta.</string>
     <string name="errorLoginUserNotExists">Usuário não encontrado.</string>
     <string name="toastLoginError">Ocorreu um erro durante o login! Tente novamente!</string>
-    <string name="toastLoginGetClinicsError">Erro ao obter a lista de clínicas cadastradas! Tente novamente!</string>
     <string name="toastLoginSuccesfullyLogin">Logado com sucesso!</string>
     <string name="toastLoginEmailPasswordCheck">E-mail e/ou senha incorretos!</string>
 
