@@ -1,4 +1,4 @@
-package br.com.veteritec.customers;
+package br.com.veteritec.employees;
 
 import android.os.Handler;
 import android.os.Looper;
@@ -12,28 +12,25 @@ import br.com.veteritec.usecase.Executor;
 import br.com.veteritec.usecase.UseCaseAbstract;
 import br.com.veteritec.utils.ApiRequest;
 
-public class GetCustomersUseCase extends UseCaseAbstract {
-    public interface OnGetCustomersCallback {
-        void onSuccess(GetCustomersResponseStructure getCustomersResponseStructure);
+public class GetEmployeesUseCase extends UseCaseAbstract {
+    public interface OnGetEmployeesCallback {
+        void onSuccess(GetEmployeesResponseStructure getEmployeesResponseStructure);
 
         void onFailure(int statusCode);
     }
 
-    private GetCustomersUseCase.OnGetCustomersCallback callback;
+    private GetEmployeesUseCase.OnGetEmployeesCallback callback;
 
     private ApiRequest apiRequest;
     private String clinicId;
-    private String token;
 
-    public GetCustomersUseCase(Executor executor,
+    public GetEmployeesUseCase(Executor executor,
                                ApiRequest apiRequest,
-                               String clinicId,
-                               String token) {
+                               String clinicId) {
         super(executor);
 
         this.apiRequest = apiRequest;
         this.clinicId = clinicId;
-        this.token = token;
     }
 
     @Override
@@ -41,17 +38,16 @@ public class GetCustomersUseCase extends UseCaseAbstract {
         try {
             HashMap<String, String> headers = new HashMap<>();
             headers.put(ApiRequest.CLINIC_ID, clinicId);
-            headers.put(ApiRequest.AUTHORIZATION, "Bearer " + token);
 
-            apiRequest.get(ApiRequest.URL_CUSTOMERS, headers, null, new ApiRequest.OnResponse() {
+            apiRequest.get(ApiRequest.URL_EMPLOYEES, headers, null, new ApiRequest.OnResponse() {
                 @Override
                 public void onResponse(int statusCode, final byte[] response) {
                     new Handler(Looper.getMainLooper()).post(new Runnable() {
                         @Override
                         public void run() {
                             try {
-                                GetCustomersResponseStructure getCustomersResponseStructure = new GetCustomersResponseStructure().fromJson(new JSONObject(new String(response)));
-                                callback.onSuccess(getCustomersResponseStructure);
+                                GetEmployeesResponseStructure getEmployeesResponseStructure = new GetEmployeesResponseStructure().fromJson(new JSONObject(new String(response)));
+                                callback.onSuccess(getEmployeesResponseStructure);
                             } catch (JSONException ignored) {
                                 callback.onFailure(101);
                             }
@@ -69,13 +65,12 @@ public class GetCustomersUseCase extends UseCaseAbstract {
                     });
                 }
             });
-
         } catch (Exception e) {
             callback.onFailure(100);
         }
     }
 
-    public void setCallback(GetCustomersUseCase.OnGetCustomersCallback callback) {
+    public void setCallback(GetEmployeesUseCase.OnGetEmployeesCallback callback) {
         this.callback = callback;
     }
 }
