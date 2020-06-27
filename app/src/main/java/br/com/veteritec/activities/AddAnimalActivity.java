@@ -152,10 +152,12 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
                 showDateDialog(edtAnimalBirthDate);
                 break;
             case R.id.btnAddAnimalSave:
-                if (!editable) {
-                    createPet();
-                } else {
-                    changePet();
+                if (validateFields()) {
+                    if (!editable) {
+                        createPet();
+                    } else {
+                        changePet();
+                    }
                 }
                 break;
             case R.id.btnAddAnimalEdit:
@@ -402,5 +404,24 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
         });
 
         deletePetUseCase.execute();
+    }
+
+    public boolean validateFields() {
+        return validateField(edtAnimalName) ||
+                validateField(edtAnimalBirthDate) ||
+                validateField(edtAnimalSpecies) ||
+                validateField(edtAnimalRace) ||
+                validateField(edtAnimalSize) ||
+                validateField(edtAnimalWeight) ||
+                validateField(edtAnimalObservation);
+    }
+
+    public boolean validateField(EditText editText) {
+        if (editText.getText().toString().isEmpty()) {
+            editText.setError(getResources().getString(R.string.setErrorEmptyField));
+            editText.requestFocus();
+            return false;
+        }
+        return true;
     }
 }
