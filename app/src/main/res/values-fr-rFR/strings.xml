@@ -163,4 +163,18 @@
     <string name="toastQueryVaccinesRequestError">Erreur lors de l\'obtention de la liste des vaccins! Réessayer!</string>
     <string name="setErrorEmptyField">Ce champ ne peut pas être vide!</string>
     <string name="setErrorMinimumCharacters">Le champ doit contenir plus de 5 caractères!</string>
+    <string name="txtAddVaccineAddTitle">Ajouter la vaccination</string>
+    <string name="txtAddVaccineEditTitle">Modifier la vaccination</string>
+    <string name="toastAddVaccineError">Erreur lors de l\'obtention des entrées pour ajouter le vaccin! Réessayer!</string>
+    <string name="toastAddVaccineGetEmployeesFailure">Erreur lors de l\'obtention de la liste des vétérinaires! Réessayer!</string>
+    <string name="toastAddVaccineGetCustomersFailure">Erreur lors de l\'obtention de la liste des clients! Réessayer!</string>
+    <string name="toastAddVaccineGetPetsFailure">Erreur lors de l\'obtention de la liste des animaux! Réessayer!</string>
+    <string name="toastAddVaccineSuccesfullyAdd">Nouveau vaccin créé avec succès!</string>
+    <string name="toastAddVaccineFailureAdd">Il n\'a pas été possible de créer le vaccin! Réessayer!</string>
+    <string name="toastAddVaccineSuccesfullyEdit">Le vaccin a été édité avec succès!</string>
+    <string name="toastAddVaccineFailureEdit">Le vaccin n\'a pas pu être édité! Réessayer!</string>
+    <string name="toastAddVaccineSuccesfullyDelete">Le vaccin a bien été supprimé!</string>
+    <string name="toastAddVaccineFailureDelete">Il n\'a pas été possible de supprimer le vaccin! Réessayer!</string>
+    <string name="toastAddEmployeeSuccesfullyAdd">Nouvel employé ajouté avec succès!</string>
+    <string name="toastAddEmployeeFailureAdd">Il n\'a pas été possible d\'ajouter un nouvel employé! Réessayer!</string>
 </resources>

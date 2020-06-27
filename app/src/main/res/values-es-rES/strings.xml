@@ -163,4 +163,18 @@
     <string name="toastQueryVaccinesRequestError">¡Error al obtener la lista de vacunas! ¡Inténtalo de nuevo!</string>
     <string name="setErrorEmptyField">¡Este campo no puede estar vacío!</string>
     <string name="setErrorMinimumCharacters">¡El campo debe contener más de 5 caracteres!</string>
+    <string name="txtAddVaccineAddTitle">Agregar vacunación</string>
+    <string name="txtAddVaccineEditTitle">Editar vacunación</string>
+    <string name="toastAddVaccineError">¡Error al obtener las entradas para agregar la vacuna! ¡Inténtalo de nuevo!</string>
+    <string name="toastAddVaccineGetEmployeesFailure">¡Error al obtener la lista de veterinarios! ¡Inténtalo de nuevo!</string>
+    <string name="toastAddVaccineGetCustomersFailure">¡Error al obtener la lista de Clientes! ¡Inténtalo de nuevo!</string>
+    <string name="toastAddVaccineGetPetsFailure">¡Error al obtener la lista de animales! ¡Inténtalo de nuevo!</string>
+    <string name="toastAddVaccineSuccesfullyAdd">¡Nueva vacuna creada con éxito!</string>
+    <string name="toastAddVaccineFailureAdd">¡No fue posible crear la vacuna! ¡Inténtalo de nuevo!</string>
+    <string name="toastAddVaccineSuccesfullyEdit">¡Vacuna editada con éxito!</string>
+    <string name="toastAddVaccineFailureEdit">¡La vacuna no se pudo editar! ¡Inténtalo de nuevo!</string>
+    <string name="toastAddVaccineSuccesfullyDelete">¡Vacuna eliminada con éxito!</string>
+    <string name="toastAddVaccineFailureDelete">¡No fue posible eliminar la vacuna! ¡Inténtalo de nuevo!</string>
+    <string name="toastAddEmployeeSuccesfullyAdd">¡Nuevo empleado agregado con éxito!</string>
+    <string name="toastAddEmployeeFailureAdd">¡No fue posible agregar un nuevo empleado! ¡Inténtalo de nuevo!</string>
 </resources>

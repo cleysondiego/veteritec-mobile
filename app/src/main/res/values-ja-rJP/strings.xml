@@ -163,4 +163,18 @@
     <string name="toastQueryVaccinesRequestError">ワクチンのリストの取得中にエラーが発生しました！ 再試行！</string>
     <string name="setErrorEmptyField">このフィールドは空にできません！</string>
     <string name="setErrorMinimumCharacters">フィールドには5文字以上を含める必要があります！</string>
+    <string name="txtAddVaccineAddTitle">予防接種を追加</string>
+    <string name="txtAddVaccineEditTitle">予防接種を編集</string>
+    <string name="toastAddVaccineError">ワクチンを追加するための入力の取得中にエラーが発生しました！ 再試行！</string>
+    <string name="toastAddVaccineGetEmployeesFailure">獣医のリストの取得中にエラーが発生しました！ 再試行！</string>
+    <string name="toastAddVaccineGetCustomersFailure">クライアントのリストの取得中にエラーが発生しました！ 再試行！</string>
+    <string name="toastAddVaccineGetPetsFailure">動物のリストの取得中にエラーが発生しました！ 再試行！</string>
+    <string name="toastAddVaccineSuccesfullyAdd">新しいワクチンが無事に作成されました！</string>
+    <string name="toastAddVaccineFailureAdd">ワクチンを作成することはできませんでした！ 再試行！</string>
+    <string name="toastAddVaccineSuccesfullyEdit">ワクチンの編集に成功しました！</string>
+    <string name="toastAddVaccineFailureEdit">ワクチンは編集できませんでした！ 再試行！</string>
+    <string name="toastAddVaccineSuccesfullyDelete">ワクチンは正常に削除されました！</string>
+    <string name="toastAddVaccineFailureDelete">ワクチンを削除することはできませんでした！ 再試行！</string>
+    <string name="toastAddEmployeeSuccesfullyAdd">新しい従業員が追加されました！</string>
+    <string name="toastAddEmployeeFailureAdd">新しい従業員を追加することはできませんでした！ 再試行！</string>
 </resources>
