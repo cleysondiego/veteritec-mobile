@@ -227,13 +227,13 @@ public class AddCustomerActivity extends AppCompatActivity implements Navigation
     }
 
     public boolean validateFields() {
-        return validateField(edtCustomerName) ||
-                validateField(edtCustomerCpf) ||
-                validateField(edtCustomerCep) ||
-                validateField(edtCustomerNeighborhood) ||
-                validateField(edtCustomerStreet) ||
-                validateField(edtCustomerNumber) ||
-                validateField(edtCustomerCellPhone) ||
+        return validateField(edtCustomerName) &&
+                validateField(edtCustomerCpf) &&
+                validateField(edtCustomerCep) &&
+                validateField(edtCustomerNeighborhood) &&
+                validateField(edtCustomerStreet) &&
+                validateField(edtCustomerNumber) &&
+                validateField(edtCustomerCellPhone) &&
                 validateField(edtCustomerEmail);
     }
 

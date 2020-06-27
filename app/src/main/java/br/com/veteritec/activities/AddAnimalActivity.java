@@ -407,12 +407,12 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
     }
 
     public boolean validateFields() {
-        return validateField(edtAnimalName) ||
-                validateField(edtAnimalBirthDate) ||
-                validateField(edtAnimalSpecies) ||
-                validateField(edtAnimalRace) ||
-                validateField(edtAnimalSize) ||
-                validateField(edtAnimalWeight) ||
+        return validateField(edtAnimalName) &&
+                validateField(edtAnimalBirthDate) &&
+                validateField(edtAnimalSpecies) &&
+                validateField(edtAnimalRace) &&
+                validateField(edtAnimalSize) &&
+                validateField(edtAnimalWeight) &&
                 validateField(edtAnimalObservation);
     }
 
