@@ -125,14 +125,16 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
 
     @Override
     public void onClick(View v) {
-        calculateDosage();
+        if (validateFields()) {
+            calculateDosage();
+        } else {
+            Toast.makeText(this, getResources().getString(R.string.toastCalculatorValidationsError), Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void calculateDosage() {
         double result = calculate();
         DecimalFormat resultFormat = new DecimalFormat("0.0000");
-
-        System.out.println("RESULTADO: " + resultFormat.format(result));
 
         if (result != VALIDATION_FAIL && result != INVALID_OPERATORS) {
             txtResult.setText(resultFormat.format(result));
@@ -157,16 +159,26 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
         String dosageUnit = dosageSpinner.getSelectedItem().toString();
         String concentrationUnit = concentrationSpinner.getSelectedItem().toString();
 
-        if (!validateFields(animalWeight, dosage, concentration, dosageUnit, concentrationUnit)) {
-            Toast.makeText(this, getResources().getString(R.string.toastCalculatorValidationsError), Toast.LENGTH_SHORT).show();
-            return VALIDATION_FAIL;
-        }
-
         DosageCalculator dosageCalculator = new DosageCalculator();
         return dosageCalculator.calculate(animalWeight, dosage, concentration, dosageUnit, concentrationUnit);
     }
 
-    private boolean validateFields(double animalWeight, double dosage, double concentration, String dosageUnit, String concentrationUnit) {
-        return animalWeight > 0 || dosage > 0 || concentration > 0 || dosageUnit.equals("") || concentrationUnit.equals("");
+    public boolean validateFields() {
+        return validateField(edtAnimalWeight) &&
+                validateField(edtDosage) &&
+                validateField(edtFarmacoConcentration);
+    }
+
+    public boolean validateField(EditText editText) {
+        if (editText.getText().toString().isEmpty()) {
+            editText.setError(getResources().getString(R.string.setErrorEmptyField));
+            editText.requestFocus();
+            return false;
+        } else if (Integer.parseInt(editText.getText().toString()) <= 0) {
+            editText.setError(getResources().getString(R.string.setErrorZeroField));
+            editText.requestFocus();
+            return false;
+        }
+        return true;
     }
 }
