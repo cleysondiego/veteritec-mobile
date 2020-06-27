@@ -46,6 +46,8 @@ import br.com.veteritec.usecase.ThreadExecutor;
 import br.com.veteritec.utils.ApiRequest;
 import br.com.veteritec.utils.NavigationDrawer;
 import br.com.veteritec.utils.SharedPreferencesUtils;
+import br.com.veteritec.vaccines.CreateVaccineRequestStructure;
+import br.com.veteritec.vaccines.CreateVaccineUseCase;
 
 public class AddVaccineActivity extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener, AdapterView.OnItemSelectedListener {
     private DrawerLayout drawer;
@@ -133,14 +135,15 @@ public class AddVaccineActivity extends AppCompatActivity implements View.OnClic
 
     @Override
     public void onClick(View v) {
-        int id = v.getId();
-        if (id == R.id.btnAddVaccineDate) {
-            showDateDialog(edtDate);
-        } else if (id == R.id.btnAddVaccineTime) {
-            showTimeDialog(edtTime);
-        } else if (id == R.id.btnAddVaccineSave) {
-            saveVaccine();
-            Log.e("VETERITEC", "CHAMOU O SAVE VACINE");
+        switch (v.getId()) {
+            case R.id.btnAddVaccineDate:
+                showDateDialog(edtDate);
+                break;
+            case R.id.btnAddVaccineTime:
+                showTimeDialog(edtTime);
+                break;
+            case R.id.btnAddVaccineSave:
+                createVaccine();
         }
     }
 
@@ -331,6 +334,48 @@ public class AddVaccineActivity extends AppCompatActivity implements View.OnClic
         spnAddVaccinePet.setAdapter(arrayAdapter);
     }
 
-    private void saveVaccine() {
+    private void createVaccine() {
+        CreateVaccineRequestStructure createVaccineRequestStructure = new CreateVaccineRequestStructure();
+        createVaccineRequestStructure.setDate(edtDate.getText().toString());
+        createVaccineRequestStructure.setHour(edtTime.getText().toString());
+        createVaccineRequestStructure.setDescription(edtDescription.getText().toString());
+        createVaccineRequestStructure.setCustomer(selectedCustomerId);
+        createVaccineRequestStructure.setVeterinary(getSelectedVeterinaryId());
+        createVaccineRequestStructure.setPet(getSelectedPetId());
+
+        ApiRequest apiRequest = new ApiRequest();
+        CreateVaccineUseCase createVaccineUseCase = new CreateVaccineUseCase(ThreadExecutor.getInstance(), apiRequest, createVaccineRequestStructure, userClinicId, userToken);
+        createVaccineUseCase.setCallback(new CreateVaccineUseCase.OnCreateVaccineCallback() {
+            @Override
+            public void onSuccess() {
+                Toast.makeText(context, "Nova vacina criada com sucesso!", Toast.LENGTH_LONG).show();
+                finish();
+            }
+
+            @Override
+            public void onFailure(int statusCode) {
+                Toast.makeText(context, "Não foi possível criar a vacina! Tente novamente!", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        createVaccineUseCase.execute();
+    }
+
+    public String getSelectedVeterinaryId() {
+        for (GetEmployeesResponseStructure.Employee employee : getEmployeesResponseStructure.getEmployeeList()) {
+            if (employee.getName().equals(spnAddVaccineVeterinary.getSelectedItem().toString())) {
+                return employee.getId();
+            }
+        }
+        return "";
+    }
+
+    public String getSelectedPetId() {
+        for (GetPetsResponseStructure.Pet pet : getPetsResponseStructure.getPets()) {
+            if (pet.getName().equals(spnAddVaccinePet.getSelectedItem().toString())) {
+                return pet.getId();
+            }
+        }
+        return "";
     }
 }
