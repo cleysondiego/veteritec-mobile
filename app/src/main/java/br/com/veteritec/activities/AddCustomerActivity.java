@@ -258,7 +258,7 @@ public class AddCustomerActivity extends AppCompatActivity implements Navigation
         createCustomerUseCase.setCallback(new CreateCustomerUseCase.OnCreateCustomer() {
             @Override
             public void onSuccess() {
-                Toast.makeText(context, getResources().getString(R.string.toastAddCustomerFailureAddedCustomer), Toast.LENGTH_LONG).show();
+                Toast.makeText(context, getResources().getString(R.string.toastAddCustomerSuccesfullyAddedCustomer), Toast.LENGTH_LONG).show();
                 finish();
             }
 
