@@ -34,6 +34,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 
 import br.com.veteritec.R;
 import br.com.veteritec.customers.GetCustomersResponseStructure;
@@ -46,12 +47,18 @@ import br.com.veteritec.usecase.ThreadExecutor;
 import br.com.veteritec.utils.ApiRequest;
 import br.com.veteritec.utils.NavigationDrawer;
 import br.com.veteritec.utils.SharedPreferencesUtils;
+import br.com.veteritec.vaccines.ChangeVaccineRequestStructure;
+import br.com.veteritec.vaccines.ChangeVaccineUseCase;
 import br.com.veteritec.vaccines.CreateVaccineRequestStructure;
 import br.com.veteritec.vaccines.CreateVaccineUseCase;
+import br.com.veteritec.vaccines.GetVaccinesResponseStructure;
 
 public class AddVaccineActivity extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener, AdapterView.OnItemSelectedListener {
     private DrawerLayout drawer;
     private Context context;
+
+    private int edition = 0;
+    private boolean editable = false;
 
     private String userToken = "";
     private String userClinicId = "";
@@ -60,18 +67,21 @@ public class AddVaccineActivity extends AppCompatActivity implements View.OnClic
     private GetEmployeesResponseStructure getEmployeesResponseStructure;
     private GetCustomersResponseStructure getCustomersResponseStructure;
     private GetPetsResponseStructure getPetsResponseStructure;
+    private GetVaccinesResponseStructure.Vaccine vaccine;
 
     private Spinner spnAddVaccineVeterinary;
     private Spinner spnAddVaccineClient;
     private Spinner spnAddVaccinePet;
 
-    EditText edtDate;
-    EditText edtTime;
-    EditText edtDescription;
+    private EditText edtDate;
+    private EditText edtTime;
+    private EditText edtDescription;
 
-    Button btnTime;
-    Button btnDate;
-    Button btnSave;
+    private Button btnTime;
+    private Button btnDate;
+    private Button btnSave;
+    private Button btnEdit;
+    private Button btnDelete;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,11 +104,47 @@ public class AddVaccineActivity extends AppCompatActivity implements View.OnClic
         Configuration config = new Configuration(getResources().getConfiguration());
         config.setLocale(locale);
 
+        btnTime = findViewById(R.id.btnAddVaccineTime);
+        btnDate = findViewById(R.id.btnAddVaccineDate);
+        btnSave = findViewById(R.id.btnAddVaccineSave);
+        btnEdit = findViewById(R.id.btnAddVaccineEdit);
+        btnDelete = findViewById(R.id.btnAddVaccineDelete);
+
+        edtDate = findViewById(R.id.edtAddVaccineDate);
+        edtTime = findViewById(R.id.edtAddVaccineTime);
+        edtDescription = findViewById(R.id.edtAddVaccineDescription);
+
+        spnAddVaccineVeterinary = findViewById(R.id.spnAddVaccineVeterinary);
+        spnAddVaccineClient = findViewById(R.id.spnAddVaccineClient);
+        spnAddVaccinePet = findViewById(R.id.spnAddVaccineAnimal);
+
         getResources().updateConfiguration(config, getResources().getDisplayMetrics());
 
         Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitle(getResources().getString(R.string.txtAddVaccineTitle));
-        setSupportActionBar(toolbar);
+
+        try {
+            if (Objects.requireNonNull(getIntent().getExtras()).getInt("Query", 0) == 0) {
+                toolbar.setTitle(R.string.txtAddVaccineAddTitle);
+            } else {
+                toolbar.setTitle(R.string.txtAddVaccineEditTitle);
+
+                setEdition();
+                editable = true;
+
+                btnEdit.setVisibility(View.VISIBLE);
+                btnDelete.setVisibility(View.VISIBLE);
+                vaccine = (GetVaccinesResponseStructure.Vaccine) getIntent().getSerializableExtra("VACCINE_OBJECT");
+                if (vaccine != null) {
+                    edtDate.setText(vaccine.getDate());
+                    edtTime.setText(vaccine.getHour());
+                    edtDescription.setText(vaccine.getDescription());
+                }
+            }
+            setSupportActionBar(toolbar);
+        } catch (Exception e) {
+            Toast.makeText(context, "Erro ao obter os insumos para adicionar vacina! Tente novamente!", Toast.LENGTH_LONG).show();
+            finish();
+        }
 
         drawer = findViewById(R.id.drawer_add_vaccine);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, 0, 0);
@@ -108,22 +154,10 @@ public class AddVaccineActivity extends AppCompatActivity implements View.OnClic
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        spnAddVaccineVeterinary = findViewById(R.id.spnAddVaccineVeterinary);
-        spnAddVaccineClient = findViewById(R.id.spnAddVaccineClient);
-        spnAddVaccinePet = findViewById(R.id.spnAddVaccineAnimal);
-
         spnAddVaccineClient.setOnItemSelectedListener(this);
-
-        edtDate = findViewById(R.id.edtAddVaccineDate);
-        edtTime = findViewById(R.id.edtAddVaccineTime);
-        edtDescription = findViewById(R.id.edtAddVaccineDescription);
 
         edtDate.setInputType(InputType.TYPE_NULL);
         edtTime.setInputType(InputType.TYPE_NULL);
-
-        btnTime = findViewById(R.id.btnAddVaccineTime);
-        btnDate = findViewById(R.id.btnAddVaccineDate);
-        btnSave = findViewById(R.id.btnAddVaccineSave);
 
         getEmployees();
         getCustomers();
@@ -131,6 +165,8 @@ public class AddVaccineActivity extends AppCompatActivity implements View.OnClic
         btnTime.setOnClickListener(this);
         btnDate.setOnClickListener(this);
         btnSave.setOnClickListener(this);
+        btnEdit.setOnClickListener(this);
+        btnDelete.setOnClickListener(this);
     }
 
     @Override
@@ -143,7 +179,23 @@ public class AddVaccineActivity extends AppCompatActivity implements View.OnClic
                 showTimeDialog(edtTime);
                 break;
             case R.id.btnAddVaccineSave:
-                createVaccine();
+                if (!editable) {
+                    createVaccine();
+                } else {
+                    changeVaccine();
+                }
+                break;
+            case R.id.btnAddVaccineEdit:
+                if (edition == 0) {
+                    setEdition();
+                    Toast.makeText(context, R.string.toastAddCustomerDisabledEdition, Toast.LENGTH_SHORT).show();
+                } else {
+                    setEdition();
+                    Toast.makeText(context, R.string.toastAddCustomerEnabledEdition, Toast.LENGTH_SHORT).show();
+                }
+                break;
+            case R.id.btnAddVaccineDelete:
+                deleteVaccine();
                 break;
         }
     }
@@ -192,6 +244,28 @@ public class AddVaccineActivity extends AppCompatActivity implements View.OnClic
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
+    }
+
+    private void setEdition() {
+        if (edition == 0) {
+            edtDate.setEnabled(false);
+            edtTime.setEnabled(false);
+            edtDescription.setEnabled(false);
+            spnAddVaccinePet.setEnabled(false);
+            spnAddVaccineVeterinary.setEnabled(false);
+            spnAddVaccineClient.setEnabled(false);
+
+            edition = 1;
+        } else {
+            edtDate.setEnabled(true);
+            edtTime.setEnabled(true);
+            edtDescription.setEnabled(true);
+            spnAddVaccinePet.setEnabled(true);
+            spnAddVaccineVeterinary.setEnabled(true);
+            spnAddVaccineClient.setEnabled(true);
+
+            edition = 0;
+        }
     }
 
     private void getUserDataFromSharedPreferences() {
@@ -333,6 +407,34 @@ public class AddVaccineActivity extends AppCompatActivity implements View.OnClic
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, name);
         spnAddVaccinePet.setAdapter(arrayAdapter);
+
+        if (editable) {
+            setFieldsByVaccine();
+        }
+    }
+
+    public void setFieldsByVaccine() {
+        List<GetCustomersResponseStructure.Customer> customerList = getCustomersResponseStructure.getCustomersList();
+        List<GetEmployeesResponseStructure.Employee> employeeList = getEmployeesResponseStructure.getEmployeeList();
+        List<GetPetsResponseStructure.Pet> petList = getPetsResponseStructure.getPets();
+
+        for (int i = 0; i < customerList.size(); i++) {
+            if (customerList.get(i).getId().equals(vaccine.getCustomer())) {
+                spnAddVaccineClient.setSelection(i, true);
+            }
+        }
+
+        for (int i = 0; i < employeeList.size(); i++) {
+            if (employeeList.get(i).getId().equals(vaccine.getVeterinary())) {
+                spnAddVaccineVeterinary.setSelection(i, true);
+            }
+        }
+
+        for (int i = 0; i < petList.size(); i++) {
+            if (petList.get(i).getId().equals(vaccine.getPet())) {
+                spnAddVaccinePet.setSelection(i, true);
+            }
+        }
     }
 
     private void createVaccine() {
@@ -379,4 +481,35 @@ public class AddVaccineActivity extends AppCompatActivity implements View.OnClic
         }
         return "";
     }
+
+    private void changeVaccine() {
+        ChangeVaccineRequestStructure changeVaccineRequestStructure = new ChangeVaccineRequestStructure();
+        changeVaccineRequestStructure.setId(vaccine.getId());
+        changeVaccineRequestStructure.setDate(edtDate.getText().toString());
+        changeVaccineRequestStructure.setHour(edtTime.getText().toString());
+        changeVaccineRequestStructure.setDescription(edtDescription.getText().toString());
+        changeVaccineRequestStructure.setCustomer(selectedCustomerId);
+        changeVaccineRequestStructure.setVeterinary(getSelectedVeterinaryId());
+        changeVaccineRequestStructure.setPet(getSelectedPetId());
+
+        ApiRequest apiRequest = new ApiRequest();
+
+        ChangeVaccineUseCase changeVaccineUseCase = new ChangeVaccineUseCase(ThreadExecutor.getInstance(), apiRequest, changeVaccineRequestStructure, userClinicId, userToken);
+        changeVaccineUseCase.setCallback(new ChangeVaccineUseCase.OnChangeVaccine() {
+            @Override
+            public void onSuccess() {
+                Toast.makeText(context, "Vacina editada com sucesso!", Toast.LENGTH_LONG).show();
+                finish();
+            }
+
+            @Override
+            public void onFailure(int statusCode) {
+                Toast.makeText(context, "Não foi possível editar a Vacina! Tente novamente!", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        changeVaccineUseCase.execute();
+    }
+
+    private void deleteVaccine() {}
 }
