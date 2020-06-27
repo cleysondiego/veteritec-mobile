@@ -227,13 +227,13 @@ public class AddCustomerActivity extends AppCompatActivity implements Navigation
     }
 
     public boolean validateFields() {
-        return validateField(edtCustomerName) ||
-                validateField(edtCustomerCpf) ||
-                validateField(edtCustomerCep) ||
-                validateField(edtCustomerNeighborhood) ||
-                validateField(edtCustomerStreet) ||
-                validateField(edtCustomerNumber) ||
-                validateField(edtCustomerCellPhone) ||
+        return validateField(edtCustomerName) &&
+                validateField(edtCustomerCpf) &&
+                validateField(edtCustomerCep) &&
+                validateField(edtCustomerNeighborhood) &&
+                validateField(edtCustomerStreet) &&
+                validateField(edtCustomerNumber) &&
+                validateField(edtCustomerCellPhone) &&
                 validateField(edtCustomerEmail);
     }
 
@@ -258,7 +258,7 @@ public class AddCustomerActivity extends AppCompatActivity implements Navigation
         createCustomerUseCase.setCallback(new CreateCustomerUseCase.OnCreateCustomer() {
             @Override
             public void onSuccess() {
-                Toast.makeText(context, getResources().getString(R.string.toastAddCustomerFailureAddedCustomer), Toast.LENGTH_LONG).show();
+                Toast.makeText(context, getResources().getString(R.string.toastAddCustomerSuccesfullyAddedCustomer), Toast.LENGTH_LONG).show();
                 finish();
             }
 
