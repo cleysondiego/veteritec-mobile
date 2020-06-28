@@ -46,6 +46,7 @@ public class NavigationDrawer {
                 break;
             case R.id.nav_add_vaccine:
                 intent = new Intent(context, AddVaccineActivity.class);
+                intent.putExtra("Query", 0);
                 break;
             case R.id.nav_query_vaccine:
                 intent = new Intent(context, QueryActivity.class);
