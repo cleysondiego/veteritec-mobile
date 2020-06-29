@@ -174,7 +174,7 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
             editText.setError(getResources().getString(R.string.setErrorEmptyField));
             editText.requestFocus();
             return false;
-        } else if (Integer.parseInt(editText.getText().toString()) <= 0) {
+        } else if (Double.parseDouble(editText.getText().toString()) <= 0) {
             editText.setError(getResources().getString(R.string.setErrorZeroField));
             editText.requestFocus();
             return false;
