@@ -177,4 +177,5 @@
     <string name="toastAddEmployeeSuccesfullyAdd">新员工已成功添加！</string>
     <string name="toastAddEmployeeFailureAdd">无法添加新员工！ 再试一次！</string>
     <string name="txtNoConnection">互联网连接不可用！\n再试一次！</string>
+    <string name="setErrorZeroField">该字段不能为零！</string>
 </resources>
