@@ -2,6 +2,7 @@
     <string name="app_name" translatable="false">Veteritec</string>
     <string name="translate_dialog_title">Escolha o Idioma</string>
     <string name="main_menu">Menu Principal</string>
+    <string name="title_activity_google_maps">Mapa</string>
 
     <!-- Set Error Messages -->
     <string name="setErrorEmptyField">Este campo não pode ser vazio!</string>
@@ -72,6 +73,7 @@
     <string name="txtDrawerMenuTools">Ferramentas</string>
     <string name="txtDrawerMenuCalculator">Calculadora de Doses</string>
     <string name="txtDrawerMenuLanguage">Alterar Idioma</string>
+    <string name="txtDrawerMenuGoogleMaps">Localizar Animal</string>
     <string name="txtDrawerMenuCustomer">Cliente</string>
     <string name="txtDrawerMenuAnimal">Animal</string>
     <string name="txtDrawerMenuVaccine">Vacina</string>

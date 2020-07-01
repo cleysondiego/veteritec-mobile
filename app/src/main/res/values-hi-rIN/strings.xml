@@ -177,4 +177,7 @@
     <string name="toastAddEmployeeSuccesfullyAdd">नया कर्मचारी सफलतापूर्वक जोड़ा गया!</string>
     <string name="toastAddEmployeeFailureAdd">नए कर्मचारी को जोड़ना संभव नहीं था! पुनः प्रयास करें!</string>
     <string name="txtNoConnection">इंटरनेट कनेक्शन अनुपलब्ध!\nपुनः प्रयास करें!</string>
+    <string name="setErrorZeroField">यह फ़ील्ड शून्य नहीं हो सकता!</string>
+    <string name="txtDrawerMenuGoogleMaps">पशु का पता लगाएं</string>
+    <string name="title_activity_google_maps">नक्शा</string>
 </resources>

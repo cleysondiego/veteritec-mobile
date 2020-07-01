@@ -14,6 +14,10 @@
                 android:id="@+id/nav_translate"
                 android:icon="@drawable/ic_translate_24"
                 android:title="@string/txtDrawerMenuLanguage" />
+            <item
+                android:id="@+id/nav_google_maps"
+                android:icon="@drawable/ic_google_maps_24"
+                android:title="@string/txtDrawerMenuGoogleMaps" />
         </menu>
     </item>
 

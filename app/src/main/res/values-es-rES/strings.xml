@@ -177,4 +177,7 @@
     <string name="toastAddEmployeeSuccesfullyAdd">¡Nuevo empleado agregado con éxito!</string>
     <string name="toastAddEmployeeFailureAdd">¡No fue posible agregar un nuevo empleado! ¡Inténtalo de nuevo!</string>
     <string name="txtNoConnection">¡Conexión a internet no disponible!\n¡Inténtalo de nuevo!</string>
+    <string name="setErrorZeroField">¡Este campo no puede ser cero!</string>
+    <string name="txtDrawerMenuGoogleMaps">Encontrar animal</string>
+    <string name="title_activity_google_maps">Mapa</string>
 </resources>

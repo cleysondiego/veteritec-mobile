@@ -13,6 +13,7 @@ import br.com.veteritec.activities.AddCustomerActivity;
 import br.com.veteritec.activities.AddEmployeeActivity;
 import br.com.veteritec.activities.AddVaccineActivity;
 import br.com.veteritec.activities.CalculatorActivity;
+import br.com.veteritec.activities.GoogleMapsActivity;
 import br.com.veteritec.activities.QueryActivity;
 import br.com.veteritec.activities.TranslateActivity;
 
@@ -27,6 +28,9 @@ public class NavigationDrawer {
                 break;
             case R.id.nav_translate:
                 intent = new Intent(context, TranslateActivity.class);
+                break;
+            case R.id.nav_google_maps:
+                intent = new Intent(context, GoogleMapsActivity.class);
                 break;
             case R.id.nav_add_customer:
                 intent = new Intent(context, AddCustomerActivity.class);
