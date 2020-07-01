@@ -177,4 +177,5 @@
     <string name="toastAddEmployeeSuccesfullyAdd">Nouvel employé ajouté avec succès!</string>
     <string name="toastAddEmployeeFailureAdd">Il n\'a pas été possible d\'ajouter un nouvel employé! Réessayer!</string>
     <string name="txtNoConnection">Connexion Internet indisponible!\nRéessayer!</string>
+    <string name="setErrorZeroField">Ce champ ne peut pas être nul!</string>
 </resources>

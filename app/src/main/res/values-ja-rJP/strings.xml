@@ -177,4 +177,5 @@
     <string name="toastAddEmployeeSuccesfullyAdd">新しい従業員が追加されました！</string>
     <string name="toastAddEmployeeFailureAdd">新しい従業員を追加することはできませんでした！ 再試行！</string>
     <string name="txtNoConnection">インターネットに接続できません！\n再試行！</string>
+    <string name="setErrorZeroField">このフィールドをゼロにすることはできません！</string>
 </resources>
