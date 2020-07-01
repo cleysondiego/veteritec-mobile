@@ -39,9 +39,11 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        // Add a marker in Indaiatuba and move the camera
+        double latitude = -23.0882;
+        double longitude = -47.2215;
+        LatLng petLocalization = new LatLng(latitude, longitude);
+        mMap.addMarker(new MarkerOptions().position(petLocalization).title("Localização do pet"));
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(petLocalization, 15), 3000, null);
     }
 }
