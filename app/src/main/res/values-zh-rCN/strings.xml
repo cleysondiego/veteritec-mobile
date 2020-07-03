@@ -178,6 +178,5 @@
     <string name="toastAddEmployeeFailureAdd">无法添加新员工！ 再试一次！</string>
     <string name="txtNoConnection">互联网连接不可用！\n再试一次！</string>
     <string name="setErrorZeroField">该字段不能为零！</string>
-    <string name="txtDrawerMenuGoogleMaps">寻找动物</string>
     <string name="title_activity_google_maps">地图</string>
 </resources>

@@ -178,6 +178,5 @@
     <string name="toastAddEmployeeFailureAdd">It was not possible to add a new employee! Try again!</string>
     <string name="txtNoConnection">Internet connection unavailable!\nTry again!</string>
     <string name="setErrorZeroField">This field cannot be zero!</string>
-    <string name="txtDrawerMenuGoogleMaps">Find Animal</string>
     <string name="title_activity_google_maps">Map</string>
 </resources>

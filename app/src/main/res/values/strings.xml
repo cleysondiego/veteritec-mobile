@@ -73,7 +73,6 @@
     <string name="txtDrawerMenuTools">Ferramentas</string>
     <string name="txtDrawerMenuCalculator">Calculadora de Doses</string>
     <string name="txtDrawerMenuLanguage">Alterar Idioma</string>
-    <string name="txtDrawerMenuGoogleMaps">Localizar Animal</string>
     <string name="txtDrawerMenuCustomer">Cliente</string>
     <string name="txtDrawerMenuAnimal">Animal</string>
     <string name="txtDrawerMenuVaccine">Vacina</string>

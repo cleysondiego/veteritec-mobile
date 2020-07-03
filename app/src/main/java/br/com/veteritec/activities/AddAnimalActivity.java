@@ -56,20 +56,21 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
 
     private DrawerLayout drawer;
 
-    EditText edtAnimalName;
-    EditText edtAnimalBirthDate;
-    EditText edtAnimalSpecies;
-    EditText edtAnimalRace;
-    EditText edtAnimalSize;
-    EditText edtAnimalWeight;
-    EditText edtAnimalObservation;
+    private EditText edtAnimalName;
+    private EditText edtAnimalBirthDate;
+    private EditText edtAnimalSpecies;
+    private EditText edtAnimalRace;
+    private EditText edtAnimalSize;
+    private EditText edtAnimalWeight;
+    private EditText edtAnimalObservation;
 
-    Button btnDate;
-    Button btnAnimalSave;
-    Button btnAnimalEdit;
-    Button btnAnimalDelete;
+    private Button btnDate;
+    private Button btnAnimalSave;
+    private Button btnAnimalEdit;
+    private Button btnAnimalDelete;
+    private Button btnAnimalFind;
 
-    Spinner spnAnimalOwner;
+    private Spinner spnAnimalOwner;
 
     private GetPetsResponseStructure.Pet pet;
     private GetCustomersResponseStructure getCustomersResponseStructure;
@@ -109,11 +110,13 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
         btnAnimalSave = findViewById(R.id.btnAddAnimalSave);
         btnAnimalEdit = findViewById(R.id.btnAddAnimalEdit);
         btnAnimalDelete = findViewById(R.id.btnAddAnimalDelete);
+        btnAnimalFind = findViewById(R.id.btnAddAnimalFind);
 
         btnDate.setOnClickListener(this);
         btnAnimalSave.setOnClickListener(this);
         btnAnimalEdit.setOnClickListener(this);
         btnAnimalDelete.setOnClickListener(this);
+        btnAnimalFind.setOnClickListener(this);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
 
@@ -128,6 +131,7 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
 
                 btnAnimalEdit.setVisibility(View.VISIBLE);
                 btnAnimalDelete.setVisibility(View.VISIBLE);
+                btnAnimalFind.setVisibility(View.VISIBLE);
             }
             setSupportActionBar(toolbar);
         } catch (Exception e) {
@@ -172,6 +176,10 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
             case R.id.btnAddAnimalDelete:
                 deletePet();
                 break;
+            case R.id.btnAddAnimalFind:
+                Intent find = new Intent(this, GoogleMapsActivity.class);
+                startActivity(find);
+                break;
             default:
                 break;
         }
@@ -203,17 +211,18 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
 
     private void showDateDialog(final EditText edtAnimalBirthDate) {
         final Calendar calendar = Calendar.getInstance();
-        int year = calendar.get(Calendar.YEAR);
-        int month = calendar.get(Calendar.MONTH);
-        int dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
 
         DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                calendar.set(Calendar.YEAR, year);
+                calendar.set(Calendar.MONTH, month);
+                calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
                 edtAnimalBirthDate.setText(simpleDateFormat.format(calendar.getTime()));
             }
-        }, year, month, dayOfMonth);
+        }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
 
         datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
         datePickerDialog.show();

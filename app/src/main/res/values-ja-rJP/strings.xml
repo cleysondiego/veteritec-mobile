@@ -178,6 +178,5 @@
     <string name="toastAddEmployeeFailureAdd">新しい従業員を追加することはできませんでした！ 再試行！</string>
     <string name="txtNoConnection">インターネットに接続できません！\n再試行！</string>
     <string name="setErrorZeroField">このフィールドをゼロにすることはできません！</string>
-    <string name="txtDrawerMenuGoogleMaps">動物を探す</string>
     <string name="title_activity_google_maps">地図</string>
 </resources>

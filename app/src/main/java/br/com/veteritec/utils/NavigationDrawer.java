@@ -29,9 +29,6 @@ public class NavigationDrawer {
             case R.id.nav_translate:
                 intent = new Intent(context, TranslateActivity.class);
                 break;
-            case R.id.nav_google_maps:
-                intent = new Intent(context, GoogleMapsActivity.class);
-                break;
             case R.id.nav_add_customer:
                 intent = new Intent(context, AddCustomerActivity.class);
                 intent.putExtra("Query", 0);
