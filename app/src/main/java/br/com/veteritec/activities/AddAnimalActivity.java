@@ -136,6 +136,7 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
         }
 
         NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setItemIconTintList(null);
         navigationView.setNavigationItemSelectedListener(this);
 
         drawer = findViewById(R.id.drawer_add_animal);
