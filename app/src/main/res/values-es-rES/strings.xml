@@ -17,7 +17,7 @@
     <string name="txtLoginTitle">Sistema de Gerente de Clínica Veterinaria</string>
     <string name="txtLoginClinic">Elige tu clínica:</string>
     <string name="txtLoginPassword">Contraseña:</string>
-    <string name="txtLoginLoading">Cargando</string>
+    <string name="txtLoading">Cargando</string>
     <string name="edtLoginEmail">Introduce tu correo electrónico</string>
     <string name="edtLoginPassword">Ingresa tu contraseña</string>
     <string name="cdLoginLogo">Esta imagen representa el logo de la aplicación.</string>
@@ -178,4 +178,7 @@
     <string name="toastAddEmployeeFailureAdd">¡No fue posible agregar un nuevo empleado! ¡Inténtalo de nuevo!</string>
     <string name="txtNoConnection">¡Conexión a internet no disponible!\n¡Inténtalo de nuevo!</string>
     <string name="setErrorZeroField">¡Este campo no puede ser cero!</string>
+    <string name="txtConfirm">¿Seguro que quieres eliminar este registro?</string>
+    <string name="txtConfirmYes">Si</string>
+    <string name="txtConfirmNo">No</string>
 </resources>

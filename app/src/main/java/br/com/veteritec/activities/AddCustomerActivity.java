@@ -1,6 +1,8 @@
 package br.com.veteritec.activities;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -193,7 +195,26 @@ public class AddCustomerActivity extends AppCompatActivity implements Navigation
                 }
                 break;
             case R.id.btnAddCustomerDelete:
-                deleteCustomer();
+                AlertDialog.Builder confirmDialog = new AlertDialog.Builder(this);
+
+                confirmDialog.setMessage(getResources().getString(R.string.txtConfirm))
+                        .setCancelable(false)
+                        .setPositiveButton(getResources().getString(R.string.txtConfirmYes), new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                                deleteCustomer();
+                            }
+                        })
+                        .setNegativeButton(getResources().getString(R.string.txtConfirmNo), new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        });
+
+                AlertDialog dialog = confirmDialog.create();
+                dialog.show();
                 break;
             default:
                 break;
