@@ -281,7 +281,7 @@
             android:layout_height="64sp"
             android:layout_gravity="end"
             android:layout_marginEnd="16dp"
-            android:background="@drawable/ic_google_maps_24"
+            android:background="@drawable/ic_find"
             android:onClick="onClick"
             android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="@+id/btnAddAnimalEdit"
