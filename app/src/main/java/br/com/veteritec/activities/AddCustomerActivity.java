@@ -1,6 +1,8 @@
 package br.com.veteritec.activities;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -31,6 +33,7 @@ import br.com.veteritec.customers.DeleteCustomerUseCase;
 import br.com.veteritec.customers.GetCustomersResponseStructure;
 import br.com.veteritec.usecase.ThreadExecutor;
 import br.com.veteritec.utils.ApiRequest;
+import br.com.veteritec.utils.LoadingDialog;
 import br.com.veteritec.utils.MaskUtils;
 import br.com.veteritec.utils.NavigationDrawer;
 import br.com.veteritec.utils.SharedPreferencesUtils;
@@ -80,6 +83,7 @@ public class AddCustomerActivity extends AppCompatActivity implements Navigation
         getUserDataFromSharedPreferences();
 
         NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setItemIconTintList(null);
         navigationView.setNavigationItemSelectedListener(this);
 
         edtCustomerName = findViewById(R.id.edtAddCustomerName);
@@ -191,7 +195,26 @@ public class AddCustomerActivity extends AppCompatActivity implements Navigation
                 }
                 break;
             case R.id.btnAddCustomerDelete:
-                deleteCustomer();
+                AlertDialog.Builder confirmDialog = new AlertDialog.Builder(this);
+
+                confirmDialog.setMessage(getResources().getString(R.string.txtConfirm))
+                        .setCancelable(false)
+                        .setPositiveButton(getResources().getString(R.string.txtConfirmYes), new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                                deleteCustomer();
+                            }
+                        })
+                        .setNegativeButton(getResources().getString(R.string.txtConfirmNo), new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        });
+
+                AlertDialog dialog = confirmDialog.create();
+                dialog.show();
                 break;
             default:
                 break;
@@ -232,7 +255,6 @@ public class AddCustomerActivity extends AppCompatActivity implements Navigation
                 validateField(edtCustomerCep) &&
                 validateField(edtCustomerNeighborhood) &&
                 validateField(edtCustomerStreet) &&
-                validateField(edtCustomerNumber) &&
                 validateField(edtCustomerCellPhone) &&
                 validateField(edtCustomerEmail);
     }
@@ -251,19 +273,23 @@ public class AddCustomerActivity extends AppCompatActivity implements Navigation
     }
 
     private void createCustomer() {
-        CustomerRequestStructure customerRequestStructure = createCustomerRequestStructure();
+        final LoadingDialog loadingDialog = new LoadingDialog(this);
+        loadingDialog.startLoadingDialog();
 
+        CustomerRequestStructure customerRequestStructure = createCustomerRequestStructure();
         ApiRequest apiRequest = new ApiRequest();
         CreateCustomerUseCase createCustomerUseCase = new CreateCustomerUseCase(ThreadExecutor.getInstance(), apiRequest, customerRequestStructure, userClinicId, userToken);
         createCustomerUseCase.setCallback(new CreateCustomerUseCase.OnCreateCustomer() {
             @Override
             public void onSuccess() {
+                loadingDialog.dismissLoadingDialog();
                 Toast.makeText(context, getResources().getString(R.string.toastAddCustomerSuccesfullyAddedCustomer), Toast.LENGTH_LONG).show();
                 finish();
             }
 
             @Override
             public void onFailure(int statusCode) {
+                loadingDialog.dismissLoadingDialog();
                 Toast.makeText(context, getResources().getString(R.string.toastAddCustomerFailureAddedCustomer), Toast.LENGTH_LONG).show();
             }
         });
@@ -277,17 +303,23 @@ public class AddCustomerActivity extends AppCompatActivity implements Navigation
     }
 
     private void deleteCustomer() {
+        final LoadingDialog loadingDialog = new LoadingDialog(this);
+        loadingDialog.startLoadingDialog();
+
         ApiRequest apiRequest = new ApiRequest();
+
         DeleteCustomerUseCase deleteCustomerUseCase = new DeleteCustomerUseCase(ThreadExecutor.getInstance(), apiRequest, customer.getId(), userClinicId, userToken);
         deleteCustomerUseCase.setCallback(new DeleteCustomerUseCase.OnDeleteCustomerCallback() {
             @Override
             public void onSuccess() {
+                loadingDialog.dismissLoadingDialog();
                 Toast.makeText(context, getResources().getString(R.string.toastAddCustomerSuccesfullyDeletedCustomer), Toast.LENGTH_LONG).show();
                 finish();
             }
 
             @Override
             public void onFailure(int statusCode) {
+                loadingDialog.dismissLoadingDialog();
                 Toast.makeText(context, getResources().getString(R.string.toastAddCustomerFailureDeletedCustomer), Toast.LENGTH_LONG).show();
             }
         });
@@ -311,6 +343,9 @@ public class AddCustomerActivity extends AppCompatActivity implements Navigation
     }
 
     private void changeCustomer() {
+        final LoadingDialog loadingDialog = new LoadingDialog(this);
+        loadingDialog.startLoadingDialog();
+
         CustomerRequestStructure customerRequestStructure = createCustomerRequestStructure();
 
         ApiRequest apiRequest = new ApiRequest();
@@ -319,12 +354,14 @@ public class AddCustomerActivity extends AppCompatActivity implements Navigation
         changeCustomerUseCase.setCallback(new ChangeCustomerUseCase.OnChangeCustomer() {
             @Override
             public void onSuccess() {
+                loadingDialog.dismissLoadingDialog();
                 Toast.makeText(context, getResources().getString(R.string.toastAddCustomerSuccesfullyEditedCustomer), Toast.LENGTH_LONG).show();
                 finish();
             }
 
             @Override
             public void onFailure(int statusCode) {
+                loadingDialog.dismissLoadingDialog();
                 Toast.makeText(context, getResources().getString(R.string.toastAddCustomerFailureEditedCustomer), Toast.LENGTH_LONG).show();
             }
         });

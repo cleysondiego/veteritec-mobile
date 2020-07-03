@@ -17,7 +17,7 @@
     <string name="txtLoginTitle">Système de gestion de clinique vétérinaire</string>
     <string name="txtLoginClinic">Choisissez votre clinique:</string>
     <string name="txtLoginPassword">Mot de passe:</string>
-    <string name="txtLoginLoading">Chargement</string>
+    <string name="txtLoading">Chargement</string>
     <string name="edtLoginEmail">Entrer votre Email</string>
     <string name="edtLoginPassword">Tapez votre mot de passe</string>
     <string name="cdLoginLogo">Cette image représente le logo de l\'application.</string>
@@ -179,4 +179,7 @@
     <string name="txtNoConnection">Connexion Internet indisponible!\nRéessayer!</string>
     <string name="setErrorZeroField">Ce champ ne peut pas être nul!</string>
     <string name="title_activity_google_maps">Carte</string>
+    <string name="txtConfirm">Voulez-vous vraiment supprimer cet enregistrement?</string>
+    <string name="txtConfirmYes">Oui</string>
+    <string name="txtConfirmNo">Non</string>
 </resources>

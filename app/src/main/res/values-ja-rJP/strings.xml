@@ -17,7 +17,7 @@
     <string name="txtLoginTitle">獣医クリニックマネージャーシステム</string>
     <string name="txtLoginClinic">クリニックを選択してください：</string>
     <string name="txtLoginPassword">パスワード：</string>
-    <string name="txtLoginLoading">読み込み中</string>
+    <string name="txtLoading">読み込み中</string>
     <string name="edtLoginEmail">メールアドレスを入力</string>
     <string name="edtLoginPassword">パスワードを入力してください</string>
     <string name="cdLoginLogo">この画像はアプリケーションのロゴを表しています。</string>
@@ -179,4 +179,7 @@
     <string name="txtNoConnection">インターネットに接続できません！\n再試行！</string>
     <string name="setErrorZeroField">このフィールドをゼロにすることはできません！</string>
     <string name="title_activity_google_maps">地図</string>
+    <string name="txtConfirm">このレコードを削除してもよろしいですか？</string>
+    <string name="txtConfirmYes">はい</string>
+    <string name="txtConfirmNo">番号</string>
 </resources>

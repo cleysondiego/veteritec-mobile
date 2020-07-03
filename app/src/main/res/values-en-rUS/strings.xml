@@ -16,7 +16,7 @@
     <string name="txtLoginTitle">Veterinary Clinics Management System</string>
     <string name="txtLoginClinic">Choose your clinic:</string>
     <string name="txtLoginPassword">Password:</string>
-    <string name="txtLoginLoading">Loading</string>
+    <string name="txtLoading">Loading</string>
     <string name="edtLoginEmail">Type your e-mail</string>
     <string name="edtLoginPassword">Type your password</string>
     <string name="cdLoginLogo">This image represents the application\'s logo.</string>
@@ -179,4 +179,7 @@
     <string name="txtNoConnection">Internet connection unavailable!\nTry again!</string>
     <string name="setErrorZeroField">This field cannot be zero!</string>
     <string name="title_activity_google_maps">Map</string>
+    <string name="txtConfirm">Are you sure you want to delete this record?</string>
+    <string name="txtConfirmYes">Yes</string>
+    <string name="txtConfirmNo">No</string>
 </resources>

@@ -17,7 +17,7 @@
     <string name="txtLoginTitle">पशु चिकित्सा क्लिनिक प्रबंधक प्रणाली</string>
     <string name="txtLoginClinic">अपना क्लिनिक चुनें:</string>
     <string name="txtLoginPassword">कुंजिका:</string>
-    <string name="txtLoginLoading">लोड हो रहा है</string>
+    <string name="txtLoading">लोड हो रहा है</string>
     <string name="edtLoginEmail">अपना ईमेल दर्ज करें</string>
     <string name="edtLoginPassword">अपना पासवर्ड डालें</string>
     <string name="cdLoginLogo">यह छवि एप्लिकेशन लोगो का प्रतिनिधित्व करती है।</string>
@@ -179,4 +179,7 @@
     <string name="txtNoConnection">इंटरनेट कनेक्शन अनुपलब्ध!\nपुनः प्रयास करें!</string>
     <string name="setErrorZeroField">यह फ़ील्ड शून्य नहीं हो सकता!</string>
     <string name="title_activity_google_maps">नक्शा</string>
+    <string name="txtConfirm">क्या आप वाकई इस रिकॉर्ड को हटाना चाहते हैं?</string>
+    <string name="txtConfirmYes">हाँ</string>
+    <string name="txtConfirmNo">नहीं</string>
 </resources>

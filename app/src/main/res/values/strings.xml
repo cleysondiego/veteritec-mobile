@@ -4,6 +4,12 @@
     <string name="main_menu">Menu Principal</string>
     <string name="title_activity_google_maps">Mapa</string>
 
+    <!-- Custom Dialogs -->
+    <string name="txtLoading">Carregando</string>
+    <string name="txtConfirm">Você têm certeza que deseja excluir este registro?</string>
+    <string name="txtConfirmYes">Sim</string>
+    <string name="txtConfirmNo">Não</string>
+
     <!-- Set Error Messages -->
     <string name="setErrorEmptyField">Este campo não pode ser vazio!</string>
     <string name="setErrorMinimumCharacters">O campo deve conter mais que 5 caracteres!</string>
@@ -28,7 +34,6 @@
     <string name="txtLoginClinic">Escolha sua clínica:</string>
     <string name="txtLoginEmail">E-mail:</string>
     <string name="txtLoginPassword">Senha:</string>
-    <string name="txtLoginLoading">Carregando</string>
     <string name="txtNoConnection">Conexão com a internet indisponível!\nTente novamente!</string>
     <string name="edtLoginEmail">Digite o seu e-mail</string>
     <string name="edtLoginPassword">Digite a sua senha</string>

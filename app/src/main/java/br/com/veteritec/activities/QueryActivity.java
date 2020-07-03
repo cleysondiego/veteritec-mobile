@@ -36,6 +36,7 @@ import br.com.veteritec.pets.GetPetsResponseStructure;
 import br.com.veteritec.pets.GetPetsUseCase;
 import br.com.veteritec.usecase.ThreadExecutor;
 import br.com.veteritec.utils.ApiRequest;
+import br.com.veteritec.utils.LoadingDialog;
 import br.com.veteritec.utils.NavigationDrawer;
 import br.com.veteritec.utils.SharedPreferencesUtils;
 import br.com.veteritec.vaccines.GetVaccinesResponseStructure;
@@ -126,6 +127,7 @@ public class QueryActivity extends AppCompatActivity implements NavigationView.O
         toggle.syncState();
 
         NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setItemIconTintList(null);
         navigationView.setNavigationItemSelectedListener(this);
     }
 
@@ -187,18 +189,23 @@ public class QueryActivity extends AppCompatActivity implements NavigationView.O
     }
 
     public void getCustomers() {
+        final LoadingDialog loadingDialog = new LoadingDialog(this);
+        loadingDialog.startLoadingDialog();
+
         ApiRequest apiRequest = new ApiRequest();
 
         GetCustomersUseCase getCustomersUseCase = new GetCustomersUseCase(ThreadExecutor.getInstance(), apiRequest, userClinicId, userToken);
         getCustomersUseCase.setCallback(new GetCustomersUseCase.OnGetCustomersCallback() {
             @Override
             public void onSuccess(GetCustomersResponseStructure customersResponseStructure) {
+                loadingDialog.dismissLoadingDialog();
                 getCustomersResponseStructure = customersResponseStructure;
                 populateCustomerListView(getCustomersResponseStructure.getCustomersList());
             }
 
             @Override
             public void onFailure(int statusCode) {
+                loadingDialog.dismissLoadingDialog();
                 Toast.makeText(context, getResources().getString(R.string.toastQueryCustomersRequestError), Toast.LENGTH_SHORT).show();
             }
 
@@ -265,18 +272,23 @@ public class QueryActivity extends AppCompatActivity implements NavigationView.O
     }
 
     private void getPets() {
+        final LoadingDialog loadingDialog = new LoadingDialog(this);
+        loadingDialog.startLoadingDialog();
+
         ApiRequest apiRequest = new ApiRequest();
 
         GetPetsUseCase getPetsUseCase = new GetPetsUseCase(ThreadExecutor.getInstance(), apiRequest, userClinicId, userToken);
         getPetsUseCase.setCallback(new GetPetsUseCase.OnGetPetsCallback() {
             @Override
             public void onSuccess(GetPetsResponseStructure petsResponseStructure) {
+                loadingDialog.dismissLoadingDialog();
                 getPetsResponseStructure = petsResponseStructure;
                 populatePetsListView(getPetsResponseStructure.getPets());
             }
 
             @Override
             public void onFailure(int statusCode) {
+                loadingDialog.dismissLoadingDialog();
                 Toast.makeText(context, getResources().getString(R.string.toastQueryPetsRequestError), Toast.LENGTH_SHORT).show();
             }
         });
@@ -315,18 +327,23 @@ public class QueryActivity extends AppCompatActivity implements NavigationView.O
     }
 
     public void getVaccines() {
+        final LoadingDialog loadingDialog = new LoadingDialog(this);
+        loadingDialog.startLoadingDialog();
+
         ApiRequest apiRequest = new ApiRequest();
 
         GetVaccinesUseCase getVaccinesUseCase = new GetVaccinesUseCase(ThreadExecutor.getInstance(), apiRequest, userClinicId, userToken);
         getVaccinesUseCase.setCallback(new GetVaccinesUseCase.OnGetVaccinesCallback() {
             @Override
             public void onSuccess(GetVaccinesResponseStructure vaccinesResponseStructure) {
+                loadingDialog.dismissLoadingDialog();
                 getVaccinesResponseStructure = vaccinesResponseStructure;
                 populateVaccinesListView(getVaccinesResponseStructure.getVaccineList());
             }
 
             @Override
             public void onFailure(int statusCode) {
+                loadingDialog.dismissLoadingDialog();
                 Toast.makeText(context, getResources().getString(R.string.toastQueryVaccinesRequestError), Toast.LENGTH_SHORT).show();
             }
         });
