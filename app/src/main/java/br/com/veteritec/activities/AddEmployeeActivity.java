@@ -26,6 +26,7 @@ import br.com.veteritec.employees.CreateEmployeeRequestStructure;
 import br.com.veteritec.employees.CreateEmployeeUseCase;
 import br.com.veteritec.usecase.ThreadExecutor;
 import br.com.veteritec.utils.ApiRequest;
+import br.com.veteritec.utils.LoadingDialog;
 import br.com.veteritec.utils.NavigationDrawer;
 import br.com.veteritec.utils.SharedPreferencesUtils;
 
@@ -143,6 +144,9 @@ public class AddEmployeeActivity extends AppCompatActivity implements Navigation
     }
 
     private void createEmployee() {
+        final LoadingDialog loadingDialog = new LoadingDialog(this);
+        loadingDialog.startLoadingDialog();
+
         CreateEmployeeRequestStructure createEmployeeRequestStructure = new CreateEmployeeRequestStructure();
         createEmployeeRequestStructure.setName(edtEmployeeName.getText().toString());
         createEmployeeRequestStructure.setEmail(edtEmployeeEmail.getText().toString());
@@ -154,12 +158,14 @@ public class AddEmployeeActivity extends AppCompatActivity implements Navigation
         createEmployeeUseCase.setCallback(new CreateEmployeeUseCase.OnCreateEmployeeCallback() {
             @Override
             public void onSuccess() {
+                loadingDialog.dismissLoadingDialog();
                 Toast.makeText(context, getResources().getString(R.string.toastAddEmployeeSuccesfullyAdd), Toast.LENGTH_LONG).show();
                 finish();
             }
 
             @Override
             public void onFailure(int statusCode) {
+                loadingDialog.dismissLoadingDialog();
                 Toast.makeText(context, getResources().getString(R.string.toastAddEmployeeFailureAdd), Toast.LENGTH_LONG).show();
             }
         });

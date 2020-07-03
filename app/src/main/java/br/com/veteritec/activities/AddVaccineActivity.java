@@ -44,6 +44,7 @@ import br.com.veteritec.pets.GetPetsByCustomerUseCase;
 import br.com.veteritec.pets.GetPetsResponseStructure;
 import br.com.veteritec.usecase.ThreadExecutor;
 import br.com.veteritec.utils.ApiRequest;
+import br.com.veteritec.utils.LoadingDialog;
 import br.com.veteritec.utils.NavigationDrawer;
 import br.com.veteritec.utils.SharedPreferencesUtils;
 import br.com.veteritec.vaccines.ChangeVaccineRequestStructure;
@@ -312,18 +313,23 @@ public class AddVaccineActivity extends AppCompatActivity implements View.OnClic
     }
 
     private void getEmployees() {
+        final LoadingDialog loadingDialog = new LoadingDialog(this);
+        loadingDialog.startLoadingDialog();
+
         ApiRequest apiRequest = new ApiRequest();
 
         GetEmployeesUseCase getEmployeesUseCase = new GetEmployeesUseCase(ThreadExecutor.getInstance(), apiRequest, userClinicId);
         getEmployeesUseCase.setCallback(new GetEmployeesUseCase.OnGetEmployeesCallback() {
             @Override
             public void onSuccess(GetEmployeesResponseStructure employeesResponseStructure) {
+                loadingDialog.dismissLoadingDialog();
                 getEmployeesResponseStructure = employeesResponseStructure;
                 populateSpinnerEmployees(getEmployeesResponseStructure.getEmployeeList());
             }
 
             @Override
             public void onFailure(int statusCode) {
+                loadingDialog.dismissLoadingDialog();
                 Toast.makeText(context, getResources().getString(R.string.toastAddVaccineGetEmployeesFailure), Toast.LENGTH_SHORT).show();
             }
         });
@@ -343,18 +349,23 @@ public class AddVaccineActivity extends AppCompatActivity implements View.OnClic
     }
 
     public void getCustomers() {
+        final LoadingDialog loadingDialog = new LoadingDialog(this);
+        loadingDialog.startLoadingDialog();
+
         ApiRequest apiRequest = new ApiRequest();
 
         GetCustomersUseCase getCustomersUseCase = new GetCustomersUseCase(ThreadExecutor.getInstance(), apiRequest, userClinicId, userToken);
         getCustomersUseCase.setCallback(new GetCustomersUseCase.OnGetCustomersCallback() {
             @Override
             public void onSuccess(GetCustomersResponseStructure customersResponseStructure) {
+                loadingDialog.dismissLoadingDialog();
                 getCustomersResponseStructure = customersResponseStructure;
                 populateCustomerListView(getCustomersResponseStructure.getCustomersList());
             }
 
             @Override
             public void onFailure(int statusCode) {
+                loadingDialog.dismissLoadingDialog();
                 Toast.makeText(context, getResources().getString(R.string.toastAddVaccineGetCustomersFailure), Toast.LENGTH_SHORT).show();
             }
         });
@@ -382,18 +393,23 @@ public class AddVaccineActivity extends AppCompatActivity implements View.OnClic
     }
 
     private void getPets() {
+        final LoadingDialog loadingDialog = new LoadingDialog(this);
+        loadingDialog.startLoadingDialog();
+
         ApiRequest apiRequest = new ApiRequest();
 
         GetPetsByCustomerUseCase getPetsByCustomerUseCase = new GetPetsByCustomerUseCase(ThreadExecutor.getInstance(), apiRequest, userClinicId, userToken, selectedCustomerId);
         getPetsByCustomerUseCase.setCallback(new GetPetsByCustomerUseCase.OnGetPetsByCustomerCallback() {
             @Override
             public void onSuccess(GetPetsResponseStructure petsResponseStructure) {
+                loadingDialog.dismissLoadingDialog();
                 getPetsResponseStructure = petsResponseStructure;
                 populatePetsListView(getPetsResponseStructure.getPets());
             }
 
             @Override
             public void onFailure(int statusCode) {
+                loadingDialog.dismissLoadingDialog();
                 Toast.makeText(context, getResources().getString(R.string.toastAddVaccineGetPetsFailure), Toast.LENGTH_SHORT).show();
             }
         });
@@ -441,6 +457,9 @@ public class AddVaccineActivity extends AppCompatActivity implements View.OnClic
     }
 
     private void createVaccine() {
+        final LoadingDialog loadingDialog = new LoadingDialog(this);
+        loadingDialog.startLoadingDialog();
+
         CreateVaccineRequestStructure createVaccineRequestStructure = new CreateVaccineRequestStructure();
         createVaccineRequestStructure.setDate(edtDate.getText().toString());
         createVaccineRequestStructure.setHour(edtTime.getText().toString());
@@ -454,12 +473,14 @@ public class AddVaccineActivity extends AppCompatActivity implements View.OnClic
         createVaccineUseCase.setCallback(new CreateVaccineUseCase.OnCreateVaccineCallback() {
             @Override
             public void onSuccess() {
+                loadingDialog.dismissLoadingDialog();
                 Toast.makeText(context, getResources().getString(R.string.toastAddVaccineSuccesfullyAdd), Toast.LENGTH_LONG).show();
                 finish();
             }
 
             @Override
             public void onFailure(int statusCode) {
+                loadingDialog.dismissLoadingDialog();
                 Toast.makeText(context, getResources().getString(R.string.toastAddVaccineFailureAdd), Toast.LENGTH_LONG).show();
             }
         });
@@ -486,6 +507,9 @@ public class AddVaccineActivity extends AppCompatActivity implements View.OnClic
     }
 
     private void changeVaccine() {
+        final LoadingDialog loadingDialog = new LoadingDialog(this);
+        loadingDialog.startLoadingDialog();
+
         ChangeVaccineRequestStructure changeVaccineRequestStructure = new ChangeVaccineRequestStructure();
         changeVaccineRequestStructure.setId(vaccine.getId());
         changeVaccineRequestStructure.setDate(edtDate.getText().toString());
@@ -501,12 +525,14 @@ public class AddVaccineActivity extends AppCompatActivity implements View.OnClic
         changeVaccineUseCase.setCallback(new ChangeVaccineUseCase.OnChangeVaccine() {
             @Override
             public void onSuccess() {
+                loadingDialog.dismissLoadingDialog();
                 Toast.makeText(context, getResources().getString(R.string.toastAddVaccineSuccesfullyEdit), Toast.LENGTH_LONG).show();
                 finish();
             }
 
             @Override
             public void onFailure(int statusCode) {
+                loadingDialog.dismissLoadingDialog();
                 Toast.makeText(context, getResources().getString(R.string.toastAddVaccineFailureEdit), Toast.LENGTH_LONG).show();
             }
         });
@@ -515,17 +541,22 @@ public class AddVaccineActivity extends AppCompatActivity implements View.OnClic
     }
 
     private void deleteVaccine() {
+        final LoadingDialog loadingDialog = new LoadingDialog(this);
+        loadingDialog.startLoadingDialog();
+
         ApiRequest apiRequest = new ApiRequest();
         DeleteVaccineUseCase deleteVaccineUseCase = new DeleteVaccineUseCase(ThreadExecutor.getInstance(), apiRequest, vaccine.getId(), userClinicId, userToken);
         deleteVaccineUseCase.setCallback(new DeleteVaccineUseCase.OnDeleteVaccineCallback() {
             @Override
             public void onSuccess() {
+                loadingDialog.dismissLoadingDialog();
                 Toast.makeText(context, getResources().getString(R.string.toastAddVaccineSuccesfullyDelete), Toast.LENGTH_LONG).show();
                 finish();
             }
 
             @Override
             public void onFailure(int statusCode) {
+                loadingDialog.dismissLoadingDialog();
                 Toast.makeText(context, getResources().getString(R.string.toastAddVaccineFailureDelete), Toast.LENGTH_LONG).show();
             }
         });

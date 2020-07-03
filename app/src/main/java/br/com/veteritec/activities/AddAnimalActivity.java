@@ -43,6 +43,7 @@ import br.com.veteritec.pets.DeletePetUseCase;
 import br.com.veteritec.pets.GetPetsResponseStructure;
 import br.com.veteritec.usecase.ThreadExecutor;
 import br.com.veteritec.utils.ApiRequest;
+import br.com.veteritec.utils.LoadingDialog;
 import br.com.veteritec.utils.NavigationDrawer;
 import br.com.veteritec.utils.SharedPreferencesUtils;
 
@@ -311,6 +312,9 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
     }
 
     private void createPet() {
+        final LoadingDialog loadingDialog = new LoadingDialog(this);
+        loadingDialog.startLoadingDialog();
+
         CreatePetRequestStructure createPetRequestStructure = new CreatePetRequestStructure();
         createPetRequestStructure.setName(edtAnimalName.getText().toString());
         createPetRequestStructure.setBirth(edtAnimalBirthDate.getText().toString());
@@ -336,12 +340,14 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
         createPetUseCase.setCallback(new CreatePetUseCase.OnCreatePet() {
             @Override
             public void onSuccess() {
+                loadingDialog.dismissLoadingDialog();
                 Toast.makeText(context, getResources().getString(R.string.toastAddAnimalSuccesfullyAddedAnimal), Toast.LENGTH_LONG).show();
                 finish();
             }
 
             @Override
             public void onFailure(int statusCode) {
+                loadingDialog.dismissLoadingDialog();
                 Toast.makeText(context, getResources().getString(R.string.toastAddAnimalFailureAddedAnimal), Toast.LENGTH_LONG).show();
             }
         });
@@ -350,8 +356,10 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
     }
 
     private void changePet() {
-        ChangePetRequestStructure changePetRequestStructure = new ChangePetRequestStructure();
+        final LoadingDialog loadingDialog = new LoadingDialog(this);
+        loadingDialog.startLoadingDialog();
 
+        ChangePetRequestStructure changePetRequestStructure = new ChangePetRequestStructure();
         changePetRequestStructure.setId(pet.getId());
         changePetRequestStructure.setName(edtAnimalName.getText().toString());
         changePetRequestStructure.setBirth(edtAnimalBirthDate.getText().toString());
@@ -377,12 +385,14 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
         changePetUseCase.setCallback(new ChangePetUseCase.OnChangePet() {
             @Override
             public void onSuccess() {
+                loadingDialog.dismissLoadingDialog();
                 Toast.makeText(context, getResources().getString(R.string.toastAddAnimalSuccesfullyEditedAnimal), Toast.LENGTH_LONG).show();
                 finish();
             }
 
             @Override
             public void onFailure(int statusCode) {
+                loadingDialog.dismissLoadingDialog();
                 Toast.makeText(context, getResources().getString(R.string.toastAddAnimalFailureEditedAnimal), Toast.LENGTH_LONG).show();
             }
         });
@@ -391,17 +401,22 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
     }
 
     private void deletePet() {
+        final LoadingDialog loadingDialog = new LoadingDialog(this);
+        loadingDialog.startLoadingDialog();
+
         ApiRequest apiRequest = new ApiRequest();
         DeletePetUseCase deletePetUseCase = new DeletePetUseCase(ThreadExecutor.getInstance(), apiRequest, pet.getId(), userClinicId, userToken);
         deletePetUseCase.setCallback(new DeletePetUseCase.OnDeletePetCallback() {
             @Override
             public void onSuccess() {
+                loadingDialog.dismissLoadingDialog();
                 Toast.makeText(context, getResources().getString(R.string.toastAddAnimalSuccesfullyDeletedAnimal), Toast.LENGTH_LONG).show();
                 finish();
             }
 
             @Override
             public void onFailure(int statusCode) {
+                loadingDialog.dismissLoadingDialog();
                 Toast.makeText(context, getResources().getString(R.string.toastAddAnimalFailureDeletedAnimal), Toast.LENGTH_LONG).show();
             }
         });
