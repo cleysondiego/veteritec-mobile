@@ -232,7 +232,6 @@ public class AddCustomerActivity extends AppCompatActivity implements Navigation
                 validateField(edtCustomerCep) &&
                 validateField(edtCustomerNeighborhood) &&
                 validateField(edtCustomerStreet) &&
-                validateField(edtCustomerNumber) &&
                 validateField(edtCustomerCellPhone) &&
                 validateField(edtCustomerEmail);
     }
