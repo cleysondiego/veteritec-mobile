@@ -1,6 +1,8 @@
 package br.com.veteritec.activities;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.fragment.app.FragmentActivity;
 
@@ -11,38 +13,87 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.List;
+
 import br.com.veteritec.R;
+import br.com.veteritec.locations.GetLocationsUseCase;
+import br.com.veteritec.locations.LocationsStructure;
+import br.com.veteritec.usecase.ThreadExecutor;
+import br.com.veteritec.utils.ApiRequest;
+import br.com.veteritec.utils.SharedPreferencesUtils;
 
 public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCallback {
+    private String PET_ID = "5efe670d61b7c60025478f5d";
     private GoogleMap mMap;
+    private Context context;
+
+    private String userToken = "";
+    private String userClinicId = "";
+
+    private LocationsStructure locationsStructure;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_google_maps);
+
+        context = getApplicationContext();
+
+        locationsStructure = new LocationsStructure();
+        getUserDataFromSharedPreferences(context);
+        getLocations();
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
     }
 
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Indaiatuba and move the camera
+        setInfos(locationsStructure.getLocationList());
+    }
+
+    private void getUserDataFromSharedPreferences(Context context) {
+        SharedPreferencesUtils sharedPreferencesUtils = new SharedPreferencesUtils();
+        userToken = sharedPreferencesUtils.getUserToken(context);
+        userClinicId = sharedPreferencesUtils.getUserClinicId(context);
+    }
+
+    private void getLocations() {
+        ApiRequest apiRequest = new ApiRequest();
+
+        GetLocationsUseCase getLocationsUseCase = new GetLocationsUseCase(ThreadExecutor.getInstance(), apiRequest, userClinicId, userToken, PET_ID);
+        getLocationsUseCase.setCallback(new GetLocationsUseCase.OnGetLocationsCallback() {
+            @Override
+            public void onSuccess(LocationsStructure getLocationsStructure) {
+                locationsStructure = getLocationsStructure;
+                setInfos(locationsStructure.getLocationList());
+            }
+
+            @Override
+            public void onFailure(int statusCode) {
+                Toast.makeText(context, "O Pet selecionado não possui acesso a essa funcionalidade!", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        getLocationsUseCase.execute();
+    }
+
+    private void setInfos(List<LocationsStructure.Location> locations) {
         double latitude = -23.0882;
         double longitude = -47.2215;
+        String lastLocation;
+        for (LocationsStructure.Location location : locations) {
+            latitude = Double.parseDouble(location.getLatitude());
+            longitude = Double.parseDouble(location.getLongitude());
+            lastLocation = location.getCreatedAt();
+        }
+
         LatLng petLocalization = new LatLng(latitude, longitude);
+        mMap.clear();
         mMap.addMarker(new MarkerOptions().position(petLocalization).title("Localização do pet"));
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(petLocalization, 15), 3000, null);
     }
