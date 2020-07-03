@@ -126,6 +126,7 @@ public class QueryActivity extends AppCompatActivity implements NavigationView.O
         toggle.syncState();
 
         NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setItemIconTintList(null);
         navigationView.setNavigationItemSelectedListener(this);
     }
 

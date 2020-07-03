@@ -153,6 +153,7 @@ public class AddVaccineActivity extends AppCompatActivity implements View.OnClic
         toggle.syncState();
 
         NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setItemIconTintList(null);
         navigationView.setNavigationItemSelectedListener(this);
 
         spnAddVaccineClient.setOnItemSelectedListener(this);

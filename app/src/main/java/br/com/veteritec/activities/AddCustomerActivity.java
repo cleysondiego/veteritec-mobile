@@ -80,6 +80,7 @@ public class AddCustomerActivity extends AppCompatActivity implements Navigation
         getUserDataFromSharedPreferences();
 
         NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setItemIconTintList(null);
         navigationView.setNavigationItemSelectedListener(this);
 
         edtCustomerName = findViewById(R.id.edtAddCustomerName);

@@ -61,6 +61,7 @@ public class AddEmployeeActivity extends AppCompatActivity implements Navigation
         getUserDataFromSharedPreferences();
 
         NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setItemIconTintList(null);
         navigationView.setNavigationItemSelectedListener(this);
 
         edtEmployeeName = findViewById(R.id.edtAddEmployeeName);
