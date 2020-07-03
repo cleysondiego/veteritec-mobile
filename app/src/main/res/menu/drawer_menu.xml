@@ -8,7 +8,7 @@
         <menu>
             <item
                 android:id="@+id/nav_calculator"
-                android:icon="@drawable/ic_calculator_24"
+                android:icon="@drawable/ic_calculator"
                 android:title="@string/txtDrawerMenuCalculator" />
             <item
                 android:id="@+id/nav_translate"
@@ -60,7 +60,7 @@
         <menu>
             <item
                 android:id="@+id/nav_add_employee"
-                android:icon="@drawable/ic_customer_24"
+                android:icon="@drawable/ic_customer"
                 android:title="@string/txtDrawerMenuAddEmployee" />
             <item
                 android:id="@+id/nav_logout"

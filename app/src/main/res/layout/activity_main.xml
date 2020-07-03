@@ -81,7 +81,7 @@
                     android:layout_marginBottom="8sp"
                     android:layout_weight="1"
                     android:contentDescription="@string/cdMainMenuCalculator"
-                    app:srcCompat="@drawable/ic_calculator_24"
+                    app:srcCompat="@drawable/ic_calculator"
                     tools:ignore="NestedWeights" />
 
                 <ImageView
@@ -94,7 +94,7 @@
                     android:layout_marginBottom="8sp"
                     android:layout_weight="1"
                     android:contentDescription="@string/cdMainMenuHealing"
-                    app:srcCompat="@drawable/ic_healing_24" />
+                    app:srcCompat="@drawable/ic_healing" />
             </LinearLayout>
 
             <LinearLayout
@@ -146,7 +146,7 @@
                     android:layout_marginBottom="8sp"
                     android:layout_weight="1"
                     android:contentDescription="@string/cdMainMenuCustomer"
-                    app:srcCompat="@drawable/ic_customer_24"
+                    app:srcCompat="@drawable/ic_customer"
                     tools:ignore="NestedWeights" />
 
                 <ImageView
