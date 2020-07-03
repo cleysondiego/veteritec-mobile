@@ -17,7 +17,7 @@
     <string name="txtLoginTitle">兽医诊所管理系统</string>
     <string name="txtLoginClinic">选择您的诊所：</string>
     <string name="txtLoginPassword">密码：</string>
-    <string name="txtLoginLoading">载入中</string>
+    <string name="txtLoading">载入中</string>
     <string name="edtLoginEmail">输入你的电子邮箱</string>
     <string name="edtLoginPassword">输入密码</string>
     <string name="cdLoginLogo">此图像代表应用程序徽标。</string>
@@ -178,4 +178,7 @@
     <string name="toastAddEmployeeFailureAdd">无法添加新员工！ 再试一次！</string>
     <string name="txtNoConnection">互联网连接不可用！\n再试一次！</string>
     <string name="setErrorZeroField">该字段不能为零！</string>
+    <string name="txtConfirm">您确定要删除此记录吗？</string>
+    <string name="txtConfirmYes">是</string>
+    <string name="txtConfirmNo">没有</string>
 </resources>

@@ -17,7 +17,7 @@
     <string name="txtLoginTitle">Система управления ветеринарной клиникой</string>
     <string name="txtLoginClinic">Выберите свою клинику:</string>
     <string name="txtLoginPassword">Пароль:</string>
-    <string name="txtLoginLoading">загрузка</string>
+    <string name="txtLoading">загрузка</string>
     <string name="edtLoginEmail">Введите адрес электронной почты</string>
     <string name="edtLoginPassword">Введите ваш пароль</string>
     <string name="cdLoginLogo">Это изображение представляет логотип приложения.</string>
@@ -178,4 +178,7 @@
     <string name="toastAddEmployeeFailureAdd">Не было возможности добавить нового сотрудника! Попробуй еще раз!</string>
     <string name="txtNoConnection">Интернет недоступен!\nПопробуй еще раз!</string>
     <string name="setErrorZeroField">Это поле не может быть нулевым!</string>
+    <string name="txtConfirm">Вы уверены, что хотите удалить эту запись?</string>
+    <string name="txtConfirmYes">да</string>
+    <string name="txtConfirmNo">нет</string>
 </resources>

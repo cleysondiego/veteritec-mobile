@@ -7,9 +7,11 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -199,7 +201,26 @@ public class AddVaccineActivity extends AppCompatActivity implements View.OnClic
                 }
                 break;
             case R.id.btnAddVaccineDelete:
-                deleteVaccine();
+                AlertDialog.Builder confirmDialog = new AlertDialog.Builder(this);
+
+                confirmDialog.setMessage(getResources().getString(R.string.txtConfirm))
+                        .setCancelable(false)
+                        .setPositiveButton(getResources().getString(R.string.txtConfirmYes), new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                                deleteVaccine();
+                            }
+                        })
+                        .setNegativeButton(getResources().getString(R.string.txtConfirmNo), new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        });
+
+                AlertDialog dialog = confirmDialog.create();
+                dialog.show();
                 break;
         }
     }
