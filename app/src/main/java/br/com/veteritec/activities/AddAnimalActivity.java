@@ -177,6 +177,10 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
                 deletePet();
                 break;
             case R.id.btnAddAnimalFind:
+                if (!pet.getId().equals("5efe670d61b7c60025478f5d")) {
+                    Toast.makeText(this, "Este animal não possui o rastreador!", Toast.LENGTH_LONG).show();
+                    break;
+                }
                 Intent find = new Intent(this, GoogleMapsActivity.class);
                 startActivity(find);
                 break;

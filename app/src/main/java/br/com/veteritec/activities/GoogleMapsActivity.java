@@ -13,7 +13,12 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import br.com.veteritec.R;
 import br.com.veteritec.locations.GetLocationsUseCase;
@@ -85,16 +90,30 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
     private void setInfos(List<LocationsStructure.Location> locations) {
         double latitude = -23.0882;
         double longitude = -47.2215;
-        String lastLocation;
+        String createdAt;
+        String lastUpdated = "";
         for (LocationsStructure.Location location : locations) {
             latitude = Double.parseDouble(location.getLatitude());
             longitude = Double.parseDouble(location.getLongitude());
-            lastLocation = location.getCreatedAt();
+            createdAt = location.getCreatedAt();
+            String[] time = createdAt.split("\\.");
+            String lastTime = time[0].replace("T", " ");
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+            Date parsedDate = new Date();
+            try {
+                parsedDate = dateFormat.parse(lastTime);
+            } catch (ParseException ignored) {}
+
+            if (parsedDate != null) {
+                Timestamp timestamp = new Timestamp(parsedDate.getTime());
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+                lastUpdated = simpleDateFormat.format(timestamp.getTime() - 10800000);
+            }
         }
 
         LatLng petLocalization = new LatLng(latitude, longitude);
         mMap.clear();
-        mMap.addMarker(new MarkerOptions().position(petLocalization).title("Localização do pet"));
+        mMap.addMarker(new MarkerOptions().position(petLocalization).title("Localização do pet. Atualizado em: " + lastUpdated));
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(petLocalization, 15), 3000, null);
     }
 }
