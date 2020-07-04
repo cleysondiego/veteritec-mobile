@@ -48,7 +48,6 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="8dp"
-                android:layout_weight="1"
                 android:text="@string/txtMainMenuTitle"
                 android:textAlignment="center"
                 android:textSize="18sp" />
@@ -204,7 +203,6 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="8dp"
-                android:layout_weight="1"
                 android:gravity="bottom"
                 android:text="@string/txtMainMenuCredits" />
         </LinearLayout>
@@ -216,7 +214,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:visibility="visible"
+        android:visibility="gone"
         app:menu="@menu/drawer_menu" />
 
 </androidx.drawerlayout.widget.DrawerLayout>
