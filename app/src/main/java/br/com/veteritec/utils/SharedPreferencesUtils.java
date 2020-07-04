@@ -8,6 +8,7 @@ public class SharedPreferencesUtils {
     private static final String USER_NAME = "user_name";
     private static final String USER_TOKEN = "user_token";
     private static final String USER_CLINIC_ID = "user_clinic_id";
+    private static final String IS_DARK_MODE = "is_dark_mode";
 
     private static SharedPreferences getPreferences(Context context) {
         return context.getSharedPreferences("veteritec", Context.MODE_PRIVATE);
@@ -31,6 +32,12 @@ public class SharedPreferencesUtils {
         editor.apply();
     }
 
+    public void setDarkMode(Context context, boolean isDarkMode) {
+        SharedPreferences.Editor editor = getPreferences(context).edit();
+        editor.putBoolean(IS_DARK_MODE, isDarkMode);
+        editor.apply();
+    }
+
     public boolean isLogged(Context context) {
         return getPreferences(context).getBoolean(IS_LOGGED, false);
     }
@@ -45,5 +52,9 @@ public class SharedPreferencesUtils {
 
     public String getUserClinicId(Context context) {
         return getPreferences(context).getString(USER_CLINIC_ID, "");
+    }
+
+    public boolean getIsDarkMode(Context context) {
+        return getPreferences(context).getBoolean(IS_DARK_MODE, false);
     }
 }

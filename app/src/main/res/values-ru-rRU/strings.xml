@@ -91,7 +91,6 @@
     <string name="edtAddEmployeePassword">Введите ваш пароль</string>
     <string name="edtAddEmployeeConfirmPassword">Подтвердите ваш пароль</string>
     <string name="txtTranslateTitle">Выберите ваш язык</string>
-    <string name="txtCalculatorMeasure" translatable="false">Kg</string>
     <string name="edtCalculatorAnimalWeight">Пример: 17,4</string>
     <string name="edtCalculatorFarmacoDosage">Пример: 7,8</string>
     <string name="edtCalculatorFarmacoConcentration">Ex 1.6</string>
@@ -181,4 +180,5 @@
     <string name="txtConfirm">Вы уверены, что хотите удалить эту запись?</string>
     <string name="txtConfirmYes">да</string>
     <string name="txtConfirmNo">нет</string>
+    <string name="txtSwitchNightMode">Ночной режим</string>
 </resources>

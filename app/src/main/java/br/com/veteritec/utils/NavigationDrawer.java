@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.MenuItem;
 
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -22,6 +23,16 @@ public class NavigationDrawer {
     public Intent choosedItem(DrawerLayout drawer, Context context, MenuItem item) {
         drawer.closeDrawer(GravityCompat.START);
         switch (item.getItemId()) {
+            case R.id.nav_night_mode:
+                SharedPreferencesUtils sharedPreferencesUtils = new SharedPreferencesUtils();
+                if (sharedPreferencesUtils.getIsDarkMode(context)) {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                    sharedPreferencesUtils.setDarkMode(context, false);
+                } else {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                    sharedPreferencesUtils.setDarkMode(context, true);
+                }
+                break;
             case R.id.nav_calculator:
                 intent = new Intent(context, CalculatorActivity.class);
                 break;
@@ -57,8 +68,8 @@ public class NavigationDrawer {
                 break;
             case R.id.nav_logout:
                 intent = null;
-                SharedPreferencesUtils sharedPreferencesUtils = new SharedPreferencesUtils();
-                sharedPreferencesUtils.setLogoff(context);
+                SharedPreferencesUtils preferencesUtils = new SharedPreferencesUtils();
+                preferencesUtils.setLogoff(context);
                 break;
         }
         return intent;

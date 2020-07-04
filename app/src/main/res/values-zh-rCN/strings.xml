@@ -91,7 +91,6 @@
     <string name="edtAddEmployeePassword">输入密码</string>
     <string name="edtAddEmployeeConfirmPassword">确认你的密码</string>
     <string name="txtTranslateTitle">选择你的语言</string>
-    <string name="txtCalculatorMeasure" translatable="false">Kg</string>
     <string name="edtCalculatorAnimalWeight">例如：17.4</string>
     <string name="edtCalculatorFarmacoDosage">例如：7.8</string>
     <string name="edtCalculatorFarmacoConcentration">前1.6</string>
@@ -181,4 +180,5 @@
     <string name="txtConfirm">您确定要删除此记录吗？</string>
     <string name="txtConfirmYes">是</string>
     <string name="txtConfirmNo">没有</string>
+    <string name="txtSwitchNightMode">夜间模式</string>
 </resources>

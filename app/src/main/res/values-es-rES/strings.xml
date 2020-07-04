@@ -91,7 +91,6 @@
     <string name="edtAddEmployeePassword">Escribe tu contraseña</string>
     <string name="edtAddEmployeeConfirmPassword">Confirmar la contraseña</string>
     <string name="txtTranslateTitle">Elige tu idioma</string>
-    <string name="txtCalculatorMeasure" translatable="false">Kg</string>
     <string name="edtCalculatorAnimalWeight">Ej: 17,4</string>
     <string name="edtCalculatorFarmacoDosage">Ej: 7.8</string>
     <string name="edtCalculatorFarmacoConcentration">Ex 1.6</string>
@@ -181,4 +180,5 @@
     <string name="txtConfirm">¿Seguro que quieres eliminar este registro?</string>
     <string name="txtConfirmYes">Si</string>
     <string name="txtConfirmNo">No</string>
+    <string name="txtSwitchNightMode">Modo Nocturno</string>
 </resources>

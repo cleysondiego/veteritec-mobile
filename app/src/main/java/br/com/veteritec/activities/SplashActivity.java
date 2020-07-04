@@ -1,6 +1,7 @@
 package br.com.veteritec.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import br.com.veteritec.clinics.ClinicResponseStructure;
 import br.com.veteritec.clinics.ClinicUseCase;
 import br.com.veteritec.usecase.ThreadExecutor;
 import br.com.veteritec.utils.ApiRequest;
+import br.com.veteritec.utils.SharedPreferencesUtils;
 
 public class SplashActivity extends AppCompatActivity {
     private ClinicResponseStructure clinicResponseStructure;
@@ -19,6 +21,13 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+
+        SharedPreferencesUtils sharedPreferencesUtils = new SharedPreferencesUtils();
+        if (sharedPreferencesUtils.getIsDarkMode(getApplicationContext())) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
 
         getClinics();
 

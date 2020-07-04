@@ -91,7 +91,6 @@
     <string name="translate_dialog_title">Choose your Language</string>
     <string name="txtDrawerMenuLanguage">Change Language</string>
     <string name="txtTranslateTitle">Choose the Language</string>
-    <string name="txtCalculatorMeasure" translatable="false">Kg</string>
     <string name="edtCalculatorAnimalWeight">Ex: 17.4</string>
     <string name="edtCalculatorFarmacoDosage">Ex: 7.8</string>
     <string name="edtCalculatorFarmacoConcentration">Ex 1.6</string>
@@ -181,4 +180,5 @@
     <string name="txtConfirm">Are you sure you want to delete this record?</string>
     <string name="txtConfirmYes">Yes</string>
     <string name="txtConfirmNo">No</string>
+    <string name="txtSwitchNightMode">Dark Mode</string>
 </resources>

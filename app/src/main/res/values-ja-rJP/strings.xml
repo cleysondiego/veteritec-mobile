@@ -91,7 +91,6 @@
     <string name="edtAddEmployeePassword">パスワードを入力してください</string>
     <string name="edtAddEmployeeConfirmPassword">あなたのパスワードを確認</string>
     <string name="txtTranslateTitle">言語を選んでください</string>
-    <string name="txtCalculatorMeasure" translatable="false">Kg</string>
     <string name="edtCalculatorAnimalWeight">例：17.4</string>
     <string name="edtCalculatorFarmacoDosage">例：7.8</string>
     <string name="edtCalculatorFarmacoConcentration">例1.6</string>
@@ -181,4 +180,5 @@
     <string name="txtConfirm">このレコードを削除してもよろしいですか？</string>
     <string name="txtConfirmYes">はい</string>
     <string name="txtConfirmNo">番号</string>
+    <string name="txtSwitchNightMode">ナイトモード</string>
 </resources>
