@@ -59,20 +59,21 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
 
     private DrawerLayout drawer;
 
-    EditText edtAnimalName;
-    EditText edtAnimalBirthDate;
-    EditText edtAnimalSpecies;
-    EditText edtAnimalRace;
-    EditText edtAnimalSize;
-    EditText edtAnimalWeight;
-    EditText edtAnimalObservation;
+    private EditText edtAnimalName;
+    private EditText edtAnimalBirthDate;
+    private EditText edtAnimalSpecies;
+    private EditText edtAnimalRace;
+    private EditText edtAnimalSize;
+    private EditText edtAnimalWeight;
+    private EditText edtAnimalObservation;
 
-    Button btnDate;
-    Button btnAnimalSave;
-    Button btnAnimalEdit;
-    Button btnAnimalDelete;
+    private Button btnDate;
+    private Button btnAnimalSave;
+    private Button btnAnimalEdit;
+    private Button btnAnimalDelete;
+    private Button btnAnimalFind;
 
-    Spinner spnAnimalOwner;
+    private Spinner spnAnimalOwner;
 
     private GetPetsResponseStructure.Pet pet;
     private GetCustomersResponseStructure getCustomersResponseStructure;
@@ -112,11 +113,13 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
         btnAnimalSave = findViewById(R.id.btnAddAnimalSave);
         btnAnimalEdit = findViewById(R.id.btnAddAnimalEdit);
         btnAnimalDelete = findViewById(R.id.btnAddAnimalDelete);
+        btnAnimalFind = findViewById(R.id.btnAddAnimalFind);
 
         btnDate.setOnClickListener(this);
         btnAnimalSave.setOnClickListener(this);
         btnAnimalEdit.setOnClickListener(this);
         btnAnimalDelete.setOnClickListener(this);
+        btnAnimalFind.setOnClickListener(this);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
 
@@ -131,6 +134,7 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
 
                 btnAnimalEdit.setVisibility(View.VISIBLE);
                 btnAnimalDelete.setVisibility(View.VISIBLE);
+                btnAnimalFind.setVisibility(View.VISIBLE);
             }
             setSupportActionBar(toolbar);
         } catch (Exception e) {
@@ -150,6 +154,7 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
         edtAnimalBirthDate.setInputType(InputType.TYPE_NULL);
     }
 
+    @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnAddAnimalDate:
@@ -194,6 +199,14 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
 
                 AlertDialog dialog = confirmDialog.create();
                 dialog.show();
+                break;
+            case R.id.btnAddAnimalFind:
+                if (!pet.getId().equals("5efe670d61b7c60025478f5d")) {
+                    Toast.makeText(this, getResources().getString(R.string.toastLocalizationForThisPet), Toast.LENGTH_LONG).show();
+                    break;
+                }
+                Intent find = new Intent(this, GoogleMapsActivity.class);
+                startActivity(find);
                 break;
             default:
                 break;
@@ -445,7 +458,7 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
         deletePetUseCase.execute();
     }
 
-    public boolean validateFields() {
+    private boolean validateFields() {
         return validateField(edtAnimalName) &&
                 validateField(edtAnimalBirthDate) &&
                 validateField(edtAnimalSpecies) &&
@@ -455,7 +468,7 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
                 validateField(edtAnimalObservation);
     }
 
-    public boolean validateField(EditText editText) {
+    private boolean validateField(EditText editText) {
         if (editText.getText().toString().isEmpty()) {
             editText.setError(getResources().getString(R.string.setErrorEmptyField));
             editText.requestFocus();

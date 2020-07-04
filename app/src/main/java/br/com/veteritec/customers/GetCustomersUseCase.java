@@ -70,7 +70,7 @@ public class GetCustomersUseCase extends UseCaseAbstract {
                 }
             });
 
-        } catch (Exception e) {
+        } catch (Exception ignored) {
             callback.onFailure(100);
         }
     }

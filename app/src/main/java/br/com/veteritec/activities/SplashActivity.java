@@ -38,9 +38,8 @@ public class SplashActivity extends AppCompatActivity {
 
         getClinics();
 
-        try {
+        if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
-        } catch (NullPointerException ignored) {
         }
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);

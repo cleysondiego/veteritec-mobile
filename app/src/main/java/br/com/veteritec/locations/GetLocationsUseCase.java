@@ -1,7 +1,10 @@
-package br.com.veteritec.vaccines;
+package br.com.veteritec.locations;
 
 import android.os.Handler;
 import android.os.Looper;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.HashMap;
 
@@ -9,31 +12,31 @@ import br.com.veteritec.usecase.Executor;
 import br.com.veteritec.usecase.UseCaseAbstract;
 import br.com.veteritec.utils.ApiRequest;
 
-public class CreateVaccineUseCase extends UseCaseAbstract {
-    public interface OnCreateVaccineCallback {
-        void onSuccess();
+public class GetLocationsUseCase extends UseCaseAbstract {
+    public interface OnGetLocationsCallback {
+        void onSuccess(LocationsStructure locationsStructure);
 
         void onFailure(int statusCode);
     }
 
-    private CreateVaccineUseCase.OnCreateVaccineCallback callback;
+    private GetLocationsUseCase.OnGetLocationsCallback callback;
 
     private ApiRequest apiRequest;
-    private CreateVaccineRequestStructure createVaccineRequestStructure;
     private String clinicId;
     private String token;
+    private String petId;
 
-    public CreateVaccineUseCase(Executor executor,
-                                ApiRequest apiRequest,
-                                CreateVaccineRequestStructure createVaccineRequestStructure,
-                                String clinicId,
-                                String token) {
+    public GetLocationsUseCase(Executor executor,
+                               ApiRequest apiRequest,
+                               String clinicId,
+                               String token,
+                               String petId) {
         super(executor);
 
         this.apiRequest = apiRequest;
-        this.createVaccineRequestStructure = createVaccineRequestStructure;
         this.clinicId = clinicId;
         this.token = token;
+        this.petId = petId;
     }
 
     @Override
@@ -44,15 +47,18 @@ public class CreateVaccineUseCase extends UseCaseAbstract {
             headers.put(ApiRequest.CLINIC_ID, clinicId);
             headers.put(ApiRequest.AUTHORIZATION, "Bearer " + token);
 
-            String requestParams = createVaccineRequestStructure.getStructureString();
-
-            apiRequest.post(ApiRequest.URL_VACCINES, headers, requestParams, new ApiRequest.OnResponse() {
+            apiRequest.get(ApiRequest.URL_LOCATIONS + "/" + petId, headers, null, new ApiRequest.OnResponse() {
                 @Override
-                public void onResponse(int statusCode, byte[] response) {
+                public void onResponse(int statusCode, final byte[] response) {
                     new Handler(Looper.getMainLooper()).post(new Runnable() {
                         @Override
                         public void run() {
-                            callback.onSuccess();
+                            try {
+                                LocationsStructure locationsStructure = new LocationsStructure().fromJson(new JSONObject(new String(response)));
+                                callback.onSuccess(locationsStructure);
+                            } catch (JSONException ignored) {
+                                callback.onFailure(101);
+                            }
                         }
                     });
                 }
@@ -67,12 +73,13 @@ public class CreateVaccineUseCase extends UseCaseAbstract {
                     });
                 }
             });
+
         } catch (Exception ignored) {
             callback.onFailure(100);
         }
     }
 
-    public void setCallback(CreateVaccineUseCase.OnCreateVaccineCallback callback) {
+    public void setCallback(OnGetLocationsCallback callback) {
         this.callback = callback;
     }
 }

@@ -32,7 +32,6 @@ public class GetEmployeesResponseStructure {
     public static class Employee implements Serializable {
         private String id;
         private String name;
-        private String email;
 
         public String getId() {
             return id;
@@ -42,15 +41,10 @@ public class GetEmployeesResponseStructure {
             return name;
         }
 
-        public String getEmail() {
-            return email;
-        }
-
         public Employee fromJson(JSONObject jsonObject) {
             try {
                 this.id = jsonObject.getString("_id");
                 this.name = jsonObject.getString("name");
-                this.email = jsonObject.getString("email");
             } catch (JSONException e) {
                 e.printStackTrace();
             }

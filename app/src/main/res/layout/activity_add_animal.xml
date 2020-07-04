@@ -275,6 +275,19 @@
             app:layout_constraintEnd_toStartOf="@+id/btnAddAnimalEdit"
             app:layout_constraintTop_toTopOf="@+id/btnAddAnimalEdit" />
 
+        <Button
+            android:id="@+id/btnAddAnimalFind"
+            android:layout_width="64sp"
+            android:layout_height="64sp"
+            android:layout_gravity="end"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/ic_find"
+            android:onClick="onClick"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@+id/btnAddAnimalEdit"
+            app:layout_constraintEnd_toStartOf="@+id/btnAddAnimalDelete"
+            app:layout_constraintTop_toTopOf="@+id/btnAddAnimalEdit" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.navigation.NavigationView

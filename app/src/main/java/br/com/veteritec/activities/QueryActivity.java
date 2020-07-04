@@ -84,12 +84,10 @@ public class QueryActivity extends AppCompatActivity implements NavigationView.O
         edtSearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
             }
 
             @Override
@@ -188,7 +186,7 @@ public class QueryActivity extends AppCompatActivity implements NavigationView.O
         userClinicId = sharedPreferencesUtils.getUserClinicId(context);
     }
 
-    public void getCustomers() {
+    private void getCustomers() {
         final LoadingDialog loadingDialog = new LoadingDialog(this);
         loadingDialog.startLoadingDialog();
 
@@ -214,7 +212,7 @@ public class QueryActivity extends AppCompatActivity implements NavigationView.O
         getCustomersUseCase.execute();
     }
 
-    public void populateCustomerListView(List<GetCustomersResponseStructure.Customer> customerList) {
+    private void populateCustomerListView(List<GetCustomersResponseStructure.Customer> customerList) {
         List<String> name = new ArrayList<>();
 
         for (GetCustomersResponseStructure.Customer customer : customerList) {
@@ -225,7 +223,7 @@ public class QueryActivity extends AppCompatActivity implements NavigationView.O
         lvResult.setAdapter(arrayAdapter);
     }
 
-    public void goToCustomerActivity(AdapterView<?> parent, int position) {
+    private void goToCustomerActivity(AdapterView<?> parent, int position) {
         String customerName = parent.getItemAtPosition(position).toString();
 
         List<GetCustomersResponseStructure.Customer> customerList = getCustomersResponseStructure.getCustomersList();
@@ -296,7 +294,7 @@ public class QueryActivity extends AppCompatActivity implements NavigationView.O
         getPetsUseCase.execute();
     }
 
-    public void populatePetsListView(List<GetPetsResponseStructure.Pet> petList) {
+    private void populatePetsListView(List<GetPetsResponseStructure.Pet> petList) {
         List<String> name = new ArrayList<>();
 
         for (GetPetsResponseStructure.Pet pet : petList) {
@@ -307,7 +305,7 @@ public class QueryActivity extends AppCompatActivity implements NavigationView.O
         lvResult.setAdapter(arrayAdapter);
     }
 
-    public void goToPetsActivity(AdapterView<?> parent, int position) {
+    private void goToPetsActivity(AdapterView<?> parent, int position) {
         String petName = parent.getItemAtPosition(position).toString();
 
         List<GetPetsResponseStructure.Pet> petList = getPetsResponseStructure.getPets();
@@ -326,7 +324,7 @@ public class QueryActivity extends AppCompatActivity implements NavigationView.O
         startActivity(intent);
     }
 
-    public void getVaccines() {
+    private void getVaccines() {
         final LoadingDialog loadingDialog = new LoadingDialog(this);
         loadingDialog.startLoadingDialog();
 
@@ -351,7 +349,7 @@ public class QueryActivity extends AppCompatActivity implements NavigationView.O
         getVaccinesUseCase.execute();
     }
 
-    public void populateVaccinesListView(List<GetVaccinesResponseStructure.Vaccine> vaccineList) {
+    private void populateVaccinesListView(List<GetVaccinesResponseStructure.Vaccine> vaccineList) {
         List<String> name = new ArrayList<>();
 
         for (GetVaccinesResponseStructure.Vaccine vaccine : vaccineList) {
@@ -362,7 +360,7 @@ public class QueryActivity extends AppCompatActivity implements NavigationView.O
         lvResult.setAdapter(arrayAdapter);
     }
 
-    public void goToVaccinesActivity(AdapterView<?> parent, int position) {
+    private void goToVaccinesActivity(AdapterView<?> parent, int position) {
         String vaccineDisplayName = parent.getItemAtPosition(position).toString();
 
         List<GetVaccinesResponseStructure.Vaccine> vaccineList = getVaccinesResponseStructure.getVaccineList();

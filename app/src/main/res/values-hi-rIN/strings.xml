@@ -177,8 +177,11 @@
     <string name="toastAddEmployeeFailureAdd">नए कर्मचारी को जोड़ना संभव नहीं था! पुनः प्रयास करें!</string>
     <string name="txtNoConnection">इंटरनेट कनेक्शन अनुपलब्ध!\nपुनः प्रयास करें!</string>
     <string name="setErrorZeroField">यह फ़ील्ड शून्य नहीं हो सकता!</string>
+    <string name="title_activity_google_maps">नक्शा</string>
     <string name="txtConfirm">क्या आप वाकई इस रिकॉर्ड को हटाना चाहते हैं?</string>
     <string name="txtConfirmYes">हाँ</string>
     <string name="txtConfirmNo">नहीं</string>
     <string name="txtSwitchNightMode">रात्री स्वरुप</string>
+    <string name="toastLocalizationForThisPet">इस जानवर के पास ट्रैकिंग कॉलर नहीं है!</string>
+    <string name="toastLocationFailed">हम इस समय जानवर का पता लगाने में असमर्थ थे! पुनः प्रयास करें!</string>
 </resources>

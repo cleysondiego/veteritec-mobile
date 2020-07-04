@@ -177,8 +177,11 @@
     <string name="toastAddEmployeeFailureAdd">Il n\'a pas été possible d\'ajouter un nouvel employé! Réessayer!</string>
     <string name="txtNoConnection">Connexion Internet indisponible!\nRéessayer!</string>
     <string name="setErrorZeroField">Ce champ ne peut pas être nul!</string>
+    <string name="title_activity_google_maps">Carte</string>
     <string name="txtConfirm">Voulez-vous vraiment supprimer cet enregistrement?</string>
     <string name="txtConfirmYes">Oui</string>
     <string name="txtConfirmNo">Non</string>
     <string name="txtSwitchNightMode">Mode Nuit</string>
+    <string name="toastLocalizationForThisPet">Cet animal n\'a pas de collier de suivi!</string>
+    <string name="toastLocationFailed">Nous n\'avons pas pu localiser l\'animal à ce moment! Réessayer!</string>
 </resources>

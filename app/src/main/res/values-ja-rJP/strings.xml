@@ -177,8 +177,11 @@
     <string name="toastAddEmployeeFailureAdd">新しい従業員を追加することはできませんでした！ 再試行！</string>
     <string name="txtNoConnection">インターネットに接続できません！\n再試行！</string>
     <string name="setErrorZeroField">このフィールドをゼロにすることはできません！</string>
+    <string name="title_activity_google_maps">地図</string>
     <string name="txtConfirm">このレコードを削除してもよろしいですか？</string>
     <string name="txtConfirmYes">はい</string>
     <string name="txtConfirmNo">番号</string>
     <string name="txtSwitchNightMode">ナイトモード</string>
+    <string name="toastLocalizationForThisPet">この動物にはトラッキングカラーがありません！</string>
+    <string name="toastLocationFailed">現在、動物を見つけることができませんでした。 再試行！</string>
 </resources>

@@ -369,7 +369,7 @@ public class AddVaccineActivity extends AppCompatActivity implements View.OnClic
         spnAddVaccineVeterinary.setAdapter(arrayAdapter);
     }
 
-    public void getCustomers() {
+    private void getCustomers() {
         final LoadingDialog loadingDialog = new LoadingDialog(this);
         loadingDialog.startLoadingDialog();
 
@@ -394,7 +394,7 @@ public class AddVaccineActivity extends AppCompatActivity implements View.OnClic
         getCustomersUseCase.execute();
     }
 
-    public void populateCustomerListView(List<GetCustomersResponseStructure.Customer> customerList) {
+    private void populateCustomerListView(List<GetCustomersResponseStructure.Customer> customerList) {
         List<String> name = new ArrayList<>();
 
         for (GetCustomersResponseStructure.Customer customer : customerList) {
@@ -438,7 +438,7 @@ public class AddVaccineActivity extends AppCompatActivity implements View.OnClic
         getPetsByCustomerUseCase.execute();
     }
 
-    public void populatePetsListView(List<GetPetsResponseStructure.Pet> petList) {
+    private void populatePetsListView(List<GetPetsResponseStructure.Pet> petList) {
         List<String> name = new ArrayList<>();
 
         for (GetPetsResponseStructure.Pet pet : petList) {
@@ -453,7 +453,7 @@ public class AddVaccineActivity extends AppCompatActivity implements View.OnClic
         }
     }
 
-    public void setFieldsByVaccine() {
+    private void setFieldsByVaccine() {
         List<GetCustomersResponseStructure.Customer> customerList = getCustomersResponseStructure.getCustomersList();
         List<GetEmployeesResponseStructure.Employee> employeeList = getEmployeesResponseStructure.getEmployeeList();
         List<GetPetsResponseStructure.Pet> petList = getPetsResponseStructure.getPets();
@@ -509,7 +509,7 @@ public class AddVaccineActivity extends AppCompatActivity implements View.OnClic
         createVaccineUseCase.execute();
     }
 
-    public String getSelectedVeterinaryId() {
+    private String getSelectedVeterinaryId() {
         for (GetEmployeesResponseStructure.Employee employee : getEmployeesResponseStructure.getEmployeeList()) {
             if (employee.getName().equals(spnAddVaccineVeterinary.getSelectedItem().toString())) {
                 return employee.getId();
@@ -518,7 +518,7 @@ public class AddVaccineActivity extends AppCompatActivity implements View.OnClic
         return "";
     }
 
-    public String getSelectedPetId() {
+    private String getSelectedPetId() {
         for (GetPetsResponseStructure.Pet pet : getPetsResponseStructure.getPets()) {
             if (pet.getName().equals(spnAddVaccinePet.getSelectedItem().toString())) {
                 return pet.getId();

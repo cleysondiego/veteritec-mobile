@@ -2,6 +2,8 @@
     <string name="app_name" translatable="false">Veteritec</string>
     <string name="translate_dialog_title">Escolha o Idioma</string>
     <string name="main_menu">Menu Principal</string>
+    <string name="title_activity_google_maps">Mapa</string>
+    <string name="toastLocationFailed">Não foi possível localizar o animal neste momento! Tente novamente!</string>
 
     <!-- Custom Dialogs -->
     <string name="txtLoading">Carregando</string>
@@ -206,6 +208,7 @@
     <string name="toastAddAnimalFailureEditedAnimal">Não foi possível editar o animal! Tente novamente!</string>
     <string name="toastAddAnimalSuccesfullyDeletedAnimal">Animal deletado com sucesso!</string>
     <string name="toastAddAnimalFailureDeletedAnimal">Não foi possível deletar o animal! Tente novamente!</string>
+    <string name="toastLocalizationForThisPet">Este animal não possui a coleira com rastreamento!</string>
 
     <!-- Add Employee Page -->
     <string name="txtAddEmployeeTitle">Adicionar Funcionário</string>
