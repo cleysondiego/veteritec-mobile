@@ -19,195 +19,198 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/colorPrimary"
-            android:elevation="4sp"
+            android:elevation="4dp"
             android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             app:titleTextColor="#FFFFFF" />
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/imgMainMenuLogo"
-                android:layout_width="match_parent"
-                android:layout_height="200sp"
-                android:layout_marginStart="16sp"
-                android:layout_marginTop="16sp"
-                android:layout_marginEnd="16sp"
-                android:layout_marginBottom="8sp"
-                android:contentDescription="@string/cdMainMenuLogo"
-                app:srcCompat="@drawable/veteritec_logo_day" />
-
-            <TextView
-                android:id="@+id/txtTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16sp"
-                android:layout_marginTop="8sp"
-                android:layout_marginEnd="16sp"
-                android:layout_marginBottom="8sp"
-                android:layout_weight="1"
-                android:text="@string/txtMainMenuTitle"
-                android:textAlignment="center"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/txtTools"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16sp"
-                android:layout_marginTop="8sp"
-                android:layout_marginEnd="16sp"
-                android:layout_marginBottom="8sp"
-                android:text="@string/txtMainMenuTools"
-                android:textAlignment="viewStart"
-                android:textSize="24sp" />
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/imgCalculator"
+                    android:id="@+id/imgMainMenuLogo"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="16sp"
-                    android:layout_marginTop="8sp"
-                    android:layout_marginEnd="16sp"
-                    android:layout_marginBottom="8sp"
-                    android:layout_weight="1"
-                    android:contentDescription="@string/cdMainMenuCalculator"
-                    app:srcCompat="@drawable/ic_calculator"
-                    tools:ignore="NestedWeights" />
-
-                <ImageView
-                    android:id="@+id/imgHealing"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="16sp"
-                    android:layout_marginTop="8sp"
-                    android:layout_marginEnd="16sp"
-                    android:layout_marginBottom="8sp"
-                    android:layout_weight="1"
-                    android:contentDescription="@string/cdMainMenuHealing"
-                    app:srcCompat="@drawable/ic_healing" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                    android:layout_height="200dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:contentDescription="@string/cdMainMenuLogo"
+                    app:srcCompat="@drawable/veteritec_logo_day" />
 
                 <TextView
-                    android:id="@+id/txtCalculator"
+                    android:id="@+id/txtTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16sp"
-                    android:layout_marginTop="8sp"
-                    android:layout_marginEnd="16sp"
-                    android:layout_marginBottom="8sp"
-                    android:layout_weight="1"
-                    android:text="@string/txtMainMenuCalculator"
-                    android:textAlignment="center"
-                    android:textSize="18sp"
-                    tools:ignore="NestedWeights" />
-
-                <TextView
-                    android:id="@+id/txtHealing"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16sp"
-                    android:layout_marginTop="8sp"
-                    android:layout_marginEnd="16sp"
-                    android:layout_marginBottom="8sp"
-                    android:layout_weight="1"
-                    android:text="@string/txtMainMenuHealing"
-                    android:textAlignment="center"
-                    android:textSize="18sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/imgCustomer"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="16sp"
-                    android:layout_marginTop="8sp"
-                    android:layout_marginEnd="16sp"
-                    android:layout_marginBottom="8sp"
-                    android:layout_weight="1"
-                    android:contentDescription="@string/cdMainMenuCustomer"
-                    app:srcCompat="@drawable/ic_customer"
-                    tools:ignore="NestedWeights" />
-
-                <ImageView
-                    android:id="@+id/imgAnimal"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="16sp"
-                    android:layout_marginTop="8sp"
-                    android:layout_marginEnd="16sp"
-                    android:layout_marginBottom="8sp"
-                    android:layout_weight="1"
-                    android:contentDescription="@string/cdMainMenuAnimal"
-                    app:srcCompat="@drawable/ic_pets" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/txtCustomer"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16sp"
-                    android:layout_marginTop="8sp"
-                    android:layout_marginEnd="16sp"
-                    android:layout_marginBottom="8sp"
-                    android:layout_weight="1"
-                    android:text="@string/txtMainMenuCustomer"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/txtMainMenuTitle"
                     android:textAlignment="center"
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/txtAnimal"
+                    android:id="@+id/txtTools"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16sp"
-                    android:layout_marginTop="8sp"
-                    android:layout_marginEnd="16sp"
-                    android:layout_marginBottom="8sp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/txtMainMenuTools"
+                    android:textAlignment="viewStart"
+                    android:textSize="24sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/txtMainMenuAnimal"
-                    android:textAlignment="center"
-                    android:textSize="18sp" />
+                    android:orientation="horizontal">
 
+                    <ImageView
+                        android:id="@+id/imgCalculator"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_weight="1"
+                        android:contentDescription="@string/cdMainMenuCalculator"
+                        app:srcCompat="@drawable/ic_calculator"
+                        tools:ignore="NestedWeights" />
+
+                    <ImageView
+                        android:id="@+id/imgHealing"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_weight="1"
+                        android:contentDescription="@string/cdMainMenuHealing"
+                        app:srcCompat="@drawable/ic_healing" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/txtCalculator"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_weight="1"
+                        android:text="@string/txtMainMenuCalculator"
+                        android:textAlignment="center"
+                        android:textSize="18sp"
+                        tools:ignore="NestedWeights" />
+
+                    <TextView
+                        android:id="@+id/txtHealing"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_weight="1"
+                        android:text="@string/txtMainMenuHealing"
+                        android:textAlignment="center"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imgCustomer"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_weight="1"
+                        android:contentDescription="@string/cdMainMenuCustomer"
+                        app:srcCompat="@drawable/ic_customer"
+                        tools:ignore="NestedWeights" />
+
+                    <ImageView
+                        android:id="@+id/imgAnimal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_weight="1"
+                        android:contentDescription="@string/cdMainMenuAnimal"
+                        app:srcCompat="@drawable/ic_pets" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/txtCustomer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_weight="1"
+                        android:text="@string/txtMainMenuCustomer"
+                        android:textAlignment="center"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/txtAnimal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_weight="1"
+                        android:text="@string/txtMainMenuAnimal"
+                        android:textAlignment="center"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/txtCredits"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="bottom"
+                    android:text="@string/txtMainMenuCredits" />
             </LinearLayout>
-
-            <TextView
-                android:id="@+id/txtCredits"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16sp"
-                android:layout_marginTop="8sp"
-                android:layout_marginEnd="16sp"
-                android:layout_marginBottom="8sp"
-                android:layout_weight="1"
-                android:gravity="bottom"
-                android:text="@string/txtMainMenuCredits" />
-        </LinearLayout>
+        </ScrollView>
 
     </LinearLayout>
 
