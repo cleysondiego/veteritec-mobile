@@ -182,4 +182,6 @@
     <string name="txtConfirm">Voulez-vous vraiment supprimer cet enregistrement?</string>
     <string name="txtConfirmYes">Oui</string>
     <string name="txtConfirmNo">Non</string>
+    <string name="toastLocalizationForThisPet">Cet animal n\'a pas de collier de suivi!</string>
+    <string name="toastLocationFailed">Nous n\'avons pas pu localiser l\'animal à ce moment! Réessayer!</string>
 </resources>

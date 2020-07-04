@@ -182,4 +182,6 @@
     <string name="txtConfirm">क्या आप वाकई इस रिकॉर्ड को हटाना चाहते हैं?</string>
     <string name="txtConfirmYes">हाँ</string>
     <string name="txtConfirmNo">नहीं</string>
+    <string name="toastLocalizationForThisPet">इस जानवर के पास ट्रैकिंग कॉलर नहीं है!</string>
+    <string name="toastLocationFailed">हम इस समय जानवर का पता लगाने में असमर्थ थे! पुनः प्रयास करें!</string>
 </resources>

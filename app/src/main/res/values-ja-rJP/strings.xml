@@ -182,4 +182,6 @@
     <string name="txtConfirm">このレコードを削除してもよろしいですか？</string>
     <string name="txtConfirmYes">はい</string>
     <string name="txtConfirmNo">番号</string>
+    <string name="toastLocalizationForThisPet">この動物にはトラッキングカラーがありません！</string>
+    <string name="toastLocationFailed">現在、動物を見つけることができませんでした。 再試行！</string>
 </resources>

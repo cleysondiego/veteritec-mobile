@@ -182,4 +182,6 @@
     <string name="txtConfirm">Are you sure you want to delete this record?</string>
     <string name="txtConfirmYes">Yes</string>
     <string name="txtConfirmNo">No</string>
+    <string name="toastLocalizationForThisPet">This animal does not have a tracking collar!</string>
+    <string name="toastLocationFailed">We were unable to locate the animal at this time! Try again!</string>
 </resources>

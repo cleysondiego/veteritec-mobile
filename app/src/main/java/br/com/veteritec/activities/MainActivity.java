@@ -29,9 +29,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private DrawerLayout drawer;
 
     private boolean isLogged = false;
-    private String userName = "";
     private String userToken = "";
-    private String userClinicId = "";
 
     private ClinicResponseStructure clinicResponseStructure;
 
@@ -131,8 +129,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private void getUserDataFromSharedPreferences(Context context) {
         SharedPreferencesUtils sharedPreferencesUtils = new SharedPreferencesUtils();
         isLogged = sharedPreferencesUtils.isLogged(context);
-        userName = sharedPreferencesUtils.getUserName(context);
         userToken = sharedPreferencesUtils.getUserToken(context);
-        userClinicId = sharedPreferencesUtils.getUserClinicId(context);
     }
 }

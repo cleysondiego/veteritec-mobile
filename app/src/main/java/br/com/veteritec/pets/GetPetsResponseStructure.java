@@ -39,7 +39,6 @@ public class GetPetsResponseStructure {
         private String weight;
         private String comments;
         private String customer;
-        private String clinic;
 
         public String getId() {
             return id;
@@ -77,10 +76,6 @@ public class GetPetsResponseStructure {
             return customer;
         }
 
-        public String getClinic() {
-            return clinic;
-        }
-
         public Pet fromJson(JSONObject jsonObject) {
             try {
                 this.id = jsonObject.getString("_id");
@@ -92,7 +87,6 @@ public class GetPetsResponseStructure {
                 this.weight = jsonObject.getString("weight");
                 this.comments = jsonObject.getString("comments");
                 this.customer = jsonObject.getString("customer");
-                this.clinic = jsonObject.getString("clinic");
             } catch (JSONException e) {
                 e.printStackTrace();
             }

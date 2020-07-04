@@ -28,20 +28,14 @@ public class LoginResponseStructure {
 
     public static class UserConfig {
         private String name;
-        private String email;
 
         public String getName() {
             return name;
         }
 
-        public String getEmail() {
-            return email;
-        }
-
         public UserConfig fromJson(JSONObject jsonObject) {
             try {
                 this.name = jsonObject.getString("name");
-                this.email = jsonObject.getString("email");
             } catch (JSONException e) {
                 e.printStackTrace();
             }

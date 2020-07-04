@@ -6,8 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.WindowManager;
-import android.view.inputmethod.InputMethod;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -38,7 +36,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private TextView txtEmail;
     private TextView txtPassword;
     private TextView txtNoConnection;
-  
+
     private EditText etLogin;
     private EditText etPassword;
 
@@ -81,17 +79,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.btnLogin:
-                boolean isEmailValid = validateField(etLogin);
-                if (isEmailValid) {
-                    boolean isPasswordValid = validateField(etPassword);
-                    if (isPasswordValid) {
-                        doLogin();
-                        closeKeyboard();
-                    }
+        if (v.getId() == R.id.btnLogin) {
+            boolean isEmailValid = validateField(etLogin);
+            if (isEmailValid) {
+                boolean isPasswordValid = validateField(etPassword);
+                if (isPasswordValid) {
+                    doLogin();
+                    closeKeyboard();
                 }
-                break;
+            }
         }
     }
 
@@ -99,7 +95,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         View view = this.getCurrentFocus();
 
         if (view != null) {
-            InputMethodManager inputMethodManager = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+            InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
             if (inputMethodManager != null) {
                 inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
             }
@@ -200,7 +196,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         loginUseCase.execute();
     }
 
-    public void goToMainActivity() {
+    private void goToMainActivity() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();

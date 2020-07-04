@@ -249,7 +249,7 @@ public class AddCustomerActivity extends AppCompatActivity implements Navigation
         }
     }
 
-    public boolean validateFields() {
+    private boolean validateFields() {
         return validateField(edtCustomerName) &&
                 validateField(edtCustomerCpf) &&
                 validateField(edtCustomerCep) &&
@@ -259,7 +259,7 @@ public class AddCustomerActivity extends AppCompatActivity implements Navigation
                 validateField(edtCustomerEmail);
     }
 
-    public boolean validateField(EditText editText) {
+    private boolean validateField(EditText editText) {
         if (editText.getText().toString().isEmpty()) {
             editText.setError(getResources().getString(R.string.setErrorEmptyField));
             editText.requestFocus();
@@ -293,6 +293,7 @@ public class AddCustomerActivity extends AppCompatActivity implements Navigation
                 Toast.makeText(context, getResources().getString(R.string.toastAddCustomerFailureAddedCustomer), Toast.LENGTH_LONG).show();
             }
         });
+
         createCustomerUseCase.execute();
     }
 

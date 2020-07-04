@@ -107,10 +107,10 @@ public class TranslateActivity extends AppCompatActivity implements View.OnClick
         NavigationDrawer navigationDrawer = new NavigationDrawer();
         Intent screen = navigationDrawer.choosedItem(drawer, context, item);
 
-        if(screen != null) {
+        if (screen != null) {
             startActivity(screen);
             finish();
-        }else{
+        } else {
             finish();
         }
 

@@ -182,4 +182,6 @@
     <string name="txtConfirm">您确定要删除此记录吗？</string>
     <string name="txtConfirmYes">是</string>
     <string name="txtConfirmNo">没有</string>
+    <string name="toastLocalizationForThisPet">该动物没有追踪项圈！</string>
+    <string name="toastLocationFailed">我们目前无法找到动物！ 再试一次！</string>
 </resources>
