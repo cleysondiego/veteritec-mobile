@@ -59,20 +59,21 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
 
     private DrawerLayout drawer;
 
-    EditText edtAnimalName;
-    EditText edtAnimalBirthDate;
-    EditText edtAnimalSpecies;
-    EditText edtAnimalRace;
-    EditText edtAnimalSize;
-    EditText edtAnimalWeight;
-    EditText edtAnimalObservation;
+    private EditText edtAnimalName;
+    private EditText edtAnimalBirthDate;
+    private EditText edtAnimalSpecies;
+    private EditText edtAnimalRace;
+    private EditText edtAnimalSize;
+    private EditText edtAnimalWeight;
+    private EditText edtAnimalObservation;
 
-    Button btnDate;
-    Button btnAnimalSave;
-    Button btnAnimalEdit;
-    Button btnAnimalDelete;
+    private Button btnDate;
+    private Button btnAnimalSave;
+    private Button btnAnimalEdit;
+    private Button btnAnimalDelete;
+    private Button btnAnimalFind;
 
-    Spinner spnAnimalOwner;
+    private Spinner spnAnimalOwner;
 
     private GetPetsResponseStructure.Pet pet;
     private GetCustomersResponseStructure getCustomersResponseStructure;
@@ -112,11 +113,13 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
         btnAnimalSave = findViewById(R.id.btnAddAnimalSave);
         btnAnimalEdit = findViewById(R.id.btnAddAnimalEdit);
         btnAnimalDelete = findViewById(R.id.btnAddAnimalDelete);
+        btnAnimalFind = findViewById(R.id.btnAddAnimalFind);
 
         btnDate.setOnClickListener(this);
         btnAnimalSave.setOnClickListener(this);
         btnAnimalEdit.setOnClickListener(this);
         btnAnimalDelete.setOnClickListener(this);
+        btnAnimalFind.setOnClickListener(this);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
 
@@ -131,6 +134,7 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
 
                 btnAnimalEdit.setVisibility(View.VISIBLE);
                 btnAnimalDelete.setVisibility(View.VISIBLE);
+                btnAnimalFind.setVisibility(View.VISIBLE);
             }
             setSupportActionBar(toolbar);
         } catch (Exception e) {
@@ -194,6 +198,14 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
 
                 AlertDialog dialog = confirmDialog.create();
                 dialog.show();
+                break;
+            case R.id.btnAddAnimalFind:
+                if (!pet.getId().equals("5efe670d61b7c60025478f5d")) {
+                    Toast.makeText(this, "Este animal não possui o rastreador!", Toast.LENGTH_LONG).show();
+                    break;
+                }
+                Intent find = new Intent(this, GoogleMapsActivity.class);
+                startActivity(find);
                 break;
             default:
                 break;

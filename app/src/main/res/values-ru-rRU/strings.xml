@@ -178,6 +178,7 @@
     <string name="toastAddEmployeeFailureAdd">Не было возможности добавить нового сотрудника! Попробуй еще раз!</string>
     <string name="txtNoConnection">Интернет недоступен!\nПопробуй еще раз!</string>
     <string name="setErrorZeroField">Это поле не может быть нулевым!</string>
+    <string name="title_activity_google_maps">карта</string>
     <string name="txtConfirm">Вы уверены, что хотите удалить эту запись?</string>
     <string name="txtConfirmYes">да</string>
     <string name="txtConfirmNo">нет</string>

@@ -13,6 +13,7 @@ import br.com.veteritec.activities.AddCustomerActivity;
 import br.com.veteritec.activities.AddEmployeeActivity;
 import br.com.veteritec.activities.AddVaccineActivity;
 import br.com.veteritec.activities.CalculatorActivity;
+import br.com.veteritec.activities.GoogleMapsActivity;
 import br.com.veteritec.activities.QueryActivity;
 import br.com.veteritec.activities.TranslateActivity;
 

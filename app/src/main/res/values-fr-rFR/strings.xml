@@ -178,6 +178,7 @@
     <string name="toastAddEmployeeFailureAdd">Il n\'a pas été possible d\'ajouter un nouvel employé! Réessayer!</string>
     <string name="txtNoConnection">Connexion Internet indisponible!\nRéessayer!</string>
     <string name="setErrorZeroField">Ce champ ne peut pas être nul!</string>
+    <string name="title_activity_google_maps">Carte</string>
     <string name="txtConfirm">Voulez-vous vraiment supprimer cet enregistrement?</string>
     <string name="txtConfirmYes">Oui</string>
     <string name="txtConfirmNo">Non</string>
