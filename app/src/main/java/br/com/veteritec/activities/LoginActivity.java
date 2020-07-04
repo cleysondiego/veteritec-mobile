@@ -1,6 +1,7 @@
 package br.com.veteritec.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,6 +11,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,6 +27,7 @@ import br.com.veteritec.login.LoginUseCase;
 import br.com.veteritec.usecase.ThreadExecutor;
 import br.com.veteritec.utils.ApiRequest;
 import br.com.veteritec.utils.LoadingDialog;
+import br.com.veteritec.utils.SharedPreferencesUtils;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     private Context context;
@@ -36,6 +39,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private TextView txtEmail;
     private TextView txtPassword;
     private TextView txtNoConnection;
+
+    private ImageView imgLogo;
   
     private EditText etLogin;
     private EditText etPassword;
@@ -48,6 +53,17 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        imgLogo = findViewById(R.id.imgLoginLogo);
+
+        SharedPreferencesUtils sharedPreferencesUtils = new SharedPreferencesUtils();
+        if (sharedPreferencesUtils.getIsDarkMode(getApplicationContext())) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+            imgLogo.setImageResource(R.drawable.veteritec_logo_night);
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+            imgLogo.setImageResource(R.drawable.veteritec_logo_day);
+        }
 
         context = getApplicationContext();
 

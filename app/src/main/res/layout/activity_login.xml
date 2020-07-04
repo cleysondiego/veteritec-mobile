@@ -17,7 +17,7 @@
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/imgLogo"
+                android:id="@+id/imgLoginLogo"
                 android:layout_width="match_parent"
                 android:layout_height="250sp"
                 android:layout_marginStart="16dp"
@@ -25,7 +25,7 @@
                 android:layout_marginEnd="16dp"
                 android:contentDescription="@string/cdLoginLogo"
                 android:scaleType="centerInside"
-                app:srcCompat="@drawable/veteritec_logo" />
+                app:srcCompat="@drawable/veteritec_logo_day" />
 
             <TextView
                 android:id="@+id/txtTitle"
