@@ -91,7 +91,6 @@
     <string name="edtAddEmployeePassword">Tapez votre mot de passe</string>
     <string name="edtAddEmployeeConfirmPassword">Confirmer votre mot de passe</string>
     <string name="txtTranslateTitle">Choisissez votre langue</string>
-    <string name="txtCalculatorMeasure" translatable="false">Kg</string>
     <string name="edtCalculatorAnimalWeight">Ex: 17,4</string>
     <string name="edtCalculatorFarmacoDosage">Ex: 7.8</string>
     <string name="edtCalculatorFarmacoConcentration">Ex 1.6</string>
@@ -182,6 +181,7 @@
     <string name="txtConfirm">Voulez-vous vraiment supprimer cet enregistrement?</string>
     <string name="txtConfirmYes">Oui</string>
     <string name="txtConfirmNo">Non</string>
+    <string name="txtSwitchNightMode">Mode Nuit</string>
     <string name="toastLocalizationForThisPet">Cet animal n\'a pas de collier de suivi!</string>
     <string name="toastLocationFailed">Nous n\'avons pas pu localiser l\'animal à ce moment! Réessayer!</string>
 </resources>

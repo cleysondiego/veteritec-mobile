@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -14,6 +15,7 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.ImageView;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -31,6 +33,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private boolean isLogged = false;
     private String userToken = "";
 
+    private ImageView imgLogo;
+
     private ClinicResponseStructure clinicResponseStructure;
 
     @Override
@@ -47,6 +51,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        imgLogo = findViewById(R.id.imgMainMenuLogo);
+
+        SharedPreferencesUtils sharedPreferencesUtils = new SharedPreferencesUtils();
+        if (sharedPreferencesUtils.getIsDarkMode(getApplicationContext())) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+            imgLogo.setImageResource(R.drawable.veteritec_logo_night);
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+            imgLogo.setImageResource(R.drawable.veteritec_logo_day);
+        }
 
         clinicResponseStructure = (ClinicResponseStructure) getIntent().getSerializableExtra("CLINIC_STRUCTURE");
 

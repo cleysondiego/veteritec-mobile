@@ -91,7 +91,6 @@
     <string name="edtAddEmployeePassword">अपना पासवर्ड टाइप करें</string>
     <string name="edtAddEmployeeConfirmPassword">अपने पासवर्ड की पुष्टि करें</string>
     <string name="txtTranslateTitle">अपनी भाषा चुनिए</string>
-    <string name="txtCalculatorMeasure" translatable="false">Kg</string>
     <string name="edtCalculatorAnimalWeight">Ex: 17.4</string>
     <string name="edtCalculatorFarmacoDosage">Ex: 7.8</string>
     <string name="edtCalculatorFarmacoConcentration">पूर्व 1.6</string>
@@ -182,6 +181,7 @@
     <string name="txtConfirm">क्या आप वाकई इस रिकॉर्ड को हटाना चाहते हैं?</string>
     <string name="txtConfirmYes">हाँ</string>
     <string name="txtConfirmNo">नहीं</string>
+    <string name="txtSwitchNightMode">रात्री स्वरुप</string>
     <string name="toastLocalizationForThisPet">इस जानवर के पास ट्रैकिंग कॉलर नहीं है!</string>
     <string name="toastLocationFailed">हम इस समय जानवर का पता लगाने में असमर्थ थे! पुनः प्रयास करें!</string>
 </resources>

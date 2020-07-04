@@ -7,6 +7,10 @@
     <item android:title="@string/txtDrawerMenuTools">
         <menu>
             <item
+                android:id="@+id/nav_night_mode"
+                android:icon="@drawable/ic_night_mode"
+                android:title="@string/txtSwitchNightMode" />
+            <item
                 android:id="@+id/nav_calculator"
                 android:icon="@drawable/ic_calculator"
                 android:title="@string/txtDrawerMenuCalculator" />

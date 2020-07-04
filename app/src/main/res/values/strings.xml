@@ -50,7 +50,7 @@
     <!-- Calculator Page -->
     <string name="txtCalculatorTitle">Calculadora de Doses</string>
     <string name="txtCalculatorAnimalWeight">Peso do animal</string>
-    <string name="txtCalculatorMeasure">Kg</string>
+    <string name="txtCalculatorMeasure" translatable="false">Kg</string>
     <string name="txtCalculatorFarmacoDosage">Dose de fármaco</string>
     <string name="txtCalculatorFarmacoConcentration">Concentração de fármaco</string>
     <string name="txtCalculatorResult" translatable="false">0</string>
@@ -76,6 +76,7 @@
     </string-array>
 
     <!-- Drawer Menu -->
+    <string name="txtSwitchNightMode">Modo Noturno</string>
     <string name="txtDrawerMenuTools">Ferramentas</string>
     <string name="txtDrawerMenuCalculator">Calculadora de Doses</string>
     <string name="txtDrawerMenuLanguage">Alterar Idioma</string>
