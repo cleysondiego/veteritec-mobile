@@ -59,7 +59,7 @@ public class LoginUseCase extends UseCaseAbstract {
                             try {
                                 LoginResponseStructure loginResponseStructure = new LoginResponseStructure().fromJson(new JSONObject(new String(response)));
                                 SharedPreferencesUtils sharedPreferencesUtils = new SharedPreferencesUtils();
-                                sharedPreferencesUtils.setLoggedIn(context, true, loginResponseStructure.getUserConfig().getName(), loginResponseStructure.getToken(), clinicId);
+                                sharedPreferencesUtils.setLoggedIn(context, true, loginResponseStructure.getToken(), clinicId);
                                 callback.onSuccess();
                             } catch (JSONException ignored) {
                                 callback.onFailure(101);
