@@ -182,4 +182,6 @@
     <string name="txtConfirm">¿Seguro que quieres eliminar este registro?</string>
     <string name="txtConfirmYes">Si</string>
     <string name="txtConfirmNo">No</string>
+    <string name="toastLocalizationForThisPet">¡Este animal no tiene collar de rastreo!</string>
+    <string name="toastLocationFailed">¡No pudimos localizar al animal en este momento! ¡Inténtalo de nuevo!</string>
 </resources>

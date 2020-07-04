@@ -39,7 +39,6 @@ public class AddEmployeeActivity extends AppCompatActivity implements Navigation
     private EditText edtEmployeePassword;
     private EditText edtEmployeeConfirmPassword;
 
-    private String userToken;
     private String userClinicId;
 
     @Override
@@ -113,7 +112,7 @@ public class AddEmployeeActivity extends AppCompatActivity implements Navigation
         }
     }
 
-    public boolean validateFields() {
+    private boolean validateFields() {
         return validateField(edtEmployeeName) &&
                 validateField(edtEmployeeEmail) &&
                 validateField(edtEmployeePassword) &&
@@ -121,7 +120,7 @@ public class AddEmployeeActivity extends AppCompatActivity implements Navigation
                 validatePassword(edtEmployeePassword, edtEmployeeConfirmPassword);
     }
 
-    public boolean validateField(EditText editText) {
+    private boolean validateField(EditText editText) {
         if (editText.getText().toString().isEmpty()) {
             editText.setError(getResources().getString(R.string.setErrorEmptyField));
             editText.requestFocus();
@@ -134,7 +133,7 @@ public class AddEmployeeActivity extends AppCompatActivity implements Navigation
         return true;
     }
 
-    public boolean validatePassword(EditText editText, EditText editText1) {
+    private boolean validatePassword(EditText editText, EditText editText1) {
         if (editText.getText().toString().equals(editText1.getText().toString())) {
             return true;
         } else {
@@ -175,7 +174,6 @@ public class AddEmployeeActivity extends AppCompatActivity implements Navigation
 
     private void getUserDataFromSharedPreferences() {
         SharedPreferencesUtils sharedPreferencesUtils = new SharedPreferencesUtils();
-        userToken = sharedPreferencesUtils.getUserToken(context);
         userClinicId = sharedPreferencesUtils.getUserClinicId(context);
     }
 }

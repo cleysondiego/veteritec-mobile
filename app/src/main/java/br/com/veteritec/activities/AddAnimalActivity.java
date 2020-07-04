@@ -154,6 +154,7 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
         edtAnimalBirthDate.setInputType(InputType.TYPE_NULL);
     }
 
+    @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnAddAnimalDate:
@@ -201,7 +202,7 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
                 break;
             case R.id.btnAddAnimalFind:
                 if (!pet.getId().equals("5efe670d61b7c60025478f5d")) {
-                    Toast.makeText(this, "Este animal não possui o rastreador!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, getResources().getString(R.string.toastLocalizationForThisPet), Toast.LENGTH_LONG).show();
                     break;
                 }
                 Intent find = new Intent(this, GoogleMapsActivity.class);
@@ -457,7 +458,7 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
         deletePetUseCase.execute();
     }
 
-    public boolean validateFields() {
+    private boolean validateFields() {
         return validateField(edtAnimalName) &&
                 validateField(edtAnimalBirthDate) &&
                 validateField(edtAnimalSpecies) &&
@@ -467,7 +468,7 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
                 validateField(edtAnimalObservation);
     }
 
-    public boolean validateField(EditText editText) {
+    private boolean validateField(EditText editText) {
         if (editText.getText().toString().isEmpty()) {
             editText.setError(getResources().getString(R.string.setErrorEmptyField));
             editText.requestFocus();

@@ -64,11 +64,11 @@ public class GetLocationsUseCase extends UseCaseAbstract {
                 }
 
                 @Override
-                public void onFailure(int statusCode) {
+                public void onFailure(final int statusCode) {
                     new Handler(Looper.getMainLooper()).post(new Runnable() {
                         @Override
                         public void run() {
-
+                            callback.onFailure(statusCode);
                         }
                     });
                 }

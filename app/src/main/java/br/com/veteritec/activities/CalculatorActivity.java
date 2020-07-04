@@ -105,10 +105,10 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
         NavigationDrawer navigationDrawer = new NavigationDrawer();
         Intent screen = navigationDrawer.choosedItem(drawer, context, item);
 
-        if(screen != null) {
+        if (screen != null) {
             startActivity(screen);
             finish();
-        }else{
+        } else {
             finish();
         }
 
@@ -164,13 +164,13 @@ public class CalculatorActivity extends AppCompatActivity implements View.OnClic
         return dosageCalculator.calculate(animalWeight, dosage, concentration, dosageUnit, concentrationUnit);
     }
 
-    public boolean validateFields() {
+    private boolean validateFields() {
         return validateField(edtAnimalWeight) &&
                 validateField(edtDosage) &&
                 validateField(edtFarmacoConcentration);
     }
 
-    public boolean validateField(EditText editText) {
+    private boolean validateField(EditText editText) {
         if (editText.getText().toString().isEmpty()) {
             editText.setError(getResources().getString(R.string.setErrorEmptyField));
             editText.requestFocus();

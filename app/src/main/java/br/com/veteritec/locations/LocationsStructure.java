@@ -1,6 +1,5 @@
 package br.com.veteritec.locations;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -27,14 +26,9 @@ public class LocationsStructure {
     }
 
     public static class Location implements Serializable {
-        private String pet;
         private String latitude;
         private String longitude;
         private String createdAt;
-
-        public String getPet() {
-            return pet;
-        }
 
         public String getLatitude() {
             return latitude;
@@ -50,7 +44,6 @@ public class LocationsStructure {
 
         public Location fromJson(JSONObject jsonObject) {
             try {
-                this.pet = jsonObject.getString("pet");
                 this.latitude = jsonObject.getString("latitude");
                 this.longitude = jsonObject.getString("longitude");
                 this.createdAt = jsonObject.getString("createdAt");

@@ -18,7 +18,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 import br.com.veteritec.R;
 import br.com.veteritec.locations.GetLocationsUseCase;
@@ -48,10 +47,11 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
         getUserDataFromSharedPreferences(context);
         getLocations();
 
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
+        if (mapFragment != null) {
+            mapFragment.getMapAsync(this);
+        }
     }
 
     @Override
@@ -80,7 +80,7 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
 
             @Override
             public void onFailure(int statusCode) {
-                Toast.makeText(context, "O Pet selecionado não possui acesso a essa funcionalidade!", Toast.LENGTH_LONG).show();
+                Toast.makeText(context, getResources().getString(R.string.toastLocationFailed), Toast.LENGTH_LONG).show();
             }
         });
 
@@ -102,7 +102,8 @@ public class GoogleMapsActivity extends FragmentActivity implements OnMapReadyCa
             Date parsedDate = new Date();
             try {
                 parsedDate = dateFormat.parse(lastTime);
-            } catch (ParseException ignored) {}
+            } catch (ParseException ignored) {
+            }
 
             if (parsedDate != null) {
                 Timestamp timestamp = new Timestamp(parsedDate.getTime());

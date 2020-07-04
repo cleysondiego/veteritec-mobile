@@ -182,4 +182,6 @@
     <string name="txtConfirm">Вы уверены, что хотите удалить эту запись?</string>
     <string name="txtConfirmYes">да</string>
     <string name="txtConfirmNo">нет</string>
+    <string name="toastLocalizationForThisPet">У этого животного нет ошейника!</string>
+    <string name="toastLocationFailed">Мы не смогли найти животное в это время! Попробуй еще раз!</string>
 </resources>

@@ -31,13 +31,13 @@ public class ChangePetUseCase extends UseCaseAbstract {
         super(executor);
 
         this.apiRequest = apiRequest;
-        this.changePetRequestStructure =changePetRequestStructure;
+        this.changePetRequestStructure = changePetRequestStructure;
         this.clinicId = clinicId;
         this.token = token;
     }
 
     @Override
-    public void run () {
+    public void run() {
         try {
             HashMap<String, String> headers = new HashMap<>();
             headers.put(ApiRequest.CONTENT_TYPE, "application/json");

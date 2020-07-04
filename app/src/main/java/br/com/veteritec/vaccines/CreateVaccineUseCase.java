@@ -67,7 +67,7 @@ public class CreateVaccineUseCase extends UseCaseAbstract {
                     });
                 }
             });
-        } catch (Exception e) {
+        } catch (Exception ignored) {
             callback.onFailure(100);
         }
     }
