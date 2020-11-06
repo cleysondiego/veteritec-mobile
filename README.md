@@ -1,4 +1,7 @@
-![ic_launcher](https://user-images.githubusercontent.com/48259868/98325408-7d8bc200-1fcd-11eb-887e-140f8e0214b2.png)
+<p align="center">
+  <img width="192" height="192" src="https://user-images.githubusercontent.com/48259868/98325408-7d8bc200-1fcd-11eb-887e-140f8e0214b2.png">
+</p>
+
 # Passos para disponibilizar o sistema VeteriTec
 
 ## Requisitos   
