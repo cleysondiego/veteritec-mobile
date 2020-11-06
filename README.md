@@ -21,8 +21,8 @@
         - Avançar
         - Selecionar o tipo de build Release ou Debug
         - Marcar as opções
-- [x] v1 
-- [x] v2
+        - [x] v1 
+        - [x] v2
         - Aguardar o build do APK
         - O Apk será gerado no diretório escolhido
 
