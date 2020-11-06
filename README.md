@@ -1,4 +1,4 @@
-![ic_launcher-playstore](https://user-images.githubusercontent.com/48259868/98324599-795ea500-1fcb-11eb-876b-48e54e45b70a.png)
+![ic_launcher](https://user-images.githubusercontent.com/48259868/98325408-7d8bc200-1fcd-11eb-887e-140f8e0214b2.png)
 # Passos para disponibilizar o sistema VeteriTec
 
 ## Requisitos   
