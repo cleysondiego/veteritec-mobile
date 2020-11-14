@@ -24,6 +24,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -44,6 +45,7 @@ import br.com.veteritec.employees.GetEmployeesResponseStructure;
 import br.com.veteritec.employees.GetEmployeesUseCase;
 import br.com.veteritec.pets.GetPetsByCustomerUseCase;
 import br.com.veteritec.pets.GetPetsResponseStructure;
+import br.com.veteritec.usecase.DeleteStructure;
 import br.com.veteritec.usecase.ThreadExecutor;
 import br.com.veteritec.utils.ApiRequest;
 import br.com.veteritec.utils.LoadingDialog;
@@ -79,6 +81,7 @@ public class AddVaccineActivity extends AppCompatActivity implements View.OnClic
     private EditText edtDate;
     private EditText edtTime;
     private EditText edtDescription;
+    private EditText message;
 
     private Button btnTime;
     private Button btnDate;
@@ -142,6 +145,7 @@ public class AddVaccineActivity extends AppCompatActivity implements View.OnClic
                     edtDate.setText(vaccine.getDate());
                     edtTime.setText(vaccine.getHour());
                     edtDescription.setText(vaccine.getDescription());
+                    message = new EditText(AddVaccineActivity.this);
                 }
             }
             setSupportActionBar(toolbar);
@@ -209,7 +213,7 @@ public class AddVaccineActivity extends AppCompatActivity implements View.OnClic
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.dismiss();
-                                deleteVaccine();
+                                deleteVaccine(message.getText().toString());
                             }
                         })
                         .setNegativeButton(getResources().getString(R.string.txtConfirmNo), new DialogInterface.OnClickListener() {
@@ -220,6 +224,12 @@ public class AddVaccineActivity extends AppCompatActivity implements View.OnClic
                         });
 
                 AlertDialog dialog = confirmDialog.create();
+                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.MATCH_PARENT
+                );
+                message.setLayoutParams(lp);
+                dialog.setView(message);
                 dialog.show();
                 break;
         }
@@ -561,12 +571,15 @@ public class AddVaccineActivity extends AppCompatActivity implements View.OnClic
         changeVaccineUseCase.execute();
     }
 
-    private void deleteVaccine() {
+    private void deleteVaccine(String message) {
         final LoadingDialog loadingDialog = new LoadingDialog(this);
         loadingDialog.startLoadingDialog();
 
+        DeleteStructure deleteStructure = new DeleteStructure();
+        deleteStructure.setMessage(message);
+
         ApiRequest apiRequest = new ApiRequest();
-        DeleteVaccineUseCase deleteVaccineUseCase = new DeleteVaccineUseCase(ThreadExecutor.getInstance(), apiRequest, vaccine.getId(), userClinicId, userToken);
+        DeleteVaccineUseCase deleteVaccineUseCase = new DeleteVaccineUseCase(ThreadExecutor.getInstance(), apiRequest, deleteStructure, vaccine.getId(), userClinicId, userToken);
         deleteVaccineUseCase.setCallback(new DeleteVaccineUseCase.OnDeleteVaccineCallback() {
             @Override
             public void onSuccess() {

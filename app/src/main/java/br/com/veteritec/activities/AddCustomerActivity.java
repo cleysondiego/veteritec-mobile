@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -31,6 +32,7 @@ import br.com.veteritec.customers.CustomerRequestStructure;
 import br.com.veteritec.customers.CreateCustomerUseCase;
 import br.com.veteritec.customers.DeleteCustomerUseCase;
 import br.com.veteritec.customers.GetCustomersResponseStructure;
+import br.com.veteritec.usecase.DeleteStructure;
 import br.com.veteritec.usecase.ThreadExecutor;
 import br.com.veteritec.utils.ApiRequest;
 import br.com.veteritec.utils.LoadingDialog;
@@ -53,6 +55,7 @@ public class AddCustomerActivity extends AppCompatActivity implements Navigation
     private EditText edtCustomerTelephone;
     private EditText edtCustomerCellPhone;
     private EditText edtCustomerEmail;
+    private EditText message;
 
     private Button btnSave;
     private Button btnEdit;
@@ -133,6 +136,7 @@ public class AddCustomerActivity extends AppCompatActivity implements Navigation
                     edtCustomerTelephone.setText(customer.getPhoneNumber());
                     edtCustomerCellPhone.setText(customer.getCellPhoneNumber());
                     edtCustomerEmail.setText(customer.getEmail());
+                    message = new EditText(AddCustomerActivity.this);
                 }
             }
             setSupportActionBar(toolbar);
@@ -203,7 +207,7 @@ public class AddCustomerActivity extends AppCompatActivity implements Navigation
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.dismiss();
-                                deleteCustomer();
+                                deleteCustomer(message.getText().toString());
                             }
                         })
                         .setNegativeButton(getResources().getString(R.string.txtConfirmNo), new DialogInterface.OnClickListener() {
@@ -214,6 +218,12 @@ public class AddCustomerActivity extends AppCompatActivity implements Navigation
                         });
 
                 AlertDialog dialog = confirmDialog.create();
+                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.MATCH_PARENT
+                );
+                message.setLayoutParams(lp);
+                dialog.setView(message);
                 dialog.show();
                 break;
             default:
@@ -303,13 +313,16 @@ public class AddCustomerActivity extends AppCompatActivity implements Navigation
         userClinicId = sharedPreferencesUtils.getUserClinicId(context);
     }
 
-    private void deleteCustomer() {
+    private void deleteCustomer(String message) {
         final LoadingDialog loadingDialog = new LoadingDialog(this);
         loadingDialog.startLoadingDialog();
 
+        DeleteStructure deleteStructure = new DeleteStructure();
+        deleteStructure.setMessage(message);
+
         ApiRequest apiRequest = new ApiRequest();
 
-        DeleteCustomerUseCase deleteCustomerUseCase = new DeleteCustomerUseCase(ThreadExecutor.getInstance(), apiRequest, customer.getId(), userClinicId, userToken);
+        DeleteCustomerUseCase deleteCustomerUseCase = new DeleteCustomerUseCase(ThreadExecutor.getInstance(), apiRequest, deleteStructure, customer.getId(), userClinicId, userToken);
         deleteCustomerUseCase.setCallback(new DeleteCustomerUseCase.OnDeleteCustomerCallback() {
             @Override
             public void onSuccess() {

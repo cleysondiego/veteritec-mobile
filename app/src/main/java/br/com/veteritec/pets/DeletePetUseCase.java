@@ -5,6 +5,7 @@ import android.os.Looper;
 
 import java.util.HashMap;
 
+import br.com.veteritec.usecase.DeleteStructure;
 import br.com.veteritec.usecase.Executor;
 import br.com.veteritec.usecase.UseCaseAbstract;
 import br.com.veteritec.utils.ApiRequest;
@@ -19,18 +20,21 @@ public class DeletePetUseCase extends UseCaseAbstract {
     private DeletePetUseCase.OnDeletePetCallback callback;
 
     private ApiRequest apiRequest;
+    private DeleteStructure deleteStructure;
     private String petId;
     private String clinicId;
     private String token;
 
     public DeletePetUseCase(Executor executor,
                             ApiRequest apiRequest,
+                            DeleteStructure deleteStructure,
                             String petId,
                             String clinicId,
                             String token) {
         super(executor);
 
         this.apiRequest = apiRequest;
+        this.deleteStructure = deleteStructure;
         this.petId = petId;
         this.clinicId = clinicId;
         this.token = token;
@@ -42,8 +46,9 @@ public class DeletePetUseCase extends UseCaseAbstract {
             HashMap<String, String> headers = new HashMap<>();
             headers.put(ApiRequest.CLINIC_ID, clinicId);
             headers.put(ApiRequest.AUTHORIZATION, "Bearer " + token);
+            headers.put(ApiRequest.CONTENT_TYPE, "application/json");
 
-            apiRequest.delete(ApiRequest.URL_PETS + "/" + petId, headers, null, new ApiRequest.OnResponse() {
+            apiRequest.delete(ApiRequest.URL_PETS + "/" + petId, headers, deleteStructure.getStructureString(), new ApiRequest.OnResponse() {
                 @Override
                 public void onResponse(int statusCode, byte[] response) {
                     new Handler(Looper.getMainLooper()).post(new Runnable() {

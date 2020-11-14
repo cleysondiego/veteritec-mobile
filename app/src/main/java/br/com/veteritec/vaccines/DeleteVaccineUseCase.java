@@ -5,6 +5,7 @@ import android.os.Looper;
 
 import java.util.HashMap;
 
+import br.com.veteritec.usecase.DeleteStructure;
 import br.com.veteritec.usecase.Executor;
 import br.com.veteritec.usecase.UseCaseAbstract;
 import br.com.veteritec.utils.ApiRequest;
@@ -19,18 +20,21 @@ public class DeleteVaccineUseCase extends UseCaseAbstract {
     private DeleteVaccineUseCase.OnDeleteVaccineCallback callback;
 
     private ApiRequest apiRequest;
+    private DeleteStructure deleteStructure;
     private String vaccineId;
     private String clinicId;
     private String token;
 
     public DeleteVaccineUseCase(Executor executor,
                                 ApiRequest apiRequest,
+                                DeleteStructure deleteStructure,
                                 String vaccineId,
                                 String clinicId,
                                 String token) {
         super(executor);
 
         this.apiRequest = apiRequest;
+        this.deleteStructure = deleteStructure;
         this.vaccineId = vaccineId;
         this.clinicId = clinicId;
         this.token = token;
@@ -42,8 +46,9 @@ public class DeleteVaccineUseCase extends UseCaseAbstract {
             HashMap<String, String> headers = new HashMap<>();
             headers.put(ApiRequest.CLINIC_ID, clinicId);
             headers.put(ApiRequest.AUTHORIZATION, "Bearer " + token);
+            headers.put(ApiRequest.CONTENT_TYPE, "application/json");
 
-            apiRequest.delete(ApiRequest.URL_VACCINES + "/" + vaccineId, headers, null, new ApiRequest.OnResponse() {
+            apiRequest.delete(ApiRequest.URL_VACCINES + "/" + vaccineId, headers, deleteStructure.getStructureString(), new ApiRequest.OnResponse() {
                 @Override
                 public void onResponse(int statusCode, byte[] response) {
                     new Handler(Looper.getMainLooper()).post(new Runnable() {

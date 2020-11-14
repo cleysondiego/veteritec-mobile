@@ -15,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -43,6 +44,7 @@ import br.com.veteritec.pets.CreatePetRequestStructure;
 import br.com.veteritec.pets.CreatePetUseCase;
 import br.com.veteritec.pets.DeletePetUseCase;
 import br.com.veteritec.pets.GetPetsResponseStructure;
+import br.com.veteritec.usecase.DeleteStructure;
 import br.com.veteritec.usecase.ThreadExecutor;
 import br.com.veteritec.utils.ApiRequest;
 import br.com.veteritec.utils.LoadingDialog;
@@ -66,6 +68,7 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
     private EditText edtAnimalSize;
     private EditText edtAnimalWeight;
     private EditText edtAnimalObservation;
+    private EditText message;
 
     private Button btnDate;
     private Button btnAnimalSave;
@@ -135,6 +138,7 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
                 btnAnimalEdit.setVisibility(View.VISIBLE);
                 btnAnimalDelete.setVisibility(View.VISIBLE);
                 btnAnimalFind.setVisibility(View.VISIBLE);
+                message = new EditText(AddAnimalActivity.this);
             }
             setSupportActionBar(toolbar);
         } catch (Exception e) {
@@ -187,7 +191,7 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.dismiss();
-                                deletePet();
+                                deletePet(message.getText().toString());
                             }
                         })
                         .setNegativeButton(getResources().getString(R.string.txtConfirmNo), new DialogInterface.OnClickListener() {
@@ -198,6 +202,12 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
                         });
 
                 AlertDialog dialog = confirmDialog.create();
+                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.MATCH_PARENT
+                );
+                message.setLayoutParams(lp);
+                dialog.setView(message);
                 dialog.show();
                 break;
             case R.id.btnAddAnimalFind:
@@ -434,12 +444,15 @@ public class AddAnimalActivity extends AppCompatActivity implements View.OnClick
         changePetUseCase.execute();
     }
 
-    private void deletePet() {
+    private void deletePet(String message) {
         final LoadingDialog loadingDialog = new LoadingDialog(this);
         loadingDialog.startLoadingDialog();
 
+        DeleteStructure deleteStructure = new DeleteStructure();
+        deleteStructure.setMessage(message);
+
         ApiRequest apiRequest = new ApiRequest();
-        DeletePetUseCase deletePetUseCase = new DeletePetUseCase(ThreadExecutor.getInstance(), apiRequest, pet.getId(), userClinicId, userToken);
+        DeletePetUseCase deletePetUseCase = new DeletePetUseCase(ThreadExecutor.getInstance(), apiRequest, deleteStructure, pet.getId(), userClinicId, userToken);
         deletePetUseCase.setCallback(new DeletePetUseCase.OnDeletePetCallback() {
             @Override
             public void onSuccess() {

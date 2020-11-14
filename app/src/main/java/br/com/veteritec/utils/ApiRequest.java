@@ -4,6 +4,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStreamWriter;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -68,11 +69,11 @@ public class ApiRequest {
                 }
             }
 
-            if (requestMethod.equals(GET) || requestMethod.equals(DELETE)) {
+            if (requestMethod.equals(GET)) {
                 connection.connect();
             }
 
-            if (requestMethod.equals(POST) || requestMethod.equals(PUT)) {
+            if (requestMethod.equals(POST) || requestMethod.equals(PUT) || requestMethod.equals(DELETE)) {
                 DataOutputStream outputStream = new DataOutputStream(connection.getOutputStream());
 
                 if (requestParams != null) {
